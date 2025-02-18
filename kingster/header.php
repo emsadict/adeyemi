@@ -11,10 +11,7 @@
                             <div class="kingster-main-menu" id="kingster-main-menu">
                                 <ul id="menu-main-navigation-1" class="sf-menu">
                                     <li class="menu-item menu-item-home menu-item-has-children kingster-normal-menu"><a href="index.html" class="sf-with-ul-pre">Home</a>
-                                        <ul class="sub-menu">
-                                            <li class="menu-item menu-item-home" data-size="60"><a href="index.html">Homepage 1</a></li>
-                                            <li class="menu-item" data-size="60"><a href="homepage-2.html">Homepage 2</a></li>
-                                        </ul>
+                                        
                                     </li>
                                     <li class="menu-item menu-item-has-children kingster-normal-menu"><a href="#" class="sf-with-ul-pre">Pages</a>
                                         <ul class="sub-menu">
