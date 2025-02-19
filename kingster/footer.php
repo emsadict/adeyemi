@@ -76,8 +76,9 @@
                         <div class="kingster-copyright-left kingster-item-pdlr">Copyright All Right Reserved 2025, Adeyemi Federal Univsersity, Ondo</div>
                         <div class="kingster-copyright-right kingster-item-pdlr">
                             <div class="gdlr-core-social-network-item gdlr-core-item-pdb  gdlr-core-none-align" id="div_1dd7_112">
-                                <h3 class="kingster-widget-title">FOLLOW US </h3>
+                           <h6 style="padding-left: 30px; color:#ffffff;"> Follow us:</h6>
                                 <a href="#" target="_blank" class="gdlr-core-social-network-icon" title="facebook">
+                                    
                                     <i class="fa fa-facebook" ></i>
                                 </a>
                                 <a href="#" target="_blank" class="gdlr-core-social-network-icon" title="google-plus">
