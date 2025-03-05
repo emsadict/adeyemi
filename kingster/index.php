@@ -51,6 +51,9 @@
                                                 <ul>
                                                     <li data-index="rs-3" data-transition="fade" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off" data-easein="default" data-easeout="default" data-masterspeed="300" data-thumb="upload/slider-1-2-100x50.jpg" data-rotate="0" data-saveperformance="off" data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description=""> <img src="upload/slider1.jpg" alt="" title="slider-1-2" style="overlay: rgb(5, 53, 27);" width="1800" height="1119" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
                                                     <div class="tp-caption tp-shape tp-shapewrapper  tp-resizeme" id="slide-3-layer-4" data-x="-80" data-y="center" data-voffset="80" data-width="['1600']" data-height="['1000']" data-type="shape" data-responsive_offset="on" data-frames='[{"delay":330,"speed":300,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]' data-textAlign="['inherit','inherit','inherit','inherit']" data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" style="z-index: 6;background-color:rgba(16, 70, 46, 0.42);border-radius:3px 3px 3px 3px;"></div>
+                                                    <div class="tp-caption tp-shape tp-shapewrapper  tp-resizeme" id="slide-3-layer-4" data-x="50" data-y="center" data-voffset="80" data-width="['1150']" data-height="['100']" data-type="shape" data-responsive_offset="on" data-frames='[{"delay":330,"speed":300,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]' data-textAlign="['inherit','inherit','inherit','inherit']" data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" style="z-index: 6;background-color:rgba(16, 53, 36, 0.81);border-radius:3px 3px 3px 3px;"></div>
+                                                    <div class="tp-caption tp-shape tp-shapewrapper  tp-resizeme" id="slide-3-layer-4" data-x="50" data-y="center" data-voffset="-40" data-width="['1100']" data-height="['100']" data-type="shape" data-responsive_offset="on" data-frames='[{"delay":330,"speed":300,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]' data-textAlign="['inherit','inherit','inherit','inherit']" data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" style="z-index: 6;background-color:rgba(16, 53, 36, 0.81);border-radius:3px 3px 3px 3px;"></div>
+
                                                         <div class="tp-caption   tp-resizeme" id="slide-3-layer-1" data-x="38" data-y="center" data-voffset="-130" data-width="['auto']" data-height="['auto']" data-type="text" data-responsive_offset="on" data-frames='[{"delay":10,"speed":300,"frame":"0","from":"x:-50px;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]' data-textAlign="['inherit','inherit','inherit','inherit']" data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" style="z-index: 5; white-space: nowrap; font-size: 33px; line-height: 33px; font-weight: 300; color: #ffffff; letter-spacing: 0px;font-family:Poppins;">Foremost Teacher Training Institutions in Nigeria</div>
                                                         <div class="tp-caption   tp-resizeme" id="slide-3-layer-2" data-x="55" data-y="center" data-voffset="-52" data-width="['auto']" data-height="['auto']" data-type="text" data-responsive_offset="on" data-frames='[{"delay":360,"speed":300,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]' data-textAlign="['inherit','inherit','inherit','inherit']" data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" style="z-index: 7; white-space: nowrap; font-size: 88px; line-height: 88px; font-weight: 700; color: #ffffff; letter-spacing: 0px;font-family:Playfair Display;">Adeyemi</div>
                                                         <div class="tp-caption   tp-resizeme" id="slide-3-layer-3" data-x="423" data-y="center" data-voffset="-51" data-width="['auto']" data-height="['auto']" data-type="text" data-responsive_offset="on" data-frames='[{"delay":360,"speed":300,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]' data-textAlign="['inherit','inherit','inherit','inherit']" data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" style="z-index: 8; white-space: nowrap; font-size: 88px; line-height: 60px; font-weight: 300; color: #ffffff; letter-spacing: 0px;font-family:Playfair Display;"> Federal  University</div>
@@ -244,7 +247,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="gdlr-core-pbf-wrapper " id="div_1dd7_30" data-skin="Column Service">
+                    <!--
+                  <div class="gdlr-core-pbf-wrapper " id="div_1dd7_30" data-skin="Column Service">
+
                         <div class="gdlr-core-pbf-background-wrap" id="div_1dd7_31"></div>
                         <div class="gdlr-core-pbf-wrapper-content gdlr-core-js ">
                             <div class="gdlr-core-pbf-wrapper-container clearfix gdlr-core-container">
@@ -317,8 +322,110 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>  -->
+<div class="row" style="background:rgb(19, 59, 40); padding-bottom: 20px;" >
+<div class="gdlr-core-pbf-wrapper "  id="gdlr-core-wrapper-4">
+    <div class="gdlr-core-pbf-background-wrap">
+
+    </div>
+     <h3 style="text-align: center; color: white;">We have a variety of Programmes for you to enroll</h3> 
+
+    <div class="gdlr-core-pbf-wrapper-content gdlr-core-js " >
+        <div class="gdlr-core-pbf-wrapper-container clearfix gdlr-core-container-custom" id="div_1dd7_81">
+             <a href="">
+    <div class="gdlr-core-pbf-column gdlr-core-column-15 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+        <div class="gdlr-core-pbf-column-content-margin gdlr-core-js" id="div_1dd7_88" data-sync-height="height-column" data-sync-height-center style="background-color:rgba(71, 152, 98, 0.52);border-radius: 15px; border: 2px solid #ddd;overflow: hidden;transition: border-color 0.3s ease, transform 0.3s ease;" onmouseover="this.style.borderColor='#479862'; this.style.transform='scale(1.05)';" onmouseout="this.style.borderColor='#ddd'; this.style.transform='scale(1)';">
+        <div class="gdlr-core-pbf-background-wrap" style="border-radius: 15px; overflow: hidden;">
+          <div style="position: absolute;top: 0;left: 0;width: 100%;height: 100%;background: rgba(0, 0, 0, 0.4); border-radius: 15px;">
+          </div>
+          <div class="gdlr-core-pbf-background gdlr-core-parallax gdlr-core-js faded-background2" id="div_1dd7_89" data-parallax-speed="0" style="background: url('images/mission_vision.jpg') no-repeat center center;   background-size: cover;border-radius: 15px; overflow: hidden;">
+          </div>
+        </div>
+       
+        <div class="gdlr-core-pbf-column-content clearfix gdlr-core-js gdlr-core-sync-height-content">
+            <div class="gdlr-core-pbf-element">
+                <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix gdlr-core-center-align gdlr-core-title-item-caption-bottom gdlr-core-item-pdlr" id="div_1dd7_90">
+                    <div class="gdlr-core-title-item-title-wrap clearfix">
+                        <h3 class="gdlr-core-title-item-title gdlr-core-skin-title" id="h3_1dd7_30" style="color: white; font-size: 17px;">
+                            UNDERGRADUATE
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+          </a>
+          <a href="">
+            <div class="gdlr-core-pbf-column gdlr-core-column-15 col-lg-3 col-md-6 col-sm-12 col-xs-12 " style="border-radius: 20px; border: 4px solid transparent; transition: border-color 0.3s ease, transform 0.3s ease;">
+                <div class="gdlr-core-pbf-column-content-margin gdlr-core-js " id="div_1dd7_88" data-sync-height="height-column" data-sync-height-center style="background-color:rgba(143, 181, 156, 0.77);">
+                    <div class="gdlr-core-pbf-background-wrap">
+
+                        <div class="gdlr-core-pbf-background gdlr-core-parallax gdlr-core-js faded-background2" id="div_1dd7_89" data-parallax-speed="0" style="background: url('images/cat8.jpg') no-repeat center center; background-size: cover;"></div>
+                    </div>
+                    <div class="gdlr-core-pbf-column-content clearfix gdlr-core-js  gdlr-core-sync-height-content">
+                        <div class="gdlr-core-pbf-element">
+                            <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix  gdlr-core-center-align gdlr-core-title-item-caption-bottom gdlr-core-item-pdlr" id="div_1dd7_90">
+                                <div class="gdlr-core-title-item-title-wrap clearfix">
+
+                                    <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " id="h3_1dd7_30" style="color: white; font-size: 17px;">POSTGRADUATE</h3>
+                                </div>
+                                <!-- <span class="gdlr-core-title-item-caption gdlr-core-info-font gdlr-core-skin-caption" id="span_1dd7_7" style="color: #1c2e51;">Kingster University was established by John Smith in 1920 for the public benefit and it is recognized globally.</span> -->
+                            </div>
                         </div>
                     </div>
+                </div>
+            </div>
+          </a>
+          <a href="">
+            <div class="gdlr-core-pbf-column gdlr-core-column-15 col-lg-3 col-md-6 col-sm-12 col-xs-12 " style="border-radius: 20px; border: 4px solid transparent; transition: border-color 0.3s ease, transform 0.3s ease;">
+                <div class="gdlr-core-pbf-column-content-margin gdlr-core-js " id="div_1dd7_88" data-sync-height="height-column" data-sync-height-center style="background-color:rgba(71, 152, 98, 0.52);">
+                    <div class="gdlr-core-pbf-background-wrap">
+
+                        <div class="gdlr-core-pbf-background gdlr-core-parallax gdlr-core-js faded-background2" id="div_1dd7_89" data-parallax-speed="0" style="background: url('images/cat8.jpg') no-repeat center center; background-size: cover;"></div>
+                    </div>
+                    <div class="gdlr-core-pbf-column-content clearfix gdlr-core-js  gdlr-core-sync-height-content">
+                        <div class="gdlr-core-pbf-element">
+                            <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix  gdlr-core-center-align gdlr-core-title-item-caption-bottom gdlr-core-item-pdlr" id="div_1dd7_90">
+                                <div class="gdlr-core-title-item-title-wrap clearfix">
+
+                                    <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " id="h3_1dd7_30" style="color: white; font-size: 17px;">POSTGRADUATE</h3>
+                                </div>
+                                <!-- <span class="gdlr-core-title-item-caption gdlr-core-info-font gdlr-core-skin-caption" id="span_1dd7_7" style="color: #1c2e51;">Kingster University was established by John Smith in 1920 for the public benefit and it is recognized globally.</span> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </a>
+          <a href="">
+            <div class="gdlr-core-pbf-column gdlr-core-column-15 col-lg-3 col-md-6 col-sm-12 col-xs-12 " style="border-radius: 20px; border: 4px solid transparent; transition: border-color 0.3s ease, transform 0.3s ease;">
+                <div class="gdlr-core-pbf-column-content-margin gdlr-core-js " id="div_1dd7_88" data-sync-height="height-column" data-sync-height-center style="background-color:rgba(143, 181, 156, 0.77);">
+                    <div class="gdlr-core-pbf-background-wrap">
+
+                        <div class="gdlr-core-pbf-background gdlr-core-parallax gdlr-core-js faded-background2" id="div_1dd7_89" data-parallax-speed="0" style="background: url('images/cat8.jpg') no-repeat center center; background-size: cover;"></div>
+                    </div>
+                    <div class="gdlr-core-pbf-column-content clearfix gdlr-core-js  gdlr-core-sync-height-content">
+                        <div class="gdlr-core-pbf-element">
+                            <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix  gdlr-core-center-align gdlr-core-title-item-caption-bottom gdlr-core-item-pdlr" id="div_1dd7_90">
+                                <div class="gdlr-core-title-item-title-wrap clearfix">
+
+                                    <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " id="h3_1dd7_30" style="color: white; font-size: 17px;">POSTGRADUATE</h3>
+                                </div>
+                                <!-- <span class="gdlr-core-title-item-caption gdlr-core-info-font gdlr-core-skin-caption" id="span_1dd7_7" style="color: #1c2e51;">Kingster University was established by John Smith in 1920 for the public benefit and it is recognized globally.</span> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </a>
+
+        </div>
+    </div>
+</div>
+</div>
                     <div class="gdlr-core-pbf-wrapper " id="div_1dd7_44">
                         <div class="gdlr-core-pbf-background-wrap"></div>
                         <div class="gdlr-core-pbf-wrapper-content gdlr-core-js ">
@@ -355,8 +462,7 @@
                                                                                 <span class="gdlr-core-sep">,</span>
                                                                                 <a href="#" rel="tag">Student</a>
                                                                             </span>
-                                                                        </div>
-                                                                        <h3 class="gdlr-core-blog-title gdlr-core-skin-title" id="h3_1dd7_11">
+                                                                        </div                                                      <h3 class="gdlr-core-blog-title gdlr-core-skin-title" id="h3_1dd7_11">
                                                                             <a href="#" >Professor Albert joint research on mobile money in Tanzania</a>
                                                                         </h3>
                                                                     </div>
