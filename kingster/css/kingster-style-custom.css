@@ -326,7 +326,7 @@ body.kingster-boxed .kingster-body-wrapper, .gdlr-core-page-builder .gdlr-core-p
 .kingster-body h1, .kingster-body h2, .kingster-body h3, .kingster-body h4, .kingster-body h5, .kingster-body h6{ color: #161616; }.woocommerce table.shop_attributes th, .woocommerce table.shop_table th, .single-product.woocommerce div.product .product_meta .kingster-head{ color: #161616; } 
 .kingster-body a{ color: #545454; } 
 .kingster-body a:hover{ color: #60c988; } 
-.kingster-body *{ border-color: #e6e6e6; }.kingster-body .gdlr-core-portfolio-single-nav-wrap{ border-color: #e6e6e6; }.gdlr-core-columnize-item .gdlr-core-columnize-item-content{ column-rule-color: #e6e6e6; -moz-column-rule-color: #e6e6e6; -webkit-column-rule-color: #e6e6e6; } 
+.kingster-body *{ border-color: #600909; }.kingster-body .gdlr-core-portfolio-single-nav-wrap{ border-color: #600909; }.gdlr-core-columnize-item .gdlr-core-columnize-item-content{ column-rule-color: #600909; -moz-column-rule-color: #600909; -webkit-column-rule-color: #600909; } 
 .kingster-body input, .wpcf7 select, .kingster-body textarea{ background-color: #ffffff; } 
 .kingster-body input, .wpcf7 select, .kingster-body textarea{ border-color: #d7d7d7; } 
 .kingster-body input, .wpcf7 select, .kingster-body textarea{ color: #4e4e4e; } 
@@ -617,7 +617,7 @@ body .gdlr-core-flipbox-item .gdlr-core-flipbox-item-image {
 .gdlr-core-page-builder-body [data-skin="White Text"] .gdlr-core-skin-caption, .gdlr-core-page-builder-body [data-skin="White Text"] .gdlr-core-skin-caption a, .gdlr-core-page-builder-body [data-skin="White Text"] .gdlr-core-skin-caption a:hover{ color: #ffffff }
 .gdlr-core-page-builder-body [data-skin="White Text"], .gdlr-core-page-builder-body [data-skin="White Text"] .gdlr-core-skin-content{ color: #ffffff }
 .gdlr-core-page-builder-body [data-skin="White Text"] i, .gdlr-core-page-builder-body [data-skin="White Text"] .gdlr-core-skin-icon, .gdlr-core-page-builder-body [data-skin="White Text"] .gdlr-core-skin-icon:before, .gdlr-core-page-builder-body [data-skin="White Text"] .kingster-widget ul li:before{ color: #ffffff }.gdlr-core-page-builder-body [data-skin="White Text"] .gdlr-core-blog-modern.gdlr-core-with-image .gdlr-core-blog-info-wrapper i{ color: #ffffff; }.gdlr-core-page-builder-body [data-skin="White Text"] .gdlr-core-flexslider-nav.gdlr-core-plain-circle-style li a{ border-color: #ffffff; }
-.gdlr-core-page-builder-body [data-skin="White Text"] a, .gdlr-core-page-builder-body [data-skin="White Text"] .gdlr-core-skin-link{ color: #bc1717 }
+.gdlr-core-page-builder-body [data-skin="White Text"] a, .gdlr-core-page-builder-body [data-skin="White Text"] .gdlr-core-skin-link{ color: #471515 }
 .gdlr-core-page-builder-body [data-skin="White Text"] a:hover, .gdlr-core-page-builder-body [data-skin="White Text"] .gdlr-core-skin-link:hover{ color: #bc1717 }
 .gdlr-core-page-builder-body [data-skin="White Text"] .gdlr-core-skin-e-background{ background-color: #111111 }.gdlr-core-page-builder-body [data-skin="White Text"] .gdlr-core-flexslider-nav.gdlr-core-round-style li a, .gdlr-core-page-builder-body [data-skin="White Text"] .gdlr-core-flexslider-nav.gdlr-core-rectangle-style li a{ background-color: #111111; }.gdlr-core-page-builder-body [data-skin="White Text"] .gdlr-core-flexslider .flex-control-nav li a{ border-color: #111111; }.gdlr-core-page-builder-body [data-skin="White Text"] .gdlr-core-flexslider .flex-control-nav li a.flex-active{ background-color: #111111; }.gdlr-core-page-builder-body [data-skin="White Text"] input:not([type="button"]):not([type="submit"]):not([type="reset"]), .gdlr-core-page-builder-body [data-skin="White Text"] textarea{ background-color: #111111; }.gdlr-core-page-builder-body [data-skin="White Text"] .gdlr-core-course-form .gdlr-core-course-form-combobox{ color: #111111; }
 .gdlr-core-page-builder-body [data-skin="Black Text"] h1, .gdlr-core-page-builder-body [data-skin="Black Text"] h2, .gdlr-core-page-builder-body [data-skin="Black Text"] h3, .gdlr-core-page-builder-body [data-skin="Black Text"] h4, .gdlr-core-page-builder-body [data-skin="Black Text"] h5, .gdlr-core-page-builder-body [data-skin="Black Text"] h6, .gdlr-core-page-builder-body [data-skin="Black Text"] .gdlr-core-skin-title, .gdlr-core-page-builder-body [data-skin="Black Text"] .gdlr-core-skin-title a{ color: #000000 }
@@ -677,7 +677,7 @@ body .gdlr-core-flipbox-item .gdlr-core-flipbox-item-image {
 #div_1dd7_11{padding-bottom: 30px;}
 #h3_1dd7_3{font-size: 18px ;font-weight: 600 ;text-transform: none ;}
 #div_1dd7_12{font-size: 16px ;font-weight: 500 ;font-style: normal ;}
-#gdlr-core-wrapper-2{margin-left: auto;margin-right: auto;padding: 0px 0px 85px 0px;max-width: 1320px ;}
+#gdlr-core-wrapper-2{margin-left: auto;margin-right: auto;padding: 0px 0px 50px 0px;max-width: 1320px ;}
 #div_1dd7_13{background-size: cover ;background-position: center ;}
 #div_1dd7_14{min-height: 450px ;}
 #div_1dd7_15{background-image: url(../upload/about-bg-1.jpg) ;background-size: cover ;background-position: center ;}
@@ -763,12 +763,12 @@ body .gdlr-core-flipbox-item .gdlr-core-flipbox-item-image {
 #div_1dd7_62{margin-bottom: 15px ;}
 #div_1dd7_63{border-color: #53607a ;}
 #div_1dd7_64{padding: 35px 15px 5px 0px;}
-#div_1dd7_65{background-color: #f3f3f3 ;}
+#div_1dd7_65{background-color: #c08787 ;}
 #div_1dd7_66{text-transform: none ;}
 #div_1dd7_67{padding-bottom: 0px ;}
 #ul_1dd7_0{width: 600%; margin-left: 0px;}
 #div_1dd7_68{padding: 40px 0px 35px 35px;}
-#div_1dd7_69{background-color: #cc0505;}
+#div_1dd7_69{background-color: #600909;}
 #div_1dd7_70{padding-bottom: 0px;}
 #div_1dd7_71{margin-top: -2px;margin-right: 15px;}
 #h3_1dd7_22{font-size: 19px ;font-weight: 700 ;text-transform: none ;}
@@ -837,7 +837,7 @@ body .gdlr-core-flipbox-item .gdlr-core-flipbox-item-image {
 #div_1dd7_106{background-image: url(../upload/search-bg.jpg) ;background-size: cover ;background-position: center ;}
 #h3_1dd7_34{font-size: 25px ;font-weight: 700 ;letter-spacing: 0px ;text-transform: none ;color: #ffffff ;}
 #div_1dd7_107{padding: 55px 0px 20px 0px;}
-#div_1dd7_108{background-color: #1b2434 ;}
+#div_1dd7_108{background-color: #600909; ;}
 #div_1dd7_109{max-width: 1440px ;}
 #div_1dd7_110{padding-bottom: 0px ;}
 #span_1dd7_10{margin-top: 5px ;}
