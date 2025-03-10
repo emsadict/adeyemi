@@ -17,25 +17,14 @@
 
 </head>
 <body class="home page-template-default page page-id-2039 gdlr-core-body woocommerce-no-js tribe-no-js kingster-body kingster-body-front kingster-full  kingster-with-sticky-navigation  kingster-blockquote-style-1 gdlr-core-link-to-lightbox">
-   <?php include "menu.php" ?>
+  
     <div class="kingster-body-outer-wrapper ">
         <div class="kingster-body-wrapper clearfix  kingster-with-frame">
             <div class="kingster-top-bar">
-                <div class="kingster-top-bar-background"></div>
-                <div class="kingster-top-bar-container kingster-container ">
-                    <div class="kingster-top-bar-container-inner clearfix">
-                        <div class="kingster-top-bar-left kingster-item-pdlr"><i class="fa fa-envelope-open-o" id="i_fd84_0"></i> contact@afued.edu.ng<i class="fa fa-phone" id="i_fd84_1"></i> +1-3435-2356-222</div>
-                        <div class="kingster-top-bar-right kingster-item-pdlr">
-                            <ul id="kingster-top-bar-menu" class="sf-menu kingster-top-bar-menu kingster-top-bar-right-menu">
-                                <li class="menu-item kingster-normal-menu"><a href="#">Alumni</a></li>
-                                <li class="menu-item kingster-normal-menu"><a href="#">Web Mail</a></li>
-                                <li class="menu-item kingster-normal-menu"><a href="#">Library</a></li>
-                            </ul>
-                            <div class="kingster-top-bar-right-social"></div><a class="kingster-top-bar-right-button" href="#" target="_blank">Portal</a></div>
-                    </div>
-                </div>
+            <div class="kingster-top-bar-background"></div>
+                <?php include "headermenu.php"; ?>
             </div>
-             <?php include "header.php"  ?> 
+             <?php include "menu.php" ; ?> 
             </header>
             <div class="kingster-page-wrapper" id="kingster-page-wrapper">
                 <div class="gdlr-core-page-builder-body">
@@ -776,7 +765,7 @@
                     <div class="gdlr-core-pbf-wrapper " id="div_1dd7_91">
                         <div class="gdlr-core-pbf-background-wrap"></div>
                         <div class="gdlr-core-pbf-wrapper-content gdlr-core-js ">
-                            <div class="gdlr-core-pbf-wrapper-container clearfix gdlr-core-container" style="margin-left:40px;">
+                            <div class="gdlr-core-pbf-wrapper-container clearfix gdlr-core-container" >
                                 
                                 <div class="gdlr-core-pbf-column gdlr-core-column-20 gdlr-core-column-first">
                                     <div class="gdlr-core-pbf-column-content-margin gdlr-core-js ">
@@ -907,28 +896,39 @@
                                         </div>
                                     </div>
                                 </div>
-                                   <div class="gdlr-core-pbf-column gdlr-core-column-20" data-skin="Newsletter">
-                                    <!-- Embedded Google Map -->
-                                         <div style="margin-right: 50px;">
-                                               <iframe
-                                                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3962.123456789012!2d4.8136234!3d7.0733019!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x10386328add66a6f%3A0x27f15847046d73ba!2sAdeyemi%20Federal%20University%20of%20Education!5e0!3m2!1sen!2sng!4v1234567890123!5m2!1sen!2sng"
-                                                 width="530"
-                                                 height="450"
-                                                 style="border: 4px solid rgba(16, 70, 46, 0.9); padding: 5px;"
-                                                 allowfullscreen=""
-                                                 loading="lazy"
-                                                 referrerpolicy="no-referrer-when-downgrade">
-                                               </iframe>
-                                             </div>
-
-                                             <!-- Marquee Text -->
-                                             <div style="margin-top: 10px; padding: 5px;">
-                                               <marquee behavior="scroll" direction="left" style="color: red; font-size: 18px;">
-                                                 Welcome to Adeyemi Federal University of Education!
-                                               </marquee>
-                                             </div>
+                                
+                                <div class="gdlr-core-pbf-column gdlr-core-column-20" data-skin="Newsletter">
+                                <div class="gdlr-core-block-item-title-wrap  gdlr-core-left-align gdlr-core-item-mglr" id="div_1dd7_95">
+                                                        <div class="gdlr-core-block-item-title-inner clearfix">
+                                                            <h3 class="gdlr-core-block-item-title" id="h3_1dd7_32">Map</h3>
+                                                            <div class="gdlr-core-block-item-title-divider" id="div_1dd7_96"></div>
+                                                        </div>
+                                                    </div>
+                                                <div class="gdlr-core-wp-google-map-plugin-item gdlr-core-item-pdlr gdlr-core-item-pdb " style="padding-bottom: 0px ;">
+                                                    <div style="overflow:hidden;width: 100%;position: relative;">
+                                                        
+                                                        <iframe style="width:100%; height:380px; " 
+                                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3962.123456789012!2d4.8136234!3d7.0733019!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x10386328add66a6f%3A0x27f15847046d73ba!2sAdeyemi%20Federal%20University%20of%20Education!5e0!3m2!1sen!2sng!4v1234567890123!5m2!1sen!2sng"
+                                                        width="600" 
+                                                        height="450" 
+                                                        frameborder="4px" style="border:4px solid rgba(16, 70, 46, 0.9)" 
+                                                        allowfullscreen>
+                                                    </iframe>
+                                                        <div style="position:  absolute; width: 80%; bottom: 20px;left: 0;right: 0;margin-left: auto;margin-right: auto;color: #000;">
+                                                        
+                                                        </div>
+                                                        <style>#gmap_canvas img{max-width:none!important;background:none!important}</style>
+                                                    </div>
+                                                    <!-- Marquee Text -->
+                                                         <div style="margin-top: 10px; padding: 5px;">
+                                                           <marquee behavior="scroll" direction="left" style="color: #ae2c2c; font-weight: 600;font-size: 30px;">
+                                                             Welcome to Adeyemi Federal University of Education, Ondo.!
+                                                           </marquee>
+                                                            </div>
+                                            </div>      
                                     </div>
-                            </div>
+                                    </div>
+                            
                         </div>
                     </div>
                

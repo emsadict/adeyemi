@@ -565,12 +565,12 @@ blockquote, q, pre{ background-color: #f5f5f5; }
 .gdlr-core-stunning-text-item-caption{ color: #747474; } 
 .gdlr-core-stunning-text-item-title{ color: #383838; } 
 .gdlr-core-tab-item .gdlr-core-tab-item-image i{ color: #e82a11; } 
-.gdlr-core-tab-item-title{ color: #8d8d8d; } 
+.gdlr-core-tab-item-title{ color: #ffffff; } 
 .gdlr-core-tab-item-title.gdlr-core-active{ color: #464646; } 
-.gdlr-core-tab-style1-horizontal .gdlr-core-tab-item-title, .gdlr-core-tab-style1-vertical .gdlr-core-tab-item-title{ background-color: #f7f7f7; }@media only screen and (max-width: 767px){ .gdlr-core-tab-item-title-wrap{ background-color: #f7f7f7; } } 
+.gdlr-core-tab-style1-horizontal .gdlr-core-tab-item-title, .gdlr-core-tab-style1-vertical .gdlr-core-tab-item-title{ background-color: #2e7a50; }@media only screen and (max-width: 767px){ .gdlr-core-tab-item-title-wrap{ background-color: #2e7a50; } } 
 .gdlr-core-tab-item-content{ color: #8c8c8c; } 
 .gdlr-core-tab-item-content{ background-color: #ffffff; } 
-.gdlr-core-tab-style1-horizontal .gdlr-core-tab-item-title.gdlr-core-active, .gdlr-core-tab-style1-vertical .gdlr-core-tab-item-title.gdlr-core-active{ background-color: #ffffff; } 
+.gdlr-core-tab-style1-horizontal .gdlr-core-tab-item-title.gdlr-core-active, .gdlr-core-tab-style1-vertical .gdlr-core-tab-item-title.gdlr-core-active{ background-color: #b4e1cb; } 
 table tr th{ background-color: #bc1717; } 
 table tr th, .kingster-body table tr th a, .kingster-body table tr th a:hover{ color: #ffffff; } 
 table tr:nth-child(odd){ background-color: #f9f9f9; } 
@@ -820,7 +820,7 @@ body .gdlr-core-flipbox-item .gdlr-core-flipbox-item-image {
 #div_1dd7_94{padding-bottom: 5px ;}
 #div_1dd7_95{margin-bottom: 47px ;}
 #h3_1dd7_32{font-size: 22px ;font-style: normal ;text-transform: none ;letter-spacing: 0px ;color: #182847 ;}
-#div_1dd7_96{font-size: 22px ;border-bottom-color: #dcdcdc ;border-bottom-width: 2px ;}
+#div_1dd7_96{font-size: 22px ;border-bottom-color: #ae2c2c ;border-bottom-width: 2px ;}
 #div_1dd7_97{margin-bottom: 38px ;}
 #div_1dd7_98{margin-bottom: 38px ;}
 #div_1dd7_99{margin-bottom: 38px ;}
@@ -851,8 +851,8 @@ body .gdlr-core-flipbox-item .gdlr-core-flipbox-item-image {
 #img_983a_0{margin-bottom: 13px;}
 #span_983a_0{font-size: 14px; font-weight: 500;}
 #div_983a_0{
-	background: linear-gradient(#00008b1a, #00008bbd),
-	 url(../upload/about-title-bg.jpg) 
+	background: linear-gradient(#00008b1a, rgba(16, 70, 46, 0.9)),
+	 url(../upload/about-title-bg2.jpg) 
 	
 	
 	;}
@@ -869,7 +869,7 @@ body .gdlr-core-flipbox-item .gdlr-core-flipbox-item-image {
 #div_983a_9{padding: 90px 0px 40px 0px;}
 #div_983a_10{background-color: #192f59 ;}
 #div_983a_11 {
-    background: #090a24  url(../upload/coming-soon1.jpeg);
+    background: #030f0e  url(../upload/coming-soon1.jpeg);
     background-size: cover;
     background-position: center;
     background-blend-mode: overlay;
