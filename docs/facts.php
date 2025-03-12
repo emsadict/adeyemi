@@ -1,33 +1,16 @@
 <!DOCTYPE html>
 <html lang="en-US" class="no-js">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>adeyemi Federal University &#8211; of Education &amp; AFUED, Ondo</title>
-
-    <link rel='stylesheet' href='plugins/goodlayers-core/plugins/combine/style.css' type='text/css' media='all' />
-    <link rel='stylesheet' href='plugins/goodlayers-core/include/css/page-builder.css' type='text/css' media='all' />
-    <link rel='stylesheet' href='plugins/revslider/public/assets/css/settings.css' type='text/css' media='all' />
-    <link rel='stylesheet' href='css/style-core.css' type='text/css' media='all' />
-    <link rel='stylesheet' href='css/kingster-style-custom.css' type='text/css' media='all' />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
-
-    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700%2C400" rel="stylesheet" property="stylesheet" type="text/css" media="all">
-    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Poppins%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2Cregular%2Citalic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CABeeZee%3Aregular%2Citalic&amp;subset=latin%2Clatin-ext%2Cdevanagari&amp;ver=5.0.3' type='text/css' media='all' />
+   <?php include "head.php"; ?>
 
 </head>
+
 <body class="home page-template-default page page-id-2039 gdlr-core-body woocommerce-no-js tribe-no-js kingster-body kingster-body-front kingster-full  kingster-with-sticky-navigation  kingster-blockquote-style-1 gdlr-core-link-to-lightbox">
-  
+<?php include "mobilemenu.php"; ?>
     <div class="kingster-body-outer-wrapper ">
         <div class="kingster-body-wrapper clearfix  kingster-with-frame">
-            <div class="kingster-top-bar">
-            <div class="kingster-top-bar-background"></div>
-                <?php include "headermenu.php"; ?>
-            </div>
-            <?php include "menu.php"; ?>
-
+           <?php include "headermenu.php" ?>
+           <?php   include "menu.php";?>
 
             <div class="kingster-page-title-wrap  kingster-style-custom kingster-left-align" id="div_983a_0">
                 <div class="kingster-header-transparent-substitute"></div>
@@ -216,16 +199,16 @@
                                         <div class="gdlr-core-tab-item-wrap">
                                             <div class="gdlr-core-tab-item-title-wrap clearfix gdlr-core-title-font">
                                                 <div class="gdlr-core-tab-item-title  gdlr-core-active" data-tab-id="1">Introduction</div>
-                                                <div class="gdlr-core-tab-item-title " data-tab-id="2">The Need for UNIMED</div>
+                                                <div class="gdlr-core-tab-item-title " data-tab-id="2">The Need for AFUED</div>
                                                 <div class="gdlr-core-tab-item-title " data-tab-id="3">Historical Background</div>
                                                 <div class="gdlr-core-tab-item-title " data-tab-id="4">University Anthem</div>
-                                                <div class="gdlr-core-tab-item-title " data-tab-id="5">Location of UNIMED</div>
+                                                <div class="gdlr-core-tab-item-title " data-tab-id="5">Location of AFUED</div>
                                             </div>
                                             <div class="gdlr-core-tab-item-content-wrap clearfix">
                                                 <div class="gdlr-core-tab-item-content  gdlr-core-active" data-tab-id="1" >
                                                 <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix  gdlr-core-left-align gdlr-core-title-item-caption-top">
                                                         <div class="gdlr-core-title-item-title-wrap ">
-                                                            <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " id="h3_1dd7_25">The need for UNIMED<span class="gdlr-core-title-item-title-divider gdlr-core-skin-divider" ></span></h3></div>
+                                                            <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " id="h3_1dd7_25">The need for AFUED<span class="gdlr-core-title-item-title-divider gdlr-core-skin-divider" ></span></h3></div>
                                                     </div>
                                                     <p style="text-align: justify;">In order to sustain the remarkable achievement made so far, a tertiary medical education programme that will prepare future generations of competent health professionals and provide a stepwise referral system essential for successfully addressing the health needs in the State is being established. The University will function as the apical Centre of research, education and service delivery in health care that will be second to none in the world.
 
@@ -238,7 +221,7 @@
                                                 <div class="gdlr-core-tab-item-content " data-tab-id="2" >
                                                     <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix  gdlr-core-left-align gdlr-core-title-item-caption-top">
                                                         <div class="gdlr-core-title-item-title-wrap ">
-                                                            <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " id="h3_1dd7_25">The need for UNIMED<span class="gdlr-core-title-item-title-divider gdlr-core-skin-divider" ></span></h3></div>
+                                                            <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " id="h3_1dd7_25">The need for AFUED<span class="gdlr-core-title-item-title-divider gdlr-core-skin-divider" ></span></h3></div>
                                                     </div>
                                                     <p style="text-align: justify;">In order to sustain the remarkable achievement made so far, a tertiary medical education programme that will prepare future generations of competent health professionals and provide a stepwise referral system essential for successfully addressing the health needs in the State is being established. The University will function as the apical Centre of research, education and service delivery in health care that will be second to none in the world.
 
@@ -304,15 +287,13 @@
                                                             <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " id="h3_1dd7_28">Location<span class="gdlr-core-title-item-title-divider gdlr-core-skin-divider" ></span></h3></div>
                                                     </div>
                                                     <p style="text-align: justify;">UNIVERSITY SITE
-                                                        UNIMED commenced academic activities in the 2015/2016 session from its permanent site located at Laje Road, within Ondo Town in Ondo State of Nigeria. The site is about 50 kms from Akure, the State capital.
+                                                        AFUED commenced academic activities in the 2015/2016 session from its permanent site located at Laje Road, within Ondo Town in Ondo State of Nigeria. The site is about 50 kms from Akure, the State capital.
 
-                                                        The University encompass and include the already established and functioning Medical Village that has state-of-the-art facilities for the delivering of effective tertiary health care.
 
-                                                            This site (permanent site) has a total land area of 574.1 hectares. The site is bounded to the North with vacant tracts of land which are interspersed with spur heights and desired lines, to the west by a stream, to the East by some developed properties, and to the South by the Adeyemi College of Education (now Adeyemi University of Education). 
                                                       
                                                     </p>
                                                         <iframe 
-                                                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3941.4795106279787!2d4.793938!3d7.0644367!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x10388bd73617d4fd%3A0x161b08e7e2974266!2sUniversity%20of%20Medical%20Sciences%20(UNIMED)%20Permanent%20Site!5e0!3m2!1sen!2sng!4v1693443221168!5m2!1sen!2sng" 
+                                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3962.123456789012!2d4.8136234!3d7.0733019!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x10386328add66a6f%3A0x27f15847046d73ba!2sAdeyemi%20Federal%20University%20of%20Education!5e0!3m2!1sen!2sng!4v1234567890123!5m2!1sen!2sng"
                                                             width="1150" 
                                                             height="600" 
                                                             style="border:0;" 

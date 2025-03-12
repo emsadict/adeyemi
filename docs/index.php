@@ -1,31 +1,17 @@
 <!DOCTYPE html>
 <html lang="en-US" class="no-js">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Adeyemi &#8211; Federal, University &amp; Ondo-(AFUED)</title>
-
-    <link rel='stylesheet' href='plugins/goodlayers-core/plugins/combine/style.css' type='text/css' media='all' />
-    <link rel='stylesheet' href='plugins/goodlayers-core/include/css/page-builder.css' type='text/css' media='all' />
-    <link rel='stylesheet' href='plugins/revslider/public/assets/css/settings.css' type='text/css' media='all' />
-    <link rel='stylesheet' href='css/style-core.css' type='text/css' media='all' />
-    <link rel='stylesheet' href='css/kingster-style-custom.css' type='text/css' media='all' />
-
-    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700%2C400" rel="stylesheet" property="stylesheet" type="text/css" media="all">
-    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Poppins%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2Cregular%2Citalic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CABeeZee%3Aregular%2Citalic&amp;subset=latin%2Clatin-ext%2Cdevanagari&amp;ver=5.0.3' type='text/css' media='all' />
+   <?php include "head.php"; ?>
 
 </head>
+
 <body class="home page-template-default page page-id-2039 gdlr-core-body woocommerce-no-js tribe-no-js kingster-body kingster-body-front kingster-full  kingster-with-sticky-navigation  kingster-blockquote-style-1 gdlr-core-link-to-lightbox">
-  
+<?php include "mobilemenu.php"; ?>
     <div class="kingster-body-outer-wrapper ">
         <div class="kingster-body-wrapper clearfix  kingster-with-frame">
-            <div class="kingster-top-bar">
-            <div class="kingster-top-bar-background"></div>
-                <?php include "headermenu.php"; ?>
-            </div>
-             <?php include "menu.php" ; ?> 
-            </header>
+           <?php include "headermenu.php" ?>
+           <?php   include "menu.php";?>
+
             <div class="kingster-page-wrapper" id="kingster-page-wrapper">
                 <div class="gdlr-core-page-builder-body">
                     <div class="gdlr-core-pbf-wrapper " style="padding: 0px 0px 0px 0px;">
@@ -284,13 +270,14 @@
 
     <div class="gdlr-core-pbf-wrapper-content gdlr-core-js " >
         <div class="gdlr-core-pbf-wrapper-container clearfix gdlr-core-container-custom" id="div_1dd7_81">
-             <a href="">
-    <div class="gdlr-core-pbf-column gdlr-core-column-15 col-lg-3 col-md-6 col-sm-12 col-xs-12">
-        <div class="gdlr-core-pbf-column-content-margin gdlr-core-js" id="div_1dd7_88" data-sync-height="height-column" data-sync-height-center style="background-color:rgba(71, 152, 98, 0.52);border-radius: 15px; border: 2px solid #ddd;overflow: hidden;transition: border-color 0.3s ease, transform 0.3s ease;" onmouseover="this.style.borderColor='#479862'; this.style.transform='scale(1.05)';" onmouseout="this.style.borderColor='#ddd'; this.style.transform='scale(1)';">
-        <div class="gdlr-core-pbf-background-wrap" style="border-radius: 15px; overflow: hidden;">
-          <div style="position: absolute;top: 0;left: 0;width: 100%;height: 100%;background: rgba(0, 0, 0, 0.4); border-radius: 15px;">
-          </div>
-          <div class="gdlr-core-pbf-background gdlr-core-parallax gdlr-core-js faded-background2" id="div_1dd7_89" data-parallax-speed="0" style="background: url('images/mission_vision.jpg') no-repeat center center;   background-size: cover;border-radius: 15px; overflow: hidden;">
+          <a href="">
+           <div class="gdlr-core-pbf-column gdlr-core-column-15 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+           <div class="gdlr-core-pbf-column-content-margin gdlr-core-js" id="div_1dd7_88" data-sync-height="height-column" data-sync-height-center style="background-color:rgba(71, 152, 98, 0.52); overflow: hidden;transition: border-color 0.3s ease, transform 0.3s ease;" 
+        onmouseover="this.style.borderColor='#479862'; this.style.transform='translateY(-5px)';" onmouseout="this.style.borderColor='#ddd'; this.style.transform='translateY(0)';">
+        <div class="gdlr-core-pbf-background-wrap">
+        <div style="position: absolute;top: 0;left: 0;width: 100%;height: 100%;background: rgba(0, 0, 0, 0.4);">
+        </div>
+          <div class="gdlr-core-pbf-background gdlr-core-parallax gdlr-core-js faded-background2" id="div_1dd7_89" data-parallax-speed="0" style="background: url('images/mission_vision.jpg') no-repeat center center;   background-size: cover; ">
           </div>
         </div>
        
@@ -305,17 +292,19 @@
                 </div>
             </div>
         </div>
-        
-    </div>
-</div>
+          </div>
+     </div>
 
           </a>
           <a href="">
-            <div class="gdlr-core-pbf-column gdlr-core-column-15 col-lg-3 col-md-6 col-sm-12 col-xs-12 " style="border-radius: 20px; border: 4px solid transparent; transition: border-color 0.3s ease, transform 0.3s ease;">
+            <div class="gdlr-core-pbf-column gdlr-core-column-15 col-lg-3 col-md-6 col-sm-12 col-xs-12 " style="border-radius: 20px; transition: border-color 0.3s ease, transform 0.3s ease;" onmouseover="this.style.borderColor='#479862'; this.style.transform='translateY(-5px)';"  onmouseout="this.style.transform='translateY(0)'";>
                 <div class="gdlr-core-pbf-column-content-margin gdlr-core-js " id="div_1dd7_88" data-sync-height="height-column" data-sync-height-center style="background-color:rgba(143, 181, 156, 0.77);">
                     <div class="gdlr-core-pbf-background-wrap">
+                    <div style="position: absolute;top: 0;left: 0;width: 100%;height: 100%;background: rgba(0, 0, 0, 0.4);">
+                    </div>
+                        <div class="gdlr-core-pbf-background gdlr-core-parallax gdlr-core-js faded-background2" id="div_1dd7_89" data-parallax-speed="0" style="background: url('images/mission_vision.jpg') no-repeat center center; background-size: cover;">
 
-                        <div class="gdlr-core-pbf-background gdlr-core-parallax gdlr-core-js faded-background2" id="div_1dd7_89" data-parallax-speed="0" style="background: url('images/cat8.jpg') no-repeat center center; background-size: cover;"></div>
+                        </div>
                     </div>
                     <div class="gdlr-core-pbf-column-content clearfix gdlr-core-js  gdlr-core-sync-height-content">
                         <div class="gdlr-core-pbf-element">
@@ -343,7 +332,7 @@
                             <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix  gdlr-core-center-align gdlr-core-title-item-caption-bottom gdlr-core-item-pdlr" id="div_1dd7_90">
                                 <div class="gdlr-core-title-item-title-wrap clearfix">
 
-                                    <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " id="h3_1dd7_30" style="color: white; font-size: 17px;">POSTGRADUATE</h3>
+                                    <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " id="h3_1dd7_30" style="color: white; font-size: 17px;">OAU/COLLEGE STUDENTS</h3>
                                 </div>
                                 <!-- <span class="gdlr-core-title-item-caption gdlr-core-info-font gdlr-core-skin-caption" id="span_1dd7_7" style="color: #1c2e51;">Kingster University was established by John Smith in 1920 for the public benefit and it is recognized globally.</span> -->
                             </div>
@@ -364,7 +353,7 @@
                             <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix  gdlr-core-center-align gdlr-core-title-item-caption-bottom gdlr-core-item-pdlr" id="div_1dd7_90">
                                 <div class="gdlr-core-title-item-title-wrap clearfix">
 
-                                    <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " id="h3_1dd7_30" style="color: white; font-size: 17px;">POSTGRADUATE</h3>
+                                    <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " id="h3_1dd7_30" style="color: white; font-size: 17px;">COLEGE OF TECHNOLOGY</h3>
                                 </div>
                                 <!-- <span class="gdlr-core-title-item-caption gdlr-core-info-font gdlr-core-skin-caption" id="span_1dd7_7" style="color: #1c2e51;">Kingster University was established by John Smith in 1920 for the public benefit and it is recognized globally.</span> -->
                             </div>
@@ -414,7 +403,7 @@
                                                                                 <span class="gdlr-core-sep">,</span>
                                                                                 <a href="#" rel="tag">Student</a>
                                                                             </span>
-                                                                        </div                                                      <h3 class="gdlr-core-blog-title gdlr-core-skin-title" id="h3_1dd7_11">
+                                                                        </div ><h3 class="gdlr-core-blog-title gdlr-core-skin-title" id="h3_1dd7_11">
                                                                             <a href="#" >Professor Albert joint research on mobile money in Tanzania</a>
                                                                         </h3>
                                                                     </div>
@@ -489,15 +478,21 @@
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                     
                                                     </div>
+                                                   
                                                 </div>
+                                              
                                             </div>
+                                       
                                         </div>
                                     </div>
                                 </div>
                                 <div class="gdlr-core-pbf-column gdlr-core-column-20" id="gdlr-core-column-8">
                                     <div class="gdlr-core-pbf-column-content-margin gdlr-core-js  gdlr-core-column-extend-right" id="div_1dd7_48" data-sync-height="height-2">
                                         <div class="gdlr-core-pbf-background-wrap">
+                                    <!--    <div class="tp-caption tp-shape tp-shapewrapper  tp-resizeme"  data-x="-480" data-y="center" data-voffset="80" data-width="['400']" data-height="['1000']" data-type="shape" data-responsive_offset="on" data-frames='[{"delay":330,"speed":300,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]' data-textAlign="['inherit','inherit','inherit','inherit']" data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" style="z-index: 6;background-color:rgba(147, 246, 201, 0.84);border-radius:3px 3px 3px 3px;"></div> -->
+                                                                    
                                             <div class="gdlr-core-pbf-background gdlr-core-parallax gdlr-core-js" id="div_1dd7_49" data-parallax-speed="0"></div>
                                         </div>
                                         <div class="gdlr-core-pbf-column-content clearfix gdlr-core-js  gdlr-core-sync-height-content">
@@ -513,7 +508,7 @@
                                             <div class="gdlr-core-pbf-element">
                                                 <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix  gdlr-core-left-align gdlr-core-title-item-caption-top gdlr-core-item-pdlr"  id="gdlr-core-title-item-id-66469">
                                                     <div class="gdlr-core-title-item-title-wrap clearfix">
-                                                        <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " id="h3_1dd7_16"><a href="#" target="_self" >Student Portal</a></h3></div>
+                                                        <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " id="h3_1dd7_16"><a href="#" target="_self" style="color:#ffffff">Student Portal</a></h3></div>
                                                 </div>
                                             </div>
                                             <div class="gdlr-core-pbf-element">
@@ -524,7 +519,7 @@
                                             <div class="gdlr-core-pbf-element">
                                                 <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix  gdlr-core-left-align gdlr-core-title-item-caption-top gdlr-core-item-pdlr"  id="gdlr-core-title-item-id-42777">
                                                     <div class="gdlr-core-title-item-title-wrap clearfix">
-                                                        <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " id="h3_1dd7_17"><a href="#" target="_self" >Application Portal</a></h3></div>
+                                                        <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " id="h3_1dd7_17"><a href="#" target="_self" style="color:#ffffff">Application Portal</a></h3></div>
                                                 </div>
                                             </div>
                                             <div class="gdlr-core-pbf-element">
@@ -535,7 +530,7 @@
                                             <div class="gdlr-core-pbf-element">
                                                 <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix  gdlr-core-left-align gdlr-core-title-item-caption-top gdlr-core-item-pdlr"  id="gdlr-core-title-item-id-51281">
                                                     <div class="gdlr-core-title-item-title-wrap clearfix">
-                                                        <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " id="h3_1dd7_18"><a href="#" target="_self" >Schools</a></h3></div>
+                                                        <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " id="h3_1dd7_18"><a href="#" target="_self" style="color:#ffffff" >Schools</a></h3></div>
                                                 </div>
                                             </div>
                                             <div class="gdlr-core-pbf-element">
@@ -546,7 +541,7 @@
                                             <div class="gdlr-core-pbf-element">
                                                 <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix  gdlr-core-left-align gdlr-core-title-item-caption-top gdlr-core-item-pdlr"  id="gdlr-core-title-item-id-78243">
                                                     <div class="gdlr-core-title-item-title-wrap clearfix">
-                                                        <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " id="h3_1dd7_19"><a href="#" target="_self" >Office of the VC</a></h3></div>
+                                                        <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " id="h3_1dd7_19"><a href="#" target="_self" style="color:#ffffff">Office of the VC</a></h3></div>
                                                 </div>
                                             </div>
                                             <div class="gdlr-core-pbf-element">
@@ -557,7 +552,7 @@
                                             <div class="gdlr-core-pbf-element">
                                                 <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix  gdlr-core-left-align gdlr-core-title-item-caption-top gdlr-core-item-pdlr"  id="gdlr-core-title-item-id-14842">
                                                     <div class="gdlr-core-title-item-title-wrap clearfix">
-                                                        <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " id="h3_1dd7_20"><a href="#" target="_self" >Admission</a></h3></div>
+                                                        <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " id="h3_1dd7_20"><a href="#" target="_self" style="color:#ffffff" >Admission</a></h3></div>
                                                 </div>
                                             </div>
                                             <div class="gdlr-core-pbf-element">
@@ -568,7 +563,7 @@
                                             <div class="gdlr-core-pbf-element">
                                                 <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix  gdlr-core-left-align gdlr-core-title-item-caption-top gdlr-core-item-pdlr"  id="gdlr-core-title-item-id-33183">
                                                     <div class="gdlr-core-title-item-title-wrap clearfix">
-                                                        <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " id="h3_1dd7_21"><a href="#" target="_self" >Alumni</a></h3></div>
+                                                        <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " id="h3_1dd7_21"><a href="#" target="_self" style="color:#ffffff" >Alumni</a></h3></div>
                                                 </div>
                                             </div>
                                             <div class="gdlr-core-pbf-element">
@@ -590,13 +585,35 @@
                                                             <div class="gdlr-core-block-item-title-nav ">
                                                                 <div class="gdlr-core-flexslider-nav gdlr-core-plain-style gdlr-core-block-center"></div>
                                                             </div>
-<!--  begining of feeds-->
+                                                            
                                                             <div class="gdlr-core-twitter-content">
                                                                 <div class="gdlr-core-flexslider flexslider gdlr-core-js-2 " data-type="carousel" data-column="1" data-nav="navigation" data-nav-parent="gdlr-core-twitter-item">
                                                                     <ul class="slides" id="ul_1dd7_0">
-                                                                        
+                                                                        <li class="gdlr-core-item-mglr">
+                                                                            <div class="gdlr-core-twitter-item-list">
+                                                                                <span class="gdlr-core-twitter-item-list-content">Shaking off the working week! What&#8217;s on the agenda for the weekend? by KonstantinKolosov via… 
+                                                                                    <a target="_blank" href="https://t.co/fSyxq53H6P">https://t.co/fSyxq53H6P</a>
+                                                                                </span>
+                                                                                <span class="gdlr-core-twitter-item-list-date gdlr-core-skin-caption">
+                                                                                    <a class="gdlr-core-twitter-date" href="http://twitter.com/Envato/statuses/1030582660324892674" target="_blank"> 18 hours ago</a>
+                                                                                </span>
+                                                                            </div>
+                                                                        </li>
                                                                        
-                                                                       
+                                                                        <li class="gdlr-core-item-mglr">
+                                                                            <div class="gdlr-core-twitter-item-list">
+                                                                                <span class="gdlr-core-twitter-item-list-content">Our Chief People Officer 
+                                                                                    <a href="http://www.twitter.com/MRidsdale16">@MRidsdale16</a> joined 
+                                                                                    <a href="http://www.twitter.com/benjaminlaw">@benjaminlaw</a>  and 
+                                                                                    <a href="http://www.twitter.com/raejohnston">@raejohnston</a> on 
+                                                                                    <a href="http://www.twitter.com/tsushow">@tsushow</a> to discuss all things Cultu… 
+                                                                                    <a target="_blank" href="https://t.co/uszxz0qicU">https://t.co/uszxz0qicU</a>
+                                                                                </span>
+                                                                                <span class="gdlr-core-twitter-item-list-date gdlr-core-skin-caption">
+                                                                                    <a class="gdlr-core-twitter-date" href="http://twitter.com/Envato/statuses/1029988653282541570" target="_blank"> 2 days ago</a>
+                                                                                </span>
+                                                                            </div>
+                                                                        </li>
                                                                     </ul>
                                                                 </div>
                                                             </div>
@@ -727,9 +744,9 @@
                                                         </div>
                                                     </div>
                                                     <div class="gdlr-core-event-item-holder clearfix">
-                                                        <div id="fb-root"></div>
+                                                        <div id="fb-root">
                                                         <script async defer crossorigin="anonymous" 
-                                                            src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v17.0" nonce="XYZ">
+                                                            src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v19.0" nonce="XYZ">
                                                         </script>
                                                       <!-- <h4 class="text-white text-center" style="background-color: #1F2B44; color: white; padding: 20px; ">Facebook Feeds</h4> -->
                                                     
@@ -744,8 +761,9 @@
                                                             data-hide-cover="false" 
                                                             data-show-facepile="true">
                                                             <blockquote cite="https://www.facebook.com/aceondo.edu.ng" class="fb-xfbml-parse-ignore">
-                                                                <a href="https://www.facebook.com/aceondo.edu.ng">Visit UNIMED on AFUEDs</a>
+                                                                <a href="https://www.facebook.com/aceondo.edu.ng">Visit  AFUED POSTS</a>
                                                             </blockquote>
+                                                        </div>
                                                         </div>
                                                     </div>
                                                 </div>

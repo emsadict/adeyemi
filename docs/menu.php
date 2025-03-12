@@ -1,3 +1,4 @@
+
 <header class="kingster-header-wrap kingster-header-style-plain  kingster-style-menu-right kingster-sticky-navigation kingster-style-fixed" data-navigation-offset="75px">
                 <div class="kingster-header-background"></div>
                 <div class="kingster-header-container  kingster-container">
@@ -15,7 +16,7 @@
                                     </li>
                                     <li class="menu-item menu-item-has-children kingster-normal-menu"><a href="#" class="sf-with-ul-pre">Pages</a>
                                         <ul class="sub-menu">
-                                            <li class="menu-item" data-size="60"><a href="about-us.html">About KU</a></li>
+                                            <li class="menu-item" data-size="60"><a href="about-us.html">about</a></li>
                                             <li class="menu-item menu-item-has-children" data-size="60"><a href="blog-full-right-sidebar-with-frame.html" class="sf-with-ul-pre">Blog</a>
                                                 <ul class="sub-menu">
                                                     <li class="menu-item menu-item-has-children"><a href="blog-full-right-sidebar-with-frame.html" class="sf-with-ul-pre">Blog Full</a>
@@ -83,23 +84,23 @@
                                             <li class="menu-item" data-size="60"><a href="404.html">404 Page</a></li>
                                         </ul>
                                     </li>
-                                    <li class="menu-item current-menu-item menu-item-has-children kingster-mega-menu" ><a href="bachelor-of-science-in-business-administration.html" class="sf-with-ul-pre">Structure</a>
+                                    <li class="menu-item current-menu-item menu-item-has-children kingster-mega-menu" ><a href="organogram.php" class="sf-with-ul-pre">Structure</a>
                                         <div class="sf-mega sf-mega-full ">
                                             <ul class="sub-menu">
-                                                <li class="menu-item menu-item-has-children" data-size="15"><a class="sf-with-ul-pre">Schools</a>
+                                                <li class="menu-item menu-item-has-children" data-size="15"><a  href="vco.php" class="sf-with-ul-pre">Vice-Chancellor's Office</a>
                                                     <ul class="sub-menu">
-                                                        <li class="menu-item"><a href="bachelor-of-science-in-business-administration.html">Adult, Non-formal &#038; Special Education</a></li>
-                                                        <li class="menu-item"><a href="school-of-law.html">Arts &#038; Social Science</a></li>
-                                                        <li class="menu-item"><a href="engineering.html">Early Childhood Education</a></li>
-                                                        <li class="menu-item"><a href="medicine.html">General Education</a></li>
-                                                        <li class="menu-item"><a href="art-science.html">School of Languages</a></li>
-                                                        <li class="menu-item"><a href="art-science.html">School of Science</a></li>
-                                                        <li class="menu-item"><a href="art-science.html">Vocational  &#038; Technical Education </a></li>
+                                                        <li class="menu-item"><a href="bachelor-of-science-in-business-administration.html">Legal Unit</a></li>
+                                                        <li class="menu-item"><a href="school-of-law.html">Public Relations Unit</a></li>
+                                                        <li class="menu-item"><a href="engineering.html">Identity Cards Units</a></li>
+                                                        <li class="menu-item"><a href="engineering.html">Internal Audit Unit</a></li>
+                                                        <li class="menu-item"><a href="medicine.html">SERVICOM/ACTM</a></li>
+                                                        <li class="menu-item"><a href="art-science.html">MIS</a></li>
+                                                      
                                                     </ul>
                                                 </li>
-                                                <li class="menu-item menu-item-has-children" data-size="15"><a href="#" class="sf-with-ul-pre">Directorates</a>
+                                                <li class="menu-item menu-item-has-children" data-size="15"><a href="directorate.php" class="sf-with-ul-pre">Directorates</a>
                                                     <ul class="sub-menu">
-                                                        <li class="menu-item"><a href="hospitality-management.html">Hospitality Management</a></li>
+                                                        <li class="menu-item"><a href="directorate-main.php">Preliminary Studies</a></li>
                                                         <li class="menu-item"><a href="physics.html">Physics</a></li>
                                                         <li class="menu-item"><a href="#">Chemistry</a></li>
                                                         <li class="menu-item"><a href="#">Music</a></li>
@@ -107,18 +108,20 @@
                                                     </ul>
                                                 </li> 
                                                 
-                                                <li class="menu-item menu-item-has-children" data-size="15"><a href="#" class="sf-with-ul-pre">Resources</a>
-                                                    <ul class="sub-menu">
-                                                        <li class="menu-item"><a href="bachelor-of-science-in-business-administration.html">Department Page</a></li>
-                                                        <li class="menu-item"><a href="finance.html">Major Page</a></li>
-                                                        <li class="menu-item"><a href="finance-faculty.html">Faculty Page</a></li>
-                                                        <li class="menu-item"><a href="john-hagensy-phd.html">Single Instructor</a></li>
-                                                        <li class="menu-item"><a href="introduction-to-financial-accounting.html">Single Course</a></li>
+                                                <li class="menu-item menu-item-has-children" data-size="15"><a href="#" class="sf-with-ul-pre">Schools</a>
+                                                <ul class="sub-menu">
+                                                        <li class="menu-item"><a href="research.php">Adult, Non-formal &#038; Special Education</a></li>
+                                                        <li class="menu-item"><a href="school-of-law.html">Arts &#038; Social Science</a></li>
+                                                        <li class="menu-item"><a href="engineering.html">Early Childhood Education</a></li>
+                                                        <li class="menu-item"><a href="medicine.html">General Education</a></li>
+                                                        <li class="menu-item"><a href="art-science.html">School of Languages</a></li>
+                                                        <li class="menu-item"><a href="art-science.html">School of Science</a></li>
+                                                        <li class="menu-item"><a href="art-science.html">Vocational  &#038; Technical Education </a></li>
                                                     </ul>
                                                 </li> 
-                                                <li class="menu-item menu-item-has-children" data-size="15"><a href="#" class="sf-with-ul-pre">Units</a>
+                                                <li class="menu-item menu-item-has-children" data-size="15"><a href="units.php" class="sf-with-ul-pre">Units</a>
                                                     <ul class="sub-menu">
-                                                        <li class="menu-item"><a href="bachelor-of-science-in-business-administration.html">Busary</a></li>
+                                                        <li class="menu-item"><a href="services.php">Busary</a></li>
                                                         <li class="menu-item"><a href="finance.html">Audit</a></li>
                                                         <li class="menu-item"><a href="finance-faculty.html">Faculty Page</a></li>
                                                         <li class="menu-item"><a href="john-hagensy-phd.html">Single Instructor</a></li>
@@ -135,16 +138,18 @@
                                             <li class="menu-item" data-size="60"><a href="alumni.html">Alumni</a></li>
                                         </ul>
                                     </li>
-                                    <li class="menu-item menu-item-has-children kingster-normal-menu"><a href="#" class="sf-with-ul-pre">Courses</a>
+                                    <li class="menu-item menu-item-has-children kingster-normal-menu"><a href="#" class="sf-with-ul-pre">News</a>
                                         <ul class="sub-menu">
-                                            <li class="menu-item" data-size="60"><a href="course-list-1.html">Course List 1</a></li>
-                                            <li class="menu-item" data-size="60"><a href="course-list-2.html">Course List 2</a></li>
+                                            <li class="menu-item" data-size="60"><a href="blog.php">Update</a></li>
+                                            <li class="menu-item" data-size="60"><a href="events.php">Events</a></li>
+
                                         </ul>
                                     </li>
                                     <li class="menu-item menu-item-has-children kingster-normal-menu"><a href="#" class="sf-with-ul-pre">About Us</a>
                                         <ul class="sub-menu">
                                             <li class="menu-item" data-size="60"><a href="facts.php">University Facts</a></li>
-                                            <li class="menu-item" data-size="60"><a href="course-list-2.html">Leadership</a></li>
+                                            <li class="menu-item" data-size="60"><a href="course-list-2.html">Governing Council</a></li>
+                                            <li class="menu-item" data-size="60"><a href="gallery.php">Gallery</a></li>
                                         </ul>
                                     </li>
                                     <li class="menu-item menu-item-has-children kingster-normal-menu"><a href="#" class="sf-with-ul-pre">SUG</a>
