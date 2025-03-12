@@ -1,3 +1,21 @@
+<?php
+// Database connection
+$host = "localhost";
+$username = "root";
+$password = "";
+$database = "website_management";
+
+$conn = new mysqli($host, $username, $password, $database);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Fetch all news posts
+$sql = "SELECT * FROM news ORDER BY created_at DESC";
+$result = $conn->query($sql);
+?>
 <!DOCTYPE html>
 <html lang="en-US" class="no-js">
 <head>
@@ -29,9 +47,33 @@
                                                 
                                                 
                                                
-                                              
-                                            
-                                              
+                                                            <h2>Manage News</h2>
+
+                                                            <table border="1">
+                                                                <tr>
+                                                                    <th>ID</th>
+                                                                    <th>News Title</th>
+                                                                    <th>Content</th>
+                                                                    <th>Image</th>
+                                                                    
+                                                                    <th>Action</th>
+                                                                </tr>
+
+                                                                <?php while ($row = $result->fetch_assoc()) { ?>
+                                                                    <tr>
+                                                                        <td><?php echo $row['id']; ?></td>
+                                                                        <td><?php echo $row['title']; ?></td>
+                                                                        <td><?php echo substr($row['content'], 0, 50) . '...'; ?></td>
+                                                                        <td><img src="uploads/<?php echo $row['image']; ?>" width="50"></td>
+                                                                        
+                                                                        <td>
+                                                                            <a href="edit_news.php?id=<?php echo $row['id']; ?>">Edit</a> |
+                                                                            <a href="delete_news.php?id=<?php echo $row['id']; ?>" onclick="return confirm('Are you sure?')">Delete</a>
+                                                                        </td>
+                                                                    </tr>
+                                                                <?php } ?>
+
+                                                            </table>
                                             </div>
                                             
                                         </div>
@@ -84,3 +126,6 @@
     <script type='text/javascript' src='js/plugins.min.js'></script>
 </body>
 </html>
+<?php
+$conn->close();
+?>

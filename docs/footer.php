@@ -59,7 +59,7 @@
                                         <li class="menu-item"><a href="#">Library</a></li>
                                         <li class="menu-item"><a href="#">Bursary</a></li>
                                         <li class="menu-item"><a href="#">MIS</a></li>
-                                        <li class="menu-item"><a href="#">Payment</a></li>
+                                        <li class="menu-item"><a href="adminpanel.php">admin</a></li>
                                     </ul>
                                 </div>
                             </div>

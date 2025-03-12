@@ -326,7 +326,7 @@ body.kingster-boxed .kingster-body-wrapper, .gdlr-core-page-builder .gdlr-core-p
 .kingster-body h1, .kingster-body h2, .kingster-body h3, .kingster-body h4, .kingster-body h5, .kingster-body h6{ color: #161616; }.woocommerce table.shop_attributes th, .woocommerce table.shop_table th, .single-product.woocommerce div.product .product_meta .kingster-head{ color: #161616; } 
 .kingster-body a{ color: #545454; } 
 .kingster-body a:hover{ color: #60c988; } 
-.kingster-body *{ border-color: #600909; }.kingster-body .gdlr-core-portfolio-single-nav-wrap{ border-color: #600909; }.gdlr-core-columnize-item .gdlr-core-columnize-item-content{ column-rule-color: #600909; -moz-column-rule-color: #600909; -webkit-column-rule-color: #600909; } 
+.kingster-body *{ border-color: #2d6040; }.kingster-body .gdlr-core-portfolio-single-nav-wrap{ border-color: #600909; }.gdlr-core-columnize-item .gdlr-core-columnize-item-content{ column-rule-color: #600909; -moz-column-rule-color: #600909; -webkit-column-rule-color: #600909; } 
 .kingster-body input, .wpcf7 select, .kingster-body textarea{ background-color: #ffffff; } 
 .kingster-body input, .wpcf7 select, .kingster-body textarea{ border-color: #d7d7d7; } 
 .kingster-body input, .wpcf7 select, .kingster-body textarea{ color: #4e4e4e; } 
@@ -338,8 +338,8 @@ body.kingster-boxed .kingster-body-wrapper, .gdlr-core-page-builder .gdlr-core-p
 .kingster-not-found-wrap form.search-form input.search-field{ background-color: #000000; background-color: rgba(0, 0, 0, 0.4) } 
 .kingster-not-found-wrap form.search-form input.search-field, .kingster-not-found-wrap .kingster-top-search-submit{ color: #ffffff; } .kingster-not-found-wrap input::-webkit-input-placeholder { color: #ffffff; } .kingster-not-found-wrap input:-moz-placeholder{ color: #ffffff; } .kingster-not-found-wrap input::-moz-placeholder{ color: #ffffff; } .kingster-not-found-wrap input:-ms-input-placeholder{ color: #ffffff; } 
 .kingster-not-found-wrap .kingster-not-found-back-to-home a, .kingster-not-found-wrap .kingster-not-found-back-to-home a:hover{ color: #ffffff; } 
-.kingster-sidebar-area .kingster-widget-title{ color: #383838; } 
-.kingster-sidebar-area .kingster-widget-title{ background-color: #ededed; } 
+.kingster-sidebar-area .kingster-widget-title{ color: #ffffff; } 
+.kingster-sidebar-area .kingster-widget-title{ background-color: #247549b8; } 
 .kingster-sidebar-area .kingster-widget-title{ border-bottom-color: #bc1717; } 
 .kingster-sidebar-area a{ color: #8c8c8c; }.widget_recent_entries ul li:before, .widget_recent_comments ul li:before, .widget_pages ul li:before, .widget_rss ul li:before, .widget_archive ul li:before, .widget_categories ul li:before, .widget_nav_menu ul li:before, .widget_meta ul li:before{ color: #8c8c8c; } 
 .kingster-sidebar-area a:hover, .kingster-sidebar-area .current-menu-item > a{ color: #163269; } 
@@ -489,7 +489,7 @@ blockquote, q, pre{ background-color: #f5f5f5; }
 .gdlr-core-blockquote-item-content, .gdlr-core-blockquote-item-author, pre{ color: #2d2d2d; } 
 .gdlr-core-body .gdlr-core-load-more, .gdlr-core-body .gdlr-core-button, .kingster-body .kingster-button, .kingster-body input[type="button"], .kingster-body input[type="submit"]{ color: #ffffff; } 
 .gdlr-core-body .gdlr-core-load-more:hover, .gdlr-core-body .gdlr-core-button:hover{ color: #ffffff; } 
-.gdlr-core-body .gdlr-core-load-more, .gdlr-core-body .gdlr-core-button, .kingster-body .kingster-button, .kingster-body input[type="button"], .kingster-body input[type="submit"]{ background-color: #bc1717; } 
+.gdlr-core-body .gdlr-core-load-more, .gdlr-core-body .gdlr-core-button, .kingster-body .kingster-button, .kingster-body input[type="button"], .kingster-body input[type="submit"]{ background-color: #0c693b; } 
 .gdlr-core-body .gdlr-core-load-more:hover, .gdlr-core-body .gdlr-core-button:hover{ background-color: #2F2F2F; } 
 .gdlr-core-body .gdlr-core-button-with-border{ border-color: #383838; } .gdlr-core-body .gdlr-core-button-with-border.gdlr-core-button-transparent{ color: #383838; } 
 .gdlr-core-body .gdlr-core-button-with-border:hover{ border-color: #000000; }.gdlr-core-body .gdlr-core-button-with-border.gdlr-core-button-transparent:hover{ color: #000000; } 
