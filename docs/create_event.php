@@ -1,44 +1,51 @@
 <?php
-// Database connection
-$host = "localhost"; // Change if different
-$username = "root"; // Change if different
-$password = ""; // Change if different
-$database = "website_management"; // Your database name
-
-$conn = new mysqli($host, $username, $password, $database);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
 $message = "";
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $title = $conn->real_escape_string($_POST['title']);
-    $content = $conn->real_escape_string($_POST['content']);
-    $author = $conn->real_escape_string($_POST['author']);
+    include 'db_connect.php'; // Include your database connection file
 
-    // Handle image upload
-    $image = $_FILES['image']['name'];
-    $target_dir = "uploads/";
-    $target_file = $target_dir . basename($_FILES["image"]["name"]);
-    
-    if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
-        $sql = "INSERT INTO news (title, content, image, author) VALUES ('$title', '$content', '$image', '$author')";
+    $title = $_POST['title'];
+    $description = $_POST['description'];
+    $event_date = $_POST['event_date'];
+    $event_time = $_POST['event_time'];
+    $event_venue = $_POST['event_venue'];
+    $facebook = $_POST['event_virtual_link_facebook'] ?? null;
+    $twitter = $_POST['event_virtual_link_twitter'] ?? null;
+    $zoom = $_POST['event_virtual_link_zoom'] ?? null;
+    $googlemeet = $_POST['event_virtual_link_googlemeet'] ?? null;
+    $youtube = $_POST['event_virtual_link_youtube'] ?? null;
+    $others = $_POST['event_virtual_link_others'] ?? null;
+
+    // File upload handling
+    $target_dir = "uploads/"; // Directory to store images
+    $event_image = $target_dir . basename($_FILES["event_image"]["name"]);
+    $event_thumbnail = $target_dir . basename($_FILES["event_thumbnail"]["name"]);
+
+    if (move_uploaded_file($_FILES["event_image"]["tmp_name"], $event_image) &&
+        move_uploaded_file($_FILES["event_thumbnail"]["tmp_name"], $event_thumbnail)) {
         
-        if ($conn->query($sql) === TRUE) {
-            $message = "News post added successfully!";
+        $sql = "INSERT INTO events (title, description, event_date, event_time, event_venue, 
+                                  event_image, event_thumbnail, event_virtual_link_facebook, 
+                                  event_virtual_link_twitter, event_virtual_link_zoom, 
+                                  event_virtual_link_googlemeet, event_virtual_link_youtube, 
+                                  event_virtual_link_others) 
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("sssssssssssss", $title, $description, $event_date, $event_time, 
+                          $event_venue, $event_image, $event_thumbnail, $facebook, 
+                          $twitter, $zoom, $googlemeet, $youtube, $others);
+        
+        if ($stmt->execute()) {
+            $message = "Event posted successfully!";
         } else {
-            $message = "Error: " . $conn->error;
+            $message = "Error: " . $stmt->error;
         }
     } else {
-        $message = "Error uploading image.";
+        $message = "Failed to upload images.";
     }
 }
-
-$conn->close();
 ?>
+
 
 
 
@@ -60,6 +67,7 @@ tinymce.init({
     branding: false // Hide "Powered by TinyMCE"
 });
 </script>
+
 <body class="home page-template-default page page-id-2039 gdlr-core-body woocommerce-no-js tribe-no-js kingster-body kingster-body-front kingster-full  kingster-with-sticky-navigation  kingster-blockquote-style-1 gdlr-core-link-to-lightbox">
 <?php include "mobilemenu.php"; ?>
     <div class="kingster-body-outer-wrapper ">
@@ -81,25 +89,53 @@ tinymce.init({
                                     <div class="gdlr-core-pbf-element">
                                         <div class="gdlr-core-blog-item gdlr-core-item-pdb clearfix  gdlr-core-style-blog-full-with-frame" style="padding-bottom: 40px ;">
                                             <div class="gdlr-core-blog-item-holder gdlr-core-js-2 clearfix" data-layout="fitrows">
-                                                           <h2>Create News Post</h2>
+                                                           <h2>Post Upcoming Event</h2>
                                                               <hr />  
                                                            <?php if (!empty($message)) { echo "<div class='alert alert-success text-center'>$message</div>"; } ?>
                                                            <div class="form-container">
-                                                           <form action="" method="POST" class=""enctype="multipart/form-data" >
-                                                               <label>Title:</label>
-                                                               <input type="text" name="title" required><br><br>
+                                                           <form action="create_event.php" method="POST" class="" enctype="multipart/form-data" style="padding: 40px; border: 2px;">
+                                                           <label>Title:</label>
+                                                           <input type="text" name="title" required><br>
 
-                                                               <label>Content:</label><br>
-                                                               <textarea name="content" rows="5" id="message" column="400"required></textarea><br><br>
+                                                           <label>Description:</label><br>
+                                                           <span class="wpcf7-form-control-wrap your-message">
+                                                           <textarea name="description" id="message" required cols="40" rows="10" class="input1" aria-invalid="false"></textarea><br>
+                                                           </span>
+                                                           <label>Event Date:</label><br>
+                                                           <input type="date" name="event_date" required><br><br>
 
-                                                               <label>Author:</label>
-                                                               <input type="text" name="author" required><br><br>
+                                                           <label>Event Time:</label>
+                                                           <input type="time" name="event_time" required><br><br>
 
-                                                               <label>Image:</label>
-                                                               <input type="file" name="image" required><br><br>
+                                                           <label>Event Venue:</label>
+                                                           <input type="text" name="event_venue" required><br><br>
 
-                                                               <button type="submit">Create Post</button>
-                                                           </form>
+                                                           <label>Event Image:</label>
+                                                           <input type="file" name="event_image" required><br><br>
+
+                                                           <label>Event Thumbnail:</label>
+                                                           <input type="file" name="event_thumbnail" required><br><br>
+
+                                                           <label>Facebook Link:</label>
+                                                           <input type="url" name="event_virtual_link_facebook"><br><br>
+
+                                                           <label>Twitter Link:</label>
+                                                           <input type="url" name="event_virtual_link_twitter"><br><br>
+
+                                                           <label>Zoom Link:</label>
+                                                           <input type="url" name="event_virtual_link_zoom"><br><br>
+
+                                                           <label>Google Meet Link:</label>
+                                                           <input type="url" name="event_virtual_link_googlemeet"><br><br>
+
+                                                           <label>YouTube Link:</label>
+                                                           <input type="url" name="event_virtual_link_youtube"><br><br>
+
+                                                           <label>Other Virtual Link:</label>
+                                                           <input type="url" name="event_virtual_link_others"><br><br>
+
+                                                           <button type="submit" class=" btn btn-success"style="float:center;">Post Event</button>
+                                                       </form>
                                                            </div>
                                             </div>
                                             

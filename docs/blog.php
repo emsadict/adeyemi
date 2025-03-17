@@ -64,7 +64,7 @@ $result = $conn->query($sql);
                                             <div class="gdlr-core-blog-content">
                                                 <?= substr(strip_tags($row['content']), 0, 150); ?>...
                                                 <div class="clear"></div>
-                                                <a class="gdlr-core-excerpt-read-more gdlr-core-button gdlr-core-rectangle" href="post.php?id=<?= $row['id']; ?>">Read More</a>
+                                                <a class="gdlr-core-excerpt-read-more gdlr-core-button gdlr-core-rectangle" href="view_news.php?id=<?= $row['id']; ?>">Read More</a>
                                             </div>
                                         </div>
                                     </div>
@@ -79,14 +79,14 @@ $result = $conn->query($sql);
                 <!-- Sidebar with Recent Posts -->
                 <div class="gdlr-core-pbf-sidebar-left gdlr-core-column-extend-left kingster-sidebar-area gdlr-core-column-15 gdlr-core-pbf-sidebar-padding gdlr-core-line-height">
                     <div class="gdlr-core-sidebar-item gdlr-core-item-pdlr">
-                        <div id="recent-posts-3" class="widget widget_recent_entries kingster-widget">
+                        <div id="recent-posts-3" class="widget widget_recent_entries kingster-widget" style="background-color:rgb(206, 234, 221) ;">
                             <h3 class="kingster-widget-title">Recent Posts</h3><span class="clear"></span>
                             <ul>
                                 <?php
                                 $recentPosts = $conn->query("SELECT id, title FROM news ORDER BY date DESC LIMIT 5");
                                 while ($post = $recentPosts->fetch_assoc()):
                                 ?>
-                                    <li><a href="post.php?id=<?= $post['id']; ?>"><?= $post['title']; ?></a></li>
+                                    <li><a href="view_news.php?id=<?= $post['id']; ?>"><?= $post['title']; ?></a></li>
                                 <?php endwhile; ?>
                             </ul>
                         </div>

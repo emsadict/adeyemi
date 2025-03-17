@@ -1,4 +1,4 @@
-.kingster-page-title-wrap{ background-image: url(../upload/about-title-bg2.jpg); }.kingster-header-wrap.kingster-header-style-plain{ box-shadow: 0px 1px 4px rgba(8, 101, 194, 0.1); -webkit-box-shadow: 0px 1px 4px rgba(0,0,0,0.1); }.kingster-top-bar-right-button{ padding-bottom: 19px; margin-bottom: -19px; }.kingster-body h1, .kingster-body h2, .kingster-body h3, .kingster-body h4, .kingster-body h5, .kingster-body h6{ margin-top: 0px; margin-bottom: 20px; line-height: 1.2; font-weight: 700; }
+.kingster-page-title-wrap{ background-image: url(../upload/about-title-bg2.jpg); }.kingster-header-wrap.kingster-header-style-plain{ box-shadow: 0px 1px 4px rgba(8, 101, 194, 0.1); -webkit-box-shadow: 0px 1px 4px rgba(21, 133, 118, 0.1); }.kingster-top-bar-right-button{ padding-bottom: 19px; margin-bottom: -19px; }.kingster-body h1, .kingster-body h2, .kingster-body h3, .kingster-body h4, .kingster-body h5, .kingster-body h6{ margin-top: 0px; margin-bottom: 20px; line-height: 1.2; font-weight: 700; }
 #poststuff .gdlr-core-page-builder-body h2{ padding: 0px; margin-bottom: 20px; line-height: 1.2; font-weight: 700; }
 #poststuff .gdlr-core-page-builder-body h1{ padding: 0px; font-weight: 700; }
 
@@ -162,7 +162,7 @@ body.kingster-boxed .kingster-body-wrapper{ margin-top: 0px; margin-bottom: 0px;
 .kingster-background-pattern .kingster-body-outer-wrapper{ background-image: url(../../../../demo.goodlayers.com/kingster/wp-content/plugins/goodlayers-core/include/images/pattern/pattern-1.png); } 
 .kingster-item-pdlr, .gdlr-core-item-pdlr{ padding-left: 20px; padding-right: 20px; }.kingster-item-rvpdlr, .gdlr-core-item-rvpdlr{ margin-left: -20px; margin-right: -20px; }.gdlr-core-metro-rvpdlr{ margin-top: -20px; margin-right: -20px; margin-bottom: -20px; margin-left: -20px; }.kingster-item-mglr, .gdlr-core-item-mglr, .kingster-navigation .sf-menu > .kingster-mega-menu .sf-mega,.sf-menu.kingster-top-bar-menu > .kingster-mega-menu .sf-mega{ margin-left: 20px; margin-right: 20px; }.kingster-body .gdlr-core-personnel-item .gdlr-core-flexslider.gdlr-core-with-outer-frame-element .flex-viewport, .kingster-body .gdlr-core-hover-box-item .gdlr-core-flexslider.gdlr-core-with-outer-frame-element .flex-viewport,.kingster-body .gdlr-core-blog-item .gdlr-core-flexslider.gdlr-core-with-outer-frame-element .flex-viewport{ padding-top: 20px; margin-top: -20px; padding-right: 20px; margin-right: -20px; padding-left: 20px; margin-left: -20px; padding-bottom: 20px; margin-bottom: -20px; }.gdlr-core-twitter-item .gdlr-core-block-item-title-nav{ margin-right: 20px; } 
 .kingster-container, .gdlr-core-container, body.kingster-boxed .kingster-body-wrapper, body.kingster-boxed .kingster-fixed-footer .kingster-footer-wrapper, body.kingster-boxed .kingster-fixed-footer .kingster-copyright-wrapper{ max-width: 1360px; } 
-.kingster-body-front .gdlr-core-container, .kingster-body-front .kingster-container{ padding-left: 20px; padding-right: 20px; }.kingster-body-front .kingster-container .kingster-container, .kingster-body-front .kingster-container .gdlr-core-container, .kingster-body-front .gdlr-core-container .gdlr-core-container{ padding-left: 0px; padding-right: 0px; } 
+.kingster-body-front .gdlr-core-container, .kingster-body-front .kingster-container{ padding-left: 10px; padding-right: 10px; }.kingster-body-front .kingster-container .kingster-container, .kingster-body-front .kingster-container .gdlr-core-container, .kingster-body-front .gdlr-core-container .gdlr-core-container{ padding-left: 0px; padding-right: 0px; } 
 .kingster-top-bar-container.kingster-top-bar-custom-container{ max-width: 1140px; } 
 .kingster-top-bar-container.kingster-top-bar-full{ padding-right: 15px; padding-left: 15px; } 
 .kingster-top-bar{ padding-top: 18px; }.kingster-top-bar-right-button{ padding-top: 18px; margin-top: -18px; } 
@@ -571,7 +571,7 @@ blockquote, q, pre{ background-color: #f5f5f5; }
 .gdlr-core-tab-item-content{ color: #8c8c8c; } 
 .gdlr-core-tab-item-content{ background-color: #ffffff; } 
 .gdlr-core-tab-style1-horizontal .gdlr-core-tab-item-title.gdlr-core-active, .gdlr-core-tab-style1-vertical .gdlr-core-tab-item-title.gdlr-core-active{ background-color: #b4e1cb; } 
-table tr th{ background-color: #bc1717; } 
+table tr th{ background-color: rgb(48, 142, 98); } 
 table tr th, .kingster-body table tr th a, .kingster-body table tr th a:hover{ color: #ffffff; } 
 table tr:nth-child(odd){ background-color: #f9f9f9; } 
 table tr:nth-child(odd){ color: #949494; } 
@@ -734,7 +734,7 @@ body .gdlr-core-flipbox-item .gdlr-core-flipbox-item-image {
 #h3_1dd7_14{font-size: 16px ;font-weight: 700 ;letter-spacing: 0px ;}
 #div_1dd7_48{padding: 90px 0px 0px 65px;}
 #div_1dd7_49{background-image: url(../upload/aerial2.png) ;background-size: cover ;background-position: center ;}
-
+#event{max-width: 1560px;}
 #div_1dd7_50{padding-bottom: 40px ;}
 #div_1dd7_51{margin: 0px 15px 0px 0px;font-size: 20px ;}
 #i_1dd7_1{color: #ffffff ;}
@@ -796,7 +796,7 @@ body .gdlr-core-flipbox-item .gdlr-core-flipbox-item-image {
 #4{background-color: #ffffff ;background-image: url(../upload/tab-bg.png) ;background-position: top right ;}
 #h3_1dd7_27{font-size: 22px ;font-weight: 700 ;text-transform: none ;color: #314e85 ;}
 #gdlr-core-wrapper-3{padding: 60px 0px 5px 0px;}
-#div_1dd7_81{max-width: 1800px ;}
+#div_1dd7_81{max-width: 1280px ;}
 #div_1dd7_82{padding: 80px 50px 80px 50px;}
 #div_1dd7_83{background-image: url(../upload/col-bg-1.jpg) ;background-size: cover ;background-position: center ;}
 #div_1dd7_84{padding-bottom: 0px ;}
@@ -926,4 +926,43 @@ body .gdlr-core-flipbox-item .gdlr-core-flipbox-item-image {
 #a_983a_0{font-size: 15px; color: #ffffff;}
 #div_983a_49{border-color: #bc1717 ;border-bottom-width: 2px ;}
 #div_983a_50{padding-bottom: 0px ;}
+/*   added  */
+.form-container {
+    width: 100%; /* Adjust width as needed */
+    max-width: 800px; /* Prevents the form from being too wide */
+    padding: 20px;
+    background: #f9f9f9; /* Light background */
+    border-radius: 15px; /* Rounded border */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Optional shadow */
+    margin: 20px auto; /* Centers the form */
+}
 
+.form-container input, 
+.form-container textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px; /* Rounds input fields */
+}
+
+.form-container button {
+    display: block;
+    width: 50%; /* Adjust width */
+    padding: 10px;
+    background: #28a745; /* Green color */
+    color: white;
+    border: none;
+    border-radius: 8px; /* Rounded button */
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0 auto; /* Centers the button */
+}
+
+.form-container button:hover {
+    background: #218838;
+}
+#madewith{
+	max-width: 1600px;;
+}

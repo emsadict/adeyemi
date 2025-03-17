@@ -12,9 +12,6 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Fetch all news posts
-$sql = "SELECT * FROM news ORDER BY created_at DESC";
-$result = $conn->query($sql);
 ?>
 <!DOCTYPE html>
 <html lang="en-US" class="no-js">
@@ -71,7 +68,7 @@ $result = $conn->query($sql);
     border-color: #004085 !important;
 }
     </style>
-   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 </head>
 
 <body class="home page-template-default page page-id-2039 gdlr-core-body woocommerce-no-js tribe-no-js kingster-body kingster-body-front kingster-full  kingster-with-sticky-navigation  kingster-blockquote-style-1 gdlr-core-link-to-lightbox">
@@ -89,52 +86,75 @@ $result = $conn->query($sql);
                 <div class="gdlr-core-page-builder-body">
                     <div class="gdlr-core-pbf-sidebar-wrapper ">
                         <div class="gdlr-core-pbf-sidebar-container gdlr-core-line-height-0 clearfix gdlr-core-js gdlr-core-container" id="madewith">
-                            <div class="gdlr-core-pbf-sidebar-content  gdlr-core-column-45 gdlr-core-pbf-sidebar-padding gdlr-core-line-height" style="padding: 60px 10px 30px 30px;">
-                                <div class="gdlr-core-pbf-background-wrap" style="background-color: #f7f7f7 ;"></div>
-                                <div class="gdlr-core-pbf-sidebar-content-inner">
-                                    <div class="gdlr-core-pbf-element">
-                                        <div class="gdlr-core-blog-item gdlr-core-item-pdb clearfix  gdlr-core-style-blog-full-with-frame" style="padding-bottom: 40px ;">
-                                            <div class="gdlr-core-blog-item-holder gdlr-core-js-2 clearfix" data-layout="fitrows">
-                                                
-                                                
-                                               
-                                                            <h2>Manage News</h2>
+                      
 
-                                                            <table border="1" class="table table-bordered table-striped">
-                                                            <thead class="table-success">   
-                                                            <tr>
-                                                                    <th>ID</th>
-                                                                    <th>News Title</th>
-                                                                    <th>Content</th>
-                                                                    <th>Image</th>
-                                                                    
-                                                                    <th>Action</th>
-                                                                </tr>
-                                                            </thead>
-                                                                <?php 
-                                                                $counter = 1; // Start ID from 1
-                                                                while ($row = $result->fetch_assoc()) { ?>
-                                                                    <tr>
-                                                                    <td><?php echo $counter++; ?></td> <!-- Increment ID manually -->
-                                                                    <td><?php echo htmlspecialchars($row['title']); ?></td>
-                                                                        
-                                                                    <td><?php echo substr(htmlspecialchars($row['content']), 0, 50) . '...'; ?></td>
-                                                                        <td><img src="uploads/<?php echo $row['image']; ?>" width="50"></td>
-                                                                        
-                                                                        <td>
-                                                                        <button class="btn btn-success"><a style="color: #f7f7f7;" href="edit_news.php?id=<?php echo $row['id']; ?>">Edit</a></button> |
-                                                                        <button class="btn btn-danger"><a  style="color: #f7f7f7;" href="delete_news.php?id=<?php echo $row['id']; ?>" onclick="return confirm('Are you sure?')">Delete</a></button>
-                                                                        </td>
-                                                                    </tr>
-                                                                <?php } ?>
+<div class="gdlr-core-pbf-sidebar-content gdlr-core-column-45 gdlr-core-pbf-sidebar-padding gdlr-core-line-height" style="padding: 60px 10px 30px 30px;">
+    <div class="gdlr-core-pbf-background-wrap" style="background-color: #f7f7f7;"></div>
+    <div class="gdlr-core-pbf-sidebar-content-inner">
+        <div class="gdlr-core-pbf-element">
+            <div class="gdlr-core-blog-item gdlr-core-item-pdb clearfix gdlr-core-style-blog-full-with-frame" style="padding-bottom: 40px;">
+                <div class="gdlr-core-blog-item-holder gdlr-core-js-2 clearfix" data-layout="fitrows">
+                  
+                    <?php if (isset($_GET['message'])): ?>
+    <div class="alert alert-danger"><?php echo htmlspecialchars($_GET['message']); ?></div>
+<?php endif; ?>
 
-                                                            </table>
-                                            </div>
-                                            
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+<h2>Manage Research Activities</h2>
+
+<a href="create_research.php">+ Add New Research</a>
+
+<table class="table table-bordered table-striped">
+    <thead class="table-success">
+        <tr>
+            <th>ID</th>
+            <th>Date</th>
+            <th>Title</th>
+            <th>Principal Investigator</th>
+            <th>Department</th>
+            <th>School</th>
+          <!--  <th>Image</th>  -->
+            <th>Thumbnail</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php
+        $query = "SELECT id, date, title, principal_investigator, department, school, image, thumbnail FROM research_activities ORDER BY date DESC";
+        $result = $conn->query($query);
+
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                echo "<tr>";
+                echo "<td>{$row['id']}</td>";
+                echo "<td>{$row['date']}</td>";
+                echo "<td>{$row['title']}</td>";
+                echo "<td>{$row['principal_investigator']}</td>";
+                echo "<td>{$row['department']}</td>";
+                echo "<td>{$row['school']}</td>";
+               // echo "<td><img src='{$row['image']}' width='50' height='50'></td>";
+                echo "<td><img src='{$row['thumbnail']}' width='50' height='50'></td>";
+                echo "<td>
+                        <a href='edit_research.php?id={$row['id']}' class='btn btn-warning btn-sm'>Edit</a> | 
+                        <a href='delete_research.php?id={$row['id']}' onclick='return confirm(\"Are you sure?\")' class='btn btn-danger btn-sm'>Delete</a>
+                      </td>";
+                echo "</tr>";
+            }
+        } else {
+            echo "<tr><td colspan='9'>No research activities found.</td></tr>";
+        }
+        ?>
+    </tbody>
+</table>
+
+                    	 	 	 	 	
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
                             <div class="gdlr-core-pbf-sidebar-left gdlr-core-column-extend-left  kingster-sidebar-area gdlr-core-column-15 gdlr-core-pbf-sidebar-padding  gdlr-core-line-height">
                                 
                                 <div class="gdlr-core-sidebar-item gdlr-core-item-pdlr">

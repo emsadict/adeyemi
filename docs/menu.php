@@ -5,7 +5,7 @@
                     <div class="kingster-header-container-inner clearfix">
                         <div class="kingster-logo  kingster-item-pdlr">
                             <div class="kingster-logo-inner">
-                                <a class="" href="index.html"><img src="images/logo.png" alt="" /></a>
+                                <a class="" href="index.html"><img src="images/logo-2.png" alt="" /></a>
                             </div>
                         </div>
                         <div class="kingster-navigation kingster-item-pdlr clearfix ">
@@ -122,18 +122,17 @@
                                                 <li class="menu-item menu-item-has-children" data-size="15"><a href="units.php" class="sf-with-ul-pre">Units</a>
                                                     <ul class="sub-menu">
                                                         <li class="menu-item"><a href="services.php">Busary</a></li>
-                                                        <li class="menu-item"><a href="finance.html">Audit</a></li>
+                                                        <li class="menu-item"><a href="#">Audit</a></li>
                                                         <li class="menu-item"><a href="finance-faculty.html">Faculty Page</a></li>
-                                                        <li class="menu-item"><a href="john-hagensy-phd.html">Single Instructor</a></li>
-                                                        <li class="menu-item"><a href="introduction-to-financial-accounting.html">Single Course</a></li>
+                                                        <li class="menu-item"><a href="#">Single Course</a></li>
                                                     </ul>
                                                 </li> 
                                             </ul>
                                         </div>
                                     </li>
-                                    <li class="menu-item menu-item-has-children kingster-normal-menu"><a href="apply-to-kingster.html" class="sf-with-ul-pre">Admissions</a>
+                                    <li class="menu-item menu-item-has-children kingster-normal-menu"><a href="#" class="sf-with-ul-pre">Admissions</a>
                                         <ul class="sub-menu">
-                                            <li class="menu-item" data-size="60"><a href="apply-to-kingster.html">Apply To AFUED</a></li>
+                                            <li class="menu-item" data-size="60"><a href="#">Apply To AFUED</a></li>
                                             <li class="menu-item" data-size="60"><a href="scholarships.html">Scholarships</a></li>
                                             <li class="menu-item" data-size="60"><a href="alumni.html">Alumni</a></li>
                                         </ul>
@@ -142,13 +141,15 @@
                                         <ul class="sub-menu">
                                             <li class="menu-item" data-size="60"><a href="blog.php">Update</a></li>
                                             <li class="menu-item" data-size="60"><a href="events.php">Events</a></li>
+                                            <li class="menu-item" data-size="60"><a href="researchs.php">Researches</a></li>
+
 
                                         </ul>
                                     </li>
                                     <li class="menu-item menu-item-has-children kingster-normal-menu"><a href="#" class="sf-with-ul-pre">About Us</a>
                                         <ul class="sub-menu">
                                             <li class="menu-item" data-size="60"><a href="facts.php">University Facts</a></li>
-                                            <li class="menu-item" data-size="60"><a href="course-list-2.html">Governing Council</a></li>
+                                            <li class="menu-item" data-size="60"><a href="#">Governing Council</a></li>
                                             <li class="menu-item" data-size="60"><a href="gallery.php">Gallery</a></li>
                                         </ul>
                                     </li>

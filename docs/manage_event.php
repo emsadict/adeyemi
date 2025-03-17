@@ -12,9 +12,6 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Fetch all news posts
-$sql = "SELECT * FROM news ORDER BY created_at DESC";
-$result = $conn->query($sql);
 ?>
 <!DOCTYPE html>
 <html lang="en-US" class="no-js">
@@ -71,7 +68,7 @@ $result = $conn->query($sql);
     border-color: #004085 !important;
 }
     </style>
-   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 </head>
 
 <body class="home page-template-default page page-id-2039 gdlr-core-body woocommerce-no-js tribe-no-js kingster-body kingster-body-front kingster-full  kingster-with-sticky-navigation  kingster-blockquote-style-1 gdlr-core-link-to-lightbox">
@@ -89,52 +86,81 @@ $result = $conn->query($sql);
                 <div class="gdlr-core-page-builder-body">
                     <div class="gdlr-core-pbf-sidebar-wrapper ">
                         <div class="gdlr-core-pbf-sidebar-container gdlr-core-line-height-0 clearfix gdlr-core-js gdlr-core-container" id="madewith">
-                            <div class="gdlr-core-pbf-sidebar-content  gdlr-core-column-45 gdlr-core-pbf-sidebar-padding gdlr-core-line-height" style="padding: 60px 10px 30px 30px;">
-                                <div class="gdlr-core-pbf-background-wrap" style="background-color: #f7f7f7 ;"></div>
-                                <div class="gdlr-core-pbf-sidebar-content-inner">
-                                    <div class="gdlr-core-pbf-element">
-                                        <div class="gdlr-core-blog-item gdlr-core-item-pdb clearfix  gdlr-core-style-blog-full-with-frame" style="padding-bottom: 40px ;">
-                                            <div class="gdlr-core-blog-item-holder gdlr-core-js-2 clearfix" data-layout="fitrows">
-                                                
-                                                
-                                               
-                                                            <h2>Manage News</h2>
+                        <?php
+                             $query = "SELECT * FROM events";
+                             $result = mysqli_query($conn, $query);
+                             ?>
 
-                                                            <table border="1" class="table table-bordered table-striped">
-                                                            <thead class="table-success">   
-                                                            <tr>
-                                                                    <th>ID</th>
-                                                                    <th>News Title</th>
-                                                                    <th>Content</th>
-                                                                    <th>Image</th>
-                                                                    
-                                                                    <th>Action</th>
-                                                                </tr>
-                                                            </thead>
-                                                                <?php 
-                                                                $counter = 1; // Start ID from 1
-                                                                while ($row = $result->fetch_assoc()) { ?>
-                                                                    <tr>
-                                                                    <td><?php echo $counter++; ?></td> <!-- Increment ID manually -->
-                                                                    <td><?php echo htmlspecialchars($row['title']); ?></td>
-                                                                        
-                                                                    <td><?php echo substr(htmlspecialchars($row['content']), 0, 50) . '...'; ?></td>
-                                                                        <td><img src="uploads/<?php echo $row['image']; ?>" width="50"></td>
-                                                                        
-                                                                        <td>
-                                                                        <button class="btn btn-success"><a style="color: #f7f7f7;" href="edit_news.php?id=<?php echo $row['id']; ?>">Edit</a></button> |
-                                                                        <button class="btn btn-danger"><a  style="color: #f7f7f7;" href="delete_news.php?id=<?php echo $row['id']; ?>" onclick="return confirm('Are you sure?')">Delete</a></button>
-                                                                        </td>
-                                                                    </tr>
-                                                                <?php } ?>
+<div class="gdlr-core-pbf-sidebar-content gdlr-core-column-45 gdlr-core-pbf-sidebar-padding gdlr-core-line-height" style="padding: 60px 10px 30px 30px;">
+    <div class="gdlr-core-pbf-background-wrap" style="background-color: #f7f7f7;"></div>
+    <div class="gdlr-core-pbf-sidebar-content-inner">
+        <div class="gdlr-core-pbf-element">
+            <div class="gdlr-core-blog-item gdlr-core-item-pdb clearfix gdlr-core-style-blog-full-with-frame" style="padding-bottom: 40px;">
+                <div class="gdlr-core-blog-item-holder gdlr-core-js-2 clearfix" data-layout="fitrows">
+                    <h2>Manage Events</h2>
+                    <?php if (isset($_GET['message'])): ?>
+    <div class="alert alert-danger"><?php echo htmlspecialchars($_GET['message']); ?></div>
+<?php endif; ?>
 
-                                                            </table>
-                                            </div>
-                                            
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                    <table class="table table-bordered table-striped">
+                        <thead class="table-success">
+                            <tr>
+                                <th>ID</th>
+                                <th>Event Name</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Venue</th>
+                                <th>Social Media Links</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php 
+                             $counter = 1; // Start ID from 1
+                            while ($row = mysqli_fetch_assoc($result)) : ?>
+                                <tr>
+                                    <td><?php  echo $counter++; ?></td>
+                                    <td><?= $row['title']; ?></td>
+                                    <td><?= $row['event_date']; ?></td>
+                                    <td><?= $row['event_time']; ?></td>
+                                    <td><?= $row['event_venue']; ?></td>
+                                    <td>
+                                        <?php if (!empty($row[' event_virtual_link_facebook'])): ?>
+                                            <a href="<?= $row[' event_virtual_link_facebook']; ?>" target="_blank">Facebook</a> |
+                                        <?php endif; ?>
+                                        <?php if (!empty($row['event_virtual_link_twitter'])): ?>
+                                            <a href="<?= $row['event_virtual_link_twitter']; ?>" target="_blank">Twitter</a> |
+                                        <?php endif; ?>
+                                        <?php if (!empty($row['event_virtual_link_zoom'])): ?>
+                                            <a href="<?= $row['event_virtual_link_zoom']; ?>" target="_blank">Zoom</a> |
+                                        <?php endif; ?>
+                                        <?php if (!empty($row['event_virtual_link_youtube'])): ?>
+                                            <a href="<?= $row['event_virtual_link_youtube']; ?>" target="_blank">YouTube</a> |
+                                        <?php endif; ?>
+                                        <?php if (!empty($row['event_virtual_link_googlemeet'])): ?>
+                                            <a href="<?= $row['event_virtual_link_googlemeet']; ?>" target="_blank">Google Meet</a>
+                                        <?php endif; ?>
+                                        <?php if (!empty($row['event_virtual_link_others'])): ?>
+                                            <a href="<?= $row['event_virtual_link_others']; ?>" target="_blank">Others</a>
+                                        <?php endif; ?>
+                                    </td>
+                                    <td>
+                                        <a href="edit_event.php?id=<?= $row['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
+                                        <a href="deletevent.php?id=<?= $row['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this event?');">Delete</a>
+                                    </td>
+                                </tr>
+                            <?php endwhile; ?>
+                        </tbody>
+                    </table>
+                    	 	 	 	 	
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
                             <div class="gdlr-core-pbf-sidebar-left gdlr-core-column-extend-left  kingster-sidebar-area gdlr-core-column-15 gdlr-core-pbf-sidebar-padding  gdlr-core-line-height">
                                 
                                 <div class="gdlr-core-sidebar-item gdlr-core-item-pdlr">

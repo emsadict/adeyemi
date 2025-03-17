@@ -1,47 +1,63 @@
 <?php
-// Database connection
-$host = "localhost"; // Change if different
-$username = "root"; // Change if different
-$password = ""; // Change if different
-$database = "website_management"; // Your database name
 
-$conn = new mysqli($host, $username, $password, $database);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-$message = "";
+include 'db_connect.php'; // Include your database connection file
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $title = $conn->real_escape_string($_POST['title']);
-    $content = $conn->real_escape_string($_POST['content']);
-    $author = $conn->real_escape_string($_POST['author']);
+    // Retrieve form data
+    $date = $_POST['date'];
+    $title = $_POST['title'];
+    $abstract = $_POST['abstract'];
+    $objectives = $_POST['objectives'];
+    $principal_investigator = $_POST['principal_investigator'];
+    $designation = $_POST['designation'];
+    $department = $_POST['department'];
+    $school = $_POST['school'];
+    $qualifications = $_POST['qualifications'];
+    $co_investigators = $_POST['co_investigators'];
+    $co_designations = $_POST['co_designations'];
+    $co_departments = $_POST['co_departments'];
+    $co_schools = $_POST['co_schools'];
+    $co_qualifications = $_POST['co_qualifications'];
+    $findings = $_POST['findings'];
+    $recommendations = $_POST['recommendations'];
+    $other_information = $_POST['other_information'];
 
-    // Handle image upload
-    $image = $_FILES['image']['name'];
-    $target_dir = "uploads/";
-    $target_file = $target_dir . basename($_FILES["image"]["name"]);
-    
-    if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
-        $sql = "INSERT INTO news (title, content, image, author) VALUES ('$title', '$content', '$image', '$author')";
-        
-        if ($conn->query($sql) === TRUE) {
-            $message = "News post added successfully!";
-        } else {
-            $message = "Error: " . $conn->error;
-        }
-    } else {
-        $message = "Error uploading image.";
+    // Handle Image Upload
+    $image = "";
+    if (!empty($_FILES['image']['name'])) {
+        $image = "uploads/" . basename($_FILES['image']['name']);
+        move_uploaded_file($_FILES['image']['tmp_name'], $image);
     }
+
+    // Handle Thumbnail Upload
+    $thumbnail = "";
+    if (!empty($_FILES['thumbnail']['name'])) {
+        $thumbnail = "uploads/" . basename($_FILES['thumbnail']['name']);
+        move_uploaded_file($_FILES['thumbnail']['tmp_name'], $thumbnail);
+    }
+
+    // Insert data into database
+    $query = "INSERT INTO research_activities 
+              (date, title, abstract, objectives, image, thumbnail, principal_investigator, designation, department, school, qualifications, 
+              co_investigators, co_designations, co_departments, co_schools, co_qualifications, findings, recommendations, other_information) 
+              VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("sssssssssssssssssss", $date, $title, $abstract, $objectives, $image, $thumbnail, 
+                      $principal_investigator, $designation, $department, $school, $qualifications, 
+                      $co_investigators, $co_designations, $co_departments, $co_schools, $co_qualifications, 
+                      $findings, $recommendations, $other_information);
+    
+    if ($stmt->execute()) {
+        $message= "Research activity successfully created!";
+    } else {
+        $message= "Error: " . $stmt->error . "";
+    }
+    
+    $stmt->close();
+    $conn->close();
 }
-
-$conn->close();
 ?>
-
-
-
 
 <!DOCTYPE html>
 <html lang="en-US" class="no-js">
@@ -60,6 +76,7 @@ tinymce.init({
     branding: false // Hide "Powered by TinyMCE"
 });
 </script>
+
 <body class="home page-template-default page page-id-2039 gdlr-core-body woocommerce-no-js tribe-no-js kingster-body kingster-body-front kingster-full  kingster-with-sticky-navigation  kingster-blockquote-style-1 gdlr-core-link-to-lightbox">
 <?php include "mobilemenu.php"; ?>
     <div class="kingster-body-outer-wrapper ">
@@ -81,25 +98,70 @@ tinymce.init({
                                     <div class="gdlr-core-pbf-element">
                                         <div class="gdlr-core-blog-item gdlr-core-item-pdb clearfix  gdlr-core-style-blog-full-with-frame" style="padding-bottom: 40px ;">
                                             <div class="gdlr-core-blog-item-holder gdlr-core-js-2 clearfix" data-layout="fitrows">
-                                                           <h2>Create News Post</h2>
+                                                           <h2>Post Research Activity</h2>
                                                               <hr />  
                                                            <?php if (!empty($message)) { echo "<div class='alert alert-success text-center'>$message</div>"; } ?>
                                                            <div class="form-container">
-                                                           <form action="" method="POST" class=""enctype="multipart/form-data" >
-                                                               <label>Title:</label>
-                                                               <input type="text" name="title" required><br><br>
+                                                           <form action="create_research.php" method="POST" enctype="multipart/form-data">
+        <label>Date:</label>
+        <input type="date" name="date" required><br>
 
-                                                               <label>Content:</label><br>
-                                                               <textarea name="content" rows="5" id="message" column="400"required></textarea><br><br>
+        <label>Title:</label>
+        <input type="text" name="title" required><br>
 
-                                                               <label>Author:</label>
-                                                               <input type="text" name="author" required><br><br>
+        <label>Abstract:</label>
+        <textarea name="abstract" required></textarea><br>
 
-                                                               <label>Image:</label>
-                                                               <input type="file" name="image" required><br><br>
+        <label>Objectives:</label>
+        <textarea name="objectives" required></textarea><br>
 
-                                                               <button type="submit">Create Post</button>
-                                                           </form>
+        <label>Principal Investigator:</label>
+        <input type="text" name="principal_investigator" required><br>
+
+        <label>Designation:</label>
+        <input type="text" name="designation" required><br>
+
+        <label>Department:</label>
+        <input type="text" name="department" required><br>
+
+        <label>School:</label>
+        <input type="text" name="school" required><br>
+
+        <label>Qualifications:</label>
+        <input type="text" name="qualifications" required><br>
+
+        <label>Co-Investigators (comma-separated):</label>
+        <input type="text" name="co_investigators"><br>
+
+        <label>Co-Designations (comma-separated):</label>
+        <input type="text" name="co_designations"><br>
+
+        <label>Co-Departments (comma-separated):</label>
+        <input type="text" name="co_departments"><br>
+
+        <label>Co-Schools (comma-separated):</label>
+        <input type="text" name="co_schools"><br>
+
+        <label>Co-Qualifications (comma-separated):</label>
+        <input type="text" name="co_qualifications"><br>
+
+        <label>Findings:</label>
+        <textarea name="findings" required></textarea><br>
+
+        <label>Recommendations:</label>
+        <textarea name="recommendations" required></textarea><br>
+
+        <label>Other Information:</label>
+        <textarea name="other_information"></textarea><br>
+
+        <label>Upload Image:</label>
+        <input type="file" name="image"><br>
+
+        <label>Upload Thumbnail:</label>
+        <input type="file" name="thumbnail"><br>
+
+        <button type="submit">Create Research</button>
+    </form>
                                                            </div>
                                             </div>
                                             
