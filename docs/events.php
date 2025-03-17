@@ -1,24 +1,37 @@
 <?php
-include 'db_connect.php'; // Include database connection
 
-// Define pagination variables
-$limit = 5; // Number of researches per page
-$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-$page = max($page, 1); // Ensure the page number is at least 1
+include 'db_connect.php';
+
+// Pagination setup
+$limit = 3; // Number of events per page
+$page = isset($_GET['page']) && $_GET['page'] > 0 ? intval($_GET['page']) : 1;
 $offset = ($page - 1) * $limit;
 
-// Fetch total number of research activities
-$totalQuery = "SELECT COUNT(*) AS total FROM research_activities";
-$totalResult = $conn->query($totalQuery);
-$totalRow = $totalResult->fetch_assoc();
-$totalResearches = $totalRow['total'];
-$totalPages = ceil($totalResearches / $limit);
+// Get current date
+$current_date = date('Y-m-d');
 
-// Fetch research activities with pagination
-$query = "SELECT id, title, abstract, principal_investigator, image, date FROM research_activities 
-          ORDER BY date DESC LIMIT $limit OFFSET $offset";
-$result = $conn->query($query);
+// Count total events for pagination
+$total_upcoming = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM events WHERE event_date >= '$current_date'"));
+$total_past = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM events WHERE event_date < '$current_date'"));
+
+$total_pages_upcoming = max(ceil($total_upcoming / $limit), 1);
+$total_pages_past = max(ceil($total_past / $limit), 1);
+
+// Redirect to first page if the current page is out of range
+if ($page > $total_pages_upcoming && $page > $total_pages_past) {
+    header("Location: all_events.php?page=1");
+    exit();
+}
+
+// Fetch upcoming events
+$upcoming_query = "SELECT * FROM events WHERE event_date >= '$current_date' ORDER BY event_date ASC LIMIT $limit OFFSET $offset";
+$upcoming_result = mysqli_query($conn, $upcoming_query);
+
+// Fetch past events
+$past_query = "SELECT * FROM events WHERE event_date < '$current_date' ORDER BY event_date DESC LIMIT $limit OFFSET $offset";
+$past_result = mysqli_query($conn, $past_query);
 ?>
+
 <!DOCTYPE html>
 <html lang="en-US" class="no-js">
 <head>
