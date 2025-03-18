@@ -1,36 +1,4 @@
-<?php
 
-include 'db_connect.php';
-
-// Pagination setup
-$limit = 3; // Number of events per page
-$page = isset($_GET['page']) && $_GET['page'] > 0 ? intval($_GET['page']) : 1;
-$offset = ($page - 1) * $limit;
-
-// Get current date
-$current_date = date('Y-m-d');
-
-// Count total events for pagination
-$total_upcoming = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM events WHERE event_date >= '$current_date'"));
-$total_past = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM events WHERE event_date < '$current_date'"));
-
-$total_pages_upcoming = max(ceil($total_upcoming / $limit), 1);
-$total_pages_past = max(ceil($total_past / $limit), 1);
-
-// Redirect to first page if the current page is out of range
-if ($page > $total_pages_upcoming && $page > $total_pages_past) {
-    header("Location: all_events.php?page=1");
-    exit();
-}
-
-// Fetch upcoming events
-$upcoming_query = "SELECT * FROM events WHERE event_date >= '$current_date' ORDER BY event_date ASC LIMIT $limit OFFSET $offset";
-$upcoming_result = mysqli_query($conn, $upcoming_query);
-
-// Fetch past events
-$past_query = "SELECT * FROM events WHERE event_date < '$current_date' ORDER BY event_date DESC LIMIT $limit OFFSET $offset";
-$past_result = mysqli_query($conn, $past_query);
-?>
 
 <!DOCTYPE html>
 <html lang="en-US" class="no-js">
@@ -65,70 +33,16 @@ $past_result = mysqli_query($conn, $past_query);
         <div class="gdlr-core-blog-item-holder gdlr-core-js-2 clearfix" data-layout="fitrows">
 
             <!-- Upcoming Events -->
-            <Center><h3>Upcoming Events</h3></Center>
+            <h3>Upcoming Events</h3>
             <hr />
-            <?php if (mysqli_num_rows($upcoming_result) > 0): ?>
-                <?php while ($event = mysqli_fetch_assoc($upcoming_result)): ?>
-                    <div class="event-box">
-                        <h3><?php echo $event['title']; ?></h3>
-                        <p><?php echo $event['description']; ?></p>
-                        <p><strong>Date:</strong> <?php echo $event['event_date']; ?></p>
-                        <p><strong>Time:</strong> <?php echo $event['event_time']; ?></p>
-                        <p><strong>Venue:</strong> <?php echo $event['event_venue']; ?></p>
-                        <img src="uploads/<?php echo $event['event_thumbnail']; ?>" width="150">
-                        <br>
-                        <div class="pagination">
-                        <a href="mainevent.php?id=<?php echo $event['id']; ?>" class="btn btn-primary">View Event</a>
-                        </div>
-                    </div>
-                <?php endwhile; ?>
-                
-                <!-- Pagination for Upcoming Events -->
-                <div class="pagination">
-                    <?php if ($page > 1): ?>
-                        <a href="events.php?page=<?php echo $page - 1; ?>" class="btn btn-success">Previous</a>
-                    <?php endif; ?>
-                    
-                    <?php if ($page < $total_pages_upcoming): ?>
-                        <a href="events.php?page=<?php echo $page + 1; ?>" class="btn btn-success">Next</a>
-                    <?php endif; ?>
-                </div>
-            <?php else: ?>
-                <p>No upcoming events found.</p>
-            <?php endif; ?>
+          
 
             <hr>
 
             <!-- Past Events -->
             <h2>Past Events</h2>
             <hr />
-            <?php if (mysqli_num_rows($past_result) > 0): ?>
-                <?php while ($event = mysqli_fetch_assoc($past_result)): ?>
-                    <div class="event-box">
-                        <h3><?php echo $event['title']; ?></h3>
-                        <p><?php echo $event['description']; ?></p>
-                        <p><strong>Date:</strong> <?php echo $event['event_date']; ?></p>
-                        <p><strong>Time:</strong> <?php echo $event['event_time']; ?></p>
-                        <p><strong>Venue:</strong> <?php echo $event['event_venue']; ?></p>
-                        <img src="uploads/<?php echo $event['event_thumbnail']; ?>" width="150">
-                        <br>
-                        <a href="mainevent.php?id=<?php echo $event['id']; ?>" class="btn btn-primary">View Event</a>
-                    </div>
-                <?php endwhile; ?>
-
-                <!-- Pagination for Past Events -->
-                <div class="pagination">
-                    <?php if ($page > 1): ?>
-                        <a href="events.php?page=<?php echo $page - 1; ?>" class="btn btn-primary">Previous</a>
-                    <?php endif; ?>
-                    
-                    <?php if ($page < $total_pages_past): ?>
-                        <a href="events.php?page=<?php echo $page + 1; ?>" class="btn btn-light">Next</a>
-                    <?php endif; ?>
-                </div>
-            <?php else: ?>
-                <p>No past events found.</p>
-            <?php endif; ?>
+          
 
         </div>
     </div>

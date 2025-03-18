@@ -7,4 +7,4 @@
                                             <li> <a href="manage_news.php">Manage News</a></li>
                                             <li> <a href="manage_event.php">Manage Events</a></li>
                                             <li> <a href="manage_research.php">Manage Research </a></li>
-                                        </ul>
+                                        </ul> 

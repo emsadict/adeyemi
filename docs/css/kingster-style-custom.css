@@ -938,7 +938,9 @@ body .gdlr-core-flipbox-item .gdlr-core-flipbox-item-image {
 }
 
 .form-container input, 
-.form-container textarea {
+.form-container textarea,
+.form-container option,
+.form-container select {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
