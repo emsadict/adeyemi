@@ -14,7 +14,7 @@
                                     <li class="menu-item menu-item-home menu-item-has-children kingster-normal-menu"><a href="index.php" class="sf-with-ul-pre">Home</a>
                                         
                                     </li>
-                                    <li class="menu-item menu-item-has-children kingster-normal-menu"><a href="#" class="sf-with-ul-pre">Pages</a>
+                               <!--     <li class="menu-item menu-item-has-children kingster-normal-menu"><a href="#" class="sf-with-ul-pre">Pages</a>
                                         <ul class="sub-menu">
                                             <li class="menu-item" data-size="60"><a href="about-us.html">about</a></li>
                                             <li class="menu-item menu-item-has-children" data-size="60"><a href="blog-full-right-sidebar-with-frame.html" class="sf-with-ul-pre">Blog</a>
@@ -83,7 +83,7 @@
                                             <li class="menu-item" data-size="60"><a href="coming-soon.html">Coming Soon</a></li>
                                             <li class="menu-item" data-size="60"><a href="404.html">404 Page</a></li>
                                         </ul>
-                                    </li>
+                                    </li>  -->
                                     <li class="menu-item current-menu-item menu-item-has-children kingster-mega-menu" ><a href="organogram.php" class="sf-with-ul-pre">Structure</a>
                                         <div class="sf-mega sf-mega-full ">
                                             <ul class="sub-menu">
@@ -100,23 +100,42 @@
                                                 </li>
                                                 <li class="menu-item menu-item-has-children" data-size="15"><a href="directorate.php" class="sf-with-ul-pre">Directorates</a>
                                                     <ul class="sub-menu">
-                                                        <li class="menu-item"><a href="directorate-main.php">Preliminary Studies</a></li>
-                                                        <li class="menu-item"><a href="physics.html">Physics</a></li>
-                                                        <li class="menu-item"><a href="#">Chemistry</a></li>
-                                                        <li class="menu-item"><a href="#">Music</a></li>
-                                                        <li class="menu-item"><a href="#">Computer Science</a></li>
+                                                    <?php
+                                                               require 'db_connect.php';
+
+                                                               // Fetch pages with category 'directorate'
+                                                               $query = "SELECT pg_id, pg_title FROM pages_table WHERE pg_categ_id = 'directorate'";
+                                                               $result = $conn->query($query);
+                                                               
+                                                               // Generate menu items dynamically
+                                                               while ($row = $result->fetch_assoc()) {
+                                                                   $pageTitle = htmlspecialchars($row['pg_title']);
+                                                                   $pageUrl = "directorate-main.php?id=" . $row['pg_id']; // Direct to directorate-main.php with page ID
+
+                                                                   echo '<li class="menu-item"><a href="' . $pageUrl . '">' . $pageTitle . '</a></li>';
+                                                               }
+                                                               ?>
                                                     </ul>
                                                 </li> 
                                                 
-                                                <li class="menu-item menu-item-has-children" data-size="15"><a href="#" class="sf-with-ul-pre">Schools</a>
+                                                <li class="menu-item menu-item-has-children" data-size="15"><a href="schools.php" class="sf-with-ul-pre">Schools</a>
                                                 <ul class="sub-menu">
-                                                        <li class="menu-item"><a href="research.php">Adult, Non-formal &#038; Special Education</a></li>
-                                                        <li class="menu-item"><a href="school-of-law.html">Arts &#038; Social Science</a></li>
-                                                        <li class="menu-item"><a href="engineering.html">Early Childhood Education</a></li>
-                                                        <li class="menu-item"><a href="medicine.html">General Education</a></li>
-                                                        <li class="menu-item"><a href="art-science.html">School of Languages</a></li>
-                                                        <li class="menu-item"><a href="art-science.html">School of Science</a></li>
-                                                        <li class="menu-item"><a href="art-science.html">Vocational  &#038; Technical Education </a></li>
+                                                        
+                                                        <?php
+                                                               require 'db_connect.php';
+
+                                                               // Fetch pages with category 'directorate'
+                                                               $query = "SELECT pg_id, pg_title FROM pages_table WHERE pg_categ_id = 'school'";
+                                                               $result = $conn->query($query);
+                                                               
+                                                               // Generate menu items dynamically
+                                                               while ($row = $result->fetch_assoc()) {
+                                                                   $pageTitle = htmlspecialchars($row['pg_title']);
+                                                                   $pageUrl = "research.php?id=" . $row['pg_id']; // Direct toschools.php with page ID
+
+                                                                   echo '<li class="menu-item"><a href="' . $pageUrl . '">' . $pageTitle . '</a></li>';
+                                                               }
+                                                               ?>
                                                     </ul>
                                                 </li> 
                                                 <li class="menu-item menu-item-has-children" data-size="15"><a href="units.php" class="sf-with-ul-pre">Units</a>

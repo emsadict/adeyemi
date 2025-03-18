@@ -3,5 +3,5 @@
                                         <ul>
                                         <li> <a href="createpage.php">Create Page</a></li>
                                             <li> <a href="manage_page.php">Manage Page</a></li>
-                                             <li><a href="create_page_details.php">Create Page</a></li>
+                                             <li><a href="create_page_details.php">Create Page Details</a></li>
                                         </ul> 

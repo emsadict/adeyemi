@@ -1,9 +1,6 @@
-
-
-
-
 <!DOCTYPE html>
 <html lang="en-US" class="no-js">
+
 <head>
    <?php include "head.php"; ?>
 
@@ -15,7 +12,7 @@
         <div class="kingster-body-wrapper clearfix  kingster-with-frame">
            <?php include "headermenu.php" ?>
            <?php   include "menu.php";?>
-
+      
             <div class="kingster-page-title-wrap  kingster-style-custom kingster-left-align" style="background-image: url(upload/about-title-bg.jpg) ;">
                 <div class="kingster-header-transparent-substitute"></div>
                 <div class="kingster-page-title-overlay"></div>
@@ -23,14 +20,14 @@
                 <div class="kingster-page-title-container kingster-container">
                     <div class="kingster-page-title-content kingster-item-pdlr" style="padding-top: 400px ;padding-bottom: 60px ;">
                         <div class="kingster-page-caption" style="font-size: 21px ;font-weight: 400 ;letter-spacing: 0px ;">AFUED</div>
-                        <h1 class="kingster-page-title" style="font-size: 48px ;font-weight: 700 ;text-transform: none ;letter-spacing: 0px ;color: #ffffff ;">Directorate</h1></div>
+                        <h1 class="kingster-page-title" style="font-size: 48px ;font-weight: 700 ;text-transform: none ;letter-spacing: 0px ;color: #ffffff ;">Schools</h1></div>
                 </div>
             </div>
             <div class="kingster-breadcrumbs">
                 <div class="kingster-breadcrumbs-container kingster-container">
                     <div class="kingster-breadcrumbs-item kingster-item-pdlr"> <span property="itemListElement" typeof="ListItem"><a property="item" typeof="WebPage" title="Go to Kingster." href="index.html" class="home"><span property="name">Home</span></a>
                         <meta property="position" content="1">
-                        </span>&gt;<span property="itemListElement" typeof="ListItem"><span property="name">Directorate</span>
+                        </span>&gt;<span property="itemListElement" typeof="ListItem"><span property="name">Schools</span>
                         <meta property="position" content="2">
                         </span>
                     </div>
@@ -45,30 +42,29 @@
                                     <div class="gdlr-core-pbf-element">
                                         <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix  gdlr-core-left-align gdlr-core-title-item-caption-top gdlr-core-item-pdlr">
                                             <div class="gdlr-core-title-item-title-wrap clearfix">
-                                                <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " style="font-size: 27px ;font-weight: 600 ;letter-spacing: 0px ;text-transform: none ;">Directorates in Adeyemi Federal University of Education Ondo</h3></div>
+                                                <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " style="font-size: 27px ;font-weight: 600 ;letter-spacing: 0px ;text-transform: none ;">Schools in Adeyemi Federal University of Education Ondo</h3></div>
                                         </div>
                                     </div>
                                     
                                     <div class="gdlr-core-pbf-element">
                                         <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix  gdlr-core-left-align gdlr-core-title-item-caption-top gdlr-core-item-pdlr" style="padding-bottom: 40px ;">
                                             <div class="gdlr-core-title-item-title-wrap clearfix">
-                                                <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " style="font-size: 22px ;font-weight: 600 ;letter-spacing: 0px ;text-transform: none ;color:rgb(13, 73, 57) ;margin-right: 30px ;">Click to visit</h3>
+                                                <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " style="font-size: 22px ;font-weight: 600 ;letter-spacing: 0px ;text-transform: none ;color: #223d71 ;margin-right: 30px ;">Click to visit</h3>
                                                 <div class="gdlr-core-title-item-divider gdlr-core-right gdlr-core-skin-divider" style="font-size: 22px ;border-bottom-width: 3px ;"></div>
                                             </div>
                                         </div>
                                     </div>
-                                  
                                     <?php
                                              require 'db_connect.php';
 
                                              // Fetch pages with category 'directorate'
-                                             $query = "SELECT pg_id, pg_title FROM pages_table WHERE pg_categ_id = 'directorate'";
+                                             $query = "SELECT pg_id, pg_title FROM pages_table WHERE pg_categ_id = 'school'";
                                              $result = $conn->query($query);
 
                                              // Loop through the results and display them in the template
                                              while ($row = $result->fetch_assoc()) {
                                                  $pageTitle = htmlspecialchars($row['pg_title']);
-                                                 $pageUrl = "directorate-main.php?id=" . $row['pg_id']; // Link to view page dynamically
+                                                 $pageUrl = "view_page.php?id=" . $row['pg_id']; // Link to view page dynamically
 
                                                  echo '<div class="gdlr-core-pbf-column gdlr-core-column-20">
                                                          <div class="gdlr-core-pbf-column-content-margin gdlr-core-js" style="margin: 0px -3px 0px -3px;">
@@ -89,6 +85,10 @@
                                                      </div>';
                                              }
                                              ?>
+                                   
+                                   
+                                   
+                                    
                             </div>
     
                         </div>
