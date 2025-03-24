@@ -11,12 +11,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $pg_head_title = $_POST['pg_head_title'];
     $pg_accronym = $_POST['pg_accronym'];
 
+    // Handle file uploads
+    $dept_picture = $_FILES['dept_picture']['name'];
+    $head_picture = $_FILES['head_picture']['name'];
+
+    $target_dir = "uploads/"; // Directory to store images
+    $dept_target = $target_dir . basename($dept_picture);
+    $head_target = $target_dir . basename($head_picture);
+
+    move_uploaded_file($_FILES['dept_picture']['tmp_name'], $dept_target);
+    move_uploaded_file($_FILES['head_picture']['tmp_name'], $head_target);
+
     // Insert into pages_table
-    $sql = "INSERT INTO pages_table (pg_category, pg_categ_id, pg_title, pg_head_name, pg_h_qualification, pg_h_designation, pg_head_title, pg_accronym) 
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO pages_table (pg_category, pg_categ_id, pg_title, pg_head_name, pg_h_qualification, pg_h_designation, pg_head_title, pg_accronym, dept_picture, head_picture) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssssssss", $pg_category, $pg_category, $pg_title, $pg_head_name, $pg_h_qualification, $pg_h_designation, $pg_head_title, $pg_accronym);
+    $stmt->bind_param("ssssssssss", $pg_category, $pg_category, $pg_title, $pg_head_name, $pg_h_qualification, $pg_h_designation, $pg_head_title, $pg_accronym, $dept_picture, $head_picture);
 
     if ($stmt->execute()) {
         echo "<p style='color: green;'>Page created successfully!</p>";
@@ -29,7 +40,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 // Fetch categories for dropdown
 $categories = $conn->query("SELECT category_id, category_name FROM categories_table");
-
 ?>
 
 
@@ -69,8 +79,8 @@ $categories = $conn->query("SELECT category_id, category_name FROM categories_ta
             <Center> <h3>Create Page</h3></Center>
             <hr />
             <div class="form-container">
-            <form action="" method="POST">
-           <label>Page Title:</label>
+            <form action="" method="POST" enctype="multipart/form-data">
+    <label>Page Title:</label>
     <input type="text" name="pg_title" required><br>
 
     <label>Select Category:</label>
@@ -95,6 +105,12 @@ $categories = $conn->query("SELECT category_id, category_name FROM categories_ta
 
     <label>Acronym:</label>
     <input type="text" name="pg_accronym" required><br>
+
+    <label>Department Picture:</label>
+    <input type="file" name="dept_picture" accept="image/*" required><br>
+
+    <label>Head Picture:</label>
+    <input type="file" name="head_picture" accept="image/*" required><br>
 
     <input type="submit" value="Create Page">
 </form>

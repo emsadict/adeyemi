@@ -151,9 +151,9 @@ $result = $conn->query($query);
 <?php mysqli_close($conn); ?>
 
 
-            <footer>
+           
                 <?php  include "footer.php";?>
-            </footer>
+          
         </div>
     </div>
 

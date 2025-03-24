@@ -16,14 +16,15 @@ $result = $conn->query($sql);
 <?php include "mobilemenu.php"; ?>
     <div class="kingster-body-outer-wrapper ">
         <div class="kingster-body-wrapper clearfix  kingster-with-frame">
-           <?php include "headermenu.php" ?>
-           <?php   include "menu.php";?>
+           <?php include "headermenu.php"; ?>
+           <?php include "menu.php"; ?>
+
             <div class="kingster-page-title-wrap  kingster-style-medium kingster-center-align">
                 <div class="kingster-header-transparent-substitute"></div>
                 <div class="kingster-page-title-overlay"></div>
                 <div class="kingster-page-title-container kingster-container">
                     <div class="kingster-page-title-content kingster-item-pdlr">
-                        <h1 class="kingster-page-title">NEWS AND EVENT PAGE</h1></div>
+                        <h1 class="kingster-page-title">NEWS  PAGE</h1></div>
                 </div>
             </div>
             <div class="kingster-page-wrapper" id="kingster-page-wrapper">

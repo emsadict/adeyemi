@@ -1,30 +1,35 @@
-<?php
-require 'db_connect.php';
 
-$pg_id = $_GET['id'];
-$page = $conn->query("SELECT * FROM pages_table WHERE pg_id = $pg_id")->fetch_assoc();
-if (isset($_GET['id'])) {
-    $page_id = $_GET['id'];
-    
-    // Fetch event details from the database
-    $query = "SELECT * FROM pages_table WHERE pg_id = ?";
-    $stmt = $conn->prepare($query);
-    $stmt->bind_param("i", $pg_id);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    
-    if ($result->num_rows > 0) {
-        $page = $result->fetch_assoc();
+<?php
+include 'db_connect.php'; // Include your database connection file
+
+if (isset($_GET['dept_name'])) {
+    $dept_name = $_GET['dept_name'];
+
+    // Prevent SQL Injection
+    $dept_name = mysqli_real_escape_string($conn, $dept_name);
+
+    // Query to fetch details from dept_table
+    $sql = "SELECT * FROM dept_table WHERE dept_name = '$dept_name'";
+    $result = mysqli_query($conn, $sql);
+
+    if (mysqli_num_rows($result) > 0) {
+        // Fetch and display department details
+        while ($row = mysqli_fetch_assoc($result)) {
+            $dept_name=htmlspecialchars($row['dept_name']);
+            $dept_image=htmlspecialchars($row['dept_image']);
+            $dept_head_pic=htmlspecialchars($row['dept_head_pic']);
+           // $dept_head_pic= $row['$dept_head_pic'];
+            $dept_head=htmlspecialchars($row['dept_head']);
+            $dept_head_title=htmlspecialchars($row['dept_head_title']);
+            $dept_head_desig=htmlspecialchars($row['dept_head_desig']);
+        }
     } else {
-        echo "<p>Page not found.</p>";
-        exit;
+        echo "<p>No department found with the name: " . htmlspecialchars($dept_name) . "</p>";
     }
 } else {
-    echo "<p>Invalid Page ID.</p>";
-    exit;
+    echo "<p>Department name is missing in the URL.</p>";
 }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en-US" class="no-js">
@@ -42,7 +47,7 @@ if (isset($_GET['id'])) {
 
 
         <div class="kingster-blog-title-wrap kingster-style-custom kingster-feature-image" 
-         style="background-image: url(uploads/<?php echo htmlspecialchars($page['dept_picture']); ?>); height:400px">
+         style="background-image: url(uploads/<?php echo $dept_image; ?>); height:400px">
         <div class="kingster-header-transparent-substitute"></div>
         <div class="kingster-blog-title-overlay" style="opacity: 0.01;"></div>
         <div class="kingster-blog-title-bottom-overlay"></div>
@@ -54,7 +59,7 @@ if (isset($_GET['id'])) {
                        
                     </div>
                     <div class="kingster-single-article-head-right">
-                        <h1 class="kingster-single-article-title"><?php echo htmlspecialchars($page['pg_title']); ?></h1>
+                        <h1 class="kingster-single-article-title"><?php echo "Department of ". $dept_name; ?></h1>
                     </div>
                 </header>
             </div>
@@ -64,7 +69,7 @@ if (isset($_GET['id'])) {
                 <div class="kingster-breadcrumbs-container kingster-container">
                     <div class="kingster-breadcrumbs-item kingster-item-pdlr"> <span property="itemListElement" typeof="ListItem"><a property="item" typeof="WebPage" title="Go to Kingster." href="index.html" class="home"><span property="name">Home</span></a>
                         <meta property="position" content="1">
-                        </span>&gt;<span property="itemListElement" typeof="ListItem"><span property="name"><?php echo htmlspecialchars($page['pg_category']); ?></span>
+                        </span>&gt;<span property="itemListElement" typeof="ListItem"><span property="name"><?php echo "Department of ". $dept_name; ?></span>
                         <meta property="position" content="2">
                         </span>
                     </div>
@@ -100,20 +105,20 @@ if (isset($_GET['id'])) {
                                             <div class="gdlr-core-blog-modern  gdlr-core-with-image  ">
                                             
                                                     <div class="gdlr-core-image-item-wrap gdlr-core-media-image  gdlr-core-image-item-style-rectangle" style="border-width: 0px;">
-                                                        <a class="gdlr-core-lightgallery gdlr-core-js " href="upload/59.jpg"><img src="uploads/<?php echo htmlspecialchars($page['head_picture']); ?>" width="377" height="400" alt="" /><span class="gdlr-core-image-overlay "></span></a>
+                                                        <a class="gdlr-core-lightgallery gdlr-core-js " href="upload/59.jpg"><img src="uploads/<?php echo $dept_head_pic; ?>" width="377" height="400" alt="" /><span class="gdlr-core-image-overlay "></span></a>
                                                     </div> 
-                                                    <p style="margin-bottom:5px;font-size: 20px ;font-weight: 400 ;letter-spacing: 0px ;text-transform: none ;color:rgb(15, 13, 41) ; text-align:center;"><?php echo htmlspecialchars($page['pg_head_name']); ?>
+                                                    <p style="margin-bottom:5px;font-size: 20px ;font-weight: 400 ;letter-spacing: 0px ;text-transform: none ;color:rgb(15, 13, 41) ; text-align:center;"><?php echo $dept_head; ?>
                                                    </p>
-                                                        <p style="margin-bottom: 5px;font-size: 18px ;font-weight: 200 ;color:rgb(15, 13, 41) ; text-align:center;"><?php echo htmlspecialchars($page['pg_h_qualification']); ?>
+                                                        <p style="margin-bottom: 5px;font-size: 18px ;font-weight: 200 ;color:rgb(15, 13, 41) ; text-align:center;"><?php echo $dept_head_desig; ?>
                                                     </p> 
-                                                        <p style="font-size: 18px ;font-weight: 200 ;color:rgb(15, 13, 41) ; text-align:center;"><?php echo htmlspecialchars($page['pg_head_title']); ?>
+                                                        <p style="font-size: 18px ;font-weight: 200 ;color:rgb(15, 13, 41) ; text-align:center;"><?php echo $dept_head_title; ?>
                                                     </p>
                                             </div>
                                         </div>
                                         <div class="gdlr-core-item-list  gdlr-core-item-pdlr gdlr-core-item-mgb gdlr-core-column-40">
                                             <div class="gdlr-core-blog-modern  gdlr-core-with-image gdlr-core-hover-overlay-content gdlr-core-opacity-on-hover ">
                                                 <div class="gdlr-core-blog-modern-inner">
-                                                <a class="gdlr-core-lightgallery gdlr-core-js " href="upload/59.jpg"><img src="uploads/<?php echo htmlspecialchars($page['dept_picture']); ?>" width="850" height="100" alt="" /></a>
+                                                <a class="gdlr-core-lightgallery gdlr-core-js " href="upload/59.jpg"><img src="uploads/<?php echo $dept_image; ?>" width="850" height="100" alt="" /></a>
 
                                                     
                                                     </div>
@@ -142,9 +147,8 @@ if (isset($_GET['id'])) {
                                             <div class="gdlr-core-tab-item-title-wrap clearfix gdlr-core-title-font">
                                                 <div class="gdlr-core-tab-item-title  gdlr-core-active" data-tab-id="1">Introduction</div>
                                                 <div class="gdlr-core-tab-item-title " data-tab-id="2">Objectives</div>
-                                                <div class="gdlr-core-tab-item-title " data-tab-id="3">Grant Opportunities</div>
+                                                <div class="gdlr-core-tab-item-title " data-tab-id="3">Programmes</div>
                                                 <div class="gdlr-core-tab-item-title " data-tab-id="4">Staff Directory</div>
-                                                <div class="gdlr-core-tab-item-title " data-tab-id="5">TETFUND</div>
                                                 <div class="gdlr-core-tab-item-title " data-tab-id="6">Contact Details</div>
                                             </div>
                                             <div class="gdlr-core-tab-item-content-wrap clearfix">
@@ -166,15 +170,6 @@ if (isset($_GET['id'])) {
                                                                 and the necessary infrastructure for groundbreaking research..</p>
                                                       
                                                       
-                                                        
-
-                                                        <p style="text-align: justify;">In conclusion, the Central Office for Research and Development stands as a testament to the university's
-                                                             dedication to research excellence. 
-                                                                    With a focus on unwavering support, capacity development, and best academic practices, CORD aims to be a driving force in advancing both the scholarly landscape and societal development. </p>
-                                                                    
-                                                        <p >For inquiries or to contact CORD, please email research@unimed.edu.ng or cord@unimed.edu.ng.</p>
-                                                        <p>Oyetunde T. Oyeyemi B.Sc, M.Sc, Ph.D</p>
-                                                        <p>Director</p>
                                                     
                                                 </div>
                                                 <div class="gdlr-core-tab-item-content " data-tab-id="2" >
@@ -191,7 +186,7 @@ if (isset($_GET['id'])) {
                                                 <div class="gdlr-core-tab-item-content " data-tab-id="3" >
                                                     <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix  gdlr-core-left-align gdlr-core-title-item-caption-top">
                                                         <div class="gdlr-core-title-item-title-wrap ">
-                                                            <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " id="h3_1dd7_26">Grant Opportunities<span class="gdlr-core-title-item-title-divider gdlr-core-skin-divider" ></span></h3></div>
+                                                            <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " id="h3_1dd7_26">Programmes <span class="gdlr-core-title-item-title-divider gdlr-core-skin-divider" ></span></h3></div>
                                                     </div>
                                                     <p style="text-align: justify;">The Tertiary Education Trust Fund (TETFund) is calling for application for its National Research Fund (NRF) 2020 grants cycle. Up to N7.5 billion will be disbursed for the current 2020 NRF Grants cycle.
 

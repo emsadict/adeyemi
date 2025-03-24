@@ -1,43 +1,8 @@
 <?php
 require 'db_connect.php';
-
-// Fetch pages that do not exist in page_details
-$query = "SELECT p.pg_id, p.pg_title, p.pg_category 
-          FROM pages_table p 
-          LEFT JOIN page_details d ON p.pg_id = d.pg_id 
-          WHERE d.pg_id IS NULL";
-
-$result = $conn->query($query);
-$pages = $result->fetch_all(MYSQLI_ASSOC);
-
-// Handle form submission
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $pg_id = $_POST['pg_id'];
-    $pg_category = $_POST['pg_category'];
-    $pg_intro = $_POST['pg_intro'];
-    $pg_objective = $_POST['pg_objective'];
-    $pg_phone = $_POST['pg_phone'];
-    $pg_email = $_POST['pg_email'];
-
-    // Insert into page_details
-    $sql = "INSERT INTO page_details (pg_id, pg_category, pg_intro, pg_objective, pg_phone, pg_email) 
-            VALUES (?, ?, ?, ?, ?, ?)";
-    
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("isssss", $pg_id, $pg_category, $pg_intro, $pg_objective, $pg_phone, $pg_email);
-
-    if ($stmt->execute()) {
-        echo "<script>alert('Page details created successfully!'); window.location.href='create_page_details.php';</script>";
-    } else {
-        echo "<p style='color: red;'>Error: " . $conn->error . "</p>";
-    }
-}
+$departments = $conn->query("SELECT * FROM dept_table");
 ?>
 
-
-
-
-  
 
 
 
@@ -45,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html lang="en-US" class="no-js">
 <head>
    <?php include "head.php"; ?>
-
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 </head>
 
 <body class="home page-template-default page page-id-2039 gdlr-core-body woocommerce-no-js tribe-no-js kingster-body kingster-body-front kingster-full  kingster-with-sticky-navigation  kingster-blockquote-style-1 gdlr-core-link-to-lightbox">
@@ -59,57 +24,55 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="kingster-page-title-overlay"></div>
                 <div class="kingster-page-title-container kingster-container">
                     <div class="kingster-page-title-content kingster-item-pdlr">
-                        <h1 class="kingster-page-title">UPDATE PAGE DETAILS</h1></div>
+                        <h1 class="kingster-page-title">MANAGE DEPARTMENT</h1></div>
                 </div>
             </div>
             <div class="kingster-page-wrapper" id="kingster-page-wrapper">
     <div class="gdlr-core-page-builder-body">
         <div class="gdlr-core-pbf-sidebar-wrapper">
-            <div class="gdlr-core-pbf-sidebar-container gdlr-core-line-height-0 clearfix gdlr-core-js gdlr-core-container">
+            <div class="gdlr-core-pbf-sidebar-container gdlr-core-line-height-0 clearfix gdlr-core-js gdlr-core-container" id="madewith">
                 <div class="gdlr-core-pbf-sidebar-content gdlr-core-column-45 gdlr-core-pbf-sidebar-padding gdlr-core-line-height" style="padding: 60px 10px 30px 30px;">
                     <div class="gdlr-core-pbf-background-wrap" style="background-color: #f7f7f7;"></div>
                     <div class="gdlr-core-pbf-sidebar-content-inner">
 <div class="gdlr-core-pbf-element">
     <div class="gdlr-core-blog-item gdlr-core-item-pdb clearfix gdlr-core-style-blog-full-with-frame" style="padding-bottom: 40px;">
         <div class="gdlr-core-blog-item-holder gdlr-core-js-2 clearfix" data-layout="fitrows">
-        <script>
-        function updateCategory(select) {
-            document.getElementById("pg_category").value = select.options[select.selectedIndex].getAttribute("data-category");
-        }
-    </script>
-       
-<div class="form-container" >
-<Center><h2>UPDATE PAGE DETAILS</h2></Center>
-<form method="POST">
-    <label>Select Page:</label><br>
-    <select name="pg_id" required onchange="updateCategory(this)">
-        <option value="">-- Select Page --</option>
-        <?php foreach ($pages as $page) : ?>
-            <option value="<?= $page['pg_id'] ?>" data-category="<?= $page['pg_category'] ?>">
-                <?= htmlspecialchars($page['pg_title']) ?> (<?= htmlspecialchars($page['pg_category']) ?>)
-            </option>
-        <?php endforeach; ?>
-    </select><br>
 
-    <label>Category:</label><br>
-    <input type="text" name="pg_category" id="pg_category" readonly required><br>
-
-    <label>Introduction:</label><br>
-    <textarea name="pg_intro" required></textarea><br>
-
-    <label>Objective:</label><br>
-    <textarea name="pg_objective" required></textarea><br>
-
-    <label>Phone:</label><br>
-    <input type="text" name="pg_phone" required><br>
-
-    <label>Email:</label><br>
-    <input type="email" name="pg_email" required><br>
-
-    <button type="submit">Create Page Details</button>
-</form>
-</div>        
-          
+            <!-- Upcoming Events -->
+            <h3>Manage Departments</h3>
+            <table class="table table-bordered table-striped">
+            <thead class="table-success">
+             <tr> 
+        <th>S/N</th>
+        <th>Name</th>
+        <th>School</th>
+        <th>HOD</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Image</th>
+        <th>Actions</th>
+    </tr>
+            </thead>
+            <tbody>
+    <?php 
+    $counter = 1; // Start ID from 1
+    while ($row = $departments->fetch_assoc()): ?>
+    <tr>
+    <td><?php  echo $counter++; ?></td>
+        <td><?= $row['dept_name'] ?></td>
+        <td><?= $row['dept_school'] ?></td>
+        <td><?= $row['dept_head'] ?></td>
+        <td><?= $row['dept_email'] ?></td>
+        <td><?= $row['dept_phone'] ?></td>
+        <td><img src="<?= $row['dept_image'] ?>" width="50"></td>
+        <td>
+            <a href="edit_dept.php?id=<?= $row['id'] ?>" class="btn btn-warning btn-sm" style="color:#ffffff;">Edit</a> |
+            <a href="delete_dept.php?id=<?= $row['id'] ?>" class="btn btn-danger btn-sm" style="color:#ffffff;" onclick="return confirm('Are you sure?')">Delete</a>
+        </td>
+    </tr>
+    <?php endwhile; ?>
+            </tbody>
+</table>
 
         </div>
     </div>

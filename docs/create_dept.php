@@ -1,50 +1,65 @@
 <?php
-require 'db_connect.php';
+require 'db_connect.php'; // Database connection
 
-// Fetch pages that do not exist in page_details
-$query = "SELECT p.pg_id, p.pg_title, p.pg_category 
-          FROM pages_table p 
-          LEFT JOIN page_details d ON p.pg_id = d.pg_id 
-          WHERE d.pg_id IS NULL";
+// Fetch schools from pages_table where category_id = 'school'
+$schools = $conn->query("SELECT pg_title FROM pages_table WHERE pg_categ_id = 'school'");
 
-$result = $conn->query($query);
-$pages = $result->fetch_all(MYSQLI_ASSOC);
-
-// Handle form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $pg_id = $_POST['pg_id'];
-    $pg_category = $_POST['pg_category'];
-    $pg_intro = $_POST['pg_intro'];
-    $pg_objective = $_POST['pg_objective'];
-    $pg_phone = $_POST['pg_phone'];
-    $pg_email = $_POST['pg_email'];
+    $dept_id = $_POST['dept_id'];  // Get auto-generated dept_id
+    $dept_name = $_POST['dept_name'];
+    $dept_school = $_POST['dept_school'];
+    $dept_head = $_POST['dept_head'];
+    $dept_email = $_POST['dept_email'];
+    $dept_phone = $_POST['dept_phone'];
+    $dept_welcome_address = $_POST['dept_welcome_address'];
+    $dept_head_title = $_POST['dept_head_title'];
+    $dept_head_desig = $_POST['dept_head_desig'];
 
-    // Insert into page_details
-    $sql = "INSERT INTO page_details (pg_id, pg_category, pg_intro, pg_objective, pg_phone, pg_email) 
-            VALUES (?, ?, ?, ?, ?, ?)";
-    
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("isssss", $pg_id, $pg_category, $pg_intro, $pg_objective, $pg_phone, $pg_email);
+    // Upload department images
+    $target_dir = "uploads/";
+    $dept_head_pic = (!empty($_FILES['dept_head_pic']['name'])) ? basename($_FILES['dept_head_pic']['name']) : NULL;
+    $dept_image = (!empty($_FILES['dept_image']['name'])) ? basename($_FILES['dept_image']['name']) : NULL;
 
-    if ($stmt->execute()) {
-        echo "<script>alert('Page details created successfully!'); window.location.href='create_page_details.php';</script>";
+    if ($dept_head_pic) move_uploaded_file($_FILES["dept_head_pic"]["tmp_name"], $target_dir . $dept_head_pic);
+    if ($dept_image) move_uploaded_file($_FILES["dept_image"]["tmp_name"], $target_dir . $dept_image);
+
+    // Check if department already exists
+    $check_sql = "SELECT dept_id FROM dept_table WHERE dept_email = ? OR dept_phone = ?";
+    $check_stmt = $conn->prepare($check_sql);
+    $check_stmt->bind_param("ss", $dept_email, $dept_phone);
+    $check_stmt->execute();
+    $check_stmt->store_result();
+
+    if ($check_stmt->num_rows > 0) {
+        $message= "<p>Department already exists!</p>";
     } else {
-        echo "<p style='color: red;'>Error: " . $conn->error . "</p>";
+        // Insert new department
+        $sql = "INSERT INTO dept_table (dept_id, dept_name, dept_school, dept_head, dept_email, dept_phone, dept_welcome_address, dept_head_pic, dept_image, dept_head_title, dept_head_desig, date_created) 
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())";
+
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("sssssssssss", $dept_id, $dept_name, $dept_school, $dept_head, $dept_email, $dept_phone, $dept_welcome_address, $dept_head_pic, $dept_image, $dept_head_title, $dept_head_desig);
+
+        if ($stmt->execute()) {
+            echo "<script>alert('Department created successfully!'); window.location.href='manage_dept.php';</script>";
+        } else {
+            echo "<p style='color: red;'>Error: " . $conn->error . "</p>";
+        }
+        $stmt->close();
     }
+
+    $check_stmt->close();
+    $conn->close();
 }
+
 ?>
-
-
-
-
-  
-
 
 
 <!DOCTYPE html>
 <html lang="en-US" class="no-js">
 <head>
    <?php include "head.php"; ?>
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 
 </head>
 
@@ -59,7 +74,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="kingster-page-title-overlay"></div>
                 <div class="kingster-page-title-container kingster-container">
                     <div class="kingster-page-title-content kingster-item-pdlr">
-                        <h1 class="kingster-page-title">UPDATE PAGE DETAILS</h1></div>
+                        <h1 class="kingster-page-title">EVENTS PAGE</h1></div>
                 </div>
             </div>
             <div class="kingster-page-wrapper" id="kingster-page-wrapper">
@@ -72,44 +87,54 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <div class="gdlr-core-pbf-element">
     <div class="gdlr-core-blog-item gdlr-core-item-pdb clearfix gdlr-core-style-blog-full-with-frame" style="padding-bottom: 40px;">
         <div class="gdlr-core-blog-item-holder gdlr-core-js-2 clearfix" data-layout="fitrows">
-        <script>
-        function updateCategory(select) {
-            document.getElementById("pg_category").value = select.options[select.selectedIndex].getAttribute("data-category");
-        }
-    </script>
+        <Center> <h3>Create Department</h3></Center>
+            <hr />
+            <?php if (!empty($message)) { echo "<div class='alert alert-success text-center'>$message</div>"; } ?>
+
+        <div class="form-container">
        
-<div class="form-container" >
-<Center><h2>UPDATE PAGE DETAILS</h2></Center>
-<form method="POST">
-    <label>Select Page:</label><br>
-    <select name="pg_id" required onchange="updateCategory(this)">
-        <option value="">-- Select Page --</option>
-        <?php foreach ($pages as $page) : ?>
-            <option value="<?= $page['pg_id'] ?>" data-category="<?= $page['pg_category'] ?>">
-                <?= htmlspecialchars($page['pg_title']) ?> (<?= htmlspecialchars($page['pg_category']) ?>)
-            </option>
-        <?php endforeach; ?>
+        <form action="" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="dept_id" value="<?= uniqid('DEPT_') ?>">
+    <label>Department Name:</label>
+    <input type="text" name="dept_name" required><br>
+
+    <label>Select School:</label>
+    <select name="dept_school" required>
+        <option value="">Select School</option>
+        <?php while ($row = $schools->fetch_assoc()): ?>
+            <option value="<?= $row['pg_title'] ?>"><?= $row['pg_title'] ?></option>
+        <?php endwhile; ?>
     </select><br>
 
-    <label>Category:</label><br>
-    <input type="text" name="pg_category" id="pg_category" readonly required><br>
+    <label>HOD Name:</label>
+    <input type="text" name="dept_head" required><br>
 
-    <label>Introduction:</label><br>
-    <textarea name="pg_intro" required></textarea><br>
+    <label>Department Email:</label>
+    <input type="email" name="dept_email" required><br>
 
-    <label>Objective:</label><br>
-    <textarea name="pg_objective" required></textarea><br>
+    <label>Department Phone:</label>
+    <input type="text" name="dept_phone" required><br>
 
-    <label>Phone:</label><br>
-    <input type="text" name="pg_phone" required><br>
+    <label>Welcome Address:</label>
+    <textarea name="dept_welcome_address" required></textarea><br>
 
-    <label>Email:</label><br>
-    <input type="email" name="pg_email" required><br>
+    <label>Head Title:</label>
+    <input type="text" name="dept_head_title" required><br>
 
-    <button type="submit">Create Page Details</button>
+    <label>Head Designation:</label>
+    <input type="text" name="dept_head_desig" required><br>
+
+    <label>Department Head Picture:</label>
+    <input type="file" name="dept_head_pic" accept="image/*" required><br>
+
+    <label>Department Image:</label>
+    <input type="file" name="dept_image" accept="image/*" required><br>
+
+    <input type="submit" value="Add Department">
 </form>
-</div>        
-          
+
+        </div>
+
 
         </div>
     </div>
@@ -151,7 +176,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="gdlr-core-pbf-sidebar-left gdlr-core-column-extend-left kingster-sidebar-area gdlr-core-column-15 gdlr-core-pbf-sidebar-padding gdlr-core-line-height">
                     <div class="gdlr-core-sidebar-item gdlr-core-item-pdlr">
                         <div id="recent-posts-3" class="widget widget_recent_entries kingster-widget" style="background-color:rgb(206, 234, 221) ;">
-                        <?php include "pagesidebar.php"; ?>
+                           
+                            <?php include "pagesidebar.php"; ?>
                         </div>
                     </div>
                 </div>

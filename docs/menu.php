@@ -1,11 +1,10 @@
-
 <header class="kingster-header-wrap kingster-header-style-plain  kingster-style-menu-right kingster-sticky-navigation kingster-style-fixed" data-navigation-offset="75px">
                 <div class="kingster-header-background"></div>
                 <div class="kingster-header-container  kingster-container">
                     <div class="kingster-header-container-inner clearfix">
                         <div class="kingster-logo  kingster-item-pdlr">
                             <div class="kingster-logo-inner">
-                                <a class="" href="index.html"><img src="images/logo-2.png" alt="" /></a>
+                                <a class="" href="index.php"><img src="images/logo-2.png" alt="" /></a>
                             </div>
                         </div>
                         <div class="kingster-navigation kingster-item-pdlr clearfix ">
@@ -14,76 +13,7 @@
                                     <li class="menu-item menu-item-home menu-item-has-children kingster-normal-menu"><a href="index.php" class="sf-with-ul-pre">Home</a>
                                         
                                     </li>
-                               <!--     <li class="menu-item menu-item-has-children kingster-normal-menu"><a href="#" class="sf-with-ul-pre">Pages</a>
-                                        <ul class="sub-menu">
-                                            <li class="menu-item" data-size="60"><a href="about-us.html">about</a></li>
-                                            <li class="menu-item menu-item-has-children" data-size="60"><a href="blog-full-right-sidebar-with-frame.html" class="sf-with-ul-pre">Blog</a>
-                                                <ul class="sub-menu">
-                                                    <li class="menu-item menu-item-has-children"><a href="blog-full-right-sidebar-with-frame.html" class="sf-with-ul-pre">Blog Full</a>
-                                                        <ul class="sub-menu">
-                                                            <li class="menu-item"><a href="blog-full-right-sidebar-with-frame.html">Blog Full Right Sidebar With Frame</a></li>
-                                                            <li class="menu-item"><a href="blog-full-left-sidebar-with-frame.html">Blog Full Left Sidebar With Frame</a></li>
-                                                            <li class="menu-item"><a href="blog-full-both-sidebar-with-frame.html">Blog Full Both Sidebar With Frame</a></li>
-                                                            <li class="menu-item"><a href="blog-full-right-sidebar.html">Blog Full Right Sidebar</a></li>
-                                                            <li class="menu-item"><a href="blog-full-left-sidebar.html">Blog Full Left Sidebar</a></li>
-                                                            <li class="menu-item"><a href="blog-full-both-sidebar.html">Blog Full Both Sidebar</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="menu-item menu-item-has-children"><a href="blog-grid-3-columns-no-space.html" class="sf-with-ul-pre">Blog Grid</a>
-                                                        <ul class="sub-menu">
-                                                            <li class="menu-item"><a href="blog-grid-2-columns.html">Blog Grid 2 Columns</a></li>
-                                                            <li class="menu-item"><a href="blog-grid-3-columns.html">Blog Grid 3 Columns</a></li>
-                                                            <li class="menu-item"><a href="blog-grid-4-columns.html">Blog Grid 4 Columns</a></li>
-                                                            <li class="menu-item"><a href="blog-grid-2-columns-no-space.html">Blog Grid 2 Columns No Space</a></li>
-                                                            <li class="menu-item"><a href="blog-grid-3-columns-no-space.html">Blog Grid 3 Columns No Space</a></li>
-                                                            <li class="menu-item"><a href="blog-grid-4-columns-no-space.html">Blog Grid 4 Columns No Space</a></li>
-                                                        </ul>
-                                                    </li>
-
-                                                    <li class="menu-item"><a href="standard-post-type.html">Single Post</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="menu-item" data-size="60"><a href="contact.php" class="sf-with-ul-pre">Contact</a>
-                                                
-                                            </li>
-                                            <li class="menu-item menu-item-has-children" data-size="60"><a href="portfolio-3-columns.html" class="sf-with-ul-pre">Portfolio</a>
-                                                <ul class="sub-menu">
-                                                    <li class="menu-item menu-item-has-children"><a class="sf-with-ul-pre">Portfolio Grid</a>
-                                                        <ul class="sub-menu">
-                                                            <li class="menu-item"><a href="portfolio-2-columns.html">Portfolio 2 Columns</a></li>
-                                                            <li class="menu-item"><a href="portfolio-3-columns.html">Portfolio 3 Columns</a></li>
-                                                            <li class="menu-item"><a href="portfolio-4-columns.html">Portfolio 4 Columns</a></li>
-                                                            <li class="menu-item"><a href="portfolio-5-columns.html">Portfolio 5 Columns</a></li>
-                                                            <li class="menu-item"><a href="portfolio-2-columns-with-frame.html">Portfolio 2 Columns With Frame</a></li>
-                                                            <li class="menu-item"><a href="portfolio-3-columns-with-frame.html">Portfolio 3 Columns With Frame</a></li>
-                                                            <li class="menu-item"><a href="portfolio-4-columns-with-frame.html">Portfolio 4 Columns With Frame</a></li>
-                                                            <li class="menu-item"><a href="portfolio-2-columns-no-space.html">Portfolio 2 Columns No Space</a></li>
-                                                            <li class="menu-item"><a href="portfolio-3-columns-no-space.html">Portfolio 3 Columns No Space</a></li>
-                                                            <li class="menu-item"><a href="portfolio-4-columns-no-space.html">Portfolio 4 Columns No Space</a></li>
-                                                            <li class="menu-item"><a href="portfolio-5-columns-no-space.html">Portfolio 5 Columns No Space</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="menu-item menu-item-has-children"><a class="sf-with-ul-pre">Portfolio Masonry</a>
-                                                        <ul class="sub-menu">
-                                                            <li class="menu-item"><a href="portfolio-masonry-4-columns.html">Masonry 4 Columns</a></li>
-                                                            <li class="menu-item"><a href="portfolio-masonry-3-columns.html">Masonry 3 Columns</a></li>
-                                                            <li class="menu-item"><a href="portfolio-masonry-2-columns.html">Masonry 2 Columns</a></li>
-                                                            <li class="menu-item"><a href="portfolio-masonry-4-columns-no-space.html">Masonry 4 Columns No Space</a></li>
-                                                            <li class="menu-item"><a href="portfolio-masonry-3-columns-no-space.html">Masonry 3 Columns No Space</a></li>
-                                                            <li class="menu-item"><a href="portfolio-masonry-2-columns-no-space.html">Masonry 2 Columns No Space</a></li>
-                                                        </ul>
-                                                    </li>
-
-                                                 <li class="menu-item menu-item-has-children"><a class="sf-with-ul-pre" href="singleportfolio.html">Single Portfolio</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="menu-item" data-size="60"><a href="gallery.html">Gallery</a></li>
-                                            <li class="menu-item" data-size="60"><a href="price-table.html">Price Table</a></li>
-                                            <li class="menu-item" data-size="60"><a href="maintenance.html">Maintenance</a></li>
-                                            <li class="menu-item" data-size="60"><a href="coming-soon.html">Coming Soon</a></li>
-                                            <li class="menu-item" data-size="60"><a href="404.html">404 Page</a></li>
-                                        </ul>
-                                    </li>  -->
+                              
                                     <li class="menu-item current-menu-item menu-item-has-children kingster-mega-menu" ><a href="organogram.php" class="sf-with-ul-pre">Structure</a>
                                         <div class="sf-mega sf-mega-full ">
                                             <ul class="sub-menu">
@@ -104,13 +34,13 @@
                                                                require 'db_connect.php';
 
                                                                // Fetch pages with category 'directorate'
-                                                               $query = "SELECT pg_id, pg_title FROM pages_table WHERE pg_categ_id = 'directorate'";
-                                                               $result = $conn->query($query);
+                                                               $query1 = "SELECT pg_id, pg_title FROM pages_table WHERE pg_categ_id = 'directorate'";
+                                                               $result1 = $conn->query($query1);
                                                                
                                                                // Generate menu items dynamically
-                                                               while ($row = $result->fetch_assoc()) {
-                                                                   $pageTitle = htmlspecialchars($row['pg_title']);
-                                                                   $pageUrl = "directorate-main.php?id=" . $row['pg_id']; // Direct to directorate-main.php with page ID
+                                                               while ($row1 = $result1->fetch_assoc()) {
+                                                                   $pageTitle = htmlspecialchars($row1['pg_title']);
+                                                                   $pageUrl = "directorate-main.php?id=" . $row1['pg_id']; // Direct to directorate-main.php with page ID
 
                                                                    echo '<li class="menu-item"><a href="' . $pageUrl . '">' . $pageTitle . '</a></li>';
                                                                }
@@ -122,16 +52,16 @@
                                                 <ul class="sub-menu">
                                                         
                                                         <?php
-                                                               require 'db_connect.php';
+                                                            
 
                                                                // Fetch pages with category 'directorate'
-                                                               $query = "SELECT pg_id, pg_title FROM pages_table WHERE pg_categ_id = 'school'";
-                                                               $result = $conn->query($query);
+                                                               $query2 = "SELECT pg_id, pg_title FROM pages_table WHERE pg_categ_id = 'school'";
+                                                               $result2 = $conn->query($query2);
                                                                
                                                                // Generate menu items dynamically
-                                                               while ($row = $result->fetch_assoc()) {
-                                                                   $pageTitle = htmlspecialchars($row['pg_title']);
-                                                                   $pageUrl = "research.php?id=" . $row['pg_id']; // Direct toschools.php with page ID
+                                                               while ($row2 = $result2->fetch_assoc()) {
+                                                                   $pageTitle = htmlspecialchars($row2['pg_title']);
+                                                                   $pageUrl = "school.php?id=" . $row2['pg_id']; // Direct toschools.php with page ID
 
                                                                    echo '<li class="menu-item"><a href="' . $pageUrl . '">' . $pageTitle . '</a></li>';
                                                                }
@@ -140,7 +70,7 @@
                                                 </li> 
                                                 <li class="menu-item menu-item-has-children" data-size="15"><a href="units.php" class="sf-with-ul-pre">Units</a>
                                                     <ul class="sub-menu">
-                                                        <li class="menu-item"><a href="services.php">Busary</a></li>
+                                                        <li class="menu-item"><a href="office.php">Busary</a></li>
                                                         <li class="menu-item"><a href="#">Audit</a></li>
                                                         <li class="menu-item"><a href="finance-faculty.html">Faculty Page</a></li>
                                                         <li class="menu-item"><a href="#">Single Course</a></li>
@@ -201,4 +131,5 @@
                         </div>
                     </div>
                 </div>
-            </header>
+            
+</header>

@@ -64,7 +64,7 @@
                                              // Loop through the results and display them in the template
                                              while ($row = $result->fetch_assoc()) {
                                                  $pageTitle = htmlspecialchars($row['pg_title']);
-                                                 $pageUrl = "view_page.php?id=" . $row['pg_id']; // Link to view page dynamically
+                                                 $pageUrl = "school.php?id=" . $row['pg_id']; // Link to view page dynamically
 
                                                  echo '<div class="gdlr-core-pbf-column gdlr-core-column-20">
                                                          <div class="gdlr-core-pbf-column-content-margin gdlr-core-js" style="margin: 0px -3px 0px -3px;">

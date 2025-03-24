@@ -111,7 +111,7 @@ if ($conn->connect_error) {
             <th>Title</th>
             <th>Principal Investigator</th>
             <th>Department</th>
-            <th>School</th>
+          <!--  <th>School</th>  -->
           <!--  <th>Image</th>  -->
             <th>Thumbnail</th>
             <th>Actions</th>
@@ -130,7 +130,7 @@ if ($conn->connect_error) {
                 echo "<td>{$row['title']}</td>";
                 echo "<td>{$row['principal_investigator']}</td>";
                 echo "<td>{$row['department']}</td>";
-                echo "<td>{$row['school']}</td>";
+               // echo "<td>{$row['school']}</td>";
                // echo "<td><img src='{$row['image']}' width='50' height='50'></td>";
                 echo "<td><img src='{$row['thumbnail']}' width='50' height='50'></td>";
                 echo "<td>

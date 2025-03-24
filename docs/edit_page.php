@@ -13,12 +13,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $pg_head_title = $_POST['pg_head_title'];
     $pg_accronym = $_POST['pg_accronym'];
 
+    // Handle file uploads
+    $dept_picture = $_FILES['dept_picture']['name'] ? $_FILES['dept_picture']['name'] : $page['dept_picture'];
+    $head_picture = $_FILES['head_picture']['name'] ? $_FILES['head_picture']['name'] : $page['head_picture'];
+    
+    $target_dir = "uploads/";
+    
+    if ($_FILES['dept_picture']['name']) {
+        $dept_target = $target_dir . basename($dept_picture);
+        move_uploaded_file($_FILES['dept_picture']['tmp_name'], $dept_target);
+    }
+    
+    if ($_FILES['head_picture']['name']) {
+        $head_target = $target_dir . basename($head_picture);
+        move_uploaded_file($_FILES['head_picture']['tmp_name'], $head_target);
+    }
+
     $sql = "UPDATE pages_table 
-            SET pg_category=?, pg_title=?, pg_head_name=?, pg_h_qualification=?, pg_h_designation=?, pg_head_title=?, pg_accronym=? 
+            SET pg_category=?, pg_title=?, pg_head_name=?, pg_h_qualification=?, pg_h_designation=?, pg_head_title=?, pg_accronym=?, dept_picture=?, head_picture=? 
             WHERE pg_id=?";
 
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sssssssi", $pg_category, $pg_title, $pg_head_name, $pg_h_qualification, $pg_h_designation, $pg_head_title, $pg_accronym, $pg_id);
+    $stmt->bind_param("sssssssssi", $pg_category, $pg_title, $pg_head_name, $pg_h_qualification, $pg_h_designation, $pg_head_title, $pg_accronym, $dept_picture, $head_picture, $pg_id);
 
     if ($stmt->execute()) {
         echo "<p style='color: green;'>Page updated successfully!</p>";
@@ -66,7 +82,7 @@ $categories = $conn->query("SELECT category_id, category_name FROM categories_ta
 
         <Center> <h2>Edit Page</h2></Center>
         <div class="form-container">
-<form method="POST">
+        <form method="POST" enctype="multipart/form-data">
     <label>Page Title:</label>
     <input type="text" name="pg_title" value="<?= $page['pg_title'] ?>" required><br>
 
@@ -93,8 +109,20 @@ $categories = $conn->query("SELECT category_id, category_name FROM categories_ta
     <label>Acronym:</label>
     <input type="text" name="pg_accronym" value="<?= $page['pg_accronym'] ?>" required><br>
 
+    <label>Department Picture:</label>
+    <input type="file" name="dept_picture" accept="image/*"><br>
+    <img src="uploads/<?= $page['dept_picture'] ?>" width="100"><br>
+
+    <label>Head Picture:</label>
+    <input type="file" name="head_picture" accept="image/*"><br>
+    <img src="uploads/<?= $page['head_picture'] ?>" width="100"><br>
+
+    <label>Date Created:</label>
+    <input type="text" value="<?= $page['date_created'] ?>" disabled><br>
+
     <input type="submit" value="Update Page">
 </form>
+
         </div>
 
 

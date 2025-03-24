@@ -112,6 +112,7 @@ $result = $conn->query($sql);
                                                                 </tr>
                                                             </thead>
                                                                 <?php 
+                                                                
                                                                 $counter = 1; // Start ID from 1
                                                                 while ($row = $result->fetch_assoc()) { ?>
                                                                     <tr>
