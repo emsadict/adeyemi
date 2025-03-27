@@ -58,10 +58,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Update query
     $update_query = "UPDATE research_activities SET 
-                     date=?, title=?, abstract=?, findings=?, objective=?, 
+                     date=?, title=?, abstract=?, findings=?, objectives=?, 
                      principal_investigator=?, designation=?, department=?, school=?, qualifications=?, 
-                     co_investigators=?, designations=?, departments=?, schools=?, 
-                     image=?, thumbnail=?, recommendations=?, other_info=? 
+                     co_investigators=?, co_designations=?, co_departments=?, co_schools=?, 
+                     image=?, thumbnail=?, recommendations=?, other_information=? 
                      WHERE id=?";
 
     $stmt = $conn->prepare($update_query);

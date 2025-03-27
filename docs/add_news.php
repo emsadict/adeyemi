@@ -76,12 +76,12 @@ tinymce.init({
                     <div class="gdlr-core-pbf-sidebar-wrapper ">
                         <div class="gdlr-core-pbf-sidebar-container gdlr-core-line-height-0 clearfix gdlr-core-js gdlr-core-container" id="madewith">
                             <div class="gdlr-core-pbf-sidebar-content  gdlr-core-column-45 gdlr-core-pbf-sidebar-padding gdlr-core-line-height" style="padding: 60px 10px 30px 30px;">
-                                <div class="gdlr-core-pbf-background-wrap" style="background-color: #f7f7f7 ;"></div>
+                                <div class="gdlr-core-pbf-background-wrap" style="background-color:rgba(158, 228, 207, 0.53) ;"></div>
                                 <div class="gdlr-core-pbf-sidebar-content-inner">
                                     <div class="gdlr-core-pbf-element">
                                         <div class="gdlr-core-blog-item gdlr-core-item-pdb clearfix  gdlr-core-style-blog-full-with-frame" style="padding-bottom: 40px ;">
                                             <div class="gdlr-core-blog-item-holder gdlr-core-js-2 clearfix" data-layout="fitrows">
-                                                           <h2>Create News Post</h2>
+                                                           <center><h2>Create News Post</h2></center>
                                                               <hr />  
                                                            <?php if (!empty($message)) { echo "<div class='alert alert-success text-center'>$message</div>"; } ?>
                                                            <div class="form-container">

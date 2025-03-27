@@ -102,10 +102,13 @@
                                             <li class="menu-item" data-size="60"><a href="gallery.php">Gallery</a></li>
                                         </ul>
                                     </li>
-                                    <li class="menu-item menu-item-has-children kingster-normal-menu"><a href="#" class="sf-with-ul-pre">SUG</a>
+                                    <li class="menu-item menu-item-has-children kingster-normal-menu"><a href="#" class="sf-with-ul-pre">Student</a>
                                         <ul class="sub-menu">
-                                            <li class="menu-item" data-size="60"><a href="facts.php">University Facts</a></li>
-                                            <li class="menu-item" data-size="60"><a href="course-list-2.html">Leadership</a></li>
+                                        <li class="menu-item" data-size="60"><a href="facts.php">Portal</a></li>
+                                        <li class="menu-item" data-size="60"><a href="alumni.php">Alumni</a></li>
+                                        <li class="menu-item" data-size="60"><a href="#">Payments</a></li>
+                                        <li class="menu-item" data-size="60"><a href="#">SUG</a></li>
+                                        
                                         </ul>
                                     </li>
                                     <li class="menu-item kingster-normal-menu"><a href="university-life.html">University Life</a></li>
