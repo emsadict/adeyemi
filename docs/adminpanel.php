@@ -1,3 +1,9 @@
+<?php 
+include "db_connect.php";
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en-US" class="no-js">
 <head>

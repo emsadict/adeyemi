@@ -37,7 +37,7 @@ $result = $conn->query($query);
                 <div class="kingster-page-title-overlay"></div>
                 <div class="kingster-page-title-container kingster-container">
                     <div class="kingster-page-title-content kingster-item-pdlr">
-                        <h1 class="kingster-page-title">EVENTS PAGE</h1></div>
+                        <h1 class="kingster-page-title">RESEARCH ACTIVITIES PAGE</h1></div>
                 </div>
             </div>
             <div class="kingster-page-wrapper" id="kingster-page-wrapper">
@@ -45,7 +45,7 @@ $result = $conn->query($query);
         <div class="gdlr-core-pbf-sidebar-wrapper">
             <div class="gdlr-core-pbf-sidebar-container gdlr-core-line-height-0 clearfix gdlr-core-js gdlr-core-container">
                 <div class="gdlr-core-pbf-sidebar-content gdlr-core-column-45 gdlr-core-pbf-sidebar-padding gdlr-core-line-height" style="padding: 60px 10px 30px 30px;">
-                    <div class="gdlr-core-pbf-background-wrap" style="background-color: #f7f7f7;"></div>
+                    <div class="gdlr-core-pbf-background-wrap" style="background-color:rgba(158, 228, 207, 0.33) ;"></div>
                     <div class="gdlr-core-pbf-sidebar-content-inner">
 <div class="gdlr-core-pbf-element">
     <div class="gdlr-core-blog-item gdlr-core-item-pdb clearfix gdlr-core-style-blog-full-with-frame" style="padding-bottom: 40px;">
@@ -64,7 +64,7 @@ $result = $conn->query($query);
                     <div class="research-item">
                         <img src="uploads/<?php echo htmlspecialchars($row['image']); ?>" alt="Research Image" width="150">
                         <div class="research-details">
-                            <h3><?php echo htmlspecialchars($row['title']); ?></h3>
+                            <h3><?php echo ucfirst(htmlspecialchars($row['title'])); ?></h3>
                             <p><strong>Date:</strong> <?php echo date('F j, Y', strtotime($row['date'])); ?></p>
                             <p><strong>Principal Investigator:</strong> <?php echo htmlspecialchars($row['principal_investigator']); ?></p>
                             <p><?php echo nl2br(htmlspecialchars(substr($row['abstract'], 0, 150))) . '...'; ?></p>

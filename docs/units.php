@@ -1,3 +1,7 @@
+
+<?php
+include "db_connect.php";
+?>
 <!DOCTYPE html>
 <html lang="en-US" class="no-js">
 <head>
@@ -55,10 +59,10 @@
                                         </div>
                                     </div>
                                     <?php
-                                             require 'db_connect.php';
+                                             include 'db_connect.php';
 
                                              // Fetch pages with category 'directorate'
-                                             $query = "SELECT pg_id, pg_title FROM pages_table WHERE pg_categ_id = 'unit'";
+                                             $query = "SELECT pg_id, pg_title FROM pages_table WHERE pg_categ_id = 'office'";
                                              $result = $conn->query($query);
 
                                              // Loop through the results and display them in the template

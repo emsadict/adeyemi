@@ -35,6 +35,53 @@ if (isset($_GET['dept_name'])) {
 <html lang="en-US" class="no-js">
 <head>
    <?php include "head.php"; ?>
+   <!-- CSS for Row Layout -->
+<style>
+    .staff-container {
+        display: flex;
+        width: 600px;
+        flex-direction: column;
+        gap: 20px; /* Space between rows */
+    }
+    .staff-row {
+        display: flex;
+        align-items: center;
+        background:rgba(187, 244, 225, 0.61);
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    .staff-image img {
+        border-radius: 50%;
+        border: 5px solid rgb(10, 81, 59);
+        margin-right: 20px;
+    }
+    .staff-details {
+        flex: 1; /* Takes the remaining space */
+    }
+    .staff-details h3 {
+        margin: 0;
+        font-size: 20px;
+        color: #333;
+    }
+    .staff-details p {
+        margin: 5px 0;
+        font-size: 16px;
+        color: #555;
+    }
+    .more-btn {
+        display: inline-block;
+        padding: 8px 12px;
+        background: #2eca9b;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        margin-top: 10px;
+    }
+    .more-btn:hover {
+        background: #25a87e;
+    }
+</style>
 
 </head>
 
@@ -218,13 +265,58 @@ if (isset($_GET['dept_name'])) {
                                                 <div class="gdlr-core-tab-item-content " data-tab-id="4" >
                                                     <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix  gdlr-core-left-align gdlr-core-title-item-caption-top">
                                                         <div class="gdlr-core-title-item-title-wrap ">
-                                                            <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " id="h3_1dd7_27">Staff Directory<span class="gdlr-core-title-item-title-divider gdlr-core-skin-divider" ></span></h3></div>
+                                                            <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " id="h3_1dd7_27" style="color: #25a87e;">Staff Directory<span class="gdlr-core-title-item-title-divider gdlr-core-skin-divider" ></span></h3></div>
                                                     </div>
-                                                    <p style="text-align: justify;">   </P>
                                                        
-                                                   
+                                                    <?php
 
-                                                   
+
+$department = isset($_GET['dept_name']) ? $_GET['dept_name'] : ''; // Get department from URL
+
+if (!empty($department)) {
+    // Fetch staff where staff_dept matches the given department name
+    $staffQuery = "SELECT * FROM staff_table WHERE staff_dept = ?";
+    $stmt = $conn->prepare($staffQuery);
+    $stmt->bind_param("s", $department);
+    $stmt->execute();
+    $staffResult = $stmt->get_result();
+
+    if ($staffResult->num_rows > 0) {
+        echo "<div class='staff-container'>"; // Wrap everything in a flex container
+        while ($row = $staffResult->fetch_assoc()) {
+            $staffName = ucfirst($row['staff_id']); // Assuming staff_id is their name
+            $staffEmail = htmlspecialchars($row['staff_email']);
+            $staffQualification = htmlspecialchars($row['staff_qualification']);
+            $staffDesignation = htmlspecialchars($row['staff_designation']);
+            $staffPhoto = !empty($row['staff_photo']) ? "uploads/staff_photos/{$row['staff_photo']}" : "upload/default.jpg"; // Default image if no photo
+            ?>
+
+            <!-- Staff Display Template -->
+            <div class="staff-row">
+                <div class="staff-image">
+                    <img src="<?php echo $staffPhoto; ?>" alt="Staff Photo" width="120" height="120">
+                </div>
+                <div class="staff-details">
+                    <h3><?php echo $staffName; ?></h3>
+                    <p><strong>Qualification:</strong> <?php echo $staffQualification; ?></p>
+                    <p><strong>Designation:</strong> <?php echo $staffDesignation; ?></p>
+                    <p><strong>Email:</strong> <a href="mailto:<?php echo $staffEmail; ?>"><?php echo $staffEmail; ?></a></p>
+                    <a class="more-btn" href="#">More Detail</a>
+                </div>
+            </div>
+
+            <?php
+        }
+        echo "</div>"; // Close staff-container div
+    } else {
+        echo "<p class='alert alert-warning'>No staff found in the <strong>$department</strong> department.</p>";
+    }
+
+    $stmt->close();
+} else {
+    echo "<p class='alert alert-danger'>Department not specified!</p>";
+}
+?>
                                                 </div>
                                                 <div class="gdlr-core-tab-item-content " data-tab-id="5" >
                                                     <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix  gdlr-core-left-align gdlr-core-title-item-caption-top">

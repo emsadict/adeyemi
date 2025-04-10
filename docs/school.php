@@ -214,7 +214,7 @@ $conn->close();
                                             <a class="gdlr-core-lightgallery gdlr-core-js " style="border-width: 10px;"><img src="uploads/<?php echo htmlspecialchars($page['head_picture']); ?>" width="400" height="400"   alt="" /></a>
                                             <h3 style="margin-bottom:2px;font-size: 30px ;font-weight: 600 ;letter-spacing: 0px ;text-transform: none ;color:rgb(3, 34, 33) ; text-align:center;"><?php echo htmlspecialchars($page['pg_head_name']); ?>
                                                    </h3>
-                                                        <p style="margin-bottom: 5px;font-size: 18px ;font-weight: 200 ;color:rgb(15, 13, 41) ; text-align:center;"><?php echo htmlspecialchars($page['pg_h_qualification']); ?>
+                                                        <p style="margin-bottom: 5px;font-size: 18px ;font-weight: 200 ;color:rgb(61, 184, 155) ; text-align:center;"><?php echo htmlspecialchars($page['pg_h_qualification']); ?>
                                                     </p> 
                                                         <p style="font-size: 18px ;font-weight: 200 ;color:rgb(15, 13, 41) ; text-align:center;"><?php echo htmlspecialchars($page['pg_head_title']); ?>
                                                     </p>

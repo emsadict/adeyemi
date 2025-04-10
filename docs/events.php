@@ -58,7 +58,7 @@ $past_result = mysqli_query($conn, $past_query);
         <div class="gdlr-core-pbf-sidebar-wrapper">
             <div class="gdlr-core-pbf-sidebar-container gdlr-core-line-height-0 clearfix gdlr-core-js gdlr-core-container">
                 <div class="gdlr-core-pbf-sidebar-content gdlr-core-column-45 gdlr-core-pbf-sidebar-padding gdlr-core-line-height" style="padding: 60px 10px 30px 30px;">
-                    <div class="gdlr-core-pbf-background-wrap" style="background-color: #f7f7f7;"></div>
+                    <div class="gdlr-core-pbf-background-wrap" style="background-color:rgba(158, 228, 207, 0.33) ;"></div>
                     <div class="gdlr-core-pbf-sidebar-content-inner">
 <div class="gdlr-core-pbf-element">
     <div class="gdlr-core-blog-item gdlr-core-item-pdb clearfix gdlr-core-style-blog-full-with-frame" style="padding-bottom: 40px;">
@@ -70,7 +70,7 @@ $past_result = mysqli_query($conn, $past_query);
             <?php if (mysqli_num_rows($upcoming_result) > 0): ?>
                 <?php while ($event = mysqli_fetch_assoc($upcoming_result)): ?>
                     <div class="event-box">
-                        <h3><?php echo $event['title']; ?></h3>
+                        <h3><?php echo ucfirst($event['title']); ?></h3>
                         <p><?php echo $event['description']; ?></p>
                         <p><strong>Date:</strong> <?php echo $event['event_date']; ?></p>
                         <p><strong>Time:</strong> <?php echo $event['event_time']; ?></p>

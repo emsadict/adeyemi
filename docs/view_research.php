@@ -204,7 +204,7 @@ $row = $result->fetch_assoc();
                         <div class="kingster-single-article-date-month"><?php echo date('M', strtotime($row['date'])); ?></div>
                     </div>
                     <div class="kingster-single-article-head-right">
-                        <h1 class="kingster-single-article-title"><?php echo htmlspecialchars($row['title']); ?></h1>
+                        <h1 class="kingster-single-article-title"><?php echo ucfirst(htmlspecialchars($row['title'])); ?></h1>
                     </div>
                 </header>
             </div>
@@ -214,7 +214,7 @@ $row = $result->fetch_assoc();
     <!-- Sidebar with Recent Posts -->
     <div class="gdlr-core-pbf-sidebar-left gdlr-core-column-extend-left kingster-sidebar-area gdlr-core-column-15 gdlr-core-pbf-sidebar-padding gdlr-core-line-height">
                     <div class="gdlr-core-sidebar-item gdlr-core-item-pdlr">
-                        <div id="recent-posts-3" class="widget widget_recent_entries kingster-widget" style="background-color:rgb(206, 234, 221) ;">
+                        <div id="recent-posts-3" class="widget widget_recent_entries kingster-widget" style="background-color:rgba(158, 228, 207, 0.33) ;">
                             <h3 class="kingster-widget-title">Research</h3><span class="clear"></span>
                             <ul>
                                 <?php
@@ -239,7 +239,7 @@ $row = $result->fetch_assoc();
    
 
     <div class="container">
-        <h2><?php echo htmlspecialchars($row['title']); ?></h2>
+        <h2><?php echo ucfirst(htmlspecialchars($row['title'])); ?></h2>
         <p><strong>Date:</strong> <?php echo date('F j, Y', strtotime($row['date'])); ?></p>
         <p><strong>Principal Investigator:</strong> <?php echo htmlspecialchars($row['principal_investigator']); ?></p>
         <p><strong>Designation:</strong> <?php echo htmlspecialchars($row['designation']); ?></p>

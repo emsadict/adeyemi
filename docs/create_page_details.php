@@ -85,8 +85,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <select name="pg_id" required onchange="updateCategory(this)">
         <option value="">-- Select Page --</option>
         <?php foreach ($pages as $page) : ?>
-            <option value="<?= $page['pg_id'] ?>" data-category="<?= $page['pg_category'] ?>">
-                <?= htmlspecialchars($page['pg_title']) ?> (<?= htmlspecialchars($page['pg_category']) ?>)
+            <option value="<?= $page['pg_id'] ?>" data-category="<?= ucfirst($page['pg_category']) ?>">
+                <?= ucfirst(htmlspecialchars($page['pg_title'])) ?> (<?= ucfirst(htmlspecialchars($page['pg_category'])) ?>)
             </option>
         <?php endforeach; ?>
     </select><br>
