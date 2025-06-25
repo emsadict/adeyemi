@@ -35,7 +35,7 @@
                                                         <?php
                                                             
 
-                                                            // Fetch pages with category 'directorate'
+                                                            // Fetch pages with category 'office'
                                                             $query5 = "SELECT pg_id, pg_title FROM pages_table WHERE pg_categ_id = 'office'";
                                                             $result5 = $conn->query($query5);
                                                             
@@ -58,7 +58,7 @@
                                                         <?php
                                                             
 
-                                                               // Fetch pages with category 'directorate'
+                                                               // Fetch pages with category 'school'
                                                                $query2 = "SELECT pg_id, pg_title FROM pages_table WHERE pg_categ_id = 'school'";
                                                                $result2 = $conn->query($query2);
                                                                

@@ -48,7 +48,7 @@ if (isset($_GET['id'])) {
                 <div class="kingster-page-title-overlay"></div>
                 <div class="kingster-page-title-bottom-gradient"></div>
                 <div class="kingster-page-title-container kingster-container">
-                    <div class="kingster-page-title-content kingster-item-pdlr" style="padding-top: 200px ;padding-bottom: 60px ;">
+                    <div class="kingster-page-title-content kingster-item-pdlr" style="padding-top: 100px ;padding-bottom: 60px ;">
                         <h1 class="kingster-page-title" style="font-size: 48px ;font-weight: 700 ;text-transform: none ;letter-spacing: 0px ;color: #ffffff ;"><?php echo htmlspecialchars($page['pg_title']); ?></h1></div>
                 </div>
             </div>
@@ -234,7 +234,7 @@ $conn->close();
         src="https://www.youtube.com/embed/_sbHpl_jXd8?autoplay=1" 
         title="YouTube video player" 
         frameborder="0" 
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allow="accelerometer; ; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
         allowfullscreen>
        
     </iframe>

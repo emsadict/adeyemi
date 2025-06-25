@@ -1,4 +1,6 @@
-<?php include "mobilemenu.php"; ?>
+<?php 
+include 'db_connect.php'; // Include your database connection file
+include "mobilemenu.php"; ?>
     <div class="kingster-body-outer-wrapper ">
         <div class="kingster-body-wrapper clearfix  kingster-with-frame">
            <?php include "headermenu.php" ?>
@@ -6,7 +8,7 @@
 
 
 <?php
-include 'db_connect.php'; // Include your database connection file
+
 
 if (isset($_GET['id'])) {
     $event_id = $_GET['id'];

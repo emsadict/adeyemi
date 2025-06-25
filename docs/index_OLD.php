@@ -1,30 +1,3 @@
-<?php
-// Database connection
-$conn = new mysqli("localhost", "root", "", "website_management");
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-// Fetch latest news
-$sql = "SELECT id, title, image, date,  content, author  FROM news ORDER BY date DESC LIMIT 5";
-$result = $conn->query($sql);
-
-// Fetch the latest news
-$latest_news_query = "SELECT * FROM news ORDER BY created_at DESC LIMIT 1";
-$latest_news_result = $conn->query($latest_news_query);
-
-// Fetch the rest of the news
-$other_news_query = "SELECT * FROM news ORDER BY created_at DESC LIMIT 4 OFFSET 1";
-$other_news_result = $conn->query($other_news_query);
-
-
-
-//$sql = "SELECT title, event_date, event_time, event_venue, event_image, event_thumbnail FROM events ORDER BY event_date ASC LIMIT 3";
-//$result = $conn->query($sql);
-
-
-?>
-
 <!DOCTYPE html>
 <html lang="en-US" class="no-js">
 <head>
@@ -244,7 +217,7 @@ $other_news_result = $conn->query($other_news_query);
                                         <div class="gdlr-core-pbf-column-content clearfix gdlr-core-js ">
                                             <div class="gdlr-core-pbf-element">
                                                 <div class="gdlr-core-image-item gdlr-core-item-pdlr gdlr-core-item-pdb  gdlr-core-left-align" id="div_1dd7_23">
-                                                    <div class="gdlr-core-image-item-wrap gdlr-core-media-image  gdlr-core-image-item-style-rectangle" id="div_1dd7_24"><img src="images/logo-2.png" alt="" width="262" height="35" title="logo-white" /></div>
+                                                    <div class="gdlr-core-image-item-wrap gdlr-core-media-image  gdlr-core-image-item-style-rectangle" id="div_1dd7_24"><img src="images/logo.png" alt="" width="262" height="35" title="logo-white" /></div>
                                                 </div>
                                             </div>
                                             <div class="gdlr-core-pbf-element">
@@ -393,114 +366,128 @@ $other_news_result = $conn->query($other_news_query);
         </div>
     </div>
 </div>
-</div>  
+</div>
                     <div class="gdlr-core-pbf-wrapper " id="div_1dd7_44">
                         <div class="gdlr-core-pbf-background-wrap"></div>
                         <div class="gdlr-core-pbf-wrapper-content gdlr-core-js ">
                             <div class="gdlr-core-pbf-wrapper-container clearfix gdlr-core-container">
                                 
-                            <?php
-
-
-// Fetch the latest news
-$latest_news_query = "SELECT * FROM news ORDER BY created_at DESC LIMIT 1";
-$latest_news_result = $conn->query($latest_news_query);
-
-// Fetch the rest of the news
-$other_news_query = "SELECT * FROM news ORDER BY created_at DESC LIMIT 4 OFFSET 1";
-$other_news_result = $conn->query($other_news_query);
-?>
-
-<div class="gdlr-core-pbf-column gdlr-core-column-40 gdlr-core-column-first">
-    <div class="gdlr-core-pbf-column-content-margin gdlr-core-js" id="div_1dd7_45" data-sync-height="height-2">
-        <div class="gdlr-core-pbf-column-content clearfix gdlr-core-js gdlr-core-sync-height-content">
-            <div class="gdlr-core-pbf-element">
-                <div class="gdlr-core-blog-item gdlr-core-item-pdb clearfix gdlr-core-style-blog-widget">
-                    <div class="gdlr-core-block-item-title-wrap gdlr-core-left-align gdlr-core-item-mglr" id="div_1dd7_46">
-                        <div class="gdlr-core-block-item-title-inner clearfix">
-                            <h3 class="gdlr-core-block-item-title" id="h3_1dd7_10"style="color:rgb(48, 142, 98);">News & Updates</h3>
-                            <div class="gdlr-core-block-item-title-divider" id="div_1dd7_47"></div>
-                        </div>
-                        <a class="gdlr-core-block-item-read-more" href="all_news.php" target="_self" id="a_1dd7_5">Read All News</a>
-                    </div>
-
-                    <div class="gdlr-core-blog-item-holder gdlr-core-js-2 clearfix" data-layout="fitrows">
-                        
-                        <!-- Latest News - Large Thumbnail -->
-                        <?php if ($latest_news_result->num_rows > 0) {
-                            $latest_news = $latest_news_result->fetch_assoc(); 
-
-                            // Extract first 50 words from content
-                            $content_words = explode(' ', strip_tags($latest_news['content']));
-                            $short_description = implode(' ', array_slice($content_words, 0, 50)) . '... ';
-                        ?>
-                            <div class="gdlr-core-item-list-wrap gdlr-core-column-30" >
-                                <div class="gdlr-core-item-list-inner gdlr-core-item-mglr" style="background-color:rgb(173, 223, 199); padding-top:20px; padding-left:20px;padding-right:20px;padding-bottom: 20px;">
-                                    <div class="gdlr-core-blog-grid">
-                                        <div class="gdlr-core-blog-thumbnail gdlr-core-media-image gdlr-core-opacity-on-hover gdlr-core-zoom-on-hover">
-                                            <a href="view_news.php?id=<?= $latest_news['id'] ?>">
-                                                <img src="upload/<?= $latest_news['image']; ?>" width="700" height="430" alt="<?= $latest_news['title'] ?>" />
-                                            </a>
-                                        </div>
-                                        <div class="gdlr-core-blog-grid-content-wrap">
-                                            <div class="gdlr-core-blog-info-wrapper gdlr-core-skin-divider">
-                                                <span class="gdlr-core-blog-info gdlr-core-blog-info-font gdlr-core-skin-caption gdlr-core-blog-info-date">
-                                                    <a href="#"><?= date('F j, Y', strtotime($latest_news['created_at'])) ?></a>
-                                                </span>
-                                                <span class="gdlr-core-blog-info gdlr-core-blog-info-font gdlr-core-skin-caption">
-                                                     BY <?= htmlspecialchars($latest_news['author']) ?>
-                                                </span>
+                                <div class="gdlr-core-pbf-column gdlr-core-column-40 gdlr-core-column-first">
+                                    <div class="gdlr-core-pbf-column-content-margin gdlr-core-js " id="div_1dd7_45" data-sync-height="height-2">
+                                        <div class="gdlr-core-pbf-column-content clearfix gdlr-core-js  gdlr-core-sync-height-content">
+                                            <div class="gdlr-core-pbf-element">
+                                                <div class="gdlr-core-blog-item gdlr-core-item-pdb clearfix  gdlr-core-style-blog-widget">
+                                                    <div class="gdlr-core-block-item-title-wrap  gdlr-core-left-align gdlr-core-item-mglr" id="div_1dd7_46">
+                                                        <div class="gdlr-core-block-item-title-inner clearfix">
+                                                            <h3 class="gdlr-core-block-item-title" id="h3_1dd7_10">News & Updates</h3>
+                                                            <div class="gdlr-core-block-item-title-divider" id="div_1dd7_47"></div>
+                                                        </div>
+                                                        <a class="gdlr-core-block-item-read-more" href="#" target="_self" id="a_1dd7_5">Read All News</a>
+                                                    </div>
+                                                    <div class="gdlr-core-blog-item-holder gdlr-core-js-2 clearfix" data-layout="fitrows">
+                                                        <div class="gdlr-core-item-list-wrap gdlr-core-column-30">
+                                                            <div class="gdlr-core-item-list-inner gdlr-core-item-mglr">
+                                                                <div class="gdlr-core-blog-grid ">
+                                                                    <div class="gdlr-core-blog-thumbnail gdlr-core-media-image  gdlr-core-opacity-on-hover gdlr-core-zoom-on-hover">
+                                                                        <a href="#">
+                                                                            <img src="upload/shutterstock_135948689-400x245.jpg" width="700" height="430" alt="" />
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="gdlr-core-blog-grid-content-wrap">
+                                                                        <div class="gdlr-core-blog-info-wrapper gdlr-core-skin-divider">
+                                                                            <span class="gdlr-core-blog-info gdlr-core-blog-info-font gdlr-core-skin-caption gdlr-core-blog-info-date">
+                                                                                <a href="#">June 6, 2016</a>
+                                                                            </span>
+                                                                            <span class="gdlr-core-blog-info gdlr-core-blog-info-font gdlr-core-skin-caption gdlr-core-blog-info-tag">
+                                                                                <a href="#" rel="tag">Admission</a>
+                                                                                <span class="gdlr-core-sep">,</span>
+                                                                                <a href="#" rel="tag">Student</a>
+                                                                            </span>
+                                                                        </div ><h3 class="gdlr-core-blog-title gdlr-core-skin-title" id="h3_1dd7_11">
+                                                                            <a href="#" >Professor Albert joint research on mobile money in Tanzania</a>
+                                                                        </h3>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="gdlr-core-item-list-wrap gdlr-core-column-30">
+                                                            <div class="gdlr-core-item-list gdlr-core-blog-widget gdlr-core-item-mglr clearfix gdlr-core-style-small">
+                                                                <div class="gdlr-core-blog-thumbnail gdlr-core-media-image  gdlr-core-opacity-on-hover gdlr-core-zoom-on-hover">
+                                                                    <a href="#">
+                                                                        <img src="upload/shutterstock_218235004-150x150.jpg" alt="" width="150" height="150" title="Student" />
+                                                                    </a>
+                                                                </div>
+                                                                <div class="gdlr-core-blog-widget-content">
+                                                                    <div class="gdlr-core-blog-info-wrapper gdlr-core-skin-divider">
+                                                                        <span class="gdlr-core-blog-info gdlr-core-blog-info-font gdlr-core-skin-caption gdlr-core-blog-info-date">
+                                                                            <a href="#">June 6, 2016</a>
+                                                                        </span>
+                                                                        <span class="gdlr-core-blog-info gdlr-core-blog-info-font gdlr-core-skin-caption gdlr-core-blog-info-tag">
+                                                                            <a href="#" rel="tag">Hot</a>
+                                                                            <span class="gdlr-core-sep">,</span>
+                                                                            <a href="#" rel="tag">Updates</a>
+                                                                        </span>
+                                                                    </div>
+                                                                    <h3 class="gdlr-core-blog-title gdlr-core-skin-title" id="h3_1dd7_12">
+                                                                        <a href="#" >A Global MBA for the next generation of business leaders</a>
+                                                                    </h3>
+                                                                </div>
+                                                            </div>
+                                                            <div class="gdlr-core-item-list gdlr-core-blog-widget gdlr-core-item-mglr clearfix gdlr-core-style-small">
+                                                                <div class="gdlr-core-blog-thumbnail gdlr-core-media-image  gdlr-core-opacity-on-hover gdlr-core-zoom-on-hover">
+                                                                    <a href="#">
+                                                                        <img src="upload/shutterstock_481869205-150x150.jpg" alt="" width="150" height="150" title="shutterstock_481869205" />
+                                                                    </a>
+                                                                </div>
+                                                                <div class="gdlr-core-blog-widget-content">
+                                                                    <div class="gdlr-core-blog-info-wrapper gdlr-core-skin-divider">
+                                                                        <span class="gdlr-core-blog-info gdlr-core-blog-info-font gdlr-core-skin-caption gdlr-core-blog-info-date">
+                                                                            <a href="#">June 6, 2016</a>
+                                                                        </span>
+                                                                        <span class="gdlr-core-blog-info gdlr-core-blog-info-font gdlr-core-skin-caption gdlr-core-blog-info-tag">
+                                                                            <a href="#" rel="tag">Admission</a>
+                                                                            <span class="gdlr-core-sep">,</span>
+                                                                            <a href="#" rel="tag">Event</a>
+                                                                        </span>
+                                                                    </div>
+                                                                    <h3 class="gdlr-core-blog-title gdlr-core-skin-title" id="h3_1dd7_13">
+                                                                        <a href="#" >Professor Tom comments on voluntary recalls by snack brands</a>
+                                                                    </h3>
+                                                                </div>
+                                                            </div>
+                                                            <div class="gdlr-core-item-list gdlr-core-blog-widget gdlr-core-item-mglr clearfix gdlr-core-style-small">
+                                                                <div class="gdlr-core-blog-thumbnail gdlr-core-media-image  gdlr-core-opacity-on-hover gdlr-core-zoom-on-hover">
+                                                                    <a href="#">
+                                                                        <img src="upload/shutterstock_361397258-150x150.jpg" alt="" width="150" height="150" title="shutterstock_361397258" />
+                                                                    </a>
+                                                                </div>
+                                                                <div class="gdlr-core-blog-widget-content">
+                                                                    <div class="gdlr-core-blog-info-wrapper gdlr-core-skin-divider">
+                                                                        <span class="gdlr-core-blog-info gdlr-core-blog-info-font gdlr-core-skin-caption gdlr-core-blog-info-date">
+                                                                            <a href="#">June 6, 2016</a>
+                                                                        </span>
+                                                                        <span class="gdlr-core-blog-info gdlr-core-blog-info-font gdlr-core-skin-caption gdlr-core-blog-info-tag">
+                                                                            <a href="#" rel="tag">Article</a>
+                                                                            <span class="gdlr-core-sep">,</span>
+                                                                            <a href="#" rel="tag">Research</a>
+                                                                        </span>
+                                                                    </div>
+                                                                    <h3 class="gdlr-core-blog-title gdlr-core-skin-title" id="h3_1dd7_14">
+                                                                        <a href="#" >Professor Alexa is interviewed about Twitter&#8217;s valuation</a>
+                                                                    </h3>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                     
+                                                    </div>
+                                                   
+                                                </div>
+                                              
                                             </div>
-                                            <h3 class="gdlr-core-blog-title gdlr-core-skin-title" id="h3_1dd7_11">
-                                                <a href="view_news.php?id=<?= $latest_news['id'] ?>"><?= $latest_news['title'] ?></a>
-                                            </h3>
-                                            <p><?= $short_description ?> <center><button  style="color: #ffffff; border:0px; decoration:none; background-color:rgb(48, 142, 98); width: 100px;; padding:auto; height:40px;"><a style="color: #ffffff; border:0px; decoration:none; background-color:rgb(48, 142, 98); width: 100px; padding:auto; height:40px;" href="view_news.php?id=<?= $latest_news['id'] ?>">Read More</a></button></center></p>
+                                       
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        <?php } ?>
-
-                        <!-- Other News - Small Thumbnails -->
-                        <div class="gdlr-core-item-list-wrap gdlr-core-column-30" style="background-color:rgb(173, 223, 199); padding-top:20px; padding-bottom:85px;">
-                            <?php if ($other_news_result->num_rows > 0) {
-                                while ($row = $other_news_result->fetch_assoc()) { ?>
-                                    <div class="gdlr-core-item-list gdlr-core-blog-widget gdlr-core-item-mglr clearfix gdlr-core-style-small">
-                                        <div class="gdlr-core-blog-thumbnail gdlr-core-media-image gdlr-core-opacity-on-hover gdlr-core-zoom-on-hover">
-                                            <a href="view_news.php?id=<?= $row['id'] ?>">
-                                                <img src="upload/<?= $row['image']; ?>" alt="<?= $row['title'] ?>" width="150" height="150" />
-                                            </a>
-                                        </div>
-                                        <div class="gdlr-core-blog-widget-content">
-                                            <div class="gdlr-core-blog-info-wrapper gdlr-core-skin-divider">
-                                                <span class="gdlr-core-blog-info gdlr-core-blog-info-font gdlr-core-skin-caption gdlr-core-blog-info-date">
-                                                    <a href="#"><?= date('F j, Y', strtotime($row['created_at'])) ?></a>
-                                                </span>
-                                                <span class="gdlr-core-blog-info gdlr-core-blog-info-font gdlr-core-skin-caption">
-                                                     BY <?= htmlspecialchars($row['author']) ?>
-                                                </span>
-                                            </div>
-                                            <h3 class="gdlr-core-blog-title gdlr-core-skin-title" id="h3_1dd7_12">
-                                                <a href="view_news.php?id=<?= $row['id'] ?>"><?= $row['title'] ?></a>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                <?php } 
-                            } ?>
-                            <center><button style="color:#ffffff; border:0px; background-color:rgb(48, 142, 98); width: 100px;; padding:auto; padding: top 40px;;height:40px;"><a style="color: #ffffff;" href="blog.php">Read all News</a></button></center>
-                        </div><br />
-                                
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<?php
-// Close connection
-$conn->close();
-?>
                                 <div class="gdlr-core-pbf-column gdlr-core-column-20" id="gdlr-core-column-8">
                                     <div class="gdlr-core-pbf-column-content-margin gdlr-core-js  gdlr-core-column-extend-right" id="div_1dd7_48" data-sync-height="height-2">
                                         <div class="gdlr-core-pbf-background-wrap">
@@ -671,105 +658,66 @@ $conn->close();
                         </div>
                     </div>
                     <div class="gdlr-core-blog-item-holder gdlr-core-js-2 clearfix" data-layout="fitrows">
-                 <?php
-                 include "db_connect.php";   // Fetch the most recent research
-$query = "SELECT * FROM research_activities ORDER BY date DESC LIMIT 1";
-$result = $conn->query($query);
-
-if ($result->num_rows > 0) {
-    $row = $result->fetch_assoc();
-    $research_title = htmlspecialchars($row['title']);
-    $research_date = date('F j, Y', strtotime($row['date']));
-    $research_image = !empty($row['thumbnail']) ? 'uploads/' . htmlspecialchars($row['thumbnail']) : 'images/default-research.jpg';
-    $research_id = $row['id'];
-} else {
-    // Default values if no research is found
-    $research_title = "No recent research available";
-    $research_date = date('F j, Y');
-    $research_image = "images/default-research.jpg";
-    $research_id = "#";
-}?>
-                    <div class="gdlr-core-item-list-wrap gdlr-core-column-30">
-    <div class="gdlr-core-item-list-inner gdlr-core-item-mglr">
-        <div class="gdlr-core-blog-grid">
-            <div class="gdlr-core-blog-thumbnail gdlr-core-media-image gdlr-core-opacity-on-hover gdlr-core-zoom-on-hover" 
-                 style="max-width: 700px; min-height: 430px;">
-                <a href="view_research.php?id=<?php echo $research_id; ?>">
-                    <img src="<?php echo $research_image; ?>" style="width: inherit; height: inherit;" alt="Research Image" />
-                </a>
-            </div>
-            <div class="gdlr-core-blog-grid-content-wrap">
-                <div class="gdlr-core-blog-info-wrapper gdlr-core-skin-divider">
-                    <span class="gdlr-core-blog-info gdlr-core-blog-info-font gdlr-core-skin-caption gdlr-core-blog-info-date">
-                        <a href="view_research.php?id=<?php echo $research_id; ?>" class="text-white"><?php echo $research_date; ?></a>
-                    </span>
-                    <span class="gdlr-core-blog-info gdlr-core-blog-info-font gdlr-core-skin-caption gdlr-core-blog-info-tag">
-                        <a href="view_research.php?id=<?php echo $research_id; ?>" rel="tag" class="text-white">Research</a>
-                    </span>
-                </div>
-                <h3 class="gdlr-core-blog-title gdlr-core-skin-title" style="font-size: 19px; font-weight: 700; letter-spacing: 0px;">
-                    <a href="view_research.php?id=<?php echo $research_id; ?>" class="text-white"><?php echo $research_title; ?></a>
-                </h3>
-            </div>
-        </div>
-    </div>
-</div>
+                      
+                        <div class="gdlr-core-item-list-wrap gdlr-core-column-30">
+                            <div class="gdlr-core-item-list-inner gdlr-core-item-mglr">
+                                <div class="gdlr-core-blog-grid ">
+                                    <div class="gdlr-core-blog-thumbnail gdlr-core-media-image  gdlr-core-opacity-on-hover gdlr-core-zoom-on-hover" style="max-width: 700px; min-height: 430px;">
+                                        <a href="#"><img src="images/research1.jpg" style="width: inherit; height: inherit;"  alt="" /></a>
+                                    </div>
+                                    <div class="gdlr-core-blog-grid-content-wrap">
+                                        <div class="gdlr-core-blog-info-wrapper gdlr-core-skin-divider"><span class="gdlr-core-blog-info gdlr-core-blog-info-font gdlr-core-skin-caption gdlr-core-blog-info-date"><a href="#" class="text-white">June 6, 2016</a></span><span class="gdlr-core-blog-info gdlr-core-blog-info-font gdlr-core-skin-caption gdlr-core-blog-info-tag"><a href="#" rel="tag" class="text-white">Research</a><span class="gdlr-core-sep">,</span> <a href="#" rel="tag" class="text-white">Event</a></span>
+                                        </div>
+                                        <h3 class="gdlr-core-blog-title gdlr-core-skin-title" style="font-size: 19px ;font-weight: 700 ;letter-spacing: 0px ;"><a href="#" id="alink"  class="text-white">AFUED  Professor bags Malaria Research award</a></h3></div>
+                                </div>
+                            </div>
+                        </div>
 
 
                         <div class="gdlr-core-item-list-wrap gdlr-core-column-30">
-                           
+                            <div class="gdlr-core-item-list gdlr-core-blog-widget gdlr-core-item-mglr clearfix gdlr-core-style-small">
+                                <div class="gdlr-core-blog-thumbnail gdlr-core-media-image  gdlr-core-opacity-on-hover gdlr-core-zoom-on-hover" style="max-width: 80px; min-height: 80px;">
+                                    <a href="#"><img src="images/research2.jpg" alt="" style="width: inherit; height: inherit;" title="" /></a>
+                                </div>
+                                <div class="gdlr-core-blog-widget-content">
+                                    <div class="gdlr-core-blog-info-wrapper gdlr-core-skin-divider"><span class="gdlr-core-blog-info gdlr-core-blog-info-font gdlr-core-skin-caption gdlr-core-blog-info-date"><a href="#" class="text-white">June 6, 2016</a></span><span class="gdlr-core-blog-info gdlr-core-blog-info-font gdlr-core-skin-caption gdlr-core-blog-info-tag"><a href="#" rel="tag" class="text-white">Hot</a><span class="gdlr-core-sep">,</span> <a href="#" rel="tag" class="text-white">Updates</a></span>
+                                    </div>
+                                    <h3 class="gdlr-core-blog-title gdlr-core-skin-title" style="font-size: 16px ;font-weight: 700 ;letter-spacing: 0px ;"><a href="#" id="alink" class="text-white" >AFUED signs MoU with WACP</a></h3></div>
+                            </div>
 
-                           
+                            <div class="gdlr-core-item-list gdlr-core-blog-widget gdlr-core-item-mglr clearfix gdlr-core-style-small">
+                                <div class="gdlr-core-blog-thumbnail gdlr-core-media-image  gdlr-core-opacity-on-hover gdlr-core-zoom-on-hover" style="max-width: 80px; min-height: 80px;">
+                                    <a href="#"><img src="images/research3.jpeg" alt="" style="width: inherit; height: inherit;" title="" /></a>
+                                </div>
+                                <div class="gdlr-core-blog-widget-content">
+                                    <div class="gdlr-core-blog-info-wrapper gdlr-core-skin-divider"><span class="gdlr-core-blog-info gdlr-core-blog-info-font gdlr-core-skin-caption gdlr-core-blog-info-date"><a href="#" class="text-white">June 6, 2016</a></span><span class="gdlr-core-blog-info gdlr-core-blog-info-font gdlr-core-skin-caption gdlr-core-blog-info-tag"><a href="#" rel="tag" class="text-white">Research</a><span class="gdlr-core-sep">,</span> <a href="#" rel="tag" class="text-white">Event</a></span>
+                                    </div>
+                                    <h3 class="gdlr-core-blog-title gdlr-core-skin-title" style="font-size: 16px ;font-weight: 700 ;letter-spacing: 0px ;"><a href="#" id="alink" class="text-white">Reducing the burden of Non-Communicable diseases in Nigeria</a></h3></div>
+                            </div>
 
-                          <?php
-include 'db_connect.php'; // Include database connection
+                            <div class="gdlr-core-item-list gdlr-core-blog-widget gdlr-core-item-mglr clearfix gdlr-core-style-small">
+                                <div class="gdlr-core-blog-thumbnail gdlr-core-media-image  gdlr-core-opacity-on-hover gdlr-core-zoom-on-hover" style="max-width: 80px; min-height: 80px;">
+                                    <a href="#"><img src="images/research2.jpg" alt="" style="width: inherit; height: inherit;" title="" /></a>
+                                </div>
+                                <div class="gdlr-core-blog-widget-content">
+                                    <div class="gdlr-core-blog-info-wrapper gdlr-core-skin-divider"><span class="gdlr-core-blog-info gdlr-core-blog-info-font gdlr-core-skin-caption gdlr-core-blog-info-date"><a href="#" class="text-white">June 6, 2016</a></span><span class="gdlr-core-blog-info gdlr-core-blog-info-font gdlr-core-skin-caption gdlr-core-blog-info-tag"><a href="#" class="text-white" rel="tag">Hot</a><span class="gdlr-core-sep">,</span> <a href="#" class="text-white" rel="tag">Research</a></span>
+                                    </div>
+                                    <h3 class="gdlr-core-blog-title gdlr-core-skin-title" style="font-size: 16px ;font-weight: 700 ;letter-spacing: 0px ;"><a href="#" id="alink" class="text-white" >AFUED signs MoU with WACP</a></h3></div>
+                            </div>
 
-// Fetch the next four most recent research entries (excluding the most recent one)
-$query = "SELECT * FROM research_activities ORDER BY date DESC LIMIT 1, 4"; // Skip the first one, get next 4
-$result = $conn->query($query);
-
-if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-        $research_title = htmlspecialchars($row['title']);
-        $research_date = date('F j, Y', strtotime($row['date']));
-        $research_image = !empty($row['thumbnail']) ? 'uploads/' . htmlspecialchars($row['thumbnail']) : 'images/default-research.jpg';
-        $research_id = $row['id'];
-?>
-
-<div class="gdlr-core-item-list gdlr-core-blog-widget gdlr-core-item-mglr clearfix gdlr-core-style-small">
-    <div class="gdlr-core-blog-thumbnail gdlr-core-media-image gdlr-core-opacity-on-hover gdlr-core-zoom-on-hover" 
-         style="max-width: 80px; min-height: 80px;">
-        <a href="view_research.php?id=<?php echo $research_id; ?>">
-            <img src="<?php echo $research_image; ?>" alt="Research Image" style="width: inherit; height: inherit;" title="" />
-        </a>
-    </div>
-    <div class="gdlr-core-blog-widget-content">
-        <div class="gdlr-core-blog-info-wrapper gdlr-core-skin-divider">
-            <span class="gdlr-core-blog-info gdlr-core-blog-info-font gdlr-core-skin-caption gdlr-core-blog-info-date">
-                <a href="view_research.php?id=<?php echo $research_id; ?>" class="text-white"><?php echo $research_date; ?></a>
-            </span>
-            <span class="gdlr-core-blog-info gdlr-core-blog-info-font gdlr-core-skin-caption gdlr-core-blog-info-tag">
-                <a href="view_research.php?id=<?php echo $research_id; ?>" rel="tag" class="text-white">Hot</a>
-                <span class="gdlr-core-sep">,</span> 
-                <a href="view_research.php?id=<?php echo $research_id; ?>" rel="tag" class="text-white">Research</a>
-            </span>
-        </div>
-        <h3 class="gdlr-core-blog-title gdlr-core-skin-title" style="font-size: 16px; font-weight: 700; letter-spacing: 0px;">
-            <a href="view_research.php?id=<?php echo $research_id; ?>" class="text-white"><?php echo $research_title; ?></a>
-        </h3>
-    </div>
-</div>
-
-<?php
-    }
-} else {
-    echo "<p class='text-white'>No recent research available.</p>";
-}
-?>
+                            <div class="gdlr-core-item-list gdlr-core-blog-widget gdlr-core-item-mglr clearfix gdlr-core-style-small">
+                                <div class="gdlr-core-blog-thumbnail gdlr-core-media-image  gdlr-core-opacity-on-hover gdlr-core-zoom-on-hover" style="max-width: 80px; min-height: 80px;">
+                                    <a href="#"><img src="images/research2.jpg" alt="" style="width: inherit; height: inherit;" title="" /></a>
+                                </div>
+                                <div class="gdlr-core-blog-widget-content">
+                                    <div class="gdlr-core-blog-info-wrapper gdlr-core-skin-divider"><span class="gdlr-core-blog-info gdlr-core-blog-info-font gdlr-core-skin-caption gdlr-core-blog-info-date"><a href="#" class="text-white">June 6, 2016</a></span><span class="gdlr-core-blog-info gdlr-core-blog-info-font gdlr-core-skin-caption gdlr-core-blog-info-tag"><a href="#" class="text-white" rel="tag">Hot</a><span class="gdlr-core-sep">,</span> <a href="#" class="text-white" rel="tag">Research</a></span>
+                                    </div>
+                                    <h3 class="gdlr-core-blog-title gdlr-core-skin-title" style="font-size: 16px ;font-weight: 700 ;letter-spacing: 0px ;"><a href="#" id="alink" class="text-white" >AFUED signs MoU with WACP</a></h3></div>
+                            </div>
 
                       
                             <a class="gdlr-core-block-item-read-more readmore" 
-                            href="researchs.php" target="_self" 
+                            href="#" target="_self" 
                             style="width: 200px; text-align: center; color: white; display: block; margin: 0 auto; padding: 10px; background-color: white; color: #1F2B44;">
                             Read More
                          </a>
@@ -835,7 +783,7 @@ if ($result->num_rows > 0) {
                     <div class="gdlr-core-pbf-wrapper " id="div_1dd7_91">
                         <div class="gdlr-core-pbf-background-wrap"></div>
                         <div class="gdlr-core-pbf-wrapper-content gdlr-core-js ">
-                            <div class="gdlr-core-pbf-wrapper-container clearfix gdlr-core-container" id="event" >
+                            <div class="gdlr-core-pbf-wrapper-container clearfix gdlr-core-container" >
                                 
                                 <div class="gdlr-core-pbf-column gdlr-core-column-20 gdlr-core-column-first">
                                     <div class="gdlr-core-pbf-column-content-margin gdlr-core-js ">
@@ -882,46 +830,81 @@ if ($result->num_rows > 0) {
                                                         </div>
                                                     </div>
                                                     <div class="gdlr-core-event-item-holder clearfix">
-                                                        <?php                                                
-                                                                // Fetch upcoming events from the database
-$query = "SELECT title, event_date, event_time, event_venue FROM events ORDER BY event_date DESC LIMIT 3";
-$result = $conn->query($query);
-                                                                  while ($row = $result->fetch_assoc()) {
-                                                                 // Extract date and format it for display
-                                                                  $eventDate = date("d", strtotime($row['event_date'])); // Extracts the day
-                                                                  $eventMonth = date("M", strtotime($row['event_date'])); // Extracts the month
-                                                                  $eventTime = htmlspecialchars($row['event_time']);
-                                                                  $eventTitle = htmlspecialchars($row['title']);
-                                                                  $eventVenue = htmlspecialchars($row['event_venue']);
-
-                                                                  echo '
-                                                                  <div class="gdlr-core-event-item-listgdlr-core-style-widget gdlr-core-item-pdlr  clearfix" id="div_1dd7_97"">
-                                                                          <span class="gdlr-core-event-item-info gdlr-core-type-start-date-month">
-                                                                            <span class="gdlr-core-date">'.$eventDate.'</span>
-                                                                              <span class="gdlr-core-month">'.$eventMonth.'</span>
-                                                                          </span>
-                                                                          <div class="gdlr-core-event-item-content-wrap">
-                                                                              <h3 class="gdlr-core-event-item-title">
-                                                                                  <a href="#">'.$eventTitle.'</a>
-                                                                              </h3>
-                                                                                  <div class="gdlr-core-event-item-info-wrap">
-                                                                                  <span class="gdlr-core-event-item-info gdlr-core-type-time">
-                                                                                      <span class="gdlr-core-head">
-                                                                                          <i class="icon_clock_alt"></i>
-                                                                                      </span>
-                                                                                      <span class="gdlr-core-tail">'.$eventTime.'</span>
-                                                                                  </span>
-                                                                                  <span class="gdlr-core-event-item-info gdlr-core-type-location">
-                                                                                      <span class="gdlr-core-head">
-                                                                                          <i class="icon_pin_alt"></i>
-                                                                                      </span>
-                                                                                    <span class="gdlr-core-tail">'.$eventVenue.'</span>
-                                                                                  </span>
-                                                                              </div>
-                                                                          </div>
-                                                                      </div>';
-                                                              }
-                                                              ?>
+                                                        <div class="gdlr-core-event-item-list gdlr-core-style-widget gdlr-core-item-pdlr  clearfix" id="div_1dd7_97">
+                                                            <span class="gdlr-core-event-item-info gdlr-core-type-start-date-month">
+                                                                <span class="gdlr-core-date" >07</span>
+                                                                <span class="gdlr-core-month">Jan</span>
+                                                            </span>
+                                                            <div class="gdlr-core-event-item-content-wrap">
+                                                                <h3 class="gdlr-core-event-item-title">
+                                                                    <a href="#" >Reunion Event : Kingster’s Alumni Golf Tour</a>
+                                                                </h3>
+                                                                <div class="gdlr-core-event-item-info-wrap">
+                                                                    <span class="gdlr-core-event-item-info gdlr-core-type-time">
+                                                                        <span class="gdlr-core-head" >
+                                                                            <i class="icon_clock_alt" ></i>
+                                                                        </span>
+                                                                        <span class="gdlr-core-tail">7:00 am - 11:30 pm</span>
+                                                                    </span>
+                                                                    <span class="gdlr-core-event-item-info gdlr-core-type-location">
+                                                                        <span class="gdlr-core-head" >
+                                                                            <i class="icon_pin_alt" ></i>
+                                                                        </span>
+                                                                        <span class="gdlr-core-tail">Kingster Grand Hall</span>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="gdlr-core-event-item-list gdlr-core-style-widget gdlr-core-item-pdlr  clearfix" id="div_1dd7_98">
+                                                            <span class="gdlr-core-event-item-info gdlr-core-type-start-date-month">
+                                                                <span class="gdlr-core-date" >01</span>
+                                                                <span class="gdlr-core-month">Jan</span>
+                                                            </span>
+                                                            <div class="gdlr-core-event-item-content-wrap">
+                                                                <h3 class="gdlr-core-event-item-title">
+                                                                    <a href="#" >AFUED Alumni Hot Air Ballon Trip in Turkey</a>
+                                                                </h3>
+                                                                <div class="gdlr-core-event-item-info-wrap">
+                                                                    <span class="gdlr-core-event-item-info gdlr-core-type-time">
+                                                                        <span class="gdlr-core-head" >
+                                                                            <i class="icon_clock_alt" ></i>
+                                                                        </span>
+                                                                        <span class="gdlr-core-tail">10:00 am - 4:30 pm</span>
+                                                                    </span>
+                                                                    <span class="gdlr-core-event-item-info gdlr-core-type-location">
+                                                                        <span class="gdlr-core-head" >
+                                                                            <i class="icon_pin_alt" ></i>
+                                                                        </span>
+                                                                        <span class="gdlr-core-tail">Kingster Grand Hall</span>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="gdlr-core-event-item-list gdlr-core-style-widget gdlr-core-item-pdlr  clearfix" id="div_1dd7_99">
+                                                            <span class="gdlr-core-event-item-info gdlr-core-type-start-date-month">
+                                                                <span class="gdlr-core-date" >17</span>
+                                                                <span class="gdlr-core-month">Dec</span>
+                                                            </span>
+                                                            <div class="gdlr-core-event-item-content-wrap">
+                                                                <h3 class="gdlr-core-event-item-title">
+                                                                    <a href="#" >Fintech &#038; Key Investment Conference</a>
+                                                                </h3>
+                                                                <div class="gdlr-core-event-item-info-wrap">
+                                                                    <span class="gdlr-core-event-item-info gdlr-core-type-time">
+                                                                        <span class="gdlr-core-head" >
+                                                                            <i class="icon_clock_alt" ></i>
+                                                                        </span>
+                                                                        <span class="gdlr-core-tail">1:00 pm - 5:00 pm</span>
+                                                                    </span>
+                                                                    <span class="gdlr-core-event-item-info gdlr-core-type-location">
+                                                                        <span class="gdlr-core-head" >
+                                                                            <i class="icon_pin_alt" ></i>
+                                                                        </span>
+                                                                        <span class="gdlr-core-tail">Kingster Grand Hall</span>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -932,11 +915,10 @@ $result = $conn->query($query);
                                     </div>
                                 </div>
                                 
-                                
                                 <div class="gdlr-core-pbf-column gdlr-core-column-20" data-skin="Newsletter">
                                 <div class="gdlr-core-block-item-title-wrap  gdlr-core-left-align gdlr-core-item-mglr" id="div_1dd7_95">
                                                         <div class="gdlr-core-block-item-title-inner clearfix">
-                                                            <h3 class="gdlr-core-block-item-title" id="h3_1dd7_32">Location</h3>
+                                                            <h3 class="gdlr-core-block-item-title" id="h3_1dd7_32">Map</h3>
                                                             <div class="gdlr-core-block-item-title-divider" id="div_1dd7_96"></div>
                                                         </div>
                                                     </div>

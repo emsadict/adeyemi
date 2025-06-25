@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-$conn->close();
+
 ?>
 
 
@@ -119,7 +119,7 @@ tinymce.init({
             </div>
 
             <footer>
-                <?php  include "footer.php";?>
+                <?php  include "footer.php"; $conn->close();?>
             </footer>
         </div>
     </div>
