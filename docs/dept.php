@@ -18,7 +18,8 @@ if (isset($_GET['dept_name'])) {
             $dept_name=htmlspecialchars($row['dept_name']);
             $dept_image=htmlspecialchars($row['dept_image']);
             $dept_head_pic=htmlspecialchars($row['dept_head_pic']);
-           // $dept_head_pic= $row['$dept_head_pic'];
+           $dept_email= htmlspecialchars($row['dept_email']);
+           $dept_phone= htmlspecialchars($row['dept_phone']);
             $dept_head=htmlspecialchars($row['dept_head']);
             $dept_head_title=htmlspecialchars($row['dept_head_title']);
             $dept_head_desig=htmlspecialchars($row['dept_head_desig']);
@@ -29,6 +30,38 @@ if (isset($_GET['dept_name'])) {
 } else {
     echo "<p>Department name is missing in the URL.</p>";
 }
+
+// Query to fetch details from dept_detail
+$dept_wel = $dept_progs = $dept_objs = $fallback_msg = "";
+
+$sql1 = "SELECT * FROM dept_detail WHERE dept_name = ?";
+$stmt = $conn->prepare($sql1);
+$stmt->bind_param("s", $dept_name);
+$stmt->execute();
+$result1 = $stmt->get_result();
+
+if ($result1->num_rows > 0) {
+    $row1 = $result1->fetch_assoc();
+
+    $dept_objs = !empty(trim($row1['dept_objective']))
+        ? nl2br(htmlspecialchars($row1['dept_objective']))
+        : "<em>No objective provided for <strong>" . htmlspecialchars($dept_name) . "</strong>.</em>";
+
+    $dept_wel = !empty(trim($row1['welcome_message']))
+        ? nl2br(htmlspecialchars($row1['welcome_message']))
+        : "<em>No welcome message found for <strong>" . htmlspecialchars($dept_name) . "</strong>.</em>";
+
+    $dept_progs = !empty(trim($row1['programmes']))
+        ? nl2br(htmlspecialchars($row1['programmes']))
+        : "<em>No programme available for <strong>" . htmlspecialchars($dept_name) . "</strong>.</em>";
+
+} else {
+    $fallback_msg = "<p><em>No department details found for <strong>" . htmlspecialchars($dept_name) . "</strong>.</em></p>";
+}
+
+$stmt->close();
+
+
 ?>
 
 <!DOCTYPE html>
@@ -188,7 +221,7 @@ if (isset($_GET['dept_name'])) {
                             <div class="gdlr-core-pbf-column gdlr-core-column-80 gdlr-core-column-first">
                                 <div class="gdlr-core-tab-item gdlr-core-js gdlr-core-item-pdb  gdlr-core-left-align gdlr-core-tab-style1-vertical gdlr-core-item-pdlr">
                                 <div class="gdlr-core-divider-item gdlr-core-divider-item-normal gdlr-core-item-pdlr gdlr-core-center-align">
-                                <div class="gdlr-core-divider-line gdlr-core-skin-divider" style="border-color:rgb(10, 3, 71) ;border-bottom-width: 3px ;"></div>
+                                <div class="gdlr-core-divider-line gdlr-core-skin-divider" style="border-color:rgb(3, 71, 52) ;border-bottom-width: 3px ;"></div>
                                 </div>
                                         <div class="gdlr-core-tab-item-wrap">
                                             <div class="gdlr-core-tab-item-title-wrap clearfix gdlr-core-title-font">
@@ -196,7 +229,7 @@ if (isset($_GET['dept_name'])) {
                                                 <div class="gdlr-core-tab-item-title " data-tab-id="2">Objectives</div>
                                                 <div class="gdlr-core-tab-item-title " data-tab-id="3">Programmes</div>
                                                 <div class="gdlr-core-tab-item-title " data-tab-id="4">Staff Directory</div>
-                                                <div class="gdlr-core-tab-item-title " data-tab-id="6">Contact Details</div>
+                                                <div class="gdlr-core-tab-item-title " data-tab-id="5">Contact Details</div>
                                             </div>
                                             <div class="gdlr-core-tab-item-content-wrap clearfix">
                                                 <div class="gdlr-core-tab-item-content  gdlr-core-active" data-tab-id="1" >
@@ -204,19 +237,17 @@ if (isset($_GET['dept_name'])) {
                                                         <div class="gdlr-core-title-item-title-wrap ">
                                                             <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " id="h3_1dd7_25">Welcome<span class="gdlr-core-title-item-title-divider gdlr-core-skin-divider" ></span></h3></div>
                                                     </div>
-                                                    <p style="text-align: justify;">In the university context, the academic community bears substantial responsibility for leading impactful research endeavours. 
-                                                                The success of such initiatives hinges on various factors, notably access to accurate information, an unwavering commitment to instigate change, and the existence of a robust institutional research support system.
-                                                                Acknowledging the pivotal role of these elements in fostering research excellence, the establishment of the Central Office for Research and Development (CORD) became imperative. CORD's primary mission is to provide crucial support to researchers, 
-                                                                nurture their capacity development, and advocate for the adoption of optimal academic practices. Additionally, the Center plays a central role in advancing societal development through a diverse array of research initiatives.
-
-                                                       <p style="text-align: justify;">  Founded with staunch support from the university and fueled by the dedicated commitment of our accomplished staff, 
-                                                                the Center is steadfast in its dedication to overarching objectives that underscore its commitment to research and development. 
-                                                                Foremost among these objectives is providing essential support to researchers. CORD recognizes that the foundation of 
-                                                                impactful research lies in the resources and guidance available to scholars. 
-                                                                Consequently, the Center is committed to ensuring researchers have access to accurate information, cutting-edge tools, 
-                                                                and the necessary infrastructure for groundbreaking research..</p>
-                                                      
-                                                      
+                                                    <p style="text-align: justify;">
+                                                          <?php    
+                                                                if (!empty($fallback_msg)) {
+                                                                    // No department detail found at all
+                                                                    echo $fallback_msg;
+                                                                } else {
+                                                                    echo "<h4></h4>$dept_wel";
+                                                                  
+                                                                }
+                                                                ?>        
+                                                    </p> 
                                                     
                                                 </div>
                                                 <div class="gdlr-core-tab-item-content " data-tab-id="2" >
@@ -226,8 +257,16 @@ if (isset($_GET['dept_name'])) {
                                                     </div>
                                                     <p style="text-align: justify;">
 
-                                                       <p style="text-align: justify;"> </p>
-                                                       <p style="text-align: justify;">.</p>
+                                                         <?php    
+                                                                if (!empty($fallback_msg)) {
+                                                                    // No department detail found at all
+                                                                    echo $fallback_msg;
+                                                                } else {
+                                                                  //  echo "<h4>Welcome Message</h4>$dept_wel";
+                                                                  //  echo "<h4>Programmes</h4>$dept_progs";
+                                                                    echo "<h4></h4>$dept_objs";
+                                                                }
+                                                                ?>     
                                                        </p>
                                                 </div>
                                                 <div class="gdlr-core-tab-item-content " data-tab-id="3" >
@@ -235,30 +274,19 @@ if (isset($_GET['dept_name'])) {
                                                         <div class="gdlr-core-title-item-title-wrap ">
                                                             <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " id="h3_1dd7_26">Programmes <span class="gdlr-core-title-item-title-divider gdlr-core-skin-divider" ></span></h3></div>
                                                     </div>
-                                                    <p style="text-align: justify;">The Tertiary Education Trust Fund (TETFund) is calling for application for its National Research Fund (NRF) 2020 grants cycle. Up to N7.5 billion will be disbursed for the current 2020 NRF Grants cycle.
+                                                    <p style="text-align: justify;">
+                                                     <?php    
+                                                                if (!empty($fallback_msg)) {
+                                                                    // No department detail found at all
+                                                                    echo $fallback_msg;
+                                                                } else {
+                                                                   // echo "<h4>Welcome Message</h4>$dept_wel";
+                                                                    echo "<h4></h4>$dept_progs";
+                                                                   // echo "<h4>Objective</h4>$dept_objs";
+                                                                }
+                                                                ?>     
+                                                    </p>
 
-                                                                Assessing the 2020 NRF grants involves a twostep process
-
-                                                                1. Submission of Concept-Notes by Principal Investigators (PI) of the proposed research projects,
-
-                                                                2. Submission of full proposals of research projects based on concept notes that been evaluated and considered fundable.
-
-                                                                Deadline for submission of concept notes is 21 July 2021
-
-                                                                For more information on eligibility, thematic areas and how to apply, download the Grant Guide
-
- 
-                                                                Africa Research Excellence Fund Research Development Fellowship 2020
-
-                                                                The AREF Research Development Fellowship (RDF) Programme is being launched to support African researchers who are working on important challenges for human health in Africa. The fellowship offers a three (3) to nine (9)-month placement at a leading research institution in Europe or Africa, with additional support of up to a maximum of £38,000 at the home institution of the fellows before and after the placement,. 
-
-                                                                The fellowship is open to research active post-doctoral scientists and clinicians who are nationals of and employed in Sub-Saharan Africa who were awarded their doctorate after May 2014; and clinicians without a doctorate but who have a research-relevant Master’s degree and at least two and up to seven years active research experience.  
-
-                                                                Deadline for application is 12:00 GMT 23 September 2020. 
-
-                                                                For information on how to apply, download the Grant Guide
-
-                                                                The UniMed Office of Research Innovation and Development can provide guidance to research teams in the development of their concept notes.  For enquiries contact research@unimed.edu.ng</p>
                                                     <p style="text-align: justify;"></p>
                                                     
                                                 </div>
@@ -323,35 +351,16 @@ if (!empty($department)) {
                                                         <div class="gdlr-core-title-item-title-wrap ">
                                                             <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " id="h3_1dd7_28">Contact<span class="gdlr-core-title-item-title-divider gdlr-core-skin-divider" ></span></h3></div>
                                                     </div>
-                                                    <p style="text-align: justify;">Contact
+                                                    <p style="text-align: justify;">
                                                         
 
-                                                                   research@unimed.edu.ng<br/>
-
-                                                                   cord@unimed.edu.ng<br/>
-
-                                                                   dcord@unimed.edu.ng<br/>
+                                                                <?php  echo $dept_email; ?> <br/>
+                                                                     <?php    echo $dept_phone; ?>
 
                                                     </p>
                                                        
                                                 </div>
-                                                <div class="gdlr-core-tab-item-content " data-tab-id="6" >
-                                                    <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix  gdlr-core-left-align gdlr-core-title-item-caption-top">
-                                                        <div class="gdlr-core-title-item-title-wrap ">
-                                                            <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " id="h3_1dd7_28">Contact<span class="gdlr-core-title-item-title-divider gdlr-core-skin-divider" ></span></h3></div>
-                                                    </div>
-                                                    <p style="text-align: justify;">Contact
-                                                        
-
-                                                                   research@unimed.edu.ng<br/>
-
-                                                                   cord@unimed.edu.ng<br/>
-
-                                                                   dcord@unimed.edu.ng<br/>
-
-                                                    </p>
-                                                       
-                                                </div>
+                                              
                                             </div>
                                         </div>
                                     </div>

@@ -23,6 +23,24 @@ if (isset($_GET['id'])) {
     echo "<p>Invalid Page ID.</p>";
     exit;
 }
+// Step 2: Fetch from page_details using same pg_id
+$detailQuery = "SELECT * FROM page_details WHERE pg_id = ?";
+$detailStmt = $conn->prepare($detailQuery);
+$detailStmt->bind_param("i", $pg_id);
+$detailStmt->execute();
+$detailResult = $detailStmt->get_result();
+
+$pg_intro = $pg_objective = $pg_phone = $pg_email = "<em>Not available</em>";
+
+if ($detailResult->num_rows > 0) {
+    $detail = $detailResult->fetch_assoc();
+    $pg_intro     = !empty(trim($detail['pg_intro']))     ? nl2br(htmlspecialchars($detail['pg_intro']))     : $pg_intro;
+    $pg_objective = !empty(trim($detail['pg_objective'])) ? nl2br(htmlspecialchars($detail['pg_objective'])) : $pg_objective;
+    $pg_phone     = !empty(trim($detail['pg_phone']))     ? htmlspecialchars($detail['pg_phone'])            : $pg_phone;
+    $pg_email     = !empty(trim($detail['pg_email']))     ? htmlspecialchars($detail['pg_email'])            : $pg_email;
+}
+
+$detailStmt->close();
 ?>
 
 
@@ -30,7 +48,52 @@ if (isset($_GET['id'])) {
 <html lang="en-US" class="no-js">
 <head>
    <?php include "head.php"; ?>
-
+<style>
+    .staff-container {
+        display: flex;
+        width: 200px;
+        flex-direction: column;
+        gap: 20px; /* Space between rows */
+    }
+    .staff-row {
+        display: flex;
+        align-items: center;
+        background:rgba(187, 244, 225, 0.61);
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    .staff-image img {
+        border-radius: 50%;
+        border: 5px solid rgb(10, 81, 59);
+        margin-right: 20px;
+    }
+    .staff-details {
+        flex: 1; /* Takes the remaining space */
+    }
+    .staff-details h3 {
+        margin: 0;
+        font-size: 20px;
+        color: #333;
+    }
+    .staff-details p {
+        margin: 5px 0;
+        font-size: 16px;
+        color: #555;
+    }
+    .more-btn {
+        display: inline-block;
+        padding: 8px 12px;
+        background: #2eca9b;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        margin-top: 10px;
+    }
+    .more-btn:hover {
+        background: #25a87e;
+    }
+</style>
 </head>
 
 <body class="home page-template-default page page-id-2039 gdlr-core-body woocommerce-no-js tribe-no-js kingster-body kingster-body-front kingster-full  kingster-with-sticky-navigation  kingster-blockquote-style-1 gdlr-core-link-to-lightbox">
@@ -104,9 +167,9 @@ if (isset($_GET['id'])) {
                                                     </div> 
                                                     <p style="margin-bottom:5px;font-size: 20px ;font-weight: 400 ;letter-spacing: 0px ;text-transform: none ;color:rgb(15, 13, 41) ; text-align:center;"><?php echo htmlspecialchars($page['pg_head_name']); ?>
                                                    </p>
-                                                        <p style="margin-bottom: 5px;font-size: 18px ;font-weight: 200 ;color:rgb(15, 13, 41) ; text-align:center;"><?php echo htmlspecialchars($page['pg_h_qualification']); ?>
+                                                        <p style="margin-bottom: 5px;font-size: 18px ;font-weight: 200 ;color:rgb(9, 37, 21) ; text-align:center;"><?php echo htmlspecialchars($page['pg_h_qualification']); ?>
                                                     </p> 
-                                                        <p style="font-size: 18px ;font-weight: 200 ;color:rgb(15, 13, 41) ; text-align:center;"><?php echo htmlspecialchars($page['pg_head_title']); ?>
+                                                        <p style="font-size: 18px ;font-weight: 200 ;color:rgb(13, 41, 31) ; text-align:center;"><?php echo htmlspecialchars($page['pg_head_title']); ?>
                                                     </p>
                                             </div>
                                         </div>
@@ -142,9 +205,7 @@ if (isset($_GET['id'])) {
                                             <div class="gdlr-core-tab-item-title-wrap clearfix gdlr-core-title-font">
                                                 <div class="gdlr-core-tab-item-title  gdlr-core-active" data-tab-id="1">Introduction</div>
                                                 <div class="gdlr-core-tab-item-title " data-tab-id="2">Objectives</div>
-                                                <div class="gdlr-core-tab-item-title " data-tab-id="3">Grant Opportunities</div>
                                                 <div class="gdlr-core-tab-item-title " data-tab-id="4">Staff Directory</div>
-                                                <div class="gdlr-core-tab-item-title " data-tab-id="5">TETFUND</div>
                                                 <div class="gdlr-core-tab-item-title " data-tab-id="6">Contact Details</div>
                                             </div>
                                             <div class="gdlr-core-tab-item-content-wrap clearfix">
@@ -153,28 +214,9 @@ if (isset($_GET['id'])) {
                                                         <div class="gdlr-core-title-item-title-wrap ">
                                                             <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " id="h3_1dd7_25">Welcome<span class="gdlr-core-title-item-title-divider gdlr-core-skin-divider" ></span></h3></div>
                                                     </div>
-                                                    <p style="text-align: justify;">In the university context, the academic community bears substantial responsibility for leading impactful research endeavours. 
-                                                                The success of such initiatives hinges on various factors, notably access to accurate information, an unwavering commitment to instigate change, and the existence of a robust institutional research support system.
-                                                                Acknowledging the pivotal role of these elements in fostering research excellence, the establishment of the Central Office for Research and Development (CORD) became imperative. CORD's primary mission is to provide crucial support to researchers, 
-                                                                nurture their capacity development, and advocate for the adoption of optimal academic practices. Additionally, the Center plays a central role in advancing societal development through a diverse array of research initiatives.
-
-                                                       <p style="text-align: justify;">  Founded with staunch support from the university and fueled by the dedicated commitment of our accomplished staff, 
-                                                                the Center is steadfast in its dedication to overarching objectives that underscore its commitment to research and development. 
-                                                                Foremost among these objectives is providing essential support to researchers. CORD recognizes that the foundation of 
-                                                                impactful research lies in the resources and guidance available to scholars. 
-                                                                Consequently, the Center is committed to ensuring researchers have access to accurate information, cutting-edge tools, 
-                                                                and the necessary infrastructure for groundbreaking research..</p>
-                                                      
-                                                      
-                                                        
-
-                                                        <p style="text-align: justify;">In conclusion, the Central Office for Research and Development stands as a testament to the university's
-                                                             dedication to research excellence. 
-                                                                    With a focus on unwavering support, capacity development, and best academic practices, CORD aims to be a driving force in advancing both the scholarly landscape and societal development. </p>
-                                                                    
-                                                        <p >For inquiries or to contact CORD, please email research@unimed.edu.ng or cord@unimed.edu.ng.</p>
-                                                        <p>Oyetunde T. Oyeyemi B.Sc, M.Sc, Ph.D</p>
-                                                        <p>Director</p>
+                                                    <p style="text-align: justify;">
+                                                                             <p><?= $pg_intro ?></p>  
+                                                    </p>
                                                     
                                                 </div>
                                                 <div class="gdlr-core-tab-item-content " data-tab-id="2" >
@@ -182,10 +224,9 @@ if (isset($_GET['id'])) {
                                                         <div class="gdlr-core-title-item-title-wrap ">
                                                             <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " id="h3_1dd7_25">Objectives<span class="gdlr-core-title-item-title-divider gdlr-core-skin-divider" ></span></h3></div>
                                                     </div>
-                                                    <p style="text-align: justify;">
+                                                   
 
-                                                       <p style="text-align: justify;"> </p>
-                                                       <p style="text-align: justify;">.</p>
+                                                       <p><?= $pg_objective ?></p>
                                                        </p>
                                                 </div>
                                                 <div class="gdlr-core-tab-item-content " data-tab-id="3" >
@@ -226,7 +267,71 @@ if (isset($_GET['id'])) {
                                                             <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " id="h3_1dd7_27">Staff Directory<span class="gdlr-core-title-item-title-divider gdlr-core-skin-divider" ></span></h3></div>
                                                     </div>
                                                     <p style="text-align: justify;">   </P>
-                                                       
+                                                                            <?php
+require 'db_connect.php'; // Assuming you're connecting here
+
+$pg_id = isset($_GET['id']) ? $_GET['id'] : '';
+
+if (!empty($pg_id)) {
+    // Step 1: Get department name from pages_table
+    $stmt = $conn->prepare("SELECT pg_title FROM pages_table WHERE pg_id = ?");
+    $stmt->bind_param("s", $pg_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result && $result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $dept_name = $row['pg_title'];
+
+        // Step 2: Fetch staff members where staff_dept matches dept_name
+        $staff_stmt = $conn->prepare("SELECT * FROM staff_table WHERE staff_dept = ?");
+        $staff_stmt->bind_param("s", $dept_name);
+        $staff_stmt->execute();
+        $staff_result = $staff_stmt->get_result();
+
+        if ($staff_result->num_rows > 0) {
+            while ($staff = $staff_result->fetch_assoc()) {
+                $stafftitle = ucfirst($staff['staff_id']);
+               // $staffName = ucfirst($staff['staff_name']);
+                $staffEmail = htmlspecialchars($staff['staff_email']);
+                $staffQualification = htmlspecialchars($staff['staff_qualification']);
+                $staffDesignation = htmlspecialchars($staff['staff_designation']);
+                $staffPhoto = !empty($staff['staff_photo']) ? "uploads/staff_photos/{$staff['staff_photo']}" : "upload/default.jpg";
+                ?>
+
+                <!-- Single Staff Display -->
+                <div class="staff-row">
+                    <div class="staff-image">
+                        <img src="<?php echo $staffPhoto; ?>" alt="Staff Photo" width="120" height="120">
+                    </div>
+                    <div class="staff-details">
+                        <h3><?php //echo $staffName; ?></h3>
+                        <h3><?php echo $stafftitle; ?></h3>
+                        <p><strong>Qualification:</strong> <?php echo $staffQualification; ?></p>
+                        <p><strong>Designation:</strong> <?php echo $staffDesignation; ?></p>
+                        <p><strong>Email:</strong> <a href="mailto:<?php echo $staffEmail; ?>"><?php echo $staffEmail; ?></a></p>
+                        <a class="more-btn" href="#">More Detail</a>
+                    </div> 
+                </div><br />
+
+                <?php
+            }
+        } else {
+            echo "<p class='alert alert-warning'>No staff found for department <strong>$dept_name</strong>.</p>";
+        }
+
+        $staff_stmt->close();
+    } else {
+        echo "<p class='alert alert-warning'>Department not found for pg_id <strong>$pg_id</strong>.</p>";
+    }
+
+    $stmt->close();
+} else {
+    echo "<p class='alert alert-danger'>Page ID not provided!</p>";
+}
+?>
+
+
                                                    
 
                                                    
@@ -238,12 +343,8 @@ if (isset($_GET['id'])) {
                                                     </div>
                                                     <p style="text-align: justify;">Contact
                                                         
-
-                                                                   research@unimed.edu.ng<br/>
-
-                                                                   cord@unimed.edu.ng<br/>
-
-                                                                   dcord@unimed.edu.ng<br/>
+                                                    <?= $pg_phone ?><br /><strong>Email:</strong> 
+                                                    <a href="mailto:<?= $pg_email ?>"><?= $pg_email ?></a>
 
                                                     </p>
                                                        
@@ -255,12 +356,8 @@ if (isset($_GET['id'])) {
                                                     </div>
                                                     <p style="text-align: justify;">Contact
                                                         
-
-                                                                   research@unimed.edu.ng<br/>
-
-                                                                   cord@unimed.edu.ng<br/>
-
-                                                                   dcord@unimed.edu.ng<br/>
+ <?= $pg_phone ?><br /><strong>Email:</strong> 
+                                                    <a href="mailto:<?= $pg_email ?>"><?= $pg_email ?></a>
 
                                                     </p>
                                                        

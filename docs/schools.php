@@ -52,7 +52,7 @@ include 'db_connect.php';
                                     <div class="gdlr-core-pbf-element">
                                         <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix  gdlr-core-left-align gdlr-core-title-item-caption-top gdlr-core-item-pdlr" style="padding-bottom: 40px ;">
                                             <div class="gdlr-core-title-item-title-wrap clearfix">
-                                                <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " style="font-size: 22px ;font-weight: 600 ;letter-spacing: 0px ;text-transform: none ;color: #223d71 ;margin-right: 30px ;">Click to visit</h3>
+                                                <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " style="font-size: 22px ;font-weight: 600 ;letter-spacing: 0px ;text-transform: none ;color:rgb(34, 113, 95) ;margin-right: 30px ;">Click to visit</h3>
                                                 <div class="gdlr-core-title-item-divider gdlr-core-right gdlr-core-skin-divider" style="font-size: 22px ;border-bottom-width: 3px ;"></div>
                                             </div>
                                         </div>

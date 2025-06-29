@@ -19,18 +19,18 @@
                                             <ul class="sub-menu">
                                                 <li class="menu-item menu-item-has-children" data-size="15"><a  href="vco.php" class="sf-with-ul-pre">Vice-Chancellor's Office</a>
                                                     <ul class="sub-menu">
-                                                        <li class="menu-item"><a href="bachelor-of-science-in-business-administration.html">Legal Unit</a></li>
-                                                        <li class="menu-item"><a href="school-of-law.html">Public Relations Unit</a></li>
-                                                        <li class="menu-item"><a href="engineering.html">Identity Cards Units</a></li>
-                                                        <li class="menu-item"><a href="engineering.html">Internal Audit Unit</a></li>
-                                                        <li class="menu-item"><a href="medicine.html">SERVICOM/ACTM</a></li>
-                                                        <li class="menu-item"><a href="art-science.html">MIS</a></li>
+                                                        <li class="menu-item"><a href="#">Legal Unit</a></li>
+                                                        <li class="menu-item"><a href="#">Public Relations Unit</a></li>
+                                                        <li class="menu-item"><a href="#">Identity Cards Units</a></li>
+                                                        <li class="menu-item"><a href="#">Internal Audit Unit</a></li>
+                                                        <li class="menu-item"><a href="#">SERVICOM/ACTM</a></li>
+                                                        <li class="menu-item"><a href="#">MIS</a></li>
                                                       
                                                     </ul>
                                                 </li>
                                                 <li class="menu-item menu-item-has-children" data-size="15"><a href="units.php" class="sf-with-ul-pre">Offices</a>
                                                     <ul class="sub-menu">
-                                                    <li class="menu-item"><a href="registry.php">Registry</a></li>
+                                                  <!--  <li class="menu-item"><a href="registry.php">Registry</a></li>  -->
                                                         
                                                         <?php
                                                             
@@ -42,7 +42,7 @@
                                                             // Generate menu items dynamically
                                                             while ($row5 = $result5->fetch_assoc()) {
                                                                 $pageTitle = htmlspecialchars($row5['pg_title']);
-                                                                $pageUrl = "school.php?id=" . $row5['pg_id']; // Direct toschools.php with page ID
+                                                                $pageUrl = "office.php?id=" . $row5['pg_id']; // Direct toschools.php with page ID
 
                                                                 echo '<li class="menu-item"><a href="' . $pageUrl . '">' . $pageTitle . '</a></li>';
                                                             }
@@ -96,11 +96,11 @@
                                     </li>
                                     <li class="menu-item menu-item-has-children kingster-normal-menu"><a href="#" class="sf-with-ul-pre">Admissions</a>
                                         <ul class="sub-menu">
-                                            <li class="menu-item" data-size="60"><a href="#">Apply To AFUED</a></li>
-                                            <li class="menu-item" data-size="60"><a href="scholarships.html">Scholarships</a></li>
-                                            <li class="menu-item" data-size="60"><a href="scholarships.html">College of Technology</a></li>
-                                            <li class="menu-item" data-size="60"><a href="scholarships.html">Pre-Degree</a></li>
-                                            <li class="menu-item" data-size="60"><a href="scholarships.html">Part-Time</a></li>
+                                            <li class="menu-item" data-size="60"><a href="https://portal.afued.edu.ng" target="_blank">Apply To AFUED</a></li>
+                                            <li class="menu-item" data-size="60"><a href="#">Scholarships</a></li>
+                                            <li class="menu-item" data-size="60"><a href="#">College of Technology</a></li>
+                                            <li class="menu-item" data-size="60"><a href="#">Pre-Degree</a></li>
+                                            <li class="menu-item" data-size="60"><a href="#">Part-Time</a></li>
                                         </ul>
                                     </li>
                                     <li class="menu-item menu-item-has-children kingster-normal-menu"><a href="#" class="sf-with-ul-pre">News</a>

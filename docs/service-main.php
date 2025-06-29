@@ -1,3 +1,7 @@
+<?php
+require 'db_connect.php';
+
+?>
 <!DOCTYPE html>
 <html lang="en-US" class="no-js">
 <head>
@@ -17,7 +21,7 @@
                 <div class="kingster-page-title-overlay"></div>
                 <div class="kingster-page-title-bottom-gradient"></div>
                 <div class="kingster-page-title-container kingster-container">
-                    <div class="kingster-page-title-content kingster-item-pdlr" style="padding-top: 400px ;padding-bottom: 60px ;">
+                    <div class="kingster-page-title-content kingster-item-pdlr" style="padding-top: 150px ;padding-bottom: 60px ;">
                         <div class="kingster-page-caption" style="font-size: 21px ;font-weight: 400 ;letter-spacing: 0px ;">Your are welcome!</div>
                         <h1 class="kingster-page-title" style="font-size: 48px ;font-weight: 700 ;text-transform: none ;letter-spacing: 0px ;color: #ffffff ;">Management Information System (MIS) Centre</h1></div>
                 </div>
@@ -26,7 +30,7 @@
                 <div class="kingster-breadcrumbs-container kingster-container">
                     <div class="kingster-breadcrumbs-item kingster-item-pdlr"> <span property="itemListElement" typeof="ListItem"><a property="item" typeof="WebPage" title="Go to Kingster." href="index.html" class="home"><span property="name">Home</span></a>
                         <meta property="position" content="1">
-                        </span>&gt;<span property="itemListElement" typeof="ListItem"><span property="name">ICT Centre</span>
+                        </span>&gt;<span property="itemListElement" typeof="ListItem"><span property="name">REGISTRY</span>
                         <meta property="position" content="2">
                         </span>
                     </div>
@@ -135,9 +139,9 @@
                                             <div class="gdlr-core-widget-box-shortcode " style="color: #ffffff ; padding: 30px 45px;background-color:rgb(9, 59, 50) ;">
                                                 <div class="gdlr-core-widget-box-shortcode-content">
                                                     <img src="upload/director.jpg" />
-                                                    <h5 style="color: #ffffff; text-align:center;  margin-top: 0px; margin-bottom: 0px; line-height: 1.2; font-weight: 700;">Olajuyigbe Ebenezer Oluwasesan</h5> 
+                                                    <h5 style="color: #ffffff; text-align:center;  margin-top: 0px; margin-bottom: 0px; line-height: 1.2; font-weight: 700;"><!--Olajuyigbe Ebenezer Oluwasesan</h5> 
                                                     <p style="color: #ffffff; text-align:center; padding: top -20px; margin-top: 0px; margin-bottom: 0px; line-height: 1.2;">PhD, M.Sc, B.Sc</p> 
-                                                    <p style="color: #ffffff; text-align:center;margin-top: 0px; margin-bottom: 0px; line-height: 1.2;">Director</p> <hr style="color: #ffffff;" > 
+                                                    <p style="color: #ffffff; text-align:center;margin-top: 0px; margin-bottom: 0px; line-height: 1.2;">Director</p> <hr style="color: #ffffff;" > -->
                                                 
                                                     
                                                     
@@ -275,7 +279,7 @@
                                     </div>
                                 </div>
                     <div class="gdlr-core-pbf-wrapper " style="padding: 65px 0px 60px 0px;">
-                        <div class="gdlr-core-pbf-background-wrap" style="background-color: #192f59 ;"></div>
+                        <div class="gdlr-core-pbf-background-wrap" style="background-color:rgb(25, 89, 85) ;"></div>
                         <div class="gdlr-core-pbf-wrapper-content gdlr-core-js ">
                             <div class="gdlr-core-pbf-wrapper-container clearfix gdlr-core-container">
                                 <div class="gdlr-core-pbf-column gdlr-core-column-30 gdlr-core-column-first">
@@ -284,14 +288,14 @@
                                             <div class="gdlr-core-pbf-element">
                                                 <div class="gdlr-core-text-box-item gdlr-core-item-pdlr gdlr-core-item-pdb gdlr-core-left-align" style="padding-bottom: 20px ;">
                                                     <div class="gdlr-core-text-box-item-content" style="font-size: 23px ;text-transform: none ;color: #ffffff ;">
-                                                        <p>Information and COmmunication Technology Centre, Unimed, Ondo</p>
+                                                        <p>Registry, Adeyemi Federal University of Education, Ondo</p>
                                                         <h3 style="font-size: 20px; color: #fff; margin-bottom: 15px;">CONTACT DEPARTMENT</h3>
                                                     </div>
                                                     <div class="gdlr-core-social-network-item gdlr-core-item-pdb  gdlr-core-none-align" style="padding-bottom: 0px ;"><a href="#url" target="_blank" class="gdlr-core-social-network-icon" title="facebook" style="color:rgb(255, 255, 255) ;">
                                                     <hr style="color: #ffffff;" > 
-                                                        <i class="fa fa-phone" ></i></a><a href="#" target="_blank" class="gdlr-core-social-network-icon" title="phone" style="color:rgb(255, 255, 255) ;">Tel: <br>+234-706-957-3618  <br> +234-905-826-3636 <br>
+                                                        <i class="fa fa-phone" ></i></a><a href="#" target="_blank" class="gdlr-core-social-network-icon" title="phone" style="color:rgb(255, 255, 255) ;">Tel: <br>+234-  <br> +234- <br>
                                                         <hr style="color: #ffffff;" > 
-                                                        <i class="fa fa-envelope" ></i></a><a href="#" target="_blank" class="gdlr-core-social-network-icon" title="email" style="color:rgb(255, 255, 255) ;">Email: <br> ict@unimed.edu.ng
+                                                        <i class="fa fa-envelope" ></i></a><a href="#" target="_blank" class="gdlr-core-social-network-icon" title="email" style="color:rgb(255, 255, 255) ;">Email: <br> registry@afued.edu.ng
                                                         
 
                                                 </div>

@@ -1,36 +1,98 @@
 <?php
 require 'db_connect.php';
 
-$pg_id = $_GET['id'];
-$page = $conn->query("SELECT * FROM pages_table WHERE pg_id = $pg_id")->fetch_assoc();
+$pg_id = isset($_GET['id']) ? $_GET['id'] : '';
 
-if (isset($_GET['id'])) {
-    $page_id = $_GET['id'];
-    
-    // Fetch page details from the database
-    $query = "SELECT * FROM pages_table WHERE pg_id = ?";
-    $stmt = $conn->prepare($query);
-    $stmt->bind_param("i", $pg_id);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    
-    if ($result->num_rows > 0) {
-        $page = $result->fetch_assoc();
-    } else {
-        echo "<p>Page not found.</p>";
-        exit;
-    }
-} else {
+if (empty($pg_id)) {
     echo "<p>Invalid Page ID.</p>";
     exit;
 }
+
+// Step 1: Fetch from pages_table
+$pageQuery = "SELECT * FROM pages_table WHERE pg_id = ?";
+$pageStmt = $conn->prepare($pageQuery);
+$pageStmt->bind_param("i", $pg_id);
+$pageStmt->execute();
+$pageResult = $pageStmt->get_result();
+
+if ($pageResult->num_rows === 0) {
+    echo "<p>Page not found.</p>";
+    exit;
+}
+
+$page = $pageResult->fetch_assoc();
+$pageStmt->close();
+
+// Step 2: Fetch from page_details using same pg_id
+$detailQuery = "SELECT * FROM page_details WHERE pg_id = ?";
+$detailStmt = $conn->prepare($detailQuery);
+$detailStmt->bind_param("i", $pg_id);
+$detailStmt->execute();
+$detailResult = $detailStmt->get_result();
+
+$pg_intro = $pg_objective = $pg_phone = $pg_email = "<em>Not available</em>";
+
+if ($detailResult->num_rows > 0) {
+    $detail = $detailResult->fetch_assoc();
+    $pg_intro     = !empty(trim($detail['pg_intro']))     ? nl2br(htmlspecialchars($detail['pg_intro']))     : $pg_intro;
+    $pg_objective = !empty(trim($detail['pg_objective'])) ? nl2br(htmlspecialchars($detail['pg_objective'])) : $pg_objective;
+    $pg_phone     = !empty(trim($detail['pg_phone']))     ? htmlspecialchars($detail['pg_phone'])            : $pg_phone;
+    $pg_email     = !empty(trim($detail['pg_email']))     ? htmlspecialchars($detail['pg_email'])            : $pg_email;
+}
+
+$detailStmt->close();
 ?>
 
 <!DOCTYPE html>
 <html lang="en-US" class="no-js">
 <head>
    <?php include "head.php"; ?>
-
+<style>
+    .staff-container {
+        display: flex;
+        width: 200px;
+        flex-direction: column;
+        gap: 20px; /* Space between rows */
+    }
+    .staff-row {
+        display: flex;
+        align-items: center;
+        background:rgba(187, 244, 225, 0.61);
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    .staff-image img {
+        border-radius: 50%;
+        border: 5px solid rgb(10, 81, 59);
+        margin-right: 20px;
+    }
+    .staff-details {
+        flex: 1; /* Takes the remaining space */
+    }
+    .staff-details h3 {
+        margin: 0;
+        font-size: 20px;
+        color: #333;
+    }
+    .staff-details p {
+        margin: 5px 0;
+        font-size: 16px;
+        color: #555;
+    }
+    .more-btn {
+        display: inline-block;
+        padding: 8px 12px;
+        background: #2eca9b;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        margin-top: 10px;
+    }
+    .more-btn:hover {
+        background: #25a87e;
+    }
+</style>
 </head>
 
 <body class="home page-template-default page page-id-2039 gdlr-core-body woocommerce-no-js tribe-no-js kingster-body kingster-body-front kingster-full  kingster-with-sticky-navigation  kingster-blockquote-style-1 gdlr-core-link-to-lightbox">
@@ -79,14 +141,13 @@ if (isset($_GET['id'])) {
                                     <div class="gdlr-core-pbf-element">
                                         <div class="gdlr-core-text-box-item gdlr-core-item-pdlr gdlr-core-item-pdb gdlr-core-left-align">
                                             <div class="gdlr-core-text-box-item-content" style="font-size: 16px ;text-transform: none ;">
-                                                <p>We continues to adapt to new ways of teaching, new disciplines of study and new ways of learning. Your gift enriches the experience of all students by supporting efforts to recruit top faculty, expand academic programs and respond to the emerging needs of our campus and our world.</p>
-                                                <p>Not only does Kingster University provide you the practical skills that is necessary to transition seamlessly into the workforce upon your graduation, but we also make sure that you will have a good sense of social justice so that you make the transition responsibly.</p>
-                                            </div>
+                                                    <p><?= $pg_intro ?></p>    
+                                        </div>
                                         </div>
                                     </div>
                                     <div class="gdlr-core-pbf-element">
                                         <div class="gdlr-core-image-item gdlr-core-item-pdlr gdlr-core-item-pdb  gdlr-core-center-align" style="padding-bottom: 75px ;">
-                                            <div class="gdlr-core-image-item-wrap gdlr-core-media-image  gdlr-core-image-item-style-round" style="border-radius: 2px;-moz-border-radius: 2px;-webkit-border-radius: 2px;border-width: 6px; border-color:crimson"><img src="upload/unimed_gate.jpg" width="1000" height="296"  alt="" /></div>
+                                            <div class="gdlr-core-image-item-wrap gdlr-core-media-image  gdlr-core-image-item-style-round" style="border-radius: 2px;-moz-border-radius: 2px;-webkit-border-radius: 2px;border-width: 6px; border-color:crimson"><img src="upload/<?php echo htmlspecialchars($page['dept_picture']);  ?>" width="1000" height="296"  alt="" /></div>
                                         </div>
                                     </div>
                                     <div class="gdlr-core-pbf-element">
@@ -132,7 +193,7 @@ if ($pg_id > 0) {
                         <div class="gdlr-core-pbf-column-content clearfix gdlr-core-js ">
                             <div class="gdlr-core-pbf-element">
                                 <div class="gdlr-core-feature-box-item gdlr-core-item-pdlr gdlr-core-item-pdb gdlr-core-center-align">
-                                    <div class="gdlr-core-feature-box gdlr-core-js gdlr-core-feature-box-type-outer" style="background-color: #192f59 ;border-width: 0px 0px 0px 0px;border-radius: 3px;-moz-border-radius: 3px;-webkit-border-radius: 3px;">
+                                    <div class="gdlr-core-feature-box gdlr-core-js gdlr-core-feature-box-type-outer" style="background-color:rgb(25, 89, 79) ;border-width: 0px 0px 0px 0px;border-radius: 3px;-moz-border-radius: 3px;-webkit-border-radius: 3px;">
                                         <div class="gdlr-core-feature-box-background" style="background-image: url(upload/support-image-6.jpg) ;opacity: 0.14 ;"></div>
                                         <div class="gdlr-core-feature-box-content gdlr-core-sync-height-content">
                                             <h3 class="gdlr-core-feature-box-item-title" style="font-size: 16px ;font-weight: 600 ;">
@@ -161,14 +222,14 @@ if ($pg_id > 0) {
     echo "<p>Invalid School ID.</p>";
 }
 
-$conn->close();
+
 ?>
 
 
                                     <div class="gdlr-core-pbf-element">
                                         <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix  gdlr-core-left-align gdlr-core-title-item-caption-top gdlr-core-item-pdlr" style="padding-bottom: 40px ;">
                                             <div class="gdlr-core-title-item-title-wrap clearfix">
-                                                <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " style="font-size: 22px ;font-weight: 600 ;letter-spacing: 0px ;text-transform: none ;margin-right: 10px ;">Odosida Campus</h3>
+                                                <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " style="font-size: 22px ;font-weight: 600 ;letter-spacing: 0px ;text-transform: none ;margin-right: 10px ;"><?php echo htmlspecialchars($page['pg_title']); ?></h3>
                                                 <div class="gdlr-core-title-item-divider gdlr-core-right gdlr-core-skin-divider" style="font-size: 22px ;border-bottom-width: 3px ;"></div>
                                             </div>
                                         </div>
@@ -181,8 +242,71 @@ $conn->close();
                                                         <div class="gdlr-core-accordion-item-content-wrapper">
                                                             <h4 class="gdlr-core-accordion-item-title gdlr-core-js  gdlr-core-skin-e-background gdlr-core-skin-e-content">Staff Directory</h4>
                                                             <div class="gdlr-core-accordion-item-content">
-                                                                <p>Provided by the KU Institute of Education, this programme is available by distance learning, allowing you to study flexibly while balancing work and personal lifes.</p>
-                                                                <p>The MSc Finance (EG. Banking) deepens your understanding of banks and financial markets, and how they relate to performance. It will help you to advance your career in finance and policy.</p>
+                                                                                            <?php
+
+
+$pg_id = isset($_GET['id']) ? $_GET['id'] : '';
+
+if (!empty($pg_id)) {
+    // Step 1: Get department name from pages_table
+    $stmt = $conn->prepare("SELECT pg_title FROM pages_table WHERE pg_id = ?");
+    $stmt->bind_param("s", $pg_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result && $result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $dept_name = $row['pg_title'];
+
+        // Step 2: Fetch staff members where staff_dept matches dept_name
+        $staff_stmt = $conn->prepare("SELECT * FROM staff_table WHERE staff_dept = ?");
+        $staff_stmt->bind_param("s", $dept_name);
+        $staff_stmt->execute();
+        $staff_result = $staff_stmt->get_result();
+
+        if ($staff_result->num_rows > 0) {
+            while ($staff = $staff_result->fetch_assoc()) {
+                $stafftitle = ucfirst($staff['staff_id']);
+               // $staffName = ucfirst($staff['staff_name']);
+                $staffEmail = htmlspecialchars($staff['staff_email']);
+                $staffQualification = htmlspecialchars($staff['staff_qualification']);
+                $staffDesignation = htmlspecialchars($staff['staff_designation']);
+                $staffPhoto = !empty($staff['staff_photo']) ? "uploads/staff_photos/{$staff['staff_photo']}" : "upload/default.jpg";
+                ?>
+
+                <!-- Single Staff Display -->
+                <div class="staff-row">
+                    <div class="staff-image">
+                        <img src="<?php echo $staffPhoto; ?>" alt="Staff Photo" width="120" height="120">
+                    </div>
+                    <div class="staff-details">
+                        <h3><?php //echo $staffName; ?></h3>
+                        <h3><?php echo $stafftitle; ?></h3>
+                        <p><strong>Qualification:</strong> <?php echo $staffQualification; ?></p>
+                        <p><strong>Designation:</strong> <?php echo $staffDesignation; ?></p>
+                        <p><strong>Email:</strong> <a href="mailto:<?php echo $staffEmail; ?>"><?php echo $staffEmail; ?></a></p>
+                        <a class="more-btn" href="#">More Detail</a>
+                    </div> 
+                </div><br />
+
+                <?php
+            }
+        } else {
+            echo "<p class='alert alert-warning'>No staff found for  <strong>$dept_name</strong>.</p>";
+        }
+
+        $staff_stmt->close();
+    } else {
+        echo "<p class='alert alert-warning'>Department not found for pg_id <strong>$pg_id</strong>.</p>";
+    }
+
+    $stmt->close();
+} else {
+    echo "<p class='alert alert-danger'>Page ID not provided!</p>";
+}
+?>
+
+
                                                             </div>
                                                         </div>
                                                     </div>
@@ -191,8 +315,7 @@ $conn->close();
                                                         <div class="gdlr-core-accordion-item-content-wrapper">
                                                             <h4 class="gdlr-core-accordion-item-title gdlr-core-js  gdlr-core-skin-e-background gdlr-core-skin-e-content">Objectives</h4>
                                                             <div class="gdlr-core-accordion-item-content">
-                                                                <p>Provided by the KU Institute of Education, this programme is available by distance learning, allowing you to study flexibly while balancing work and personal lifes.</p>
-                                                                <p>The MSc Finance (EG. Banking) deepens your understanding of banks and financial markets, and how they relate to performance. It will help you to advance your career in finance and policy.</p>
+                                                                <p><?= $pg_objective ?></p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -216,7 +339,7 @@ $conn->close();
                                                    </h3>
                                                         <p style="margin-bottom: 5px;font-size: 18px ;font-weight: 200 ;color:rgb(61, 184, 155) ; text-align:center;"><?php echo htmlspecialchars($page['pg_h_qualification']); ?>
                                                     </p> 
-                                                        <p style="font-size: 18px ;font-weight: 200 ;color:rgb(15, 13, 41) ; text-align:center;"><?php echo htmlspecialchars($page['pg_head_title']); ?>
+                                                        <p style="font-size: 18px ;font-weight: 200 ;color:rgb(13, 41, 35) ; text-align:center;"><?php echo htmlspecialchars($page['pg_head_title']); ?>
                                                     </p>
                                         </div> <br >
                                         
@@ -230,16 +353,13 @@ $conn->close();
                                         
 
 <div class="video-container">
-    <iframe width="560" height="315" 
-        src="https://www.youtube.com/embed/_sbHpl_jXd8?autoplay=1" 
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/IFEm_cOu2Jw?si=_uOXw4zF5nvXb5YG" 
         title="YouTube video player" 
-        frameborder="0" 
-        allow="accelerometer; ; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-        allowfullscreen>
-       
-    </iframe>
+        frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+         referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+        </iframe>
      <marquee behavior="scroll" direction="left" style="font-size: 20px; font-weight: bold; color: blue; margin-bottom: 10px;">
-    University of Medical Sciences, Odosida Campus - You are Welcome!
+    Adeyemi Federal University of Education - You are Welcome!
 </marquee>
 </div>
 
@@ -251,7 +371,7 @@ $conn->close();
                         </div>
                     </div>
                     <div class="gdlr-core-pbf-wrapper " style="padding: 65px 0px 60px 0px;">
-                        <div class="gdlr-core-pbf-background-wrap" style="background-color: #192f59 ;"></div>
+                        <div class="gdlr-core-pbf-background-wrap" style="background-color:rgb(25, 89, 72) ;"></div>
                         <div class="gdlr-core-pbf-wrapper-content gdlr-core-js ">
                             <div class="gdlr-core-pbf-wrapper-container clearfix gdlr-core-container">
                                 <div class="gdlr-core-pbf-column gdlr-core-column-30 gdlr-core-column-first">
@@ -259,7 +379,7 @@ $conn->close();
                                         <div class="gdlr-core-pbf-column-content clearfix gdlr-core-js ">
                                             <div class="gdlr-core-pbf-element">
                                                 <div class="gdlr-core-image-item gdlr-core-item-pdlr gdlr-core-item-pdb  gdlr-core-center-align">
-                                                    <div class="gdlr-core-image-item-wrap gdlr-core-media-image  gdlr-core-image-item-style-rectangle" style="border-width: 6px; border-color:crimson"><img src="upload/odosida_campus.jpg" width="1500" height="1000"  alt="" /></div>
+                                                    <div class="gdlr-core-image-item-wrap gdlr-core-media-image  gdlr-core-image-item-style-rectangle" style="border-width: 6px; border-color:crimson"><img src="upload/<?php echo $page['dept_picture']; ?>" width="1500" height="1000"  alt="" /></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -268,13 +388,15 @@ $conn->close();
                                 <div class="gdlr-core-pbf-column gdlr-core-column-30">
                                     <div class="gdlr-core-pbf-column-content-margin gdlr-core-js " style="padding: -10px 30px 0px 0px;">
                                         <div class="gdlr-core-pbf-column-content clearfix gdlr-core-js ">
-                                            <div class="gdlr-core-widget-box-shortcode " style="color: #ffffff ;padding: 10px 25px;background-color: #192f59 ;">
+                                            <div class="gdlr-core-widget-box-shortcode " style="color: #ffffff ;padding: 10px 25px;background-color:rgb(19, 76, 55) ;">
                                                 <div class="gdlr-core-widget-box-shortcode-content">
                                                     </p>
                                                     <h3 style="font-size: 20px; color: #fff; margin-bottom: 15px;">School Contact Info</h3>
-                                                    <p><span style="color:rgb(255, 255, 255); font-size: 16px; font-weight: 600;">Office of the The  Dean School of </span>
-                                                        <br /> <span style="font-size: 15px;"><br /> 1810 Campus Way NE<br /> Bothell, WA 98011-8246</span></p>
-                                                    <p><span style="font-size: 15px;">+1-2345-5432-45<br /> bsba@kuuniver.edu<br /> </span></p>
+                                                    <p><span style="color:rgb(255, 255, 255); font-size: 16px; font-weight: 600;">Office of the The  Dean   <?php echo $dept_name; ?></span>
+                                                        <br /> <span style="font-size: 15px;"><br /> Adeyemi Federal University of Education(AFUED), Ondo<br /> Ondo State Nigeria</span></p>
+                                                    <p><span style="font-size: 15px;"> <?= $pg_phone ?><br /><strong>Email:</strong> <a href="mailto:<?= $pg_email ?>"><?= $pg_email ?></a> </span></p>
+                                                    
+                                                    
                                                    
                                                 </div>
                                         </div>

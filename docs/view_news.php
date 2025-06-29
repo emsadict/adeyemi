@@ -1,4 +1,6 @@
-<?php include "mobilemenu.php"; ?>
+<?php 
+require 'db_connect.php';
+include "mobilemenu.php"; ?>
     <div class="kingster-body-outer-wrapper ">
         <div class="kingster-body-wrapper clearfix  kingster-with-frame">
            <?php include "headermenu.php" ?>

@@ -1,3 +1,6 @@
+<?php 
+include 'db_connect.php';
+?>
 <?php include "mobilemenu.php"; ?>
     <div class="kingster-body-outer-wrapper ">
         <div class="kingster-body-wrapper clearfix  kingster-with-frame">
@@ -6,7 +9,7 @@
 
 
 <?php
-include 'db_connect.php'; // Include database connection
+
 
 // Check if research ID is provided
 if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {

@@ -64,10 +64,12 @@ $departments = $conn->query("SELECT * FROM dept_table");
         <td><?= $row['dept_head'] ?></td>
         <td><?= $row['dept_email'] ?></td>
         <td><?= $row['dept_phone'] ?></td>
-        <td><img src="<?= $row['dept_image'] ?>" width="50"></td>
+        <td><img src="uploads/<?= $row['dept_image'] ?>" width="50"></td>
         <td>
             <a href="edit_dept.php?id=<?= $row['id'] ?>" class="btn btn-warning btn-sm" style="color:#ffffff;">Edit</a> |
             <a href="delete_dept.php?id=<?= $row['id'] ?>" class="btn btn-danger btn-sm" style="color:#ffffff;" onclick="return confirm('Are you sure?')">Delete</a>
+            <a href="dept.php?dept_name=<?= $row['dept_name'] ?>" class="btn btn-primary btn-sm" style="color:#ffffff;">View</a>
+            <a href="edit_dept_details.php?id=<?= $row['id'] ?>" class="btn btn-success btn-sm" style="color:#ffffff;">Edit Information</a> |
         </td>
     </tr>
     <?php endwhile; ?>

@@ -1,43 +1,44 @@
 <?php
-require 'db_connect.php';
+require 'db_connect.php'; // Connect to the database
 
-// Fetch pages that do not exist in page_details
-$query = "SELECT p.pg_id, p.pg_title, p.pg_category 
-          FROM pages_table p 
-          LEFT JOIN page_details d ON p.pg_id = d.pg_id 
-          WHERE d.pg_id IS NULL";
+// Fetch departments from dept_table
+$depts = $conn->query("
+    SELECT dept_name 
+    FROM dept_table 
+    WHERE dept_name NOT IN (SELECT dept_name FROM dept_detail)
+");
 
-$result = $conn->query($query);
-$pages = $result->fetch_all(MYSQLI_ASSOC);
-
-// Handle form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $pg_id = $_POST['pg_id'];
-    $pg_category = $_POST['pg_category'];
-    $pg_intro = $_POST['pg_intro'];
-    $pg_objective = $_POST['pg_objective'];
-    $pg_phone = $_POST['pg_phone'];
-    $pg_email = $_POST['pg_email'];
+    $dept_name = $_POST['dept_name'];
+    $dept_objective = $_POST['dept_objective'];
+    $welcome_message = $_POST['welcome_message'];
+    $programmes = $_POST['programmes'];
 
-    // Insert into page_details
-    $sql = "INSERT INTO page_details (pg_id, pg_category, pg_intro, pg_objective, pg_phone, pg_email) 
-            VALUES (?, ?, ?, ?, ?, ?)";
-    
+    $sql = "INSERT INTO dept_detail (dept_name, dept_objective, welcome_message, programmes) 
+            VALUES (?, ?, ?, ?)";
+
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("isssss", $pg_id, $pg_category, $pg_intro, $pg_objective, $pg_phone, $pg_email);
+    $stmt->bind_param("ssss", $dept_name, $dept_objective, $welcome_message, $programmes);
 
     if ($stmt->execute()) {
-        echo "<script>alert('Page details created successfully!'); window.location.href='create_page_details.php';</script>";
+        echo "<script>alert('Department details added successfully!'); window.location.href='manage_dept_details.php';</script>";
     } else {
-        echo "<p style='color: red;'>Error: " . $conn->error . "</p>";
+        echo "<p style='color:red;'>Error: " . $conn->error . "</p>";
     }
+
+    $stmt->close();
+    $conn->close();
 }
 ?>
+
+
+
 
 <!DOCTYPE html>
 <html lang="en-US" class="no-js">
 <head>
    <?php include "head.php"; ?>
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 
 </head>
 
@@ -52,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="kingster-page-title-overlay"></div>
                 <div class="kingster-page-title-container kingster-container">
                     <div class="kingster-page-title-content kingster-item-pdlr">
-                        <h1 class="kingster-page-title">UPDATE PAGE DETAILS</h1></div>
+                        <h1 class="kingster-page-title">Create A Page Details</h1></div>
                 </div>
             </div>
             <div class="kingster-page-wrapper" id="kingster-page-wrapper">
@@ -65,44 +66,42 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <div class="gdlr-core-pbf-element">
     <div class="gdlr-core-blog-item gdlr-core-item-pdb clearfix gdlr-core-style-blog-full-with-frame" style="padding-bottom: 40px;">
         <div class="gdlr-core-blog-item-holder gdlr-core-js-2 clearfix" data-layout="fitrows">
-        <script>
-        function updateCategory(select) {
-            document.getElementById("pg_category").value = select.options[select.selectedIndex].getAttribute("data-category");
-        }
-    </script>
+        <Center> <h3>Create Department Details</h3></Center>
+            <hr />
+            <?php if (!empty($message)) { echo "<div class='alert alert-success text-center'>$message</div>"; } ?>
+
+        <div class="form-container">
        
-<div class="form-container" >
-<Center><h2>UPDATE PAGE DETAILS</h2></Center>
-<form method="POST">
-    <label>Select Page:</label><br>
-    <select name="pg_id" required onchange="updateCategory(this)">
-        <option value="">-- Select Page --</option>
-        <?php foreach ($pages as $page) : ?>
-            <option value="<?= $page['pg_id'] ?>" data-category="<?= ucfirst($page['pg_category']) ?>">
-                <?= ucfirst(htmlspecialchars($page['pg_title'])) ?> (<?= ucfirst(htmlspecialchars($page['pg_category'])) ?>)
-            </option>
-        <?php endforeach; ?>
-    </select><br>
+        <center><h3>Add Department Details</h3></center>
+<hr />
 
-    <label>Category:</label><br>
-    <input type="text" name="pg_category" id="pg_category" readonly required><br>
+<form action="" method="POST">
+    <label>Select Department:</label>
+   
+<select name="dept_name" required>
+    <option value="">--Select Department--</option>
+    <?php while ($row = $depts->fetch_assoc()): ?>
+        <option value="<?= htmlspecialchars($row['dept_name']) ?>">
+            <?= htmlspecialchars($row['dept_name']) ?>
+        </option>
+    <?php endwhile; ?>
+</select><br>
 
-    <label>Introduction/Wecome Message:</label><br>
-    <textarea name="pg_intro" required></textarea><br>
+    <label>Department Objective: (One per line)</label>
+    <textarea name="dept_objective" rows="5" required></textarea><br>
 
-    <label>Objective:(one per line)</label><br>
-    <textarea name="pg_objective" required></textarea><br>
+    <label>Welcome Message:</label>
+    <textarea name="welcome_message" rows="5" required></textarea><br>
 
-    <label>Phone:</label><br>
-    <input type="text" name="pg_phone" required><br>
+    <label>Programmes:(One Programme per line)</label>
+    <textarea name="programmes" rows="5" required></textarea><br>
 
-    <label>Email:</label><br>
-    <input type="email" name="pg_email" required><br>
-
-    <button type="submit">Create Page Details</button>
+    <input type="submit" value="Save Details">
 </form>
-</div>        
-          
+
+
+        </div>
+
 
         </div>
     </div>
@@ -144,7 +143,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="gdlr-core-pbf-sidebar-left gdlr-core-column-extend-left kingster-sidebar-area gdlr-core-column-15 gdlr-core-pbf-sidebar-padding gdlr-core-line-height">
                     <div class="gdlr-core-sidebar-item gdlr-core-item-pdlr">
                         <div id="recent-posts-3" class="widget widget_recent_entries kingster-widget" style="background-color:rgb(206, 234, 221) ;">
-                        <?php include "pagesidebar.php"; ?>
+                           
+                            <?php include "pagesidebar.php"; ?>
                         </div>
                     </div>
                 </div>
