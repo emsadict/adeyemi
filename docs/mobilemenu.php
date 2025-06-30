@@ -27,131 +27,114 @@
                                 <li class="menu-item menu-item-home current-menu-item menu-item-has-children"><a href="index.php">Home</a>
                                     
                                 </li>
-                                <li class="menu-item menu-item-has-children"><a href="#">Pages</a>
+                                <li class="menu-item menu-item-has-children"><a href="#">Structure</a>
                                     <ul class="sub-menu">
-                                        <li class="menu-item"><a href="about-us.html">About KU</a></li>
-                                        <li class="menu-item menu-item-has-children"><a href="blog-full-right-sidebar-with-frame.html">Blog</a>
+                                        <li class="menu-item menu-item-has-children"><a href="vco.php">Vice-Chancellor's Office</a>
+                                            
+                                                    <ul class="sub-menu">
+                                                        <li class="menu-item"><a href="#">Legal Unit</a></li>
+                                                        <li class="menu-item"><a href="#">Public Relations Unit</a></li>
+                                                        <li class="menu-item"><a href="#">Identity Cards Units</a></li>
+                                                        <li class="menu-item"><a href="#">Internal Audit Unit</a></li>
+                                                        <li class="menu-item"><a href="#">SERVICOM/ACTM</a></li>
+                                                        <li class="menu-item"><a href="#">MIS</a></li>
+                                                    </ul>
+                                        </li>
+                                        <li class="menu-item menu-item-has-children"><a href="units.php">Offices</a>
                                             <ul class="sub-menu">
-                                                <li class="menu-item menu-item-has-children"><a href="blog-full-right-sidebar-with-frame.html">Blog Full</a>
-                                                    <ul class="sub-menu">
-                                                        <li class="menu-item"><a href="blog-full-right-sidebar-with-frame.html">Blog Full Right Sidebar With Frame</a></li>
-                                                        <li class="menu-item"><a href="blog-full-left-sidebar-with-frame.html">Blog Full Left Sidebar With Frame</a></li>
-                                                        <li class="menu-item"><a href="blog-full-both-sidebar-with-frame.html">Blog Full Both Sidebar With Frame</a></li>
-                                                        <li class="menu-item"><a href="blog-full-right-sidebar.html">Blog Full Right Sidebar</a></li>
-                                                        <li class="menu-item"><a href="blog-full-left-sidebar.html">Blog Full Left Sidebar</a></li>
-                                                        <li class="menu-item"><a href="blog-full-both-sidebar.html">Blog Full Both Sidebar</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li class="menu-item menu-item-has-children"><a href="blog-grid-3-columns-no-space.html">Blog Grid</a>
-                                                    <ul class="sub-menu">
-                                                        <li class="menu-item"><a href="blog-grid-2-columns.html">Blog Grid 2 Columns</a></li>
-                                                        <li class="menu-item"><a href="blog-grid-3-columns.html">Blog Grid 3 Columns</a></li>
-                                                        <li class="menu-item"><a href="blog-grid-4-columns.html">Blog Grid 4 Columns</a></li>
-                                                        <li class="menu-item"><a href="blog-grid-2-columns-no-space.html">Blog Grid 2 Columns No Space</a></li>
-                                                        <li class="menu-item"><a href="blog-grid-3-columns-no-space.html">Blog Grid 3 Columns No Space</a></li>
-                                                        <li class="menu-item"><a href="blog-grid-4-columns-no-space.html">Blog Grid 4 Columns No Space</a></li>
-                                                    </ul>
-                                                </li>
+                                                <?php
+                                                            
 
-                                                <li class="menu-item"><a href="standard-post-type.html">Single Post</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="menu-item menu-item-has-children"><a href="#">Contact</a>
-                                            <ul class="sub-menu">
-                                                <li class="menu-item"><a href="contact.html">Contact</a></li>
-                                                <li class="menu-item"><a href="contact-2.html">Contact 2</a></li>
-                                                <li class="menu-item"><a href="contact-3.html">Contact 3</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="menu-item menu-item-has-children"><a href="portfolio-3-columns.html">Portfolio</a>
-                                            <ul class="sub-menu">
-                                                <li class="menu-item menu-item-has-children"><a>Portfolio Grid</a>
-                                                    <ul class="sub-menu">
-                                                        <li class="menu-item"><a href="portfolio-2-columns.html">Portfolio 2 Columns</a></li>
-                                                        <li class="menu-item"><a href="portfolio-3-columns.html">Portfolio 3 Columns</a></li>
-                                                        <li class="menu-item"><a href="portfolio-4-columns.html">Portfolio 4 Columns</a></li>
-                                                        <li class="menu-item"><a href="portfolio-5-columns.html">Portfolio 5 Columns</a></li>
-                                                        <li class="menu-item"><a href="portfolio-2-columns-with-frame.html">Portfolio 2 Columns With Frame</a></li>
-                                                        <li class="menu-item"><a href="portfolio-3-columns-with-frame.html">Portfolio 3 Columns With Frame</a></li>
-                                                        <li class="menu-item"><a href="portfolio-4-columns-with-frame.html">Portfolio 4 Columns With Frame</a></li>
-                                                        <li class="menu-item"><a href="portfolio-2-columns-no-space.html">Portfolio 2 Columns No Space</a></li>
-                                                        <li class="menu-item"><a href="portfolio-3-columns-no-space.html">Portfolio 3 Columns No Space</a></li>
-                                                        <li class="menu-item"><a href="portfolio-4-columns-no-space.html">Portfolio 4 Columns No Space</a></li>
-                                                        <li class="menu-item"><a href="portfolio-5-columns-no-space.html">Portfolio 5 Columns No Space</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li class="menu-item menu-item-has-children"><a>Portfolio Masonry</a>
-                                                    <ul class="sub-menu">
-                                                        <li class="menu-item"><a href="portfolio-masonry-4-columns.html">Masonry 4 Columns</a></li>
-                                                        <li class="menu-item"><a href="portfolio-masonry-3-columns.html">Masonry 3 Columns</a></li>
-                                                        <li class="menu-item"><a href="portfolio-masonry-2-columns.html">Masonry 2 Columns</a></li>
-                                                        <li class="menu-item"><a href="portfolio-masonry-4-columns-no-space.html">Masonry 4 Columns No Space</a></li>
-                                                        <li class="menu-item"><a href="portfolio-masonry-3-columns-no-space.html">Masonry 3 Columns No Space</a></li>
-                                                        <li class="menu-item"><a href="portfolio-masonry-2-columns-no-space.html">Masonry 2 Columns No Space</a></li>
-                                                    </ul>
-                                                </li>
+                                                            // Fetch pages with category 'office'
+                                                            $query5 = "SELECT pg_id, pg_title FROM pages_table WHERE pg_categ_id = 'office'";
+                                                            $result5 = $conn->query($query5);
+                                                            
+                                                            // Generate menu items dynamically
+                                                            while ($row5 = $result5->fetch_assoc()) {
+                                                                $pageTitle = htmlspecialchars($row5['pg_title']);
+                                                                $pageUrl = "office.php?id=" . $row5['pg_id']; // Direct toschools.php with page ID
 
-                                                <li class="menu-item menu-item-has-children"><a class="sf-with-ul-pre" href="singleportfolio.html">Single Portfolio</a></li>
+                                                                echo '<li class="menu-item"><a href="' . $pageUrl . '">' . $pageTitle . '</a></li>';
+                                                            }
+                                                            ?>
                                             </ul>
                                         </li>
-                                        <li class="menu-item"><a href="gallery.html">Gallery</a></li>
-                                        <li class="menu-item"><a href="price-table.html">Price Table</a></li>
-                                        <li class="menu-item"><a href="maintenance.html">Maintenance</a></li>
-                                        <li class="menu-item"><a href="coming-soon.html">Coming Soon</a></li>
-                                        <li class="menu-item"><a href="404.html">404 Page</a></li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item menu-item-has-children"><a href="bachelor-of-science-in-business-administration.html">Academics</a>
-                                    <ul class="sub-menu">
-                                        <li class="menu-item menu-item-has-children"><a>Undergraduate</a>
+                                        <li class="menu-item menu-item-has-children"><a href="schools.php">Schools</a>
                                             <ul class="sub-menu">
-                                                <li class="menu-item"><a href="bachelor-of-science-in-business-administration.html">Business Administration</a></li>
-                                                <li class="menu-item"><a href="school-of-law.html">School Of Law</a></li>
-                                                <li class="menu-item"><a href="engineering.html">Engineering</a></li>
-                                                <li class="menu-item"><a href="medicine.html">Medicine</a></li>
-                                                <li class="menu-item"><a href="art-science.html">Art &#038; Science</a></li>
+                                                                <?php
+                                                               // Fetch pages with category 'school'
+                                                               $query2 = "SELECT pg_id, pg_title FROM pages_table WHERE pg_categ_id = 'school'";
+                                                               $result2 = $conn->query($query2);
+                                                               
+                                                               // Generate menu items dynamically
+                                                               while ($row2 = $result2->fetch_assoc()) {
+                                                                   $pageTitle = htmlspecialchars($row2['pg_title']);
+                                                                   $pageUrl = "school.php?id=" . $row2['pg_id']; // Direct toschools.php with page ID
+
+                                                                   echo '<li class="menu-item"><a href="' . $pageUrl . '">' . $pageTitle . '</a></li>';
+                                                               }
+                                                               ?>
+
                                             </ul>
                                         </li>
-                                        <li class="menu-item menu-item-has-children"><a href="#">Graduate Program</a>
+                                        <li class="menu-item menu-item-has-children"><a href="directorate.php">Directorates</a>
                                             <ul class="sub-menu">
-                                                <li class="menu-item"><a href="hospitality-management.html">Hospitality Management</a></li>
-                                                <li class="menu-item"><a href="physics.html">Physics</a></li>
-                                                <li class="menu-item"><a href="#">Chemistry</a></li>
-                                                <li class="menu-item"><a href="#">Music</a></li>
-                                                <li class="menu-item"><a href="#">Computer Science</a></li>
+                                                                <?php
+                                                               require 'db_connect.php';
+
+                                                               // Fetch pages with category 'directorate'
+                                                               $query1 = "SELECT pg_id, pg_title FROM pages_table WHERE pg_categ_id = 'directorate'";
+                                                               $result1 = $conn->query($query1);
+                                                               
+                                                               // Generate menu items dynamically
+                                                               while ($row1 = $result1->fetch_assoc()) {
+                                                                   $pageTitle = htmlspecialchars($row1['pg_title']);
+                                                                   $pageUrl = "directorate-main.php?id=" . $row1['pg_id']; // Direct to directorate-main.php with page ID
+
+                                                                   echo '<li class="menu-item"><a href="' . $pageUrl . '">' . $pageTitle . '</a></li>';
+                                                               }
+                                                               ?>
+
                                             </ul>
                                         </li>
-                                        <li class="menu-item menu-item-has-children"><a href="#">Resources</a>
+                                    </ul>
+                                </li>
+                                <li class="menu-item menu-item-has-children"><a href="#">Admissions</a>
+                                    <ul class="sub-menu">
                                             <ul class="sub-menu">
-                                                <li class="menu-item"><a href="bachelor-of-science-in-business-administration.html">Department Page</a></li>
-                                                <li class="menu-item"><a href="finance.html">Major Page</a></li>
-                                                <li class="menu-item"><a href="finance-faculty.html">Faculty Page</a></li>
-                                                <li class="menu-item"><a href="john-hagensy-phd.html">Single Instructor</a></li>
-                                                <li class="menu-item"><a href="introduction-to-financial-accounting.html">Single Course</a></li>
+                                                <li class="menu-item"><a href="https://portal.afued.edu.ng">Apply To AFUED</a></li>
+                                                <li class="menu-item"><a href="#">Scholarships</a></li>
+                                                <li class="menu-item"><a href="#">College of Technology</a></li>
+                                                <li class="menu-item"><a href="#">Pre-Degree</a></li>
+                                                <li class="menu-item"><a href="https://portal.afued.edu.ng">Part-Time</a></li>
                                             </ul>
-                                        </li>
-                                        <li class="menu-item"><a href="#">Logo</a></li>
                                     </ul>
                                 </li>
-                                <li class="menu-item menu-item-has-children"><a href="apply-to-kingster.html">Admissions</a>
+                                <li class="menu-item menu-item-has-children"><a href="#">News</a>
                                     <ul class="sub-menu">
-                                        <li class="menu-item"><a href="apply-to-kingster.html">Apply To Kingster</a></li>
-                                        <li class="menu-item"><a href="campus-tour.html">Campus Tour</a></li>
-                                        <li class="menu-item"><a href="scholarships.html">Scholarships</a></li>
-                                        <li class="menu-item"><a href="athletics.html">Athletics</a></li>
-                                        <li class="menu-item"><a href="give-to-kingster.html">Give To Kingster</a></li>
-                                        <li class="menu-item"><a href="alumni.html">Alumni</a></li>
-                                        <li class="menu-item"><a href="event-calendar.html">Event Calendar</a></li>
+                                        <li class="menu-item"><a href="blog.php">Update</a></li>
+                                        <li class="menu-item"><a href="events.php">Events</a></li>
+                                        <li class="menu-item"><a href="researchs.php">Researches</a></li>
                                     </ul>
                                 </li>
-                                <li class="menu-item menu-item-has-children"><a href="#">Courses</a>
+                                <li class="menu-item menu-item-has-children"><a href="#">About us</a>
                                     <ul class="sub-menu">
-                                        <li class="menu-item"><a href="course-list-1.html">Course List 1</a></li>
-                                        <li class="menu-item"><a href="course-list-2.html">Course List 2</a></li>
+                                        <li class="menu-item"><a href="facts.php">University Facts</a></li>
+                                        <li class="menu-item"><a href="#">Governing Council</a></li>
+                                        <li class="menu-item"><a href="#">Principal Officers</a></li>
+                                        <li class="menu-item"><a href="#">Gallery</a></li>
                                     </ul>
                                 </li>
-                                <li class="menu-item"><a href="athletics.html">Athletics</a></li>
-                                <li class="menu-item"><a href="university-life.html">University Life</a></li>
+                                <li class="menu-item menu-item-has-children"><a href="#">students</a>
+                                    <ul class="sub-menu">
+                                        <li class="menu-item"><a href="facts.php">Portal</a></li>
+                                        <li class="menu-item"><a href="alumni.php">Alumni</a></li>
+                                        <li class="menu-item"><a href="#">Payments</a></li>
+                                        <li class="menu-item"><a href="#">SUG</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item"><a href="#">University Life</a></li>
+                               
                             </ul>
                         </div>
                     </div>

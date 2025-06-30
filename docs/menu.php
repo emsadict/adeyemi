@@ -129,7 +129,7 @@
                                         
                                         </ul>
                                     </li>
-                                    <li class="menu-item kingster-normal-menu"><a href="university-life.html">University Life</a></li>
+                                    <li class="menu-item kingster-normal-menu"><a href="#">University Life</a></li>
                                 </ul>
                                 <div class="kingster-navigation-slide-bar" id="kingster-navigation-slide-bar"></div>
                             </div>
