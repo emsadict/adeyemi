@@ -24,7 +24,7 @@
                     <div class="kingster-mobile-menu"><a class="kingster-mm-menu-button kingster-mobile-menu-button kingster-mobile-button-hamburger" href="#kingster-mobile-menu"><span></span></a>
                         <div class="kingster-mm-menu-wrap kingster-navigation-font" id="kingster-mobile-menu" data-slide="right">
                             <ul id="menu-main-navigation" class="m-menu">
-                                <li class="menu-item menu-item-home current-menu-item menu-item-has-children"><a href="index.html">Home</a>
+                                <li class="menu-item menu-item-home current-menu-item menu-item-has-children"><a href="index.php">Home</a>
                                     
                                 </li>
                                 <li class="menu-item menu-item-has-children"><a href="#">Pages</a>
