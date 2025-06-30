@@ -1,5 +1,4 @@
 <?php
-// Database connection
 $conn = new mysqli("localhost", "root", "", "website_management");
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
@@ -180,7 +179,7 @@ $slides_json1 = json_encode($slides8);
                                                         <div class="gdlr-core-column-service-content-wrapper">
                                                             <div class="gdlr-core-column-service-title-wrap">
                                                                 <h3 class="gdlr-core-column-service-title gdlr-core-skin-title" id="h3_1dd7_1">Graduation</h3>
-                                                                <div class="gdlr-core-column-service-caption gdlr-core-info-font gdlr-core-skin-caption" id="div_1dd7_6">Getting Diploma</div>
+                                                                <div class="gdlr-core-column-service-caption gdlr-core-info-font gdlr-core-skin-caption" id="div_1dd7_6">Getting Degree</div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -392,7 +391,7 @@ $slides_json1 = json_encode($slides8);
                 </div>
             </div>
           </a>
-          <a href="">
+          <a href="portal.aceondo.edu.ng ">
             <div class="gdlr-core-pbf-column gdlr-core-column-15 col-lg-3 col-md-6 col-sm-12 col-xs-12 " style="border-radius: 20px; border: 4px solid transparent; transition: border-color 0.3s ease, transform 0.3s ease;">
                 <div class="gdlr-core-pbf-column-content-margin gdlr-core-js " id="div_1dd7_88" data-sync-height="height-column" data-sync-height-center style="background-color:rgba(71, 152, 98, 0.52);">
                     <div class="gdlr-core-pbf-background-wrap">
@@ -566,7 +565,7 @@ $conn->close();
                                             <div class="gdlr-core-pbf-element">
                                                 <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix  gdlr-core-left-align gdlr-core-title-item-caption-top gdlr-core-item-pdlr"  id="gdlr-core-title-item-id-66469">
                                                     <div class="gdlr-core-title-item-title-wrap clearfix">
-                                                        <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " id="h3_1dd7_16"><a href="#" target="_self" style="color:#ffffff">Student Portal</a></h3></div>
+                                                        <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " id="h3_1dd7_16"><a href="portal.afued.edu.ng" target="_self" style="color:#ffffff">Student Portal</a></h3></div>
                                                 </div>
                                             </div>
                                             <div class="gdlr-core-pbf-element">
@@ -577,7 +576,7 @@ $conn->close();
                                             <div class="gdlr-core-pbf-element">
                                                 <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix  gdlr-core-left-align gdlr-core-title-item-caption-top gdlr-core-item-pdlr"  id="gdlr-core-title-item-id-42777">
                                                     <div class="gdlr-core-title-item-title-wrap clearfix">
-                                                        <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " id="h3_1dd7_17"><a href="#" target="_self" style="color:#ffffff">Application Portal</a></h3></div>
+                                                        <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " id="h3_1dd7_17"><a href="portal.afued.edu.ng" target="_self" style="color:#ffffff">Application Portal</a></h3></div>
                                                 </div>
                                             </div>
                                             <div class="gdlr-core-pbf-element">

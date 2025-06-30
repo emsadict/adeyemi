@@ -3,7 +3,7 @@
             <div class="kingster-mobile-header-container kingster-container clearfix">
                 <div class="kingster-logo  kingster-item-pdlr">
                     <div class="kingster-logo-inner">
-                        <a class="" href="index.html"><img src="images/logo.png" alt="" /></a>
+                        <a class="" href="index.php"><img src="images/logo.png" alt="" /></a>
                     </div>
                 </div>
                 <div class="kingster-mobile-menu-right">
@@ -25,10 +25,7 @@
                         <div class="kingster-mm-menu-wrap kingster-navigation-font" id="kingster-mobile-menu" data-slide="right">
                             <ul id="menu-main-navigation" class="m-menu">
                                 <li class="menu-item menu-item-home current-menu-item menu-item-has-children"><a href="index.html">Home</a>
-                                    <ul class="sub-menu">
-                                        <li class="menu-item menu-item-home"><a href="index.html">Homepage 1</a></li>
-                                        <li class="menu-item"><a href="homepage-2.html">Homepage 2</a></li>
-                                    </ul>
+                                    
                                 </li>
                                 <li class="menu-item menu-item-has-children"><a href="#">Pages</a>
                                     <ul class="sub-menu">

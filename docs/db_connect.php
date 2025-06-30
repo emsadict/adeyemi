@@ -8,9 +8,9 @@ $dbname = "website_management";
 
 
 //$servername = "localhost";
-//$username = "zlyclnqu_root"; // Change if necessary
-//$password = "adeyemiuniversity"; // Change if necessary
-//$dbname = "zlyclnqu_website_management";
+//$username = "afued2025_root"; // Change if necessary
+//$password = "afuedfetech2025@@"; // Change if necessary
+//$dbname = "afuededu2025_website_management";
 // Create connection
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 

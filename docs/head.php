@@ -2,7 +2,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Adeyemi &#8211; Federal, University of Education (AFUED) Ondo</title>
-
+    <link rel="icon" type="image/png" href="images/logofav.png">
     <link rel='stylesheet' href='plugins/goodlayers-core/plugins/combine/style.css' type='text/css' media='all' />
     <link rel='stylesheet' href='plugins/goodlayers-core/include/css/page-builder.css' type='text/css' media='all' />
     <link rel='stylesheet' href='plugins/revslider/public/assets/css/settings.css' type='text/css' media='all' />

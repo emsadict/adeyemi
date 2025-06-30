@@ -147,7 +147,7 @@ $stmt->close();
     </div>
             <div class="kingster-breadcrumbs">
                 <div class="kingster-breadcrumbs-container kingster-container">
-                    <div class="kingster-breadcrumbs-item kingster-item-pdlr"> <span property="itemListElement" typeof="ListItem"><a property="item" typeof="WebPage" title="Go to Kingster." href="index.html" class="home"><span property="name">Home</span></a>
+                    <div class="kingster-breadcrumbs-item kingster-item-pdlr"> <span property="itemListElement" typeof="ListItem"><a property="item" typeof="WebPage" title="Go to Kingster." href="index.php" class="home"><span property="name">Home</span></a>
                         <meta property="position" content="1">
                         </span>&gt;<span property="itemListElement" typeof="ListItem"><span property="name"><?php echo "Department of ". $dept_name; ?></span>
                         <meta property="position" content="2">
@@ -408,7 +408,7 @@ if (!empty($department)) {
     <script type='text/javascript' src='js/jquery/ui/effect.min.js'></script>
     <script type='text/javascript'>
         var kingster_script_core = {
-            "home_url": "index.html"
+            "home_url": "index.php"
         };
     </script>
     <script type='text/javascript' src='js/plugins.min.js'></script>
