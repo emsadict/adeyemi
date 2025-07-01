@@ -356,7 +356,7 @@ $slides_json1 = json_encode($slides8);
 
   <h2 style="color:rgb(6, 156, 98); font-size: 28px; margin-bottom: 15px; border-left: 5px solid rgb(6, 156, 98); padding-left: 10px;">MISSION</h2>
   <p style="color: #333; font-size: 17px; line-height: 1.6; text-align: justify;">
-    To Improve Customer Satisfaction by Promoting Service Excellence in the College Services
+    To Improve Customer Satisfaction by Promoting Service Excellence in the University Services
     </p>
 
 </div>
