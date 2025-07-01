@@ -1,9 +1,5 @@
 <?php
-$conn = new mysqli("localhost", "root", "", "website_management");
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
+include("db_connect.php");
 // Fetch latest news
 $sql = "SELECT id, title, image, date,  content, author  FROM news ORDER BY date DESC LIMIT 5";
 $result = $conn->query($sql);
@@ -15,11 +11,6 @@ $latest_news_result = $conn->query($latest_news_query);
 // Fetch the rest of the news
 $other_news_query = "SELECT * FROM news ORDER BY created_at DESC LIMIT 4 OFFSET 1";
 $other_news_result = $conn->query($other_news_query);
-
-
-
-//$sql = "SELECT title, event_date, event_time, event_venue, event_image, event_thumbnail FROM events ORDER BY event_date ASC LIMIT 3";
-//$result = $conn->query($sql);
 
 
 //small Slider code
@@ -62,7 +53,74 @@ $slides_json1 = json_encode($slides8);
 <html lang="en-US" class="no-js">
 <head>
    <?php include "head.php"; ?>
+<style>
+.swiper-container {
+    max-width: 100%;
+    height: 600px;
+    overflow: hidden; /* Prevent images from escaping */
+}
 
+.slider-image-container {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.slider-img {
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.slider-description {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 60%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    font-weight: bold;
+    background: rgba(58, 181, 154, 0.5);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.slider-title {
+    text-align: Buttom;
+    font-size: 22px;
+    margin-top: 10px;
+    color: white;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 5px;
+    border-radius: 5px;
+    position: relative;
+    bottom: -20px;
+}
+
+.news-marquee {
+      background-color:rgb(247, 251, 250);
+      padding: 15px;
+      border: 1px solid #ccc;
+      font-family: Arial, sans-serif;
+      color: #333;
+    }
+
+    .news-marquee marquee {
+      font-size: 1.1em;
+    }
+
+    .news-item {
+      margin-right: 50px;
+      white-space: nowrap;
+      display: inline-block;
+    }
+
+    .news-title {
+      font-weight: bold;
+      margin-right: 5px;
+    }
+</style>
 </head>
 
 <body class="home page-template-default page page-id-2039 gdlr-core-body woocommerce-no-js tribe-no-js kingster-body kingster-body-front kingster-full  kingster-with-sticky-navigation  kingster-blockquote-style-1 gdlr-core-link-to-lightbox">
@@ -543,7 +601,7 @@ $other_news_result = $conn->query($other_news_query);
 
 <?php
 // Close connection
-$conn->close();
+//$conn->close();
 ?>
                                 <div class="gdlr-core-pbf-column gdlr-core-column-20" id="gdlr-core-column-8">
                                     <div class="gdlr-core-pbf-column-content-margin gdlr-core-js  gdlr-core-column-extend-right" id="div_1dd7_48" data-sync-height="height-2">
@@ -642,38 +700,17 @@ $conn->close();
                                                             <div class="gdlr-core-block-item-title-nav ">
                                                                 <div class="gdlr-core-flexslider-nav gdlr-core-plain-style gdlr-core-block-center"></div>
                                                             </div>
-                                                            
-                                                            <div class="gdlr-core-twitter-content">
-                                                                <div class="gdlr-core-flexslider flexslider gdlr-core-js-2 " data-type="carousel" data-column="1" data-nav="navigation" data-nav-parent="gdlr-core-twitter-item">
-                                                                    <ul class="slides" id="ul_1dd7_0">
-                                                                        <li class="gdlr-core-item-mglr">
-                                                                            <div class="gdlr-core-twitter-item-list">
-                                                                                <span class="gdlr-core-twitter-item-list-content">Shaking off the working week! What&#8217;s on the agenda for the weekend? by KonstantinKolosov via… 
-                                                                                <a class="twitter-timeline" href="https://twitter.com/aceondoofficial?ref_src=twsrc%5Etfw">Tweets by aceondoofficial</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
-                                                                                </span>
-                                                                                <span class="gdlr-core-twitter-item-list-date gdlr-core-skin-caption">
-                                                                                    <a class="gdlr-core-twitter-date" href="https://twitter.com/aceondoofficial?ref_src=twsrc%5Etfw" target="_blank"> 18 hours ago</a>
-                                                                                </span>
-                                                                            </div>
-                                                                        </li>
-                                                                       
-                                                                        <li class="gdlr-core-item-mglr">
-                                                                            <div class="gdlr-core-twitter-item-list">
-                                                                                <span class="gdlr-core-twitter-item-list-content">Our Chief People Officer 
-                                                                                    <a href="http://www.twitter.com/MRidsdale16">@MRidsdale16</a> joined 
-                                                                                    <a href="http://www.twitter.com/benjaminlaw">@benjaminlaw</a>  and 
-                                                                                    <a href="http://www.twitter.com/raejohnston">@raejohnston</a> on 
-                                                                                    <a href="http://www.twitter.com/tsushow">@tsushow</a> to discuss all things Cultu… 
-                                                                                    <a target="_blank" href="https://t.co/uszxz0qicU">https://t.co/uszxz0qicU</a>
-                                                                                </span>
-                                                                                <span class="gdlr-core-twitter-item-list-date gdlr-core-skin-caption">
-                                                                                    <a class="gdlr-core-twitter-date" href="https://twitter.com/aceondoofficial?ref_src=twsrc%5Etfw" target="_blank"> 2 days ago</a>
-                                                                                </span>
-                                                                            </div>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
+                                                                 <div class="news-marquee">
+  <marquee behavior="scroll" direction="left" scrollamount="5" onmouseover="this.stop();" onmouseout="this.start();">
+    <?php while($row = mysqli_fetch_assoc($result)): ?>
+      <span class="news-item">
+        <span class="news-title"><?= htmlspecialchars($row['title']) ?>:</span>
+        <?= htmlspecialchars($row['content']) ?>
+      </span>
+    <?php endwhile; ?>
+  </marquee>
+</div>
+                                                           
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1324,7 +1361,7 @@ document.addEventListener("DOMContentLoaded", function () {
         slideElement.classList.add("swiper-slide");
         slideElement.innerHTML = `
             <div class="gdlr-core-image-item">
-                <img src="./admin/uploads/${slide.image_path}" alt="${slide.title}" style="width:90%; height:auto; border-radius:10px;">
+                <img src="./uploads/${slide.image_path}" alt="${slide.title}" style="width:90%; height:auto; border-radius:10px;">
                 <h5 style="text-align:center; margin-top:10px;">${slide.title}</h5>
             </div>
         `;
@@ -1352,7 +1389,7 @@ document.addEventListener("DOMContentLoaded", function () {
     slideElement.classList.add("swiper-slide");
     slideElement.innerHTML = `
         <div class="slider-image-container">
-            <img src="./admin/uploads/${slide.image_path}" alt="${slide.title}" class="slider-img">
+            <img src="uploads/${slide.image_path}" alt="${slide.title}" class="slider-img">
             <div class="slider-description">${slide.description}</div>
             <h3 class="slider-title">${slide.title}</h3>
         </div>

@@ -3,7 +3,7 @@
             <div class="kingster-mobile-header-container kingster-container clearfix">
                 <div class="kingster-logo  kingster-item-pdlr">
                     <div class="kingster-logo-inner">
-                        <a class="" href="index.php"><img src="images/logo.png" alt="" /></a>
+                        <a class="" href="index.php"><img src="images/logo-2.png" alt="" /></a>
                     </div>
                 </div>
                 <div class="kingster-mobile-menu-right">

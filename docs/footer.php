@@ -25,10 +25,10 @@
                                 <div class="menu-our-campus-container">
                                     <ul id="menu-our-campus" class="gdlr-core-custom-menu-widget gdlr-core-menu-style-plain">
                                         <li class="menu-item"><a href="#">Acedemic</a></li>
-                                        <li class="menu-item"><a href="#">directorate</a></li>
-                                        <li class="menu-item"><a href="#">Units</a></li>
+                                        <li class="menu-item"><a href="directorate.php">directorate</a></li>
+                                        <li class="menu-item"><a href="units.php">Units</a></li>
                                         <li class="menu-item"><a href="#">Office of the Chancellor</a></li>
-                                        <li class="menu-item"><a href="#">Schools</a></li>
+                                        <li class="menu-item"><a href="schools.php">Schools</a></li>
                                         <li class="menu-item"><a href="#">Registry</a></li>
                                     </ul>
                                 </div>
@@ -43,7 +43,7 @@
                                         <li class="menu-item"><a href="#">Financial Aid</a></li>
                                         <li class="menu-item"><a href="#">Food Services</a></li>
                                         <li class="menu-item"><a href="#">Hostel</a></li>
-                                        <li class="menu-item"><a href="#">Portal</a></li>
+                                        <li class="menu-item"><a href="https://portal.afued.edu.ng" target="_blank">Portal</a></li>
                                         <li class="menu-item"><a href="#">Student Life</a></li>
                                     </ul>
                                 </div>
@@ -54,11 +54,11 @@
                                 <h3 class="kingster-widget-title">University </h3><span class="clear"></span>
                                 <div class="menu-academics-container">
                                     <ul id="menu-academics" class="gdlr-core-custom-menu-widget gdlr-core-menu-style-plain">
-                                        <li class="menu-item"><a href="#">Sports</a></li>
+                                        <li class="menu-item"><a href="directorate.php">Sports</a></li>
                                         <li class="menu-item"><a href="#">Counselling</a></li>
                                         <li class="menu-item"><a href="#">Library</a></li>
                                         <li class="menu-item"><a href="#">Bursary</a></li>
-                                        <li class="menu-item"><a href="#">MIS</a></li>
+                                        <li class="menu-item"><a href="directorate.php">MIS</a></li>
                                         <li class="menu-item"><a href="adminpanel.php">admin</a></li>
                                     </ul>
                                 </div>
