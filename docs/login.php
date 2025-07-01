@@ -56,9 +56,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="gdlr-core-blog-item-holder gdlr-core-js-2 clearfix" data-layout="fitrows">
 
             <!-- Upcoming Events -->
-            <h3>ADMIN LOGIN</h3>
+            
             <hr />
           <div class="form-container">
+            <h3>ADMIN LOGIN</h3>
             <form method="POST" action="login.php">
                 <input type="text" name="username" placeholder="Username" required><br>
                 <input type="password" name="password" placeholder="Password" required><br>
