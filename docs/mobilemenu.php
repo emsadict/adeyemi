@@ -32,12 +32,20 @@
                                         <li class="menu-item menu-item-has-children"><a href="vco.php">Vice-Chancellor's Office</a>
                                             
                                                     <ul class="sub-menu">
-                                                        <li class="menu-item"><a href="#">Legal Unit</a></li>
-                                                        <li class="menu-item"><a href="#">Public Relations Unit</a></li>
-                                                        <li class="menu-item"><a href="#">Identity Cards Units</a></li>
-                                                        <li class="menu-item"><a href="#">Internal Audit Unit</a></li>
-                                                        <li class="menu-item"><a href="#">SERVICOM/ACTM</a></li>
-                                                        <li class="menu-item"><a href="#">MIS</a></li>
+                                                        <li class="menu-item"><a  href="vcounits.php">VCO (OfficeS/Units)</a></li>
+                                                        <?php
+                                                            // Fetch pages with category 'office'
+                                                            $query6 = "SELECT pg_id, pg_title FROM pages_table WHERE pg_categ_id = 'vco'";
+                                                            $result6 = $conn->query($query6);
+                                                            
+                                                            // Generate menu items dynamically
+                                                            while ($row6 = $result6->fetch_assoc()) {
+                                                                $pageTitle = htmlspecialchars($row6['pg_title']);
+                                                                $pageUrl = "vcounit.php?id=" . $row6['pg_id']; // Direct toschools.php with page ID
+
+                                                                echo '<li class="menu-item"><a href="' . $pageUrl . '">' . $pageTitle . '</a></li>';
+                                                            }
+                                                            ?>
                                                     </ul>
                                         </li>
                                         <li class="menu-item menu-item-has-children"><a href="units.php">Offices</a>
