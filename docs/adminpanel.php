@@ -1,6 +1,9 @@
 <?php 
 include "db_connect.php";
+include "auth_session.php";
 
+// Now the user is verified, place protected content here
+echo "Welcome, admin " . $_SESSION['admin_username'];
 
 ?>
 

@@ -7,9 +7,9 @@
                             <ul id="kingster-top-bar-menu" class="sf-menu kingster-top-bar-menu kingster-top-bar-right-menu">
                                 <li class="menu-item kingster-normal-menu"><a href="#">Alumni</a></li>
                                 <li class="menu-item kingster-normal-menu"><a href="#">Webmail</a></li>
-                                <li class="menu-item kingster-normal-menu"><a href="#">Portal</a></li>
+                                <li class="menu-item kingster-normal-menu"><a href="https://portal.afued.edu.ng" target="_blank">Portal</a></li>
                             </ul>
-                            <div class="kingster-top-bar-right-social"></div><a class="kingster-top-bar-right-button" href="#" target="_blank">Portal</a></div>
+                            <div class="kingster-top-bar-right-social"></div><a class="kingster-top-bar-right-button" href="https://portal.afued.edu.ng" target="_blank">Portal</a></div>
                     </div>
                 </div>
             </div>
