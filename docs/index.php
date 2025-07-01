@@ -624,7 +624,18 @@ $other_news_result = $conn->query($other_news_query);
                                             <div class="gdlr-core-pbf-element">
                                                 <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix  gdlr-core-left-align gdlr-core-title-item-caption-top gdlr-core-item-pdlr"  id="gdlr-core-title-item-id-66469">
                                                     <div class="gdlr-core-title-item-title-wrap clearfix">
-                                                        <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " id="h3_1dd7_16"><a href="portal.afued.edu.ng" target="_self" style="color:#ffffff">Student Portal</a></h3></div>
+                                                        <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " id="h3_1dd7_16"><a href="https://portal.afued.edu.ng" target="_blank" style="color:#ffffff">Student Portal</a></h3></div>
+                                                </div>
+                                            </div>
+                                            <div class="gdlr-core-pbf-element">
+                                                <div class="gdlr-core-divider-item gdlr-core-divider-item-normal gdlr-core-item-pdlr gdlr-core-center-align" id="div_1dd7_52">
+                                                    <div class="gdlr-core-divider-line gdlr-core-skin-divider" id="div_1dd7_53"></div>
+                                                </div>
+                                            </div>
+                                             <div class="gdlr-core-pbf-element">
+                                                <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix  gdlr-core-left-align gdlr-core-title-item-caption-top gdlr-core-item-pdlr"  id="gdlr-core-title-item-id-66469">
+                                                    <div class="gdlr-core-title-item-title-wrap clearfix">
+                                                        <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " id="h3_1dd7_16"><a href="https://dec.afued.edu.ng" target="_blank" style="color:#ffffff">Part-time Portal</a></h3></div>
                                                 </div>
                                             </div>
                                             <div class="gdlr-core-pbf-element">
