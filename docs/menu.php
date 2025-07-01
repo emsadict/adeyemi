@@ -130,16 +130,16 @@
                                     <li class="menu-item menu-item-has-children kingster-normal-menu"><a href="#" class="sf-with-ul-pre">About Us</a>
                                         <ul class="sub-menu">
                                             <li class="menu-item" data-size="60"><a href="facts.php">University Facts</a></li>
-                                            <li class="menu-item" data-size="60"><a href="#">Governing Council</a></li>
-                                            <li class="menu-item" data-size="60"><a href="#">Principal Officers</a></li>
+                                            <li class="menu-item" data-size="60"><a href="goc.php">Governing Council</a></li>
+                                            <li class="menu-item" data-size="60"><a href="prpo.php">Principal Officers</a></li>
                                             <li class="menu-item" data-size="60"><a href="gallery.php">Gallery</a></li>
                                         </ul>
                                     </li>
                                     <li class="menu-item menu-item-has-children kingster-normal-menu"><a href="#" class="sf-with-ul-pre">Student</a>
                                         <ul class="sub-menu">
-                                        <li class="menu-item" data-size="60"><a href="facts.php">Portal</a></li>
+                                        <li class="menu-item" data-size="60"><a href="https://portal.afued.edu.ng" target="_blank">Portal</a></li>
                                         <li class="menu-item" data-size="60"><a href="alumni.php">Alumni</a></li>
-                                        <li class="menu-item" data-size="60"><a href="#">Payments</a></li>
+                                        <li class="menu-item" data-size="60"><a href="https://portal.afued.edu.ng" target="_blank"">Payments</a></li>
                                         <li class="menu-item" data-size="60"><a href="#">SUG</a></li>
                                         
                                         </ul>
