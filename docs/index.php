@@ -1062,7 +1062,7 @@ $result = $conn->query($query);
                                                 <div class="gdlr-core-gallery-list gdlr-core-media-image"><img src="upload/banner-4-1.png" alt="" width="248" height="120" title="banner-4" /></div>
                                             </div>
                                             <div class="gdlr-core-item-list gdlr-core-gallery-column  gdlr-core-column-12 gdlr-core-item-pdlr gdlr-core-item-mgb">
-                                                <div class="gdlr-core-gallery-list gdlr-core-media-image"><img src="upload/banner-5.png" alt="" width="248" height="120" title="banner-5" /></div>
+                                                <div class="gdlr-core-gallery-list gdlr-core-media-image"><img src="upload/banner.png" alt="" width="248" height="120" title="banner-5" /></div>
                                             </div>
                                         </div>
                                     </div>

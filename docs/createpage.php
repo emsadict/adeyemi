@@ -1,6 +1,6 @@
 <?php
 require 'db_connect.php'; // Database connection
-
+include "auth_session.php";
 // Handle form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $pg_title = $_POST['pg_title'];
