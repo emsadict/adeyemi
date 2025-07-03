@@ -67,14 +67,14 @@
                                                 </li>
                                                
                                                 
-                                                <li class="menu-item menu-item-has-children" data-size="15"><a href="schools.php" class="sf-with-ul-pre">Schools</a>
+                                                <li class="menu-item menu-item-has-children" data-size="15"><a href="schools.php" class="sf-with-ul-pre">Faculties</a>
                                                 <ul class="sub-menu">
                                                         
                                                         <?php
                                                             
 
                                                                // Fetch pages with category 'school'
-                                                               $query2 = "SELECT pg_id, pg_title FROM pages_table WHERE pg_categ_id = 'school'";
+                                                               $query2 = "SELECT pg_id, pg_title FROM pages_table WHERE pg_categ_id = 'fac'";
                                                                $result2 = $conn->query($query2);
                                                                
                                                                // Generate menu items dynamically

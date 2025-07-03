@@ -78,7 +78,7 @@ include 'db_connect.php';
                                                                              <div class="gdlr-core-feature-box-background" style="background-image: url(upload/major-bg-2.jpg); opacity: 0.14;"></div>
                                                                              <div class="gdlr-core-feature-box-content gdlr-core-sync-height-content">
                                                                                  <h3 class="gdlr-core-feature-box-item-title" style="font-size: 16px; font-weight: 600;">' . $pageTitle . '</h3>
-                                                                             </div>
+                                                                             </div> 
                                                                              <a class="gdlr-core-feature-box-link" href="' . $pageUrl . '" target="_self"></a>
                                                                          </div>
                                                                      </div>
