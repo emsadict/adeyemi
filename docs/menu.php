@@ -1,4 +1,12 @@
-<header class="kingster-header-wrap kingster-header-style-plain  kingster-style-menu-right kingster-sticky-navigation kingster-style-fixed" data-navigation-offset="75px">
+<?php
+function isActiveMenu($pages = []) {
+    $current = basename($_SERVER['PHP_SELF']);
+    return in_array($current, (array)$pages) ? 'current-menu-item' : '';
+}
+?>
+
+
+<header class="kingster-header-wrap kingster-header-style-plain  kingster-style-menu-right  kingster-style-fixed" data-navigation-offset="75px">
                 <div class="kingster-header-background"></div>
                 <div class="kingster-header-container  kingster-container">
                     <div class="kingster-header-container-inner clearfix">
@@ -10,12 +18,13 @@
                         <div class="kingster-navigation kingster-item-pdlr clearfix ">
                             <div class="kingster-main-menu" id="kingster-main-menu">
                                 <ul id="menu-main-navigation-1" class="sf-menu">
-                                    <li class="menu-item menu-item-home menu-item-has-children kingster-normal-menu"><a href="index.php" class="sf-with-ul-pre">Home</a>
+                                    <li class="menu-item menu-item-home menu-item-has-children kingster-normal-menu  <?php echo isActiveMenu('index.php'); ?>"><a href="index.php" class="sf-with-ul-pre">Home</a>
                                         
                                     </li>
                               
-                                    <li class="menu-item current-menu-item menu-item-has-children kingster-mega-menu" ><a href="organogram.php" class="sf-with-ul-pre">Structure</a>
-                                        <div class="sf-mega sf-mega-full ">
+                                 <!--   <li class="menu-item current-menu-item menu-item-has-children kingster-mega-menu" ><a href="organogram.php" class="sf-with-ul-pre">Structure</a>  -->
+                                 <li class="menu-item  menu-item-has-children kingster-mega-menu <?php echo isActiveMenu(['organogram.php', 'vco.php', 'vcounit.php', 'office.php','school.php', 'vcounits.php', 'units.php', 'schools.php']); ?>" ><a href="organogram.php" class="sf-with-ul-pre">Structure</a>      
+                                 <div class="sf-mega sf-mega-full ">
                                             <ul class="sub-menu">
                                                 <li class="menu-item menu-item-has-children" data-size="15"><a  href="vco.php" class="sf-with-ul-pre">Vice-Chancellor's Office</a>
                                                 <ul class="=sub-menu">
@@ -34,16 +43,7 @@
                                                             }
                                                             ?>
                                                </ul>
-                                               <!--
-                                                <ul class="sub-menu">
-                                                        <li class="menu-item"><a href="#">Legal Unit</a></li>
-                                                        <li class="menu-item"><a href="#">Public Relations Unit</a></li>
-                                                        <li class="menu-item"><a href="#">Identity Cards Units</a></li>
-                                                        <li class="menu-item"><a href="#">Internal Audit Unit</a></li>
-                                                        <li class="menu-item"><a href="#">SERVICOM/ACTM</a></li>
-                                                        <li class="menu-item"><a href="#">MIS</a></li>
-                                                      
-                                                    </ul> -->
+                                               
                                                 
                                                 <li class="menu-item menu-item-has-children" data-size="15"><a href="units.php" class="sf-with-ul-pre">Offices</a>
                                                     <ul class="sub-menu">
@@ -109,7 +109,7 @@
                                             </ul>
                                         </div>
                                     </li>
-                                    <li class="menu-item menu-item-has-children kingster-normal-menu"><a href="#" class="sf-with-ul-pre">Admissions</a>
+                                    <li class="menu-item menu-item-has-children kingster-normal-menu <?php echo isActiveMenu(['portal.afued.edu.ng', 'scholarships.php', 'college.php', 'predegree.php', 'parttime.php']); ?>"><a href="#" class="sf-with-ul-pre">Admissions</a>
                                         <ul class="sub-menu">
                                             <li class="menu-item" data-size="60"><a href="https://portal.afued.edu.ng" target="_blank">Apply To AFUED</a></li>
                                             <li class="menu-item" data-size="60"><a href="#">Scholarships</a></li>
@@ -118,7 +118,7 @@
                                             <li class="menu-item" data-size="60"><a href="#">Part-Time</a></li>
                                         </ul>
                                     </li>
-                                    <li class="menu-item menu-item-has-children kingster-normal-menu"><a href="#" class="sf-with-ul-pre">News</a>
+                                    <li class="menu-item menu-item-has-children kingster-normal-menu <?php echo isActiveMenu(['blog.php', 'events.php', 'researchs.php']); ?>"><a href="#" class="sf-with-ul-pre">News</a>
                                         <ul class="sub-menu">
                                             <li class="menu-item" data-size="60"><a href="blog.php">Update</a></li>
                                             <li class="menu-item" data-size="60"><a href="events.php">Events</a></li>
@@ -127,24 +127,27 @@
 
                                         </ul>
                                     </li>
-                                    <li class="menu-item menu-item-has-children kingster-normal-menu"><a href="#" class="sf-with-ul-pre">About Us</a>
-                                        <ul class="sub-menu">
+                                    <li class="menu-item menu-item-has-children kingster-normal-menu <?php echo isActiveMenu(['facts.php', 'goc.php', 'prpo.php', 'gallery.php']); ?>">
+        <a href="#" class="sf-with-ul-pre">About Us</a>
+        <ul class="sub-menu">
                                             <li class="menu-item" data-size="60"><a href="facts.php">University Facts</a></li>
                                             <li class="menu-item" data-size="60"><a href="goc.php">Governing Council</a></li>
                                             <li class="menu-item" data-size="60"><a href="prpo.php">Principal Officers</a></li>
                                             <li class="menu-item" data-size="60"><a href="gallery.php">Gallery</a></li>
                                         </ul>
-                                    </li>
-                                    <li class="menu-item menu-item-has-children kingster-normal-menu"><a href="#" class="sf-with-ul-pre">Student</a>
+    </li>
+                                        
+                                    
+                                    <li class="menu-item menu-item-has-children kingster-normal-menu <?php echo isActiveMenu(['alumni.php', 'sug.php']); ?>"><a href="#" class="sf-with-ul-pre">Student</a>
                                         <ul class="sub-menu">
                                         <li class="menu-item" data-size="60"><a href="https://portal.afued.edu.ng" target="_blank">Portal</a></li>
                                         <li class="menu-item" data-size="60"><a href="alumni.php">Alumni</a></li>
-                                        <li class="menu-item" data-size="60"><a href="https://portal.afued.edu.ng" target="_blank"">Payments</a></li>
+                                        <li class="menu-item" data-size="60"><a href="https://portal.afued.edu.ng" target="_blank">Payments</a></li>
                                         <li class="menu-item" data-size="60"><a href="#">SUG</a></li>
                                         
                                         </ul>
                                     </li>
-                                    <li class="menu-item kingster-normal-menu"><a href="#">University Life</a></li>
+                                    <li class="menu-item kingster-normal-menu <?php echo isActiveMenu('universitylife.php'); ?>"><a href="#">University Life</a></li>
                                 </ul>
                                 <div class="kingster-navigation-slide-bar" id="kingster-navigation-slide-bar"></div>
                             </div>
