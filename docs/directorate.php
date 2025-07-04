@@ -22,7 +22,7 @@ include 'db_connect.php';
                 <div class="kingster-page-title-container kingster-container">
                     <div class="kingster-page-title-content kingster-item-pdlr" style="padding-top: 150px ;padding-bottom: 60px ;">
                         <div class="kingster-page-caption" style="font-size: 21px ;font-weight: 400 ;letter-spacing: 0px ;">AFUED</div>
-                        <h1 class="kingster-page-title" style="font-size: 48px ;font-weight: 700 ;text-transform: none ;letter-spacing: 0px ;color: #ffffff ;">Directorate</h1></div>
+                        <h1 class="kingster-page-title" style="font-size: 48px ;font-weight: 700 ;text-transform: none ;letter-spacing: 0px ;color: #ffffff ;">DIRECTORATES</h1></div>
                 </div>
             </div>
             <div class="kingster-breadcrumbs">

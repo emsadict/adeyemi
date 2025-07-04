@@ -23,7 +23,7 @@ function isActiveMenu($pages = []) {
                                     </li>
                               
                                  <!--   <li class="menu-item current-menu-item menu-item-has-children kingster-mega-menu" ><a href="organogram.php" class="sf-with-ul-pre">Structure</a>  -->
-                                 <li class="menu-item  menu-item-has-children kingster-mega-menu <?php echo isActiveMenu(['organogram.php', 'vco.php', 'vcounit.php', 'office.php','school.php', 'vcounits.php', 'units.php', 'schools.php']); ?>" ><a href="organogram.php" class="sf-with-ul-pre">Structure</a>      
+                                 <li class="menu-item  menu-item-has-children kingster-mega-menu <?php echo isActiveMenu(['organogram.php', 'vco.php','directorate-main.php', 'vcounit.php', 'office.php','school.php', 'vcounits.php', 'units.php', 'schools.php']); ?>" ><a href="organogram.php" class="sf-with-ul-pre">Structure</a>      
                                  <div class="sf-mega sf-mega-full ">
                                             <ul class="sub-menu">
                                                 <li class="menu-item menu-item-has-children" data-size="15"><a  href="vco.php" class="sf-with-ul-pre">Vice-Chancellor's Office</a>
@@ -109,7 +109,7 @@ function isActiveMenu($pages = []) {
                                             </ul>
                                         </div>
                                     </li>
-                                    <li class="menu-item menu-item-has-children kingster-normal-menu <?php echo isActiveMenu(['portal.afued.edu.ng', 'scholarships.php', 'college.php', 'predegree.php', 'parttime.php']); ?>"><a href="#" class="sf-with-ul-pre">Admissions</a>
+                                    <li class="menu-item menu-item-has-children kingster-normal-menu <?php echo isActiveMenu(['portal.afued.edu.ng', 'scholarship.php', 'college.php', 'predegree.php', 'parttime.php']); ?>"><a href="#" class="sf-with-ul-pre">Admissions</a>
                                         <ul class="sub-menu">
                                             <li class="menu-item" data-size="60"><a href="https://portal.afued.edu.ng" target="_blank">Apply To AFUED</a></li>
                                             <li class="menu-item" data-size="60"><a href="scholarship.php">Scholarships</a></li>

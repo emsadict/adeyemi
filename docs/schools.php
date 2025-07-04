@@ -23,14 +23,14 @@ include 'db_connect.php';
                 <div class="kingster-page-title-container kingster-container">
                     <div class="kingster-page-title-content kingster-item-pdlr" style="padding-top: 150px ;padding-bottom: 60px ;">
                         <div class="kingster-page-caption" style="font-size: 21px ;font-weight: 400 ;letter-spacing: 0px ;">AFUED</div>
-                        <h1 class="kingster-page-title" style="font-size: 48px ;font-weight: 700 ;text-transform: none ;letter-spacing: 0px ;color: #ffffff ;">Schools</h1></div>
+                        <h1 class="kingster-page-title" style="font-size: 48px ;font-weight: 700 ;text-transform: none ;letter-spacing: 0px ;color: #ffffff ;">FACULTIES</h1></div>
                 </div>
             </div>
             <div class="kingster-breadcrumbs">
                 <div class="kingster-breadcrumbs-container kingster-container">
                     <div class="kingster-breadcrumbs-item kingster-item-pdlr"> <span property="itemListElement" typeof="ListItem"><a property="item" typeof="WebPage" title="Go to Kingster." href="index.php" class="home"><span property="name">Home</span></a>
                         <meta property="position" content="1">
-                        </span>&gt;<span property="itemListElement" typeof="ListItem"><span property="name">Schools</span>
+                        </span>&gt;<span property="itemListElement" typeof="ListItem"><span property="name">Faculties</span>
                         <meta property="position" content="2">
                         </span>
                     </div>
@@ -45,7 +45,7 @@ include 'db_connect.php';
                                     <div class="gdlr-core-pbf-element">
                                         <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix  gdlr-core-left-align gdlr-core-title-item-caption-top gdlr-core-item-pdlr">
                                             <div class="gdlr-core-title-item-title-wrap clearfix">
-                                                <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " style="font-size: 27px ;font-weight: 600 ;letter-spacing: 0px ;text-transform: none ;">Schools in Adeyemi Federal University of Education Ondo</h3></div>
+                                                <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " style="font-size: 27px ;font-weight: 600 ;letter-spacing: 0px ;text-transform: none ;">Faculties in Adeyemi Federal University of Education Ondo</h3></div>
                                         </div>
                                     </div>
                                     
@@ -61,7 +61,7 @@ include 'db_connect.php';
                                              require 'db_connect.php';
 
                                              // Fetch pages with category 'directorate'
-                                             $query = "SELECT pg_id, pg_title FROM pages_table WHERE pg_categ_id = 'school'";
+                                             $query = "SELECT pg_id, pg_title FROM pages_table WHERE pg_categ_id = 'fac'";
                                              $result = $conn->query($query);
 
                                              // Loop through the results and display them in the template
