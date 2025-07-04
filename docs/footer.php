@@ -10,11 +10,10 @@
                                         <li class="menu-item"><a href="#">Ondo-Ore Road, Ondo. </a></li>
                                         <li class="menu-item"><a href="#">Postal Address: P.M.B. 520</a></li>
                                         <li class="menu-item"><a href="#">Ondo State Nigeria</a></li>
-                                        <p><span id="span_1dd7_11">+2348130125529; 
-                                    <br />+2348035841342; 
-                                    <br />+2348033252107;| CALLS: 8am-4pm,</span>
+                                        <p><span id="span_1dd7_11"><a href="tel:+2348033252107">
+                                    +2348033252107</a><br /> CALLS: 8am-4pm,</span>
                                         <br /> <span class="gdlr-core-space-shortcode" id="span_1dd7_12"></span>
-                                        <br /> <a id="a_1dd7_8" href="mailto:admin@kingsteruni.edu">admin@afued.edu.ng</a></p>
+                                        <br /> <a id="a_1dd7_8" href="mailto:info@afued.edu.ng">info@afued.edu.ng</a></p>
                                     </ul>
                                 </div>
                             </div>

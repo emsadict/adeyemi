@@ -159,7 +159,7 @@ if ($pg_id > 0) {
                 <?php
             }
         } else {
-            echo "<p>No departments found for this school.</p>";
+            echo "<p>No units/dept found for this school.</p>";
         }
         $dept_stmt->close();
     } else {
@@ -279,7 +279,7 @@ if (!empty($pg_id)) {
                             <div class="gdlr-core-pbf-sidebar-right gdlr-core-column-extend-right  kingster-sidebar-area gdlr-core-column-15 gdlr-core-pbf-sidebar-padding  gdlr-core-line-height" style="padding: 30px 0px 30px 0px;">
                                 <div class="gdlr-core-sidebar-item gdlr-core-item-pdlr">
                                     <div id="text-15" class="widget widget_text kingster-widget">
-                                        <h3 class="kingster-widget-title">Office of the Dean</h3><span class="clear"></span>
+                                        <h3 class="kingster-widget-title">OFFICE OF THE HEAD</h3><span class="clear"></span>
                                         <div class="gdlr-core-video-widget gdlr-core-media-image">
                                             <a class="gdlr-core-lightgallery gdlr-core-js " style="border-width: 10px;"><img src="uploads/<?php echo htmlspecialchars($page['head_picture']); ?>" width="400" height="400"   alt="" /></a>
                                             <h3 style="margin-bottom:2px;font-size: 30px ;font-weight: 600 ;letter-spacing: 0px ;text-transform: none ;color:rgb(3, 34, 33) ; text-align:center;"><?php echo htmlspecialchars($page['pg_head_name']); ?>
@@ -341,7 +341,7 @@ if (!empty($pg_id)) {
                                                     <h3 style="font-size: 20px; color: #fff; margin-bottom: 15px;">Office Contact Info</h3>
                                                     <p><span style="color:rgb(255, 255, 255); font-size: 16px; font-weight: 600;">Office of the The  Head   <?php echo $dept_name; ?> </span>
                                                         <br /> <span style="font-size: 15px;"><br /> Adeyemi Federal University of Education(AFUED), Ondo<br /> Ondo State Nigeria</span></p>
-                                                    <p><span style="font-size: 15px;"><?= $pg_phone ?><br /><strong>Email:</strong> <a href="mailto:<?= $pg_email ?>"><?= $pg_email ?></a> </span></p>
+                                                    <p style="font-size: 15px;"><a href="tel:<?= $pg_phone ?>" style="color: #ffffff; text-decoration: none;"><?= $pg_phone ?></a><br /><strong style="color: #ffffff;">Email:</strong><a href="mailto:<?= $pg_email ?>" style="color: #ffffff; text-decoration: none;"><?= $pg_email ?></a></p>
                                                    
                                                 </div>
                                         </div>

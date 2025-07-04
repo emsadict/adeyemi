@@ -31,7 +31,7 @@ include 'db_connect.php';
     <div class="gdlr-core-page-builder-body">
         <div class="gdlr-core-pbf-sidebar-wrapper">
             <div class="gdlr-core-pbf-sidebar-container gdlr-core-line-height-0 clearfix gdlr-core-js gdlr-core-container">
-                <div class="gdlr-core-pbf-sidebar-content gdlr-core-column-45 gdlr-core-pbf-sidebar-padding gdlr-core-line-height" style="padding: 60px 10px 30px 30px;">
+                <div class="gdlr-core-pbf-sidebar-content gdlr-core-column-60 gdlr-core-pbf-sidebar-padding gdlr-core-line-height" style="padding: 60px 10px 30px 30px;">
                     <div class="gdlr-core-pbf-background-wrap" style="background-color:rgba(158, 228, 207, 0.33) ;"></div>
                     <div class="gdlr-core-pbf-sidebar-content-inner">
 <div class="gdlr-core-pbf-element">
@@ -65,8 +65,7 @@ if (mysqli_num_rows($result) > 0): ?>
             <h5><?= $fullName ?></h5>
             <p><strong>Position:</strong> <?= $position ?> (<?= $status ?>)</p>
             <p><strong>Years of Service:</strong> <?= $years ?></p>
-            <p><strong>Email:</strong> <?= $email ?></p>
-            <p><strong>Phone:</strong> <?= $phone ?></p>
+           
         </div>
         <?php endwhile; ?>
     </div>
@@ -129,7 +128,7 @@ if (mysqli_num_rows($result) > 0): ?>
 </div>
                 </div>
                 
-                <!-- Sidebar with Recent Posts -->
+                <!-- Sidebar with Recent Posts 
                 <div class="gdlr-core-pbf-sidebar-left gdlr-core-column-extend-left kingster-sidebar-area gdlr-core-column-15 gdlr-core-pbf-sidebar-padding gdlr-core-line-height">
                     <div class="gdlr-core-sidebar-item gdlr-core-item-pdlr">
                         <div id="recent-posts-3" class="widget widget_recent_entries kingster-widget" style="background-color:rgb(206, 234, 221) ;">
@@ -142,7 +141,7 @@ if (mysqli_num_rows($result) > 0): ?>
                             </ul>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
             </div>
         </div>

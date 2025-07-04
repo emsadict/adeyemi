@@ -47,16 +47,16 @@
                                         <ul class="sub-menu">
                                             <li class="menu-item" data-size="60"><a href="https://portal.afued.edu.ng" target="_blank">Apply To AFUED</a></li>
                                             <li class="menu-item" data-size="60"><a href="#">Scholarships</a></li>
-                                            <li class="menu-item" data-size="60"><a href="#">College of Technology</a></li>
+                                            <li class="menu-item" data-size="60"><a href="cot.afued.edu.ng" target="_blank">College of Technology</a></li>
                                             <li class="menu-item" data-size="60"><a href="#">Pre-Degree</a></li>
-                                            <li class="menu-item" data-size="60"><a href="#">Part-Time</a></li>
+                                            <li class="menu-item" data-size="60"><a href="https://dce.afued.edu.ng">Part-Time</a></li>
                                         </ul>
                                     </li>
                                     <li class="menu-item menu-item-has-children kingster-normal-menu"><a href="#" class="sf-with-ul-pre">News</a>
                                         <ul class="sub-menu">
                                             <li class="menu-item" data-size="60"><a href="blog.php">Update</a></li>
                                             <li class="menu-item" data-size="60"><a href="events.php">Events</a></li>
-                                            <li class="menu-item" data-size="60"><a href="researchs.php">Researches</a></li>
+                                            <li class="menu-item" data-size="60"><a href="researchs.php">Research</a></li>
 
 
                                         </ul>

@@ -112,8 +112,8 @@ function isActiveMenu($pages = []) {
                                     <li class="menu-item menu-item-has-children kingster-normal-menu <?php echo isActiveMenu(['portal.afued.edu.ng', 'scholarships.php', 'college.php', 'predegree.php', 'parttime.php']); ?>"><a href="#" class="sf-with-ul-pre">Admissions</a>
                                         <ul class="sub-menu">
                                             <li class="menu-item" data-size="60"><a href="https://portal.afued.edu.ng" target="_blank">Apply To AFUED</a></li>
-                                            <li class="menu-item" data-size="60"><a href="#">Scholarships</a></li>
-                                            <li class="menu-item" data-size="60"><a href="#">College of Technology</a></li>
+                                            <li class="menu-item" data-size="60"><a href="scholarship.php">Scholarships</a></li>
+                                            <li class="menu-item" data-size="60"><a href="cot.afued.edu.ng" target="_blank">College of Technology</a></li>
                                             <li class="menu-item" data-size="60"><a href="#">Pre-Degree</a></li>
                                             <li class="menu-item" data-size="60"><a href="#">Part-Time</a></li>
                                         </ul>
@@ -141,8 +141,8 @@ function isActiveMenu($pages = []) {
                                     <li class="menu-item menu-item-has-children kingster-normal-menu <?php echo isActiveMenu(['alumni.php', 'sug.php']); ?>"><a href="#" class="sf-with-ul-pre">Student</a>
                                         <ul class="sub-menu">
                                         <li class="menu-item" data-size="60"><a href="https://portal.afued.edu.ng" target="_blank">Portal</a></li>
-                                        <li class="menu-item" data-size="60"><a href="alumni.php">Alumni</a></li>
-                                        <li class="menu-item" data-size="60"><a href="https://portal.afued.edu.ng" target="_blank">Payments</a></li>
+                                        <li class="menu-item" data-size="60"><a href="https://afuedalumni.org" target="_blank">Alumni</a></li>
+                                       
                                         <li class="menu-item" data-size="60"><a href="#">SUG</a></li>
                                         
                                         </ul>
