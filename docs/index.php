@@ -293,7 +293,7 @@ $slides_json1 = json_encode($slides8);
                                     <div class="gdlr-core-pbf-column-content-margin gdlr-core-js " id="div_1dd7_14" data-sync-height="height-1">
                                         <div class="gdlr-core-pbf-background-wrap">
                                             <div class="gdlr-core-pbf-background gdlr-core-parallax gdlr-core-js" id="div_1dd7_15" data-parallax-speed="0"></div>
-                                                <div class="vc-name-overlay">Prof. XYZ</div> 
+                                                <div class="vc-name-overlay">Prof. Samuel Akintunde</div> 
                                                 <div class="gdlr-core-pbf-column-content clearfix gdlr-core-js gdlr-core-sync-height-content"></div>
                                         </div>
                                         <div class="gdlr-core-pbf-column-content clearfix gdlr-core-js  gdlr-core-sync-height-content"></div>
