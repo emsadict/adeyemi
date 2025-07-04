@@ -1,5 +1,6 @@
 <?php
 require 'db_connect.php';
+include "auth_session.php";
 $departments = $conn->query("SELECT * FROM dept_table");
 ?>
 
@@ -31,7 +32,7 @@ $departments = $conn->query("SELECT * FROM dept_table");
     <div class="gdlr-core-page-builder-body">
         <div class="gdlr-core-pbf-sidebar-wrapper">
             <div class="gdlr-core-pbf-sidebar-container gdlr-core-line-height-0 clearfix gdlr-core-js gdlr-core-container" id="madewith">
-                <div class="gdlr-core-pbf-sidebar-content gdlr-core-column-45 gdlr-core-pbf-sidebar-padding gdlr-core-line-height" style="padding: 60px 10px 30px 30px;">
+                <div class="gdlr-core-pbf-sidebar-content gdlr-core-column-50 gdlr-core-pbf-sidebar-padding gdlr-core-line-height" style="padding: 60px 10px 30px 30px;">
                     <div class="gdlr-core-pbf-background-wrap" style="background-color: #f7f7f7;"></div>
                     <div class="gdlr-core-pbf-sidebar-content-inner">
 <div class="gdlr-core-pbf-element">
@@ -39,6 +40,8 @@ $departments = $conn->query("SELECT * FROM dept_table");
         <div class="gdlr-core-blog-item-holder gdlr-core-js-2 clearfix" data-layout="fitrows">
 
             <!-- Upcoming Events -->
+              <?php echo "Welcome, admin " . $_SESSION['admin_username'];   ?><br>
+               <a href="logout.php" style="color: red; text-decoration: none;">Logout</a>
             <h3>Manage Departments</h3>
             <table class="table table-bordered table-striped">
             <thead class="table-success">
@@ -113,13 +116,18 @@ $departments = $conn->query("SELECT * FROM dept_table");
                 </div>
                 
                 <!-- Sidebar with Recent Posts -->
-                <div class="gdlr-core-pbf-sidebar-left gdlr-core-column-extend-left kingster-sidebar-area gdlr-core-column-15 gdlr-core-pbf-sidebar-padding gdlr-core-line-height">
-                    <div class="gdlr-core-sidebar-item gdlr-core-item-pdlr">
-                        <div id="recent-posts-3" class="widget widget_recent_entries kingster-widget" style="background-color:rgb(206, 234, 221) ;">
-                        <?php include "pagesidebar.php"; ?>
-                        </div>
-                    </div>
-                </div>
+                <div class="gdlr-core-pbf-sidebar-left gdlr-core-column-extend-left  kingster-sidebar-area gdlr-core-column-10 gdlr-core-pbf-sidebar-padding  gdlr-core-line-height">
+                                
+                                <div class="gdlr-core-sidebar-item gdlr-core-item-pdlr">
+                                    
+                                    
+                                    <div id="recent-posts-3" class="widget widget_recent_entries kingster-widget" style="background-color:rgb(206, 234, 221) ;">
+                                        <?php include "pagesidebar.php"; ?>
+                                         <?php include "adminsidemenu.php"; ?>
+                                    </div>
+                                </div>
+                            </div>
+                           
 
             </div>
         </div>

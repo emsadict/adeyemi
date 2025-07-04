@@ -11,7 +11,7 @@ $conn = new mysqli($host, $username, $password, $database);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-
+include "auth_session.php";
 ?>
 <!DOCTYPE html>
 <html lang="en-US" class="no-js">
@@ -98,7 +98,8 @@ if ($conn->connect_error) {
                     <?php if (isset($_GET['message'])): ?>
     <div class="alert alert-danger"><?php echo htmlspecialchars($_GET['message']); ?></div>
 <?php endif; ?>
-
+<?php echo "Welcome, admin " . $_SESSION['admin_username'];   ?><br>
+          <a href="logout.php" style="color: red; text-decoration: none;">Logout</a>
 <h2>Manage Research Activities</h2>
 
 <a href="create_research.php">+ Add New Research</a>
@@ -162,6 +163,7 @@ if ($conn->connect_error) {
                                     
                                     <div id="recent-posts-3" class="widget widget_recent_entries kingster-widget" style="background-color:rgb(206, 234, 221) ; margin-top:10px;">
                                         <?php include "adminsidemenu.php"; ?>
+                                        <?php include "pagesidebar.php"; ?>
                                     </div>
                                 </div>
                             </div>

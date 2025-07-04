@@ -12,7 +12,7 @@
 
                         <div class="kingster-top-bar-right kingster-item-pdlr">
                             <ul id="kingster-top-bar-menu" class="sf-menu kingster-top-bar-menu kingster-top-bar-right-menu">
-                                <li class="menu-item kingster-normal-menu"><a href="#">Alumni</a></li>
+                                <li class="menu-item kingster-normal-menu"><a href="https://afuedalumni.org" target="_blank">Alumni</a></li>
                                 <li class="menu-item kingster-normal-menu"><a href="#">Webmail</a></li>
                                 <li class="menu-item kingster-normal-menu"><a href="https://portal.aceondo.edu.ng" target="_blank">College Student Portal</a></li>
                             </ul>

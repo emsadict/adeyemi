@@ -1,6 +1,6 @@
 <?php
 require 'db_connect.php';
-
+include "auth_session.php";
 // Fetch pages
 $pages = $conn->query("SELECT * FROM pages_table");
 
@@ -39,7 +39,8 @@ $pages = $conn->query("SELECT * FROM pages_table");
 <div class="gdlr-core-pbf-element">
     <div class="gdlr-core-blog-item gdlr-core-item-pdb clearfix gdlr-core-style-blog-full-with-frame" style="padding-bottom: 40px;">
         <div class="gdlr-core-blog-item-holder gdlr-core-js-2 clearfix" data-layout="fitrows">
-
+         <?php echo "Welcome, admin " . $_SESSION['admin_username'];   ?><br>
+          <a href="logout.php" style="color: red; text-decoration: none;">Logout</a>
         <Center> <h2>Manage Pages</h2></Center>
 <table class="table table-bordered table-striped">
 <thead class="table-success">
@@ -106,10 +107,11 @@ $pages = $conn->query("SELECT * FROM pages_table");
                 </div>
                 
                 <!-- Sidebar with Recent Posts -->
-                <div class="gdlr-core-pbf-sidebar-left gdlr-core-column-extend-left kingster-sidebar-area gdlr-core-column-15 gdlr-core-pbf-sidebar-padding gdlr-core-line-height">
+                <div class="gdlr-core-pbf-sidebar-left gdlr-core-column-extend-left kingster-sidebar-area gdlr-core-column-10 gdlr-core-pbf-sidebar-padding gdlr-core-line-height">
                     <div class="gdlr-core-sidebar-item gdlr-core-item-pdlr">
                         <div id="recent-posts-3" class="widget widget_recent_entries kingster-widget" style="background-color:rgb(206, 234, 221) ;">
                         <?php include "pagesidebar.php"; ?>
+                        <?php include "adminsidemenu.php"; ?>
                         </div>
                     </div>
                 </div>

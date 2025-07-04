@@ -11,7 +11,7 @@ $conn = new mysqli($host, $username, $password, $database);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-
+include "auth_session.php";
 // Fetch all news posts
 $sql = "SELECT * FROM news ORDER BY created_at DESC";
 $result = $conn->query($sql);
@@ -97,7 +97,8 @@ $result = $conn->query($sql);
                                             <div class="gdlr-core-blog-item-holder gdlr-core-js-2 clearfix" data-layout="fitrows">
                                                 
                                                 
-                                               
+                                                <?php echo "Welcome, admin " . $_SESSION['admin_username'];   ?><br>
+                                            <a href="logout.php" style="color: red; text-decoration: none;">Logout</a>
                                                             <h2>Manage News</h2>
 
                                                             <table border="1" class="table table-bordered table-striped">

@@ -8,4 +8,5 @@
                                              <li><a href="create_dept_details.php">Add Dept Details</a></li>
                                              <li><a href="manage_dept.php">Manage Dept</a></li>
                                              <li><a href="addstaff.php">Add Staff</a></li>
+                                             <li><a href="managestaff.php">Manage Staff</a></li>
                                         </ul> 

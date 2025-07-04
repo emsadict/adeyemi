@@ -11,7 +11,7 @@ $conn = new mysqli($host, $username, $password, $database);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-
+include "auth_session.php";
 ?>
 <!DOCTYPE html>
 <html lang="en-US" class="no-js">
@@ -98,6 +98,8 @@ if ($conn->connect_error) {
             <div class="gdlr-core-blog-item gdlr-core-item-pdb clearfix gdlr-core-style-blog-full-with-frame" style="padding-bottom: 40px;">
                 <div class="gdlr-core-blog-item-holder gdlr-core-js-2 clearfix" data-layout="fitrows">
                     <h2>Manage Events</h2>
+                     <?php echo "Welcome, admin " . $_SESSION['admin_username'];   ?><br>
+                    <a href="logout.php" style="color: red; text-decoration: none;">Logout</a>
                     <?php if (isset($_GET['message'])): ?>
     <div class="alert alert-danger"><?php echo htmlspecialchars($_GET['message']); ?></div>
 <?php endif; ?>

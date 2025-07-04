@@ -134,6 +134,7 @@ function isActiveMenu($pages = []) {
                                             <li class="menu-item" data-size="60"><a href="goc.php">Governing Council</a></li>
                                             <li class="menu-item" data-size="60"><a href="prpo.php">Principal Officers</a></li>
                                             <li class="menu-item" data-size="60"><a href="gallery.php">Gallery</a></li>
+                                            <li class="menu-item" data-size="60"><a href="mailto:info@afued.edu.ng">Send us mail</a></li>
                                         </ul>
     </li>
                                         

@@ -3,7 +3,7 @@ include "db_connect.php";
 include "auth_session.php";
 
 // Now the user is verified, place protected content here
-//echo "Welcome, admin " . $_SESSION['admin_username'];
+echo "Welcome, admin " . $_SESSION['admin_username'];
 
 ?>
 
@@ -29,13 +29,13 @@ include "auth_session.php";
                 <div class="gdlr-core-page-builder-body">
                     <div class="gdlr-core-pbf-sidebar-wrapper ">
                         <div class="gdlr-core-pbf-sidebar-container gdlr-core-line-height-0 clearfix gdlr-core-js gdlr-core-container">
-                            <div class="gdlr-core-pbf-sidebar-content  gdlr-core-column-30 gdlr-core-pbf-sidebar-padding gdlr-core-line-height" style="padding: 60px 10px 30px 30px;">
+                            <div class="gdlr-core-pbf-sidebar-content  gdlr-core-column-40 gdlr-core-pbf-sidebar-padding gdlr-core-line-height" style="padding: 60px 10px 30px 30px;">
                                 <div class="gdlr-core-pbf-background-wrap" style="background-color: #f7f7f7 ;"></div>
                                 <div class="gdlr-core-pbf-sidebar-content-inner">
                                     <div class="gdlr-core-pbf-element">
                                         <div class="gdlr-core-blog-item gdlr-core-item-pdb clearfix  gdlr-core-style-blog-full-with-frame" style="padding-bottom: 40px ;">
                                             <div class="gdlr-core-blog-item-holder gdlr-core-js-2 clearfix" data-layout="fitrows">
-                                             <?php echo "Welcome, admin " . $_SESSION['admin_username'];   ?><br>
+                                               <?php echo "Welcome, admin " . $_SESSION['admin_username'];   ?><br>
                                             <a href="logout.php" style="color: red; text-decoration: none;">Logout</a>
   
                                                 
@@ -49,7 +49,7 @@ include "auth_session.php";
                                     </div>
                                 </div>
                             </div>
-                            <div class="gdlr-core-pbf-sidebar-left gdlr-core-column-extend-left  kingster-sidebar-area gdlr-core-column-15 gdlr-core-pbf-sidebar-padding  gdlr-core-line-height">
+                            <div class="gdlr-core-pbf-sidebar-left gdlr-core-column-extend-left  kingster-sidebar-area gdlr-core-column-10 gdlr-core-pbf-sidebar-padding  gdlr-core-line-height">
                                 
                                 <div class="gdlr-core-sidebar-item gdlr-core-item-pdlr">
                                     
@@ -59,7 +59,7 @@ include "auth_session.php";
                                     </div>
                                 </div>
                             </div>
-                            <div class="gdlr-core-pbf-sidebar-right gdlr-core-column-extend-right  kingster-sidebar-area gdlr-core-column-15 gdlr-core-pbf-sidebar-padding  gdlr-core-line-height">
+                            <div class="gdlr-core-pbf-sidebar-right gdlr-core-column-extend-right  kingster-sidebar-area gdlr-core-column-10 gdlr-core-pbf-sidebar-padding  gdlr-core-line-height">
                                 
                                 <div class="gdlr-core-sidebar-item gdlr-core-item-pdlr">
                                     
