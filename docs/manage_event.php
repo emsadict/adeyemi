@@ -91,7 +91,7 @@ include "auth_session.php";
                              $result = mysqli_query($conn, $query);
                              ?>
 
-<div class="gdlr-core-pbf-sidebar-content gdlr-core-column-45 gdlr-core-pbf-sidebar-padding gdlr-core-line-height" style="padding: 60px 10px 30px 30px;">
+<div class="gdlr-core-pbf-sidebar-content gdlr-core-column-40 gdlr-core-pbf-sidebar-padding gdlr-core-line-height" style="padding: 60px 10px 30px 30px;">
     <div class="gdlr-core-pbf-background-wrap" style="background-color: #f7f7f7;"></div>
     <div class="gdlr-core-pbf-sidebar-content-inner">
         <div class="gdlr-core-pbf-element">
@@ -163,13 +163,14 @@ include "auth_session.php";
 
 
 
-                            <div class="gdlr-core-pbf-sidebar-left gdlr-core-column-extend-left  kingster-sidebar-area gdlr-core-column-15 gdlr-core-pbf-sidebar-padding  gdlr-core-line-height">
+                            <div class="gdlr-core-pbf-sidebar-left gdlr-core-column-extend-left  kingster-sidebar-area gdlr-core-column-10 gdlr-core-pbf-sidebar-padding  gdlr-core-line-height">
                                 
                                 <div class="gdlr-core-sidebar-item gdlr-core-item-pdlr">
                                     
                                     
                                     <div id="recent-posts-3" class="widget widget_recent_entries kingster-widget" style="background-color:rgb(206, 234, 221) ; margin-top:10px;">
                                         <?php include "adminsidemenu.php"; ?>
+                                        <?php include "pagesidebar.php"; ?>
                                     </div>
                                 </div>
                             </div>
