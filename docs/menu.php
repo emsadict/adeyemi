@@ -118,11 +118,12 @@ function isActiveMenu($pages = []) {
                                             <li class="menu-item" data-size="60"><a href="#">Part-Time</a></li>
                                         </ul>
                                     </li>
-                                    <li class="menu-item menu-item-has-children kingster-normal-menu <?php echo isActiveMenu(['blog.php', 'events.php', 'researchs.php']); ?>"><a href="#" class="sf-with-ul-pre">News</a>
+                                    <li class="menu-item menu-item-has-children kingster-normal-menu <?php echo isActiveMenu(['blog.php', 'events.php','schoolblog.php', 'researchs.php']); ?>"><a href="#" class="sf-with-ul-pre">News</a>
                                         <ul class="sub-menu">
                                             <li class="menu-item" data-size="60"><a href="blog.php">Update</a></li>
                                             <li class="menu-item" data-size="60"><a href="events.php">Events</a></li>
-                                            <li class="menu-item" data-size="60"><a href="researchs.php">Researches</a></li>
+                                            <li class="menu-item" data-size="60"><a href="researchs.php">Research</a></li>
+                                            <li class="menu-item" data-size="60"><a href="schoolblog.php">Blog Page</a></li>
 
 
                                         </ul>
