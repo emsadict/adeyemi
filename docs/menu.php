@@ -113,7 +113,7 @@ function isActiveMenu($pages = []) {
                                         <ul class="sub-menu">
                                             <li class="menu-item" data-size="60"><a href="https://portal.afued.edu.ng" target="_blank">Apply To AFUED</a></li>
                                             <li class="menu-item" data-size="60"><a href="scholarship.php">Scholarships</a></li>
-                                            <li class="menu-item" data-size="60"><a href="cot.afued.edu.ng" target="_blank">College of Technology</a></li>
+                                            <li class="menu-item" data-size="60"><a href="https://cot.afued.edu.ng" target="_blank">College of Technology</a></li>
                                             <li class="menu-item" data-size="60"><a href="#">Pre-Degree</a></li>
                                             <li class="menu-item" data-size="60"><a href="#">Part-Time</a></li>
                                         </ul>

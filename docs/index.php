@@ -537,7 +537,7 @@ $other_news_result = $conn->query($other_news_query);
 
                             // Extract first 50 words from content
                             $content_words = explode(' ', strip_tags($latest_news['content']));
-                            $short_description = implode(' ', array_slice($content_words, 0, 50)) . '... ';
+                            $short_description = implode(' ', array_slice($content_words, 0, 20)) . '... ';
                         ?>
                             <div class="gdlr-core-item-list-wrap gdlr-core-column-30" >
                                 <div class="gdlr-core-item-list-inner gdlr-core-item-mglr" style="background-color:rgb(173, 223, 199); padding-top:20px; padding-left:20px;padding-right:20px;padding-bottom: 20px;">
@@ -648,7 +648,7 @@ $other_news_result = $conn->query($other_news_query);
                                             <div class="gdlr-core-pbf-element">
                                                 <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix  gdlr-core-left-align gdlr-core-title-item-caption-top gdlr-core-item-pdlr"  id="gdlr-core-title-item-id-42777">
                                                     <div class="gdlr-core-title-item-title-wrap clearfix">
-                                                        <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " id="h3_1dd7_17"><a href="portal.afued.edu.ng" target="_self" style="color:#ffffff">Application Portal</a></h3></div>
+                                                        <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " id="h3_1dd7_17"><a href="https://portal.afued.edu.ng" target="_blank" style="color:#ffffff">Application Portal</a></h3></div>
                                                 </div>
                                             </div>
                                             <div class="gdlr-core-pbf-element">
@@ -659,7 +659,7 @@ $other_news_result = $conn->query($other_news_query);
                                             <div class="gdlr-core-pbf-element">
                                                 <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix  gdlr-core-left-align gdlr-core-title-item-caption-top gdlr-core-item-pdlr"  id="gdlr-core-title-item-id-51281">
                                                     <div class="gdlr-core-title-item-title-wrap clearfix">
-                                                        <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " id="h3_1dd7_18"><a href="#" target="_self" style="color:#ffffff" >Schools</a></h3></div>
+                                                        <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " id="h3_1dd7_18"><a href="schools.php" target="_self" style="color:#ffffff" >Schools</a></h3></div>
                                                 </div>
                                             </div>
                                             <div class="gdlr-core-pbf-element">
@@ -681,7 +681,7 @@ $other_news_result = $conn->query($other_news_query);
                                             <div class="gdlr-core-pbf-element">
                                                 <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix  gdlr-core-left-align gdlr-core-title-item-caption-top gdlr-core-item-pdlr"  id="gdlr-core-title-item-id-14842">
                                                     <div class="gdlr-core-title-item-title-wrap clearfix">
-                                                        <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " id="h3_1dd7_20"><a href="#" target="_self" style="color:#ffffff" >Admission</a></h3></div>
+                                                        <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " id="h3_1dd7_20"><a href="#" target="_self" style="color:#ffffff" >Admissions</a></h3></div>
                                                 </div>
                                             </div>
                                             <div class="gdlr-core-pbf-element">
@@ -963,7 +963,7 @@ if ($result->num_rows > 0) {
                                                 <div class="gdlr-core-event-item gdlr-core-item-pdb" id="div_1dd7_94">
                                                     <div class="gdlr-core-block-item-title-wrap  gdlr-core-left-align gdlr-core-item-mglr" id="div_1dd7_95">
                                                         <div class="gdlr-core-block-item-title-inner clearfix">
-                                                            <h3 class="gdlr-core-block-item-title" id="h3_1dd7_32">Upcoming Events</h3>
+                                                            <h3 class="gdlr-core-block-item-title" id="h3_1dd7_32"> Events</h3>
                                                             <div class="gdlr-core-block-item-title-divider" id="div_1dd7_96"></div>
                                                         </div>
                                                     </div>
