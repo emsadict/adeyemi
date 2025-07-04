@@ -57,7 +57,7 @@ foreach ($posts as $post) {
     echo "<div class='card-body'>";
     echo "<h3>$title</h3>";
     echo "<p>$words</p>";
-    echo "<a href='$link' class='btn'>Read More</a>";
+    echo "<a href='$link' class='btn' target='_blank'>Read More</a>";
     echo "</div></div>";
 }
        ?>   
