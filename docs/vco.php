@@ -114,10 +114,10 @@ require 'db_connect.php';
                                     <div id="text-15" class="widget widget_text kingster-widget">
                                         <h3 class="kingster-widget-title">VICE CHANCELLOR</h3><span class="clear"></span>
                                         <div class="gdlr-core-video-widget gdlr-core-media-image">
-                                            <a class="gdlr-core-lightgallery gdlr-core-js " style="border-width: 10px;"><img src="uploads/" width="400" height="400"   alt="" /></a>
-                                            <h3 style="margin-bottom:2px;font-size: 30px ;font-weight: 600 ;letter-spacing: 0px ;text-transform: none ;color:rgb(3, 34, 33) ; text-align:center;">
-                                                   </h3>
-                                                        <p style="margin-bottom: 5px;font-size: 18px ;font-weight: 200 ;color:rgb(61, 184, 155) ; text-align:center;">
+                                            <a class="gdlr-core-lightgallery gdlr-core-js " style="border-width: 10px;"><img src="images/vc.jpg" width="400" height="400"   alt="" /></a>
+                                            <h5 style="margin-bottom:2px;font-size: 20px ;font-weight: 600 ;letter-spacing: 0px ;text-transform: none ;color:rgb(8, 56, 45) ; text-align:center;">Prof. Samuel Akintunde
+                                                   </h5>
+                                                        <p style="margin-bottom: 5px;font-size: 18px ;font-weight: 200 ;color:rgb(61, 184, 155) ; text-align:center;">Ag. Vice Chancellor
                                                     </p> 
                                                         <p style="font-size: 18px ;font-weight: 200 ;color:rgb(15, 13, 41) ; text-align:center;">
                                                     </p>

@@ -57,7 +57,7 @@ include 'db_connect.php';
 
                                                         
                                                         </div>
-                                                        <img src="images/mission_vision.jpg"  />
+                                                        <img src="images/LOGOO.png"  />
                                                     </div>
                                                 </div>
                                             </div>
@@ -211,15 +211,15 @@ include 'db_connect.php';
                                                 <div class="gdlr-core-tab-item-content  gdlr-core-active" data-tab-id="1" >
                                                 <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix  gdlr-core-left-align gdlr-core-title-item-caption-top">
                                                         <div class="gdlr-core-title-item-title-wrap ">
-                                                            <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " id="h3_1dd7_25">Introduction<span class="gdlr-core-title-item-title-divider gdlr-core-skin-divider" ></span></h3></div>
+                                                            <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " id="h3_1dd7_25">Mission<span class="gdlr-core-title-item-title-divider gdlr-core-skin-divider" ></span></h3></div>
                                                     </div>
                                                     
-                                                    <h2>Mission</h2>
+                                                    
   <p>
     The mission of Adeyemi Federal University of Education, Ondo is to create a conducive atmosphere where teaching, learning, research and community activities can take place among staff, students and the public for the overall benefit of the teaching profession in Nigeria and abroad through a resourceful, transparent, firm and just leadership.
   </p>
 
-  <h2>Strategic Goals/Objectives</h2>
+  <h5>Strategic Goals/Objectives</h5>
   <p>
     The University has set a target of 10 strategic goals with clearly identified strategic objectives to be achieved in the next 10 years. The strategic goals are:
   </p>
@@ -269,17 +269,17 @@ include 'db_connect.php';
                                                     </div>
                                                     <p style="text-align: justify;">STANZA 1
 
-                                                                    HAIL OUR GREAT COLLEGE OF EDUCATION <br />
+                                                                    HAIL OUR GREAT UNIVERSITY OF EDUCATION <br />
                                                                     CITADEL OF NOBLE COMPATRIOTS<br />
                                                                     IN QUEST FOR KNOWLEDGE FULFILLING HER MANDATE<br />
                                                                     EDUCATION FOR SERVICE<br />
 
                                                                     CHORUS<br />
 
-                                                                    ADEYEMI COLLEGE OF EDUCATION.<br />
+                                                                    ADEYEMI UNIVERSITY OF EDUCATION.<br />
                                                                     MENTORING A MIND TO GO AND GROW. <br />
                                                                     ALL HAIL! <br />
-                                                                    HAIL OUR GREAT COLLEGE<br />
+                                                                    HAIL OUR GREAT UNIVERSITY<br />
                                                                     ARISE AND SHINE.<br />
 
                                                                     STANZA 2<br />
@@ -291,10 +291,10 @@ include 'db_connect.php';
 
                                                                      CHORUS<br />
 
-                                                                     ADEYEMI COLLEGE OF EDUCATION.<br />
+                                                                     ADEYEMI UNIVERSITY OF EDUCATION.<br />
                                                                      MENTORING A MIND TO GO AND GROW.<br />
                                                                      ALL HAIL!<br />
-                                                                     HAIL OUR GREAT COLLEGE<br />
+                                                                     HAIL OUR GREAT UNIVERSITY<br />
                                                                      ARISE AND SHINE.<br />
 
                                                     </p>

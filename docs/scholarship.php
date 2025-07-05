@@ -1,6 +1,6 @@
 <?php
 require 'db_connect.php';
-
+$pg_intro=$pg_objective=$pg_phone=$pg_email='';
 
 ?>
 
@@ -164,17 +164,18 @@ require 'db_connect.php';
                                 </div>
                                         <div class="gdlr-core-tab-item-wrap">
                                             <div class="gdlr-core-tab-item-title-wrap clearfix gdlr-core-title-font">
-                                                <div class="gdlr-core-tab-item-title  gdlr-core-active" data-tab-id="1">Introduction</div>
-                                                <div class="gdlr-core-tab-item-title " data-tab-id="2">Objectives</div>
-                                                <div class="gdlr-core-tab-item-title " data-tab-id="3">Scholarship</div>
-                                                <div class="gdlr-core-tab-item-title " data-tab-id="4">Staff Directory</div>
-                                                <div class="gdlr-core-tab-item-title " data-tab-id="6">Contact Details</div>
+                                                <div class="gdlr-core-tab-item-title  gdlr-core-active" data-tab-id="1">INTRODUCTION</div>
+                                                <div class="gdlr-core-tab-item-title " data-tab-id="2">OBJECTIVES</div>
+                                                <div class="gdlr-core-tab-item-title " data-tab-id="3">SCHOLARSHIP</div>
+                                                <div class="gdlr-core-tab-item-title " data-tab-id="4">NELFUND</div>
+                                                <div class="gdlr-core-tab-item-title " data-tab-id="5">STAFF DIRECTORY</div>
+                                                <div class="gdlr-core-tab-item-title " data-tab-id="6">CONTACT DETIALS</div>
                                             </div>
                                             <div class="gdlr-core-tab-item-content-wrap clearfix">
                                                 <div class="gdlr-core-tab-item-content  gdlr-core-active" data-tab-id="1" >
                                                 <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix  gdlr-core-left-align gdlr-core-title-item-caption-top">
                                                         <div class="gdlr-core-title-item-title-wrap ">
-                                                            <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " id="h3_1dd7_25">Welcome<span class="gdlr-core-title-item-title-divider gdlr-core-skin-divider" ></span></h3></div>
+                                                            <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " id="h3_1dd7_25">WELCOME<span class="gdlr-core-title-item-title-divider gdlr-core-skin-divider" ></span></h3></div>
                                                     </div>
                                                     <p style="text-align: justify;">
                                                                              <p><?= $pg_intro ?></p>  
@@ -184,7 +185,7 @@ require 'db_connect.php';
                                                 <div class="gdlr-core-tab-item-content " data-tab-id="2" >
                                                     <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix  gdlr-core-left-align gdlr-core-title-item-caption-top">
                                                         <div class="gdlr-core-title-item-title-wrap ">
-                                                            <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " id="h3_1dd7_25">Objectives<span class="gdlr-core-title-item-title-divider gdlr-core-skin-divider" ></span></h3></div>
+                                                            <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " id="h3_1dd7_25">OBJECTIVES<span class="gdlr-core-title-item-title-divider gdlr-core-skin-divider" ></span></h3></div>
                                                     </div>
                                                    
 
@@ -194,7 +195,7 @@ require 'db_connect.php';
                                                 <div class="gdlr-core-tab-item-content " data-tab-id="3" >
                                                     <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix  gdlr-core-left-align gdlr-core-title-item-caption-top">
                                                         <div class="gdlr-core-title-item-title-wrap ">
-                                                            <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " id="h3_1dd7_26">Scholarhip <span class="gdlr-core-title-item-title-divider gdlr-core-skin-divider" ></span></h3></div>
+                                                            <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " id="h3_1dd7_26">SCHOLARSHIP <span class="gdlr-core-title-item-title-divider gdlr-core-skin-divider" ></span></h3></div>
                                                     </div>
                                                     <p style="text-align: justify;">
 
@@ -205,7 +206,18 @@ require 'db_connect.php';
                                                 <div class="gdlr-core-tab-item-content " data-tab-id="4" >
                                                     <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix  gdlr-core-left-align gdlr-core-title-item-caption-top">
                                                         <div class="gdlr-core-title-item-title-wrap ">
-                                                            <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " id="h3_1dd7_27">Staff Directory<span class="gdlr-core-title-item-title-divider gdlr-core-skin-divider" ></span></h3></div>
+                                                            <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " id="h3_1dd7_26">NELFUND <span class="gdlr-core-title-item-title-divider gdlr-core-skin-divider" ></span></h3></div>
+                                                    </div>
+                                                    <p style="text-align: justify;">
+
+                                                    </p>
+                                                    <p style="text-align: justify;"></p>
+                                                    
+                                                </div>
+                                                <div class="gdlr-core-tab-item-content " data-tab-id="5" >
+                                                    <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix  gdlr-core-left-align gdlr-core-title-item-caption-top">
+                                                        <div class="gdlr-core-title-item-title-wrap ">
+                                                            <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " id="h3_1dd7_27">STAFF DIRECTORY<span class="gdlr-core-title-item-title-divider gdlr-core-skin-divider" ></span></h3></div>
                                                     </div>
                                                     <p style="text-align: justify;">   </P>
                                                                             <?php
@@ -270,26 +282,9 @@ if (!empty($pg_id)) {
 } else {
     echo "<p class='alert alert-danger'>Page ID not provided!</p>";
 }
-?>
-
-
-                                                   
-
-                                                   
+?>     
                                                 </div>
-                                                <div class="gdlr-core-tab-item-content " data-tab-id="5" >
-                                                    <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix  gdlr-core-left-align gdlr-core-title-item-caption-top">
-                                                        <div class="gdlr-core-title-item-title-wrap ">
-                                                            <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " id="h3_1dd7_28">Contact<span class="gdlr-core-title-item-title-divider gdlr-core-skin-divider" ></span></h3></div>
-                                                    </div>
-                                                    <p style="text-align: justify;">Contact
-                                                        
-                                                    <?= $pg_phone ?><br /><strong>Email:</strong> 
-                                                    <a href="mailto:<?= $pg_email ?>"><?= $pg_email ?></a>
-
-                                                    </p>
-                                                       
-                                                </div>
+                                              
                                                 <div class="gdlr-core-tab-item-content " data-tab-id="6" >
                                                     <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix  gdlr-core-left-align gdlr-core-title-item-caption-top">
                                                         <div class="gdlr-core-title-item-title-wrap ">
