@@ -85,9 +85,16 @@
 <div class="popup-overlay" id="popup">
   <div class="popup-box">
     <span class="close-icon" onclick="closePopup()">×</span>
-    <img src="https://via.placeholder.com/400x200" alt="Popup Image">
-    <h2>Welcome to AFUED</h2>
-    <p>This is a quick announcement or message for visitors. You can customize this text to suit your needs.</p>
+    <img src="images/advert.jpg" alt="Popup Image">
+    <h2>Part-Time degree Programmes</h2>
+    <p>ADEYEMI FEDERAL UNIVERSITY OF EDUCATION, ONDO
+DIRECTORATE OF CONTINUING EDUCATION AND PART-TIME STUDIES
+
+ADMISSION INTO PART-TIME DEGREE PROGRAMME  
+OBAFEMI AWOLOWO UNIVERSITY, ILE-IFE 
+2025/2026 CONTACT SESSION 
+
+Applications are hereby invited from suitably qualified candidates for admission into the following Part-Time degree Programmes for the 2025/2026 Course Session..</p>
     <button class="close-btn" onclick="closePopup()">Close</button>
   </div>
 </div>
