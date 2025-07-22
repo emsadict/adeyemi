@@ -1,19 +1,7 @@
 <?php
 // Database connection
-$host = "localhost"; // Change if different
-$username = "root"; // Change if different
-$password = ""; // Change if different
-$database = "website_management"; // Your database name
-
-$conn = new mysqli($host, $username, $password, $database);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-$message = "";
-
+include "db_connect.php";
+// Fetch news details by ID
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $title = $conn->real_escape_string($_POST['title']);
     $content = $conn->real_escape_string($_POST['content']);
@@ -37,7 +25,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-$conn->close();
+
+
+
 ?>
 
 
@@ -55,11 +45,12 @@ tinymce.init({
     selector: '#message', // Target the textarea
     menubar: false, // Hide menu bar (optional)
     plugins: 'lists link image code', // Add desired plugins
-    toolbar: 'bold italic underline | bullist numlist | link image | code', // Customize toolbar
+    toolbar: 'bold italic underline | bullist numlist | link', // Customize toolbar
     height: 250, // Adjust height
     branding: false // Hide "Powered by TinyMCE"
 });
 </script>
+
 <body class="home page-template-default page page-id-2039 gdlr-core-body woocommerce-no-js tribe-no-js kingster-body kingster-body-front kingster-full  kingster-with-sticky-navigation  kingster-blockquote-style-1 gdlr-core-link-to-lightbox">
 <?php include "mobilemenu.php"; ?>
     <div class="kingster-body-outer-wrapper ">
@@ -81,25 +72,25 @@ tinymce.init({
                                     <div class="gdlr-core-pbf-element">
                                         <div class="gdlr-core-blog-item gdlr-core-item-pdb clearfix  gdlr-core-style-blog-full-with-frame" style="padding-bottom: 40px ;">
                                             <div class="gdlr-core-blog-item-holder gdlr-core-js-2 clearfix" data-layout="fitrows">
-                                                           <center><h2>Create News Post</h2></center>
-                                                              <hr />  
-                                                           <?php if (!empty($message)) { echo "<div class='alert alert-success text-center'>$message</div>"; } ?>
-                                                           <div class="form-container">
-                                                           <form action="" method="POST" class=""enctype="multipart/form-data" >
-                                                               <label>Title:</label>
-                                                               <input type="text" name="title" required><br><br>
+                                                
+                                           <center> <h2>Post News</h2></center>
+                       <div class="form-container">
+                                            <?php if (!empty($message)) { echo "<div class='alert alert-success text-center'>$message</div>"; } ?>
+                                                          <form action="" method="POST" enctype="multipart/form-data">
+                                                              <label>Title:</label>
+                                                              <input type="text" name="title"  required><br><br>
 
-                                                               <label>Content:</label><br>
-                                                               <textarea name="content" rows="5" id="message" column="400"required></textarea><br><br>
+                                                              <label>Content:</label><br>
+                                                              <textarea name="content" id="message"  rows="5" required> </textarea><br><br>
 
-                                                               <label>Author:</label>
-                                                               <input type="text" name="author" required><br><br>
+                                                              <label>New Image (Optional):</label>
+                                                              <input type="file" name="image"><br><br>
+                                                                    <label>Author:</label>
+                                                              <input type="text" name="author"  required><br><br>
+                                                              <button type="submit">Post News</button>
+                                                          </form>
 
-                                                               <label>Image:</label>
-                                                               <input type="file" name="image" required><br><br>
 
-                                                               <button type="submit">Create Post</button>
-                                                           </form>
                                                            </div>
                                             </div>
                                             
@@ -107,13 +98,13 @@ tinymce.init({
                                     </div>
                                 </div>
                             </div>
-                            
                             <div class="gdlr-core-pbf-sidebar-left gdlr-core-column-extend-left  kingster-sidebar-area gdlr-core-column-15 gdlr-core-pbf-sidebar-padding  gdlr-core-line-height">
                                 
                                 <div class="gdlr-core-sidebar-item gdlr-core-item-pdlr">
-                                    <button class="btn btn-success"> Back to admin</button> <br />
-                                    <div id="recent-posts-3" class="widget widget_recent_entries kingster-widget" style="background-color:rgb(206, 234, 221) ; margin-top:10px;">
-                                    <?php include "adminsidemenu.php"; ?>
+                                    
+                                    
+                                    <div id="recent-posts-3" class="widget widget_recent_entries kingster-widget">
+                                        <?php include "adminsidemenu.php"; ?>
                                     </div>
                                 </div>
                             </div>
@@ -124,15 +115,10 @@ tinymce.init({
             </div>
 
             <footer>
-                <?php  include "footer.php";?>
+                <?php  include "footer.php"; $conn->close();?>
             </footer>
         </div>
     </div>
- <!-- Bootstrap CSS -->
- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
-<!-- Bootstrap JavaScript (for interactive components like modals, dropdowns, etc.) -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 
 	<script type='text/javascript' src='js/jquery/jquery.js'></script>
@@ -152,7 +138,7 @@ tinymce.init({
     <script type='text/javascript' src='js/jquery/ui/effect.min.js'></script>
     <script type='text/javascript'>
         var kingster_script_core = {
-            "home_url": "index.html"
+            "home_url": "index.php"
         };
     </script>
     <script type='text/javascript' src='js/plugins.min.js'></script>

@@ -128,10 +128,11 @@ function isActiveMenu($pages = []) {
 
                                         </ul>
                                     </li>
-                                    <li class="menu-item menu-item-has-children kingster-normal-menu <?php echo isActiveMenu(['facts.php', 'goc.php', 'prpo.php', 'gallery.php']); ?>">
+                                    <li class="menu-item menu-item-has-children kingster-normal-menu <?php echo isActiveMenu(['facts.php', 'goc.php', 'prpo.php', 'Institutionaldata.php','gallery.php']); ?>">
         <a href="#" class="sf-with-ul-pre">About Us</a>
         <ul class="sub-menu">
                                             <li class="menu-item" data-size="60"><a href="facts.php">University Facts</a></li>
+                                            <li class="menu-item" data-size="60"><a href="Institutionaldata.php">Key Institutional Data</a></li>
                                             <li class="menu-item" data-size="60"><a href="goc.php">Governing Council</a></li>
                                             <li class="menu-item" data-size="60"><a href="prpo.php">Principal Officers</a></li>
                                             <li class="menu-item" data-size="60"><a href="gallery.php">Gallery</a></li>

@@ -120,81 +120,89 @@ $slides_json1 = json_encode($slides8);
       font-weight: bold;
       margin-right: 5px;
     }
-       .popup-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.6); /* transparent dark background */
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-    }
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
 
-    /* Popup box */
-    .popup-box {
-      background: white;
-      border-radius: 10px;
-      width: 90%;
-      max-width: 600px;
-      padding: 20px;
-      position: relative;
-      text-align: center;
-      box-shadow: 0 0 20px rgba(0,0,0,0.3);
-    }
+.popup-box {
+  background: white;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 600px;
+  padding: 20px;
+  position: relative;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  overflow-y: auto; /* allows scrolling of content if it overflows */
+  max-height: 80vh; /* limits height to prevent full screen takeover */
+}
 
-    .popup-box img {
-      width: 65%;
-      border-radius: 8px;
-      margin-bottom: 15px;
-    }
+.image-scroll-area {
+  max-height: 300px; /* only part of image is visible */
+  overflow-y: auto;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
 
-    .popup-box h2 {
-      margin: 10px 0;
-      color: #333;
-    }
+.image-scroll-area img {
+  width: 100%;
+  display: block;
+}
 
-    .popup-box p {
-      color: #555;
-      font-size: 1em;
-      margin-bottom: 20px;
-    }
+.popup-box h5 {
+  margin: 10px 0;
+  color: #333;
+}
 
-    .close-icon {
-      position: absolute;
-      top: 10px;
-      right: 15px;
-      font-size: 20px;
-      color: #888;
-      cursor: pointer;
-    }
+.popup-box p {
+  color: #555;
+  font-size: 1em;
+  margin-bottom: 20px;
+}
 
-    .close-icon:hover {
-      color: #000;
-    }
+.close-icon {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 20px;
+  color: #888;
+  cursor: pointer;
+}
 
-    .close-btn {
-      padding: 10px 20px;
-      background-color: crimson;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-     .open-btn {
-      padding: 10px 20px;
-      background-color: lightgreen;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
+.close-icon:hover {
+  color: #000;
+}
 
-    .close-btn:hover {
-      background-color: darkred;
-    }
+.close-btn,
+.open-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+}
+
+.close-btn {
+  background-color: crimson;
+}
+
+.close-btn:hover {
+  background-color: darkred;
+}
+
+.open-btn {
+  background-color: lightgreen;
+}
+
 </style>
 </head>
 
@@ -203,15 +211,23 @@ $slides_json1 = json_encode($slides8);
 <div class="popup-overlay" id="popup">
   <div class="popup-box">
     <span class="close-icon" onclick="closePopup()">×</span>
-    <img src="images/advert.jpg" alt="Popup Image">
-    <h5>Part-Time degree Programmes</h5>
-    <p>ADEYEMI FEDERAL UNIVERSITY OF EDUCATION, ONDO
-DIRECTORATE OF CONTINUING EDUCATION AND PART-TIME STUDIES
 
-ADMISSION INTO PART-TIME DEGREE PROGRAMME  
-OBAFEMI AWOLOWO UNIVERSITY, ILE-IFE 
-2025/2026 CONTACT SESSION <a href="https://portal.afued.edu.ng" target="_blank"> <button class="open-btn">Read More</button></a>
-</p>
+    <div class="image-scroll-area">
+      <img src="images/advert.jpg" alt="Part-Time Degree Banner">
+    </div>
+
+    <h5>Part-Time Degree Programmes</h5>
+    <p>
+      ADEYEMI FEDERAL UNIVERSITY OF EDUCATION, ONDO <br>
+      DIRECTORATE OF CONTINUING EDUCATION AND PART-TIME STUDIES <br><br>
+      ADMISSION INTO PART-TIME DEGREE PROGRAMME <br>
+      OBAFEMI AWOLOWO UNIVERSITY, ILE-IFE <br>
+      2025/2026 CONTACT SESSION
+      <a href="https://portal.afued.edu.ng" target="_blank">
+        <button class="open-btn">Read More</button>
+      </a>
+    </p>
+
     <button class="close-btn" onclick="closePopup()">Close</button>
   </div>
 </div>
@@ -443,19 +459,20 @@ OBAFEMI AWOLOWO UNIVERSITY, ILE-IFE
 </div>
 
 
-
                                                     </div>
                                                         <div style="max-width: 800px; margin: 30px auto; padding: 30px; background: linear-gradient(135deg, #e5eaed, #f3f6f9); border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); font-family: 'Segoe UI', sans-serif;">
 
   <h2 style="color:rgb(6, 156, 98); font-size: 28px; margin-bottom: 15px; border-left: 5px solid rgb(6, 156, 98); padding-left: 10px;">VISION</h2>
-  <p style="color: #333; font-size: 17px; line-height: 1.6; text-align: justify;">To be the Foremost Change Agent for Service Excellence
+  <p style="color: #333; font-size: 17px; line-height: 1.6; text-align: justify;">The vision of Adeyemi Federal University of Education is "to create a conducive atmosphere where teaching, learning, research, and community activities can take place to produce competent and qualified graduates that can compete globally and for the overall benefit of the teaching profession in Nigeria and abroad through resourceful, transparent, firm, and just leadership."
+
   </p>
 
   <hr style="margin: 30px 0; border: none; border-top: 1px solid #ccc;">
 
   <h2 style="color:rgb(6, 156, 98); font-size: 28px; margin-bottom: 15px; border-left: 5px solid rgb(6, 156, 98); padding-left: 10px;">MISSION</h2>
   <p style="color: #333; font-size: 17px; line-height: 1.6; text-align: justify;">
-    To Improve Customer Satisfaction by Promoting Service Excellence in the University Services
+    The mission of Adeyemi Federal University of Education is "to be a model institution in Nigeria for the pursuit of academic excellence through teaching, learning, and research for the professionalisation of teaching to meet global standards."
+
     </p>
 
 </div>

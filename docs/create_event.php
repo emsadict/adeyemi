@@ -1,7 +1,8 @@
 <?php
+include 'db_connect.php';
 $message = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    include 'db_connect.php'; // Include your database connection file
+     // Include your database connection file
 
     $title = $_POST['title'];
     $description = $_POST['description'];

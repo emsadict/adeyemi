@@ -49,7 +49,7 @@ tinymce.init({
     selector: '#message', // Target the textarea
     menubar: false, // Hide menu bar (optional)
     plugins: 'lists link image code', // Add desired plugins
-    toolbar: 'bold italic underline | bullist numlist | link image | code', // Customize toolbar
+    toolbar: 'bold italic underline | bullist numlist | link', // Customize toolbar
     height: 250, // Adjust height
     branding: false // Hide "Powered by TinyMCE"
 });
@@ -142,7 +142,7 @@ tinymce.init({
     <script type='text/javascript' src='js/jquery/ui/effect.min.js'></script>
     <script type='text/javascript'>
         var kingster_script_core = {
-            "home_url": "index.html"
+            "home_url": "index.php"
         };
     </script>
     <script type='text/javascript' src='js/plugins.min.js'></script>
