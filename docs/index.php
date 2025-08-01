@@ -29,6 +29,8 @@ while ($row7 = $result7->fetch_assoc()) {
 
 // Encode data for JavaScript
 $slides_json = json_encode($slides7);
+
+
 // larger slider code
 include "db_connect.php";
 

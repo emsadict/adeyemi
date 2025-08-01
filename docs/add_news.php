@@ -1,6 +1,6 @@
 <?php
-// Database connection
 include "db_connect.php";
+include "auth_session.php";
 // Fetch news details by ID
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $title = $conn->real_escape_string($_POST['title']);
@@ -74,6 +74,8 @@ tinymce.init({
                                             <div class="gdlr-core-blog-item-holder gdlr-core-js-2 clearfix" data-layout="fitrows">
                                                 
                                            <center> <h2>Post News</h2></center>
+                                              <?php echo "Welcome, admin " . $_SESSION['admin_username'];   ?><br>
+                                            <a href="logout.php" style="color: red; text-decoration: none;">Logout</a>
                        <div class="form-container">
                                             <?php if (!empty($message)) { echo "<div class='alert alert-success text-center'>$message</div>"; } ?>
                                                           <form action="" method="POST" enctype="multipart/form-data">
@@ -104,7 +106,8 @@ tinymce.init({
                                     
                                     
                                     <div id="recent-posts-3" class="widget widget_recent_entries kingster-widget">
-                                        <?php include "adminsidemenu.php"; ?>
+                                         <?php include "adminsidemenu.php"; ?>
+                                        <?php include "pagesidebar.php"; ?>
                                     </div>
                                 </div>
                             </div>
@@ -119,7 +122,11 @@ tinymce.init({
             </footer>
         </div>
     </div>
+ <!-- Bootstrap CSS -->
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
+<!-- Bootstrap JavaScript (for interactive components like modals, dropdowns, etc.) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 	<script type='text/javascript' src='js/jquery/jquery.js'></script>
     <script type='text/javascript' src='js/jquery/jquery-migrate.min.js'></script>

@@ -1,7 +1,7 @@
 <?php
 require 'db_connect.php';
 include "auth_session.php";
-$departments = $conn->query("SELECT * FROM dept_table");
+
 ?>
 
 
@@ -25,7 +25,7 @@ $departments = $conn->query("SELECT * FROM dept_table");
                 <div class="kingster-page-title-overlay"></div>
                 <div class="kingster-page-title-container kingster-container">
                     <div class="kingster-page-title-content kingster-item-pdlr">
-                        <h1 class="kingster-page-title">MANAGE DEPARTMENT</h1></div>
+                        <h1 class="kingster-page-title">MANAGE SLIDERS</h1></div>
                 </div>
             </div>
             <div class="kingster-page-wrapper" id="kingster-page-wrapper">
@@ -50,41 +50,59 @@ $departments = $conn->query("SELECT * FROM dept_table");
   </div>
 <?php endif; ?>
 
-            <h3>Manage Departments</h3>
+            <h3>MANAGE SLIDERS</h3>
             <table class="table table-bordered table-striped">
-            <thead class="table-success">
-             <tr> 
-        <th>S/N</th>
-        <th>Name</th>
-        <th>School</th>
-        <th>HOD</th>
-        <th>Email</th>
-        <th>Phone</th>
-        <th>Image</th>
-        <th>Actions</th>
-    </tr>
-            </thead>
-            <tbody>
-    <?php 
-    $counter = 1; // Start ID from 1
-    while ($row = $departments->fetch_assoc()): ?>
-    <tr>
-    <td><?php  echo $counter++; ?></td>
-        <td><?= $row['dept_name'] ?></td>
-        <td><?= $row['dept_school'] ?></td>
-        <td><?= $row['dept_head'] ?></td>
-        <td><?= $row['dept_email'] ?></td>
-        <td><?= $row['dept_phone'] ?></td>
-        <td><img src="uploads/<?= $row['dept_image'] ?>" width="50"></td>
-        <td>
-            <a href="edit_dept.php?id=<?= $row['id'] ?>" class="btn btn-warning btn-sm" style="color:#ffffff;">Edit</a> |
-            <a href="delete_dept.php?id=<?= $row['id'] ?>" class="btn btn-danger btn-sm" style="color:#ffffff;" onclick="return confirm('Are you sure?')">Delete</a>
-            <a href="dept.php?dept_name=<?= $row['dept_name'] ?>" class="btn btn-primary btn-sm" style="color:#ffffff;">View</a>
-            <a href="edit_dept_details.php?id=<?= $row['id'] ?>" class="btn btn-success btn-sm" style="color:#ffffff;">Edit Information</a> |
-        </td>
-    </tr>
-    <?php endwhile; ?>
-            </tbody>
+         <table>
+        <tr>
+            <th>S/N</th>
+            <th>Title</th>
+            <th>Image</th>
+            <th>Description</th>
+            <th>Action</th>
+        </tr>
+
+        <?php
+        $sn = 1;
+
+        // Fetch large sliders
+        $largeQuery = "SELECT * FROM imagegallery ORDER BY id DESC";
+        $largeResult = $conn->query($largeQuery);
+        if ($largeResult->num_rows > 0) {
+            while ($row = $largeResult->fetch_assoc()) {
+                echo "<tr>
+                        <td>{$sn}</td>
+                        <td>{$row['title']}</td>
+                        <td><img src='uploads/{$row['image_path']}' alt='' style='width:150px; height:100px; object-fit:cover;'></td>
+                        <td>{$row['description']}</td>
+                        <td>
+                            <a href='editlargeslider.php?id={$row['id']}' class='action-btn'>Edit</a>
+                            <a href='deletelargeslider.php?id={$row['id']}' class='action-btn delete-btn'>Delete</a>
+                        </td>
+                      </tr>";
+                $sn++;
+            }
+        }
+
+        // Fetch small sliders
+        $smallQuery = "SELECT * FROM images ORDER BY id DESC";
+        $smallResult = $conn->query($smallQuery);
+        if ($smallResult->num_rows > 0) {
+            while ($row = $smallResult->fetch_assoc()) {
+                echo "<tr>
+                        <td>{$sn}</td>
+                        <td>{$row['title']}</td>
+                        <td><img src='uploads/{$row['image_path']}' alt='' style='width:150px; height:100px; object-fit:cover;'></td>
+                        <td><i>—</i></td>
+                        <td>
+                            <a href='editsmallslider.php?id={$row['id']}' class='action-btn'>Edit</a>
+                            <a href='deletesmallslider.php?id={$row['id']}' class='action-btn delete-btn'>Delete</a>
+                        </td>
+                      </tr>";
+                $sn++;
+            }
+        }
+        ?>
+   
 </table>
 
         </div>
@@ -117,6 +135,34 @@ $departments = $conn->query("SELECT * FROM dept_table");
         background-color:rgb(5, 125, 79);
         color: white;
     }
+          table {
+            width: 90%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+        img {
+            max-width: 100px;
+            height: auto;
+        }
+        th {
+            background-color: #f0f0f0;
+        }
+        .action-btn {
+            margin: 0 5px;
+            padding: 5px 10px;
+            background-color: dodgerblue;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        .delete-btn {
+            background-color: crimson;
+        }
 </style>
 
 
@@ -169,7 +215,7 @@ $departments = $conn->query("SELECT * FROM dept_table");
     <script type='text/javascript' src='js/jquery/ui/effect.min.js'></script>
     <script type='text/javascript'>
         var kingster_script_core = {
-            "home_url": "index.html"
+            "home_url": "index.php"
         };
     </script>
     <script type='text/javascript' src='js/plugins.min.js'></script>

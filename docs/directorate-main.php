@@ -292,7 +292,7 @@ if (!empty($pg_id)) {
         if ($staff_result->num_rows > 0) {
             while ($staff = $staff_result->fetch_assoc()) {
                 $stafftitle = ucfirst($staff['staff_id']);
-               // $staffName = ucfirst($staff['staff_name']);
+                $staffName = htmlspecialchars($staff['staff_name']);
                 $staffEmail = htmlspecialchars($staff['staff_email']);
                 $staffQualification = htmlspecialchars($staff['staff_qualification']);
                 $staffDesignation = htmlspecialchars($staff['staff_designation']);
@@ -305,7 +305,7 @@ if (!empty($pg_id)) {
                         <img src="<?php echo $staffPhoto; ?>" alt="Staff Photo" width="120" height="120">
                     </div>
                     <div class="staff-details">
-                        <h3><?php //echo $staffName; ?></h3>
+                        <h3><?php echo $staffName; ?></h3>
                         <h3><?php echo $stafftitle; ?></h3>
                         <p><strong>Qualification:</strong> <?php echo $staffQualification; ?></p>
                         <p><strong>Designation:</strong> <?php echo $staffDesignation; ?></p>

@@ -1,5 +1,6 @@
 <?php
 include 'db_connect.php';
+include "auth_session.php";
 $message = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
      // Include your database connection file
@@ -63,7 +64,7 @@ tinymce.init({
     selector: '#message', // Target the textarea
     menubar: false, // Hide menu bar (optional)
     plugins: 'lists link image code', // Add desired plugins
-    toolbar: 'bold italic underline | bullist numlist | link image | code', // Customize toolbar
+    toolbar: 'bold italic underline | bullist numlist | link', // Customize toolbar
     height: 250, // Adjust height
     branding: false // Hide "Powered by TinyMCE"
 });
@@ -92,6 +93,8 @@ tinymce.init({
                                             <div class="gdlr-core-blog-item-holder gdlr-core-js-2 clearfix" data-layout="fitrows">
                                                        <center><h2>Post Upcoming Event</h2></center>
                                                               <hr />  
+                                                              <?php echo "Welcome, admin " . $_SESSION['admin_username'];   ?><br>
+                                            <a href="logout.php" style="color: red; text-decoration: none;">Logout</a>
                                                            <?php if (!empty($message)) { echo "<div class='alert alert-success text-center'>$message</div>"; } ?>
                                                            <div class="form-container">
                                                            <form action="create_event.php" method="POST" class="" enctype="multipart/form-data" style="padding: 40px; border: 2px;">
@@ -148,9 +151,10 @@ tinymce.init({
                             <div class="gdlr-core-pbf-sidebar-left gdlr-core-column-extend-left  kingster-sidebar-area gdlr-core-column-15 gdlr-core-pbf-sidebar-padding  gdlr-core-line-height">
                                 
                                 <div class="gdlr-core-sidebar-item gdlr-core-item-pdlr">
-                                    <button class="btn btn-success"> Back to admin</button> <br />
+                                    
                                     <div id="recent-posts-3" class="widget widget_recent_entries kingster-widget" style="background-color:rgb(206, 234, 221) ; margin-top:10px;">
                                     <?php include "adminsidemenu.php"; ?>
+                                        <?php include "pagesidebar.php"; ?>
                                     </div>
                                 </div>
                             </div>

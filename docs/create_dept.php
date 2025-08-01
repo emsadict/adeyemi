@@ -2,7 +2,7 @@
 require 'db_connect.php'; // Database connection
 include "auth_session.php";
 // Fetch schools from pages_table where category_id = 'school'
-$schools = $conn->query("SELECT pg_title FROM pages_table WHERE pg_categ_id = 'school'");
+$schools = $conn->query("SELECT pg_title FROM pages_table WHERE pg_categ_id = 'fac'");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $dept_id = $_POST['dept_id'];  // Get auto-generated dept_id

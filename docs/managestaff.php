@@ -104,10 +104,14 @@ table {
                         <?php endif; ?>
                     </td>
                     <td class="actions">
-                        <a href="editstaff.php?id=<?= $row['id'] ?>" class="edit">Edit</a>
-                        <a href="deletestaff.php?id=<?= $row['id'] ?>" class="delete" onclick="return confirm('Are you sure you want to delete this staff?');">Delete</a>
-                        <a href="viewstaff.php?id=<?= $row['id'] ?>" class="view">View</a>
-                    </td>
+    <a href="editstaff.php?id=<?= $row['id'] ?>" class="edit">Edit</a>
+
+    <?php if (isset($_SESSION['admin_role']) && $_SESSION['admin_role'] === 'superadmin'): ?>
+        <a href="deletestaff.php?id=<?= $row['id'] ?>" class="delete" onclick="return confirm('Are you sure you want to delete this staff?');">Delete</a>
+    <?php endif; ?>
+
+    <a href="viewstaff.php?id=<?= $row['id'] ?>" class="view">View</a>
+</td>
                 </tr>
             <?php endwhile; ?>
         <?php else: ?>

@@ -6,14 +6,14 @@ $page = $conn->query("SELECT * FROM pages_table WHERE pg_id = $pg_id")->fetch_as
 
 $category = $page['pg_categ_id'];
 
-if ($category == "VCO-unit") {
-    require 'templates/vco_template.php';
+if ($category == "vco") {
+    require 'vcounit.php';
 }
  elseif ($category == "Directorates" ||$category == "directorate" ) {
     //require 'templates/directorate_template.php';
     require 'directorate-main.php';
 }
-elseif ($category == "School" ||$category == "school" ){
+elseif ($category == "fac" ||$category == "Fac" ){
         require 'school.php';
 }
 else {

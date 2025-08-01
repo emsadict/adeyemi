@@ -314,6 +314,7 @@ if (!empty($department)) {
         while ($row = $staffResult->fetch_assoc()) {
             $staffName = ucfirst($row['staff_id']); // Assuming staff_id is their name
             $staffEmail = htmlspecialchars($row['staff_email']);
+            $staffName = htmlspecialchars($row['staff_name']);
             $staffQualification = htmlspecialchars($row['staff_qualification']);
             $staffDesignation = htmlspecialchars($row['staff_designation']);
             $staffPhoto = !empty($row['staff_photo']) ? "uploads/staff_photos/{$row['staff_photo']}" : "upload/default.jpg"; // Default image if no photo

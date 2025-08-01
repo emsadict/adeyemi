@@ -1,8 +1,53 @@
 <?php
 require 'db_connect.php';
 include "auth_session.php";
-// Fetch pages
-$pages = $conn->query("SELECT * FROM pages_table");
+// post large slider
+$message = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $title = htmlspecialchars($_POST["title"]);
+
+    // Allowed file formats
+    $allowed_types = ["image/jpeg", "image/png", "image/svg+xml", "image/jpg"];
+
+    if (isset($_FILES["image"]) && $_FILES["image"]["error"] === 0) {
+        $image_type = mime_content_type($_FILES["image"]["tmp_name"]);
+
+        if (in_array($image_type, $allowed_types)) {
+            $upload_dir = "uploads/";
+            if (!is_dir($upload_dir)) {
+                mkdir($upload_dir, 0755, true);
+            }
+
+            // Generate unique filename
+            $extension = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
+            $filename = uniqid("img_", true) . "." . $extension;
+            $filename = uniqid("img_") . "." . pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
+            $target_file = $upload_dir . $filename;
+
+
+            if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
+                // Insert into database
+                $query = "INSERT INTO images (title, image_path) VALUES ('$title', '$filename')";
+                //$query = "INSERT INTO images (title, image_path) VALUES ('$title', '$target_file')";
+                if ($conn->query($query)) {
+                    echo "<script>alert('Image uploaded successfully!'); window.location='postsmallslider.php';</script>";
+                } else {
+                    echo "<script>alert('Database error: " . $conn->error . "');</script>";
+                }
+            } else {
+                echo "<script>alert('Error moving uploaded file.');</script>";
+            }
+        } else {
+            echo "<script>alert('Invalid file type! Only JPG, JPEG, PNG, SVG allowed.');</script>";
+        }
+    } else {
+        echo "<script>alert('No file uploaded or an error occurred.');</script>";
+    }
+}
+
+
+
 
 ?>
 
@@ -26,7 +71,7 @@ $pages = $conn->query("SELECT * FROM pages_table");
                 <div class="kingster-page-title-overlay"></div>
                 <div class="kingster-page-title-container kingster-container">
                     <div class="kingster-page-title-content kingster-item-pdlr">
-                        <h1 class="kingster-page-title">MANAGE PAGE</h1></div>
+                        <h1 class="kingster-page-title">POST SMALL SLIDER</h1></div>
                 </div>
             </div>
             <div class="kingster-page-wrapper" id="kingster-page-wrapper">
@@ -49,34 +94,20 @@ $pages = $conn->query("SELECT * FROM pages_table");
   </div>
 <?php endif; ?>
 
-        <Center> <h2>Manage Pages</h2></Center>
-<table class="table table-bordered table-striped">
-<thead class="table-success">
-    <tr>
-        <th>S/N</th>
-        <th>Title</th>
-        <th>Category</th>
-        <th>Actions</th>
-    </tr>
-</thead>
-    <?php 
-     $counter = 1;
-    while ($page = $pages->fetch_assoc()): ?>
-        <tr>
-            <td><?php echo $counter++; ?></td>
-            <td><?= $page['pg_title'] ?></td>
-            <td><?= $page['pg_category'] ?></td>
-            <td>
-                <a href="edit_page.php?id=<?= $page['pg_id'] ?>" class="btn btn-warning btn-sm" style="color:#ffffff;">Edit</a> |
-                <a href="delete_page.php?id=<?= $page['pg_id'] ?>" onclick="return confirm('Are you sure?')" class="btn btn-danger btn-sm" style="color:#ffffff;">Delete</a> |
-                <a href="view_page.php?id=<?= $page['pg_id'] ?>" class="btn btn-primary btn-sm" style="color:#ffffff;">View</a>
-                <a href="edit_page_details.php?id=<?= $page['pg_id'] ?>" class="btn btn-success btn-sm" style="color:#ffffff;">Edit Page Details</a>
-
-            </td>
-        </tr>
-    <?php endwhile; ?>
-</table>
-
+        <Center> <h2>POST SMALL SLIDER</h2></Center>
+                     <div class="form-container">
+             <form action="postsmallslider.php" method="POST" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="title" class="form-label">Image Title:</label>
+                <input type="text" class="form-control" name="title" required>
+            </div>
+            <div class="mb-3">
+                <label for="image" class="form-label">Choose an Image:</label>
+                <input type="file" class="form-control" name="image" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Upload Image</button>
+        </form>
+             </div>
 
         </div>
     </div>
@@ -156,7 +187,7 @@ $pages = $conn->query("SELECT * FROM pages_table");
     <script type='text/javascript' src='js/jquery/ui/effect.min.js'></script>
     <script type='text/javascript'>
         var kingster_script_core = {
-            "home_url": "index.html"
+            "home_url": "index.php"
         };
     </script>
     <script type='text/javascript' src='js/plugins.min.js'></script>
