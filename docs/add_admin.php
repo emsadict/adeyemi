@@ -1,13 +1,27 @@
 <?php
-require 'db_connect.php';
 include "auth_session.php";
-// Fetch pages
-$pages = $conn->query("SELECT * FROM pages_table");
+if ($_SESSION['admin_role'] !== 'superadmin') {
+    die("Access denied. Only superadmins can add admins.");
+}
 
+include "db_connect.php";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = $_POST['username'];
+    $full_name = $_POST['full_name'];
+    $email = $_POST['email'];
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    $role = $_POST['role'];
+
+    $stmt = $conn->prepare("INSERT INTO admin_users (username, email, password, full_name, role, status, created_at) VALUES (?, ?, ?, ?, ?, 'active', NOW())");
+    $stmt->bind_param("sssss", $username, $email, $password, $full_name, $role);
+    $stmt->execute();
+
+    echo "Admin added successfully.";
+    header("Location: adminpanel.php");
+exit;
+}
 ?>
-
-
-
 <!DOCTYPE html>
 <html lang="en-US" class="no-js">
 <head>
@@ -26,59 +40,39 @@ $pages = $conn->query("SELECT * FROM pages_table");
                 <div class="kingster-page-title-overlay"></div>
                 <div class="kingster-page-title-container kingster-container">
                     <div class="kingster-page-title-content kingster-item-pdlr">
-                        <h1 class="kingster-page-title">MANAGE PAGE</h1></div>
+                        <h1 class="kingster-page-title">Add Admin</h1></div>
                 </div>
             </div>
             <div class="kingster-page-wrapper" id="kingster-page-wrapper">
     <div class="gdlr-core-page-builder-body">
         <div class="gdlr-core-pbf-sidebar-wrapper">
-            <div class="gdlr-core-pbf-sidebar-container gdlr-core-line-height-0 clearfix gdlr-core-js gdlr-core-container" id="madewith">
-                <div class="gdlr-core-pbf-sidebar-content gdlr-core-column-45 gdlr-core-pbf-sidebar-padding gdlr-core-line-height" style="padding: 60px 10px 30px 30px;">
+            <div class="gdlr-core-pbf-sidebar-container gdlr-core-line-height-0 clearfix gdlr-core-js gdlr-core-container">
+                <div class="gdlr-core-pbf-sidebar-content gdlr-core-column-30 gdlr-core-pbf-sidebar-padding gdlr-core-line-height" style="padding: 60px 10px 30px 30px;">
                     <div class="gdlr-core-pbf-background-wrap" style="background-color: #f7f7f7;"></div>
                     <div class="gdlr-core-pbf-sidebar-content-inner">
 <div class="gdlr-core-pbf-element">
     <div class="gdlr-core-blog-item gdlr-core-item-pdb clearfix gdlr-core-style-blog-full-with-frame" style="padding-bottom: 40px;">
         <div class="gdlr-core-blog-item-holder gdlr-core-js-2 clearfix" data-layout="fitrows">
-         <?php echo "Welcome, admin " . $_SESSION['admin_username'];   ?><br>
-          <a href="logout.php" style="color: red; text-decoration: none;">Logout</a>
 
-         <?php if (isset($_GET['alert'])): ?>
-  <div class="alert alert-info alert-dismissible fade show" role="alert">
-    <?= htmlspecialchars($_GET['alert']) ?>
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-  </div>
-<?php endif; ?>
-
-        <Center> <h2>Manage Pages</h2></Center>
-<table class="table table-bordered table-striped">
-<thead class="table-success">
-    <tr>
-        <th>S/N</th>
-        <th>Title</th>
-        <th>Category</th>
-        <th>Actions</th>
-    </tr>
-</thead>
-    <?php 
-     $counter = 1;
-    while ($page = $pages->fetch_assoc()): ?>
-        <tr>
-            <td><?php echo $counter++; ?></td>
-            <td><?= $page['pg_title'] ?></td>
-            <td><?= $page['pg_category'] ?></td>
-            <td>
-                <a href="edit_page.php?id=<?= $page['pg_id'] ?>" class="btn btn-warning btn-sm" style="color:#ffffff;">Edit</a> |
-                <?php if ($_SESSION['admin_role'] === 'superadmin'): ?>
-                <a href="delete_page.php?id=<?= $page['pg_id'] ?>" onclick="return confirm('Are you sure?')" class="btn btn-danger btn-sm" style="color:#ffffff;">Delete</a> |
-                <?php endif; ?>
-                <a href="view_page.php?id=<?= $page['pg_id'] ?>" class="btn btn-primary btn-sm" style="color:#ffffff;">View</a>
-                <a href="edit_page_details.php?id=<?= $page['pg_id'] ?>" class="btn btn-success btn-sm" style="color:#ffffff;">Edit Page Details</a>
-
-            </td>
-        </tr>
-    <?php endwhile; ?>
-</table>
-
+            <!-- Upcoming Events -->
+           
+            <hr />
+          
+<!-- Simple form -->
+ <div class="form-container">
+<form method="post">
+    Username: <input type="text" name="username" required><br>
+    Full Name: <input type="text" name="full_name" required><br>
+    Email: <input type="email" name="email" required><br>
+    Password: <input type="password" name="password" required><br>
+    Role: 
+    <select name="role">
+        <option value="admin">Admin</option>
+        <option value="superadmin">Superadmin</option>
+    </select><br>
+    <button type="submit">Add Admin</button>
+</form>
+ </div>          
 
         </div>
     </div>
@@ -117,14 +111,26 @@ $pages = $conn->query("SELECT * FROM pages_table");
                 </div>
                 
                 <!-- Sidebar with Recent Posts -->
-                <div class="gdlr-core-pbf-sidebar-left gdlr-core-column-extend-left kingster-sidebar-area gdlr-core-column-10 gdlr-core-pbf-sidebar-padding gdlr-core-line-height">
-                    <div class="gdlr-core-sidebar-item gdlr-core-item-pdlr">
-                        <div id="recent-posts-3" class="widget widget_recent_entries kingster-widget" style="background-color:rgb(206, 234, 221) ;">
-                        <?php include "pagesidebar.php"; ?>
-                        <?php include "adminsidemenu.php"; ?>
-                        </div>
-                    </div>
-                </div>
+             <div class="gdlr-core-pbf-sidebar-left gdlr-core-column-extend-left  kingster-sidebar-area gdlr-core-column-15 gdlr-core-pbf-sidebar-padding  gdlr-core-line-height">
+                                
+                                <div class="gdlr-core-sidebar-item gdlr-core-item-pdlr">
+                                    
+                                    
+                                    <div id="recent-posts-3" class="widget widget_recent_entries kingster-widget" style="background-color:rgb(206, 234, 221) ;">
+                                        <?php include "pagesidebar.php"; ?>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="gdlr-core-pbf-sidebar-right gdlr-core-column-extend-right  kingster-sidebar-area gdlr-core-column-15 gdlr-core-pbf-sidebar-padding  gdlr-core-line-height">
+                                
+                                <div class="gdlr-core-sidebar-item gdlr-core-item-pdlr">
+                                    
+                                    
+                                    <div id="recent-posts-3" class="widget widget_recent_entries kingster-widget" style="background-color:rgb(206, 234, 221) ;">
+                                        <?php include "adminsidemenu.php"; ?>
+                                    </div>
+                                </div>
+                            </div>
 
             </div>
         </div>

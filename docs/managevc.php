@@ -2,8 +2,8 @@
 require 'db_connect.php';
 include "auth_session.php";
 // Fetch pages
-$pages = $conn->query("SELECT * FROM pages_table");
 
+$result = $conn->query("SELECT * FROM vice_chancellor ORDER BY created_at DESC");
 ?>
 
 
@@ -26,7 +26,7 @@ $pages = $conn->query("SELECT * FROM pages_table");
                 <div class="kingster-page-title-overlay"></div>
                 <div class="kingster-page-title-container kingster-container">
                     <div class="kingster-page-title-content kingster-item-pdlr">
-                        <h1 class="kingster-page-title">MANAGE PAGE</h1></div>
+                        <h1 class="kingster-page-title">MANAGE VC PROFILE</h1></div>
                 </div>
             </div>
             <div class="kingster-page-wrapper" id="kingster-page-wrapper">
@@ -39,50 +39,52 @@ $pages = $conn->query("SELECT * FROM pages_table");
 <div class="gdlr-core-pbf-element">
     <div class="gdlr-core-blog-item gdlr-core-item-pdb clearfix gdlr-core-style-blog-full-with-frame" style="padding-bottom: 40px;">
         <div class="gdlr-core-blog-item-holder gdlr-core-js-2 clearfix" data-layout="fitrows">
-         <?php echo "Welcome, admin " . $_SESSION['admin_username'];   ?><br>
-          <a href="logout.php" style="color: red; text-decoration: none;">Logout</a>
+            <?php
+           
 
-         <?php if (isset($_GET['alert'])): ?>
-  <div class="alert alert-info alert-dismissible fade show" role="alert">
-    <?= htmlspecialchars($_GET['alert']) ?>
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-  </div>
-<?php endif; ?>
+            echo "Welcome, admin " . $_SESSION['admin_username'] . "<br>";
+            ?>
+            <a href="logout.php" style="color: red; text-decoration: none;">Logout</a>
 
-        <Center> <h2>Manage Pages</h2></Center>
+            <?php if (isset($_GET['alert'])): ?>
+                <div class="alert alert-info alert-dismissible fade show" role="alert">
+                    <?= htmlspecialchars($_GET['alert']) ?>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            <?php endif; ?>
+                <a href="adminpanel.php" class="btn btn-warning">Back</a>
+            <center><h2>MANAGE VC PROFILE IN HOME PAGE</h2></center>
+
+           <h3>Vice Chancellor Profile</h3>
 <table class="table table-bordered table-striped">
-<thead class="table-success">
+    <thead class="table-success">
     <tr>
-        <th>S/N</th>
+        <th>Image</th>
+        <th>Name</th>
         <th>Title</th>
-        <th>Category</th>
         <th>Actions</th>
     </tr>
-</thead>
-    <?php 
-     $counter = 1;
-    while ($page = $pages->fetch_assoc()): ?>
+    </thead>
+    <?php while ($row = $result->fetch_assoc()): ?>
         <tr>
-            <td><?php echo $counter++; ?></td>
-            <td><?= $page['pg_title'] ?></td>
-            <td><?= $page['pg_category'] ?></td>
+            <td><img src="images/<?= $row['image'] ?>" style="height:60px;"></td>
+            <td><?= htmlspecialchars($row['full_name']) ?></td>
+            <td><?= htmlspecialchars($row['title']) ?></td>
             <td>
-                <a href="edit_page.php?id=<?= $page['pg_id'] ?>" class="btn btn-warning btn-sm" style="color:#ffffff;">Edit</a> |
-                <?php if ($_SESSION['admin_role'] === 'superadmin'): ?>
-                <a href="delete_page.php?id=<?= $page['pg_id'] ?>" onclick="return confirm('Are you sure?')" class="btn btn-danger btn-sm" style="color:#ffffff;">Delete</a> |
-                <?php endif; ?>
-                <a href="view_page.php?id=<?= $page['pg_id'] ?>" class="btn btn-primary btn-sm" style="color:#ffffff;">View</a>
-                <a href="edit_page_details.php?id=<?= $page['pg_id'] ?>" class="btn btn-success btn-sm" style="color:#ffffff;">Edit Page Details</a>
+    <a href="editvc.php?id=<?= $row['id'] ?>">Edit</a> |
+    <button class="btn btn-info btn-sm" onclick="showWelcome(`<?= htmlspecialchars(addslashes($row['welcome_address'])) ?>`)">View Welcome</button> |
+    <a href="deletevc.php?id=<?= $row['id'] ?>" onclick="return confirm('Delete this profile?')">Delete</a>
+</td>
 
-            </td>
         </tr>
     <?php endwhile; ?>
 </table>
 
-
+            
         </div>
     </div>
 </div>
+
 
 <style>
     .event-box {
@@ -139,7 +141,19 @@ $pages = $conn->query("SELECT * FROM pages_table");
             </footer>
         </div>
     </div>
+<div id="welcomePopup" style="display:none; position:fixed; top:10%; left:50%; transform:translateX(-50%);
+background:#fff; padding:20px; border:2px solid #333; border-radius:10px; max-width:600px; max-height:400px; overflow:auto; z-index:9999;">
+    <h3>Welcome Address</h3>
+    <div id="welcomeContent" style="white-space:pre-wrap;"></div>
+    <button onclick="document.getElementById('welcomePopup').style.display='none'" style="margin-top:10px;" class="btn btn-danger">Close</button>
+</div>
 
+<script>
+function showWelcome(content) {
+    document.getElementById('welcomeContent').innerHTML = content;
+    document.getElementById('welcomePopup').style.display = 'block';
+}
+</script>
 
 	<script type='text/javascript' src='js/jquery/jquery.js'></script>
     <script type='text/javascript' src='js/jquery/jquery-migrate.min.js'></script>
@@ -158,7 +172,7 @@ $pages = $conn->query("SELECT * FROM pages_table");
     <script type='text/javascript' src='js/jquery/ui/effect.min.js'></script>
     <script type='text/javascript'>
         var kingster_script_core = {
-            "home_url": "index.html"
+            "home_url": "index.php"
         };
     </script>
     <script type='text/javascript' src='js/plugins.min.js'></script>

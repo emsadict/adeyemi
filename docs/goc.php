@@ -53,7 +53,7 @@ if (mysqli_num_rows($result) > 0): ?>
     <div class="council-container">
         <?php while ($row = mysqli_fetch_assoc($result)): 
             $fullName = htmlspecialchars($row['surname'] . ' ' . $row['othernames']);
-            $position = htmlspecialchars($row['position']);
+            $position = htmlspecialchars($row['appointed_by']);
             $status = htmlspecialchars($row['status']);
             $years = $row['year_started'] . ' - ' . ($row['year_ended'] ?? 'Present');
             $email = htmlspecialchars($row['email']);
@@ -62,9 +62,10 @@ if (mysqli_num_rows($result) > 0): ?>
         ?>
         <div class="council-member">
             <img src="<?= $passport ?>" alt="<?= $fullName ?>" width="120" height="120">
-            <h5><?= $fullName ?></h5>
-            <p><strong>Position:</strong> <?= $position ?> (<?= $status ?>)</p>
-            <p><strong>Years of Service:</strong> <?= $years ?></p>
+            <h5><?= strtoupper($fullName) ?></h5>
+<p><strong>Position:</strong> <?= strtoupper($position) ?></p>
+
+          <!--  <p><strong>Years of Service:</strong> </p>  -->
            
         </div>
         <?php endwhile; ?>

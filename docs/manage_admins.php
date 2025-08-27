@@ -1,13 +1,9 @@
 <?php
-require 'db_connect.php';
 include "auth_session.php";
-// Fetch pages
-$pages = $conn->query("SELECT * FROM pages_table");
+include "db_connect.php";
 
+$result = $conn->query("SELECT * FROM admin_users");
 ?>
-
-
-
 <!DOCTYPE html>
 <html lang="en-US" class="no-js">
 <head>
@@ -26,59 +22,55 @@ $pages = $conn->query("SELECT * FROM pages_table");
                 <div class="kingster-page-title-overlay"></div>
                 <div class="kingster-page-title-container kingster-container">
                     <div class="kingster-page-title-content kingster-item-pdlr">
-                        <h1 class="kingster-page-title">MANAGE PAGE</h1></div>
+                        <h1 class="kingster-page-title">Manage Admins</h1></div>
                 </div>
             </div>
             <div class="kingster-page-wrapper" id="kingster-page-wrapper">
     <div class="gdlr-core-page-builder-body">
         <div class="gdlr-core-pbf-sidebar-wrapper">
-            <div class="gdlr-core-pbf-sidebar-container gdlr-core-line-height-0 clearfix gdlr-core-js gdlr-core-container" id="madewith">
-                <div class="gdlr-core-pbf-sidebar-content gdlr-core-column-45 gdlr-core-pbf-sidebar-padding gdlr-core-line-height" style="padding: 60px 10px 30px 30px;">
+            <div class="gdlr-core-pbf-sidebar-container gdlr-core-line-height-0 clearfix gdlr-core-js gdlr-core-container">
+                <div class="gdlr-core-pbf-sidebar-content gdlr-core-column-30 gdlr-core-pbf-sidebar-padding gdlr-core-line-height" style="padding: 30px 10px 30px 30px;">
                     <div class="gdlr-core-pbf-background-wrap" style="background-color: #f7f7f7;"></div>
                     <div class="gdlr-core-pbf-sidebar-content-inner">
 <div class="gdlr-core-pbf-element">
     <div class="gdlr-core-blog-item gdlr-core-item-pdb clearfix gdlr-core-style-blog-full-with-frame" style="padding-bottom: 40px;">
         <div class="gdlr-core-blog-item-holder gdlr-core-js-2 clearfix" data-layout="fitrows">
-         <?php echo "Welcome, admin " . $_SESSION['admin_username'];   ?><br>
-          <a href="logout.php" style="color: red; text-decoration: none;">Logout</a>
 
-         <?php if (isset($_GET['alert'])): ?>
-  <div class="alert alert-info alert-dismissible fade show" role="alert">
-    <?= htmlspecialchars($_GET['alert']) ?>
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-  </div>
-<?php endif; ?>
+            <!-- Upcoming Events -->
+           
+            <hr />
+          
+<!-- Simple form -->
 
-        <Center> <h2>Manage Pages</h2></Center>
-<table class="table table-bordered table-striped">
-<thead class="table-success">
+<h3>Admin Accounts</h3>
+<table border="1" cellpadding="8">
     <tr>
-        <th>S/N</th>
-        <th>Title</th>
-        <th>Category</th>
+        <th>ID</th>
+        <th>Username</th>
+        <th>Full Name</th>
+        <th>Email</th>
+        <th>Role</th>
         <th>Actions</th>
     </tr>
-</thead>
-    <?php 
-     $counter = 1;
-    while ($page = $pages->fetch_assoc()): ?>
+    <?php while ($row = $result->fetch_assoc()): ?>
         <tr>
-            <td><?php echo $counter++; ?></td>
-            <td><?= $page['pg_title'] ?></td>
-            <td><?= $page['pg_category'] ?></td>
+            <td><?= $row['id'] ?></td>
+            <td><?= $row['username'] ?></td>
+            <td><?= $row['full_name'] ?></td>
+            <td><?= $row['email'] ?></td>
+            <td><?= $row['role'] ?></td>
             <td>
-                <a href="edit_page.php?id=<?= $page['pg_id'] ?>" class="btn btn-warning btn-sm" style="color:#ffffff;">Edit</a> |
                 <?php if ($_SESSION['admin_role'] === 'superadmin'): ?>
-                <a href="delete_page.php?id=<?= $page['pg_id'] ?>" onclick="return confirm('Are you sure?')" class="btn btn-danger btn-sm" style="color:#ffffff;">Delete</a> |
+                    <a href="edit_admin.php?id=<?= $row['id'] ?>" class="btn btn-warning btn-sm">Edit</a> |
+                    <a href="delete_admin.php?id=<?= $row['id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Delete this admin?')">Delete</a>
+                <?php else: ?>
+                    <span style="color: gray;">Restricted</span>
                 <?php endif; ?>
-                <a href="view_page.php?id=<?= $page['pg_id'] ?>" class="btn btn-primary btn-sm" style="color:#ffffff;">View</a>
-                <a href="edit_page_details.php?id=<?= $page['pg_id'] ?>" class="btn btn-success btn-sm" style="color:#ffffff;">Edit Page Details</a>
-
             </td>
         </tr>
     <?php endwhile; ?>
 </table>
-
+         
 
         </div>
     </div>
@@ -117,14 +109,26 @@ $pages = $conn->query("SELECT * FROM pages_table");
                 </div>
                 
                 <!-- Sidebar with Recent Posts -->
-                <div class="gdlr-core-pbf-sidebar-left gdlr-core-column-extend-left kingster-sidebar-area gdlr-core-column-10 gdlr-core-pbf-sidebar-padding gdlr-core-line-height">
-                    <div class="gdlr-core-sidebar-item gdlr-core-item-pdlr">
-                        <div id="recent-posts-3" class="widget widget_recent_entries kingster-widget" style="background-color:rgb(206, 234, 221) ;">
-                        <?php include "pagesidebar.php"; ?>
-                        <?php include "adminsidemenu.php"; ?>
-                        </div>
-                    </div>
-                </div>
+             <div class="gdlr-core-pbf-sidebar-left gdlr-core-column-extend-left  kingster-sidebar-area gdlr-core-column-15 gdlr-core-pbf-sidebar-padding  gdlr-core-line-height">
+                                
+                                <div class="gdlr-core-sidebar-item gdlr-core-item-pdlr">
+                                    
+                                    
+                                    <div id="recent-posts-3" class="widget widget_recent_entries kingster-widget" style="background-color:rgb(206, 234, 221) ;">
+                                        <?php include "pagesidebar.php"; ?>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="gdlr-core-pbf-sidebar-right gdlr-core-column-extend-right  kingster-sidebar-area gdlr-core-column-15 gdlr-core-pbf-sidebar-padding  gdlr-core-line-height">
+                                
+                                <div class="gdlr-core-sidebar-item gdlr-core-item-pdlr">
+                                    
+                                    
+                                    <div id="recent-posts-3" class="widget widget_recent_entries kingster-widget" style="background-color:rgb(206, 234, 221) ;">
+                                        <?php include "adminsidemenu.php"; ?>
+                                    </div>
+                                </div>
+                            </div>
 
             </div>
         </div>

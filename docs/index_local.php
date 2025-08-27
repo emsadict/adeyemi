@@ -29,6 +29,8 @@ while ($row7 = $result7->fetch_assoc()) {
 
 // Encode data for JavaScript
 $slides_json = json_encode($slides7);
+
+
 // larger slider code
 include "db_connect.php";
 
@@ -136,17 +138,15 @@ $slides_json1 = json_encode($slides8);
 .popup-box {
   background: white;
   border-radius: 10px;
-  width: 45%;            /* 👈 Updated: allows two boxes to fit in one row */
-  min-width: 300px;
-  max-width: 500px;
+  width: 90%;
+  max-width: 600px;
   padding: 20px;
   position: relative;
   text-align: center;
   box-shadow: 0 0 20px rgba(0,0,0,0.3);
-  overflow-y: auto;
-  max-height: 80vh;
+  overflow-y: auto; /* allows scrolling of content if it overflows */
+  max-height: 80vh; /* limits height to prevent full screen takeover */
 }
-
 
 .image-scroll-area {
   max-height: 300px; /* only part of image is visible */
@@ -204,80 +204,33 @@ $slides_json1 = json_encode($slides8);
 .open-btn {
   background-color: lightgreen;
 }
-.popup-wrapper {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap; /* enables stacking on smaller screens */
-  justify-content: center;
-}
-@media (max-width: 768px) {
-  .popup-wrapper {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .popup-box {
-    width: 90%;
-    max-width: 100%;
-  }
-}
 
 </style>
 </head>
 
 <body class="home page-template-default page page-id-2039 gdlr-core-body woocommerce-no-js tribe-no-js kingster-body kingster-body-front kingster-full  kingster-with-sticky-navigation  kingster-blockquote-style-1 gdlr-core-link-to-lightbox">
-<!-- Popup partimte-->
+<!-- Popup -->
 <div class="popup-overlay" id="popup">
-  <div class="popup-wrapper">
-    
-    <!-- Popup 1 -->
-    <div class="popup-box">
-      <span class="close-icon" onclick="closePopup()">×</span>
+  <div class="popup-box">
+    <span class="close-icon" onclick="closePopup()">×</span>
 
-      <div class="image-scroll-area">
-        <img src="images/advert.jpg" alt="Part-Time Degree Banner">
-      </div>
-
-      <h5>Part-Time Degree Programmes</h5>
-      <p>
-        ADEYEMI FEDERAL UNIVERSITY OF EDUCATION, ONDO <br>
-        DIRECTORATE OF CONTINUING EDUCATION AND PART-TIME STUDIES <br><br>
-        ADMISSION INTO PART-TIME DEGREE PROGRAMME <br>
-        OBAFEMI AWOLOWO UNIVERSITY, ILE-IFE <br>
-        2025/2026 CONTACT SESSION
-        <a href="https://portal.afued.edu.ng" target="_blank">
-          <button class="open-btn">Read More</button>
-        </a>
-      </p>
-
-      <button class="close-btn" onclick="closePopup()">Close</button>
+    <div class="image-scroll-area">
+      <img src="images/advert.jpg" alt="Part-Time Degree Banner">
     </div>
 
-    <!-- Popup 2 -->
-    <div class="popup-box">
-      <span class="close-icon" onclick="closePopup()">×</span>
+    <h5>Part-Time Degree Programmes</h5>
+    <p>
+      ADEYEMI FEDERAL UNIVERSITY OF EDUCATION, ONDO <br>
+      DIRECTORATE OF CONTINUING EDUCATION AND PART-TIME STUDIES <br><br>
+      ADMISSION INTO PART-TIME DEGREE PROGRAMME <br>
+      OBAFEMI AWOLOWO UNIVERSITY, ILE-IFE <br>
+      2025/2026 CONTACT SESSION
+      <a href="https://portal.afued.edu.ng" target="_blank">
+        <button class="open-btn">Read More</button>
+      </a>
+    </p>
 
-      <div class="image-scroll-area">
-        <img src="images/adeyemi_advert.png" alt="Second Banner">
-      </div>
-
-      <h5>2025/2026 POST UTME SCREENING FOR DEGREE AND DIRECT ENTRY CANDIDATES</h5>
-      <p>
-        Adeyemi Federal University of Education (AFUED),  <br>
-        Ondo invites the following categories of candidates to obtain its POST UTME screening forms:<br>
-        i.	Degree Programmes: UTME Candidates who scored a minimum of 150 marks
-<br>
-       ii.	Direct Entry (DE) Programmes:<br>
-       Candidates who possess a minimum of 7 points <br>
-         and at least one (1) Merit Pass in their course of study.<br>
-        <a href="https://portal.afued.edu.ng" target="_blank">
-          <button class="open-btn">Apply Now</button>
-        </a>
-      </p>
-
-      <button class="close-btn" onclick="closePopup()">Close</button>
-    </div>
-
+    <button class="close-btn" onclick="closePopup()">Close</button>
   </div>
 </div>
 
@@ -451,18 +404,16 @@ $slides_json1 = json_encode($slides8);
                         </div>
                         <div class="gdlr-core-pbf-wrapper-content gdlr-core-js ">
                             <div class="gdlr-core-pbf-wrapper-container clearfix gdlr-core-container-custom">
-                                <?php 
-                                        $vc = $conn->query("SELECT * FROM vice_chancellor ORDER BY created_at DESC LIMIT 1")->fetch_assoc();
-                                        $image = !empty($vc['image']) ? "images/{$vc['image']}" : "images/default.jpg";
-                                ?>
                                 <div class="gdlr-core-pbf-column gdlr-core-column-30 gdlr-core-column-first">
-    <div class="gdlr-core-pbf-column-content-margin gdlr-core-js" id="div_1dd7_14" data-sync-height="height-1">
-        <div class="gdlr-core-pbf-background-wrap">
-            <div class="gdlr-core-pbf-background gdlr-core-parallax gdlr-core-js" id="div_1dd7_15" style="background-image: url('<?= $image ?>');" data-parallax-speed="0"></div>
-            <div class="vc-name-overlay"><?= htmlspecialchars($vc['full_name']) ?><br><?= htmlspecialchars($vc['title']) ?></div>
-        </div>
-    </div>
-</div>
+                                    <div class="gdlr-core-pbf-column-content-margin gdlr-core-js " id="div_1dd7_14" data-sync-height="height-1">
+                                        <div class="gdlr-core-pbf-background-wrap">
+                                            <div class="gdlr-core-pbf-background gdlr-core-parallax gdlr-core-js" id="div_1dd7_15" data-parallax-speed="0"></div>
+                                                <div class="vc-name-overlay">Prof. Samuel Akintunde<br> Ag. Vice Chancellor</div> 
+                                                <div class="gdlr-core-pbf-column-content clearfix gdlr-core-js gdlr-core-sync-height-content"></div>
+                                        </div>
+                                        <div class="gdlr-core-pbf-column-content clearfix gdlr-core-js  gdlr-core-sync-height-content"></div>
+                                    </div>
+                                </div>
                                 <div class="gdlr-core-pbf-column gdlr-core-column-30" id="gdlr-core-column-4">
                                     <div class="gdlr-core-pbf-column-content-margin gdlr-core-js " id="div_1dd7_16" data-sync-height="height-1">
                                         <div class="gdlr-core-pbf-background-wrap">
@@ -472,32 +423,15 @@ $slides_json1 = json_encode($slides8);
                                             <div class="gdlr-core-pbf-element">
                                                 <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix  gdlr-core-left-align gdlr-core-title-item-caption-bottom gdlr-core-item-pdlr" id="div_1dd7_18">
                                                     <div class="gdlr-core-title-item-title-wrap clearfix">
-                                                        <div style="background-color: #fff; padding: 10px 0;">
-                                                        <h3 style="font-family: 'Segoe UI', sans-serif; font-size: 32px; color: rgb(6, 156, 98); text-align: center; margin: 0; letter-spacing: 1px; border-bottom: 3px solid rgb(6, 156, 98); display: inline-block; padding-bottom: 5px;">THE VICE CHANCELLOR'S</h3>
-                                                        </div>
-                                                        <div style="background-color: #fff; padding: 10px 0;">
-                                                        <span class="gdlr-core-title-item-caption gdlr-core-info-font gdlr-core-skin-caption" id="span_1dd7_0" style="font-family: 'Segoe UI', sans-serif; font-size: 32px; color: rgb(6, 156, 98); text-align: center; margin: 0; letter-spacing: 1px; border-bottom: 3px solid rgb(6, 156, 98); display: inline-block; padding-bottom: 5px;">Welcome Address</span></div>
-                                                        </div>
-                                                        </div>
+                                                        <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " id="h3_1dd7_4">THE VICE CHANCELLOR'S</h3></div><span class="gdlr-core-title-item-caption gdlr-core-info-font gdlr-core-skin-caption" id="span_1dd7_0">Welcome Address</span></div>
                                             </div>
-                                            <?php
-// Fetch the latest VC profile
-$vc = $conn->query("SELECT * FROM vice_chancellor ORDER BY created_at DESC LIMIT 1")->fetch_assoc();
-?>
                                             <div class="gdlr-core-pbf-element">
-    <div class="gdlr-core-text-box-item gdlr-core-item-pdlr gdlr-core-item-pdb gdlr-core-left-align" id="div_1dd7_19">
-        <div class="gdlr-core-text-box-item-content" id="div_1dd7_0">
-            <div style="max-width: 800px; margin: 30px auto; padding: 30px; background: linear-gradient(135deg, #e5eaed, #f3f6f9); border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); font-family: 'Segoe UI', sans-serif;">
-                <p style="color: #333; font-size: 17px; line-height: 1.6; text-align: justify;">
-                    <?= nl2br(htmlspecialchars($vc['welcome_address'])) ?><br/><br/>
-                    <?= htmlspecialchars($vc['full_name']) ?><br/>
-                    <?= htmlspecialchars($vc['title']) ?>
-                </p>
-            </div>
-        </div>
-    </div>
-</div>
-
+                                                <div class="gdlr-core-text-box-item gdlr-core-item-pdlr gdlr-core-item-pdb gdlr-core-left-align" id="div_1dd7_19">
+                                                    <div class="gdlr-core-text-box-item-content" id="div_1dd7_20">
+                                                        <p>We don’t just give students an education and experiences that set them up for success in a career. We help them succeed in their career—to discover a field they’re passionate about and dare to lead it.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <div class="gdlr-core-pbf-element">
                                                 <div class="gdlr-core-button-item gdlr-core-item-pdlr gdlr-core-item-pdb gdlr-core-left-align"><a class="gdlr-core-button  gdlr-core-button-solid gdlr-core-button-no-border" href="#" id="a_1dd7_0"><span class="gdlr-core-content" >Read More</span></a></div>
                                             </div>
@@ -527,9 +461,8 @@ $vc = $conn->query("SELECT * FROM vice_chancellor ORDER BY created_at DESC LIMIT
 </div>
 
 
-
                                                     </div>
-<div style="max-width: 800px; margin: 30px auto; padding: 30px; background: linear-gradient(135deg, #e5eaed, #f3f6f9); border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); font-family: 'Segoe UI', sans-serif;">
+                                                        <div style="max-width: 800px; margin: 30px auto; padding: 30px; background: linear-gradient(135deg, #e5eaed, #f3f6f9); border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); font-family: 'Segoe UI', sans-serif;">
 
   <h2 style="color:rgb(6, 156, 98); font-size: 28px; margin-bottom: 15px; border-left: 5px solid rgb(6, 156, 98); padding-left: 10px;">VISION</h2>
   <p style="color: #333; font-size: 17px; line-height: 1.6; text-align: justify;">The vision of Adeyemi Federal University of Education is "to create a conducive atmosphere where teaching, learning, research, and community activities can take place to produce competent and qualified graduates that can compete globally and for the overall benefit of the teaching profession in Nigeria and abroad through resourceful, transparent, firm, and just leadership."
@@ -727,7 +660,7 @@ $other_news_result = $conn->query($other_news_query);
                                     <div class="gdlr-core-blog-grid">
                                         <div class="gdlr-core-blog-thumbnail gdlr-core-media-image gdlr-core-opacity-on-hover gdlr-core-zoom-on-hover">
                                             <a href="view_news.php?id=<?= $latest_news['id'] ?>">
-                                                <img src="uploads/<?= $latest_news['image']; ?>" width="700" height="430" alt="<?= $latest_news['title'] ?>" />
+                                                <img src="upload/<?= $latest_news['image']; ?>" width="700" height="430" alt="<?= $latest_news['title'] ?>" />
                                             </a>
                                         </div>
                                         <div class="gdlr-core-blog-grid-content-wrap">
@@ -902,8 +835,7 @@ $other_news_result = $conn->query($other_news_query);
     <?php while($row = mysqli_fetch_assoc($result)): ?>
       <span class="news-item">
         <span class="news-title"><?= htmlspecialchars($row['title']) ?>:</span>
-        
-        <?= strip_tags($row['content'], '<strong><em><u><a>') ?>
+        <?= htmlspecialchars($row['content']) ?>
       </span>
     <?php endwhile; ?>
   </marquee>

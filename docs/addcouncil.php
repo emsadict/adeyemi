@@ -1,13 +1,40 @@
 <?php
-require 'db_connect.php';
 include "auth_session.php";
-$departments = $conn->query("SELECT * FROM dept_table");
+if ($_SESSION['admin_role'] !== 'superadmin') {
+    die("Access denied. Only superadmins can add admins.");
+}
 
+include "db_connect.php";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $surname = $_POST['surname'];
+    $othernames = $_POST['othernames'];
+    $position = $_POST['position'];
+    $status = $_POST['status'];
+    $year_started = $_POST['year_started'];
+    $year_ended = $_POST['year_ended'] ?? null;
+    $email = $_POST['email'];
+    $phone = $_POST['phone'];
+    $bio = $_POST['bio'];
+    $appointed_by = $_POST['appointed_by'];
+    $created_at = date("Y-m-d H:i:s");
+
+    // Handle passport upload
+    $passport = '';
+    if (!empty($_FILES['passport']['name'])) {
+        $targetDir = "upload/GOVERNING/";
+        $passport = basename($_FILES["passport"]["name"]);
+        move_uploaded_file($_FILES["passport"]["tmp_name"], $targetDir . $passport);
+    }
+
+    $stmt = $conn->prepare("INSERT INTO governing_council (surname, othernames, position, status, year_started, year_ended, email, phone, passport, bio, created_at, appointed_by) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("ssssssssssss", $surname, $othernames, $position, $status, $year_started, $year_ended, $email, $phone, $passport, $bio, $created_at, $appointed_by);
+    $stmt->execute();
+
+    header("Location: managecouncil.php?alert=Council member added");
+    exit;
+}
 ?>
-
-
-
-
 <!DOCTYPE html>
 <html lang="en-US" class="no-js">
 <head>
@@ -26,14 +53,14 @@ $departments = $conn->query("SELECT * FROM dept_table");
                 <div class="kingster-page-title-overlay"></div>
                 <div class="kingster-page-title-container kingster-container">
                     <div class="kingster-page-title-content kingster-item-pdlr">
-                        <h1 class="kingster-page-title">MANAGE DEPARTMENT</h1></div>
+                        <h1 class="kingster-page-title">ADD COUNCIL MEMBERS</h1></div>
                 </div>
             </div>
             <div class="kingster-page-wrapper" id="kingster-page-wrapper">
     <div class="gdlr-core-page-builder-body">
         <div class="gdlr-core-pbf-sidebar-wrapper">
-            <div class="gdlr-core-pbf-sidebar-container gdlr-core-line-height-0 clearfix gdlr-core-js gdlr-core-container" id="madewith">
-                <div class="gdlr-core-pbf-sidebar-content gdlr-core-column-50 gdlr-core-pbf-sidebar-padding gdlr-core-line-height" style="padding: 60px 10px 30px 30px;">
+            <div class="gdlr-core-pbf-sidebar-container gdlr-core-line-height-0 clearfix gdlr-core-js gdlr-core-container">
+                <div class="gdlr-core-pbf-sidebar-content gdlr-core-column-30 gdlr-core-pbf-sidebar-padding gdlr-core-line-height" style="padding: 60px 10px 30px 30px;">
                     <div class="gdlr-core-pbf-background-wrap" style="background-color: #f7f7f7;"></div>
                     <div class="gdlr-core-pbf-sidebar-content-inner">
 <div class="gdlr-core-pbf-element">
@@ -41,57 +68,29 @@ $departments = $conn->query("SELECT * FROM dept_table");
         <div class="gdlr-core-blog-item-holder gdlr-core-js-2 clearfix" data-layout="fitrows">
 
             <!-- Upcoming Events -->
-              <?php echo "Welcome, admin " . $_SESSION['admin_username'];   ?><br>
-               <a href="logout.php" style="color: red; text-decoration: none;">Logout</a>
-
-               <?php if (isset($_GET['alert'])): ?>
-  <div class="alert alert-info alert-dismissible fade show" role="alert">
-    <?= htmlspecialchars($_GET['alert']) ?>
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-  </div>
-<?php endif; ?>
-
-            <h3>Manage Departments</h3>
-            <table class="table table-bordered table-striped">
-            <thead class="table-success">
-             <tr> 
-        <th>S/N</th>
-        <th>Name</th>
-        <th>School</th>
-        <th>HOD</th>
-        <th>Email</th>
-        <th>Phone</th>
-        <th>Image</th>
-        <th>Actions</th>
-    </tr>
-            </thead>
-            <tbody>
-    <?php 
-    $counter = 1; // Start ID from 1
-    while ($row = $departments->fetch_assoc()): ?>
-    <tr>
-    <td><?php  echo $counter++; ?></td>
-        <td><?= $row['dept_name'] ?></td>
-        <td><?= $row['dept_school'] ?></td>
-        <td><?= $row['dept_head'] ?></td>
-        <td><?= $row['dept_email'] ?></td>
-        <td><?= $row['dept_phone'] ?></td>
-        <td><img src="uploads/<?= $row['dept_image'] ?>" width="50"></td>
-        <td>
-    <a href="edit_dept.php?id=<?= $row['id'] ?>" class="btn btn-warning btn-sm" style="color:#ffffff;">Edit</a> |
-
-    <a href="dept.php?dept_name=<?= $row['dept_name'] ?>" class="btn btn-primary btn-sm" style="color:#ffffff;">View</a>
-
-    <a href="edit_dept_details.php?id=<?= $row['id'] ?>" class="btn btn-success btn-sm" style="color:#ffffff;">Edit Information</a> |
-
-    <?php if ($_SESSION['admin_role'] === 'superadmin'): ?>
-             <a href="delete_dept.php?id=<?= $row['id'] ?>" class="btn btn-danger btn-sm" style="color:#ffffff;" onclick="return confirm('Are you sure?')">Delete</a>
-    <?php endif; ?>
-</td>
-    </tr>
-    <?php endwhile; ?>
-            </tbody>
-</table>
+           <a href="adminpanel.php" class="btn btn-warning">Back</a>
+            <hr />
+          
+<!-- Simple form -->
+ <div class="form-container">
+<form method="post" enctype="multipart/form-data">
+    Surname: <input type="text" name="surname" required><br>
+    Other Names: <input type="text" name="othernames" required><br>
+    Position: <input type="text" name="position" required><br>
+    Status: <select name="status">
+        <option value="present">Active</option>
+        <option value="past">Inactive</option>
+    </select><br>
+    Year Started: <input type="text" name="year_started" required><br>
+    Year Ended: <input type="text" name="year_ended"><br>
+    Email: <input type="email" name="email"><br>
+    Phone: <input type="text" name="phone"><br>
+    Passport: <input type="file" name="passport"><br>
+    Bio: <textarea name="bio"></textarea><br>
+    Appointed By/Representative of: <input type="text" name="appointed_by"><br>
+    <button type="submit">Add Member</button>
+</form>
+ </div>          
 
         </div>
     </div>
@@ -130,18 +129,26 @@ $departments = $conn->query("SELECT * FROM dept_table");
                 </div>
                 
                 <!-- Sidebar with Recent Posts -->
-                <div class="gdlr-core-pbf-sidebar-left gdlr-core-column-extend-left  kingster-sidebar-area gdlr-core-column-10 gdlr-core-pbf-sidebar-padding  gdlr-core-line-height">
+             <div class="gdlr-core-pbf-sidebar-left gdlr-core-column-extend-left  kingster-sidebar-area gdlr-core-column-15 gdlr-core-pbf-sidebar-padding  gdlr-core-line-height">
                                 
                                 <div class="gdlr-core-sidebar-item gdlr-core-item-pdlr">
                                     
                                     
                                     <div id="recent-posts-3" class="widget widget_recent_entries kingster-widget" style="background-color:rgb(206, 234, 221) ;">
                                         <?php include "pagesidebar.php"; ?>
-                                         <?php include "adminsidemenu.php"; ?>
                                     </div>
                                 </div>
                             </div>
-                           
+                            <div class="gdlr-core-pbf-sidebar-right gdlr-core-column-extend-right  kingster-sidebar-area gdlr-core-column-15 gdlr-core-pbf-sidebar-padding  gdlr-core-line-height">
+                                
+                                <div class="gdlr-core-sidebar-item gdlr-core-item-pdlr">
+                                    
+                                    
+                                    <div id="recent-posts-3" class="widget widget_recent_entries kingster-widget" style="background-color:rgb(206, 234, 221) ;">
+                                        <?php include "adminsidemenu.php"; ?>
+                                    </div>
+                                </div>
+                            </div>
 
             </div>
         </div>

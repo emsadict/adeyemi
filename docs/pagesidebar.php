@@ -9,4 +9,8 @@
                                              <li><a href="manage_dept.php">Manage Dept</a></li>
                                              <li><a href="addstaff.php">Add Staff</a></li>
                                              <li><a href="managestaff.php">Manage Staff</a></li>
+                                             <li><a href="addcouncil.php">Add Council Member</a></li>
+                                             <li><a href="managecouncil.php">Manage Council Member</a></li>
+                                             <li><a href="addvc.php">Add Vc Profice</a></li>
+                                             <li><a href="managevc.php">Manage VC Profile</a></li>
                                         </ul> 

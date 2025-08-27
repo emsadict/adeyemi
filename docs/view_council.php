@@ -1,15 +1,30 @@
-<?php 
-include "db_connect.php";
+<?php
 include "auth_session.php";
+include "db_connect.php";
 
-// Now the user is verified, place protected content here
-//echo "Welcome, admin " . $_SESSION['admin_username'];
+$id = $_GET['id'] ?? null;
+if (!$id) {
+    echo "Invalid request.";
+    exit;
+}
 
+$stmt = $conn->prepare("SELECT * FROM governing_council WHERE id = ?");
+$stmt->bind_param("i", $id);
+$stmt->execute();
+$result = $stmt->get_result();
+$member = $result->fetch_assoc();
+
+if (!$member) {
+    echo "Council member not found.";
+    exit;
+}
+
+$fullName = htmlspecialchars($member['surname'] . ' ' . $member['othernames']);
+$passport = !empty($member['passport']) ? "upload/GOVERNING/{$member['passport']}" : "uploads/default.jpg";
+$years = $member['year_started'] . ' - ' . ($member['year_ended'] ?? 'Present');
 ?>
 
-<!DOCTYPE html>
-<html lang="en-US" class="no-js">
-<head>
+
    <?php include "head.php"; ?>
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 </head>
@@ -39,74 +54,33 @@ include "auth_session.php";
   <div class="gdlr-core-blog-item-holder gdlr-core-js-2 clearfix" data-layout="fitrows" style="padding: 20px; background-color: #f9f9f9; border-radius: 8px;">
 
     <!-- University Logo -->
+     <a href="managecouncil.php" class="btn btn-warning">Back</a>
+
     <div style="text-align: center; margin-bottom: 20px;">
-        <img src="images/LOGOO.png" alt="University Logo" style="height: 80px;">
+        <img src="<?= $passport ?>" alt="<?= $fullName ?>" style="height:120px; width:120px; border-radius:50%;"><br>
     </div>
 
-    <!-- Welcome Message -->
-    <h3>Welcome, <?= htmlspecialchars($_SESSION['admin_username']) ?>!</h3>
-    <p>You are logged in as: <strong><?= $_SESSION['admin_role'] ?></strong></p>
-    <a href="logout.php" style="color: red; text-decoration: none;">Logout</a>
+    <h5><?= strtoupper($fullName) ?></h5>
 
-    <hr>
+<p><strong>Position:</strong> <?= htmlspecialchars($member['position']) ?></p>
+<p><strong>Status:</strong> <?= ucfirst($member['status']) ?></p>
+<p><strong>Years of Service:</strong> <?= $years ?></p>
+<p><strong>Email:</strong> <?= htmlspecialchars($member['email']) ?></p>
+<p><strong>Phone:</strong> <?= htmlspecialchars($member['phone']) ?></p>
+<p><strong>Appointed By:</strong> <?= htmlspecialchars($member['appointed_by']) ?></p>
+<p><strong>Bio:</strong> <?= nl2br(htmlspecialchars($member['bio'])) ?></p>
+<!DOCTYPE html>
+<html lang="en-US" class="no-js">
+<head>
 
-    <?php if ($_SESSION['admin_role'] === 'superadmin'): ?>
-        <!-- Superadmin Controls -->
-        <h4>Superadmin Controls</h4>
-        <ul>
-            <li><a href="add_admin.php" class="btn btn-success btn-sm">Add New Admin</a></li> <br>
-            <li><a href="manage_admins.php" class="btn btn-info btn-sm">View/Edit/Delete Admin Accounts</a></li>
-        </ul>
-
-        <!-- List of Admin Accounts -->
-        <h5>All Admin Accounts</h5>
-        <table class="table table-bordered table-striped">
-    <thead class="table-success">
-                <tr>
-                    <th>ID</th>
-                    <th>Username</th>
-                    <th>Full Name</th>
-                    <th>Role</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                include "db_connect.php";
-                $result = $conn->query("SELECT id, username, full_name, role FROM admin_users");
-                while ($row = $result->fetch_assoc()):
-                ?>
-                    <tr>
-                        <td><?= $row['id'] ?></td>
-                        <td><?= htmlspecialchars($row['username']) ?></td>
-                        <td><?= htmlspecialchars($row['full_name']) ?></td>
-                        <td><?= $row['role'] ?></td>
-                        <td>
-                            <a href="edit_admin.php?id=<?= $row['id'] ?>" class="btn btn-warning btn-sm">Edit</a>
-                            <a href="delete_admin.php?id=<?= $row['id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this admin?')">Delete</a>
-                        </td>
-                    </tr>
-                <?php endwhile; ?>
-            </tbody>
-        </table>
-
-        <!-- Superadmin Privileges -->
-        <div style="margin-top: 20px;">
-            <h5>As a Superadmin, you can:</h5>
-            <ul>
-                <li>Manage all admin accounts</li>
-                <li>Access system-wide settings</li>
-            
-                <li>Assign or revoke admin privileges</li>
-            </ul>
-        </div>
-    <?php else: ?>
-        <!-- Regular Admin Message -->
-        <p style="color: gray;">You have limited access. Please contact a superadmin for elevated privileges.</p>
-    <?php endif; ?>
+  
 
 </div>
-   
+
+                                               
+                                              
+                                            
+                                              
                                             </div>
                                             
                                         </div>

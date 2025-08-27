@@ -1,13 +1,40 @@
 <?php
-require 'db_connect.php';
 include "auth_session.php";
-$departments = $conn->query("SELECT * FROM dept_table");
+if ($_SESSION['admin_role'] !== 'superadmin') {
+    die("Access denied. Only superadmins can add vc.");
+}
+
+include "db_connect.php";
+$id = $_GET['id'] ?? null;
+if (!$id) { echo "Invalid ID"; exit; }
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $full_name = $_POST['full_name'];
+    $title = $_POST['title'];
+    $bio = $_POST['bio'];
+    $welcome_address = $_POST['welcome_address'];
+
+   if (!empty($_FILES['image']['name'])) {
+    $stmt = $conn->prepare("UPDATE vice_chancellor SET full_name=?, title=?, image=?, bio=?, welcome_address=? WHERE id=?");
+    $stmt->bind_param("sssssi", $full_name, $title, $image, $bio, $welcome_address, $id);
+} else {
+    $stmt = $conn->prepare("UPDATE vice_chancellor SET full_name=?, title=?, bio=?, welcome_address=? WHERE id=?");
+    $stmt->bind_param("ssssi", $full_name, $title, $bio, $welcome_address, $id);
+}
+
+
+    $stmt->execute();
+    header("Location: managevc.php?alert=VC profile updated");
+    exit;
+}
+
+$stmt = $conn->prepare("SELECT * FROM vice_chancellor WHERE id=?");
+$stmt->bind_param("i", $id);
+$stmt->execute();
+$vc = $stmt->get_result()->fetch_assoc();
+
 
 ?>
-
-
-
-
 <!DOCTYPE html>
 <html lang="en-US" class="no-js">
 <head>
@@ -26,14 +53,14 @@ $departments = $conn->query("SELECT * FROM dept_table");
                 <div class="kingster-page-title-overlay"></div>
                 <div class="kingster-page-title-container kingster-container">
                     <div class="kingster-page-title-content kingster-item-pdlr">
-                        <h1 class="kingster-page-title">MANAGE DEPARTMENT</h1></div>
+                        <h1 class="kingster-page-title">EDIT VC DETAILS </h1></div>
                 </div>
             </div>
             <div class="kingster-page-wrapper" id="kingster-page-wrapper">
     <div class="gdlr-core-page-builder-body">
         <div class="gdlr-core-pbf-sidebar-wrapper">
-            <div class="gdlr-core-pbf-sidebar-container gdlr-core-line-height-0 clearfix gdlr-core-js gdlr-core-container" id="madewith">
-                <div class="gdlr-core-pbf-sidebar-content gdlr-core-column-50 gdlr-core-pbf-sidebar-padding gdlr-core-line-height" style="padding: 60px 10px 30px 30px;">
+            <div class="gdlr-core-pbf-sidebar-container gdlr-core-line-height-0 clearfix gdlr-core-js gdlr-core-container">
+                <div class="gdlr-core-pbf-sidebar-content gdlr-core-column-30 gdlr-core-pbf-sidebar-padding gdlr-core-line-height" style="padding: 60px 10px 30px 30px;">
                     <div class="gdlr-core-pbf-background-wrap" style="background-color: #f7f7f7;"></div>
                     <div class="gdlr-core-pbf-sidebar-content-inner">
 <div class="gdlr-core-pbf-element">
@@ -41,57 +68,25 @@ $departments = $conn->query("SELECT * FROM dept_table");
         <div class="gdlr-core-blog-item-holder gdlr-core-js-2 clearfix" data-layout="fitrows">
 
             <!-- Upcoming Events -->
-              <?php echo "Welcome, admin " . $_SESSION['admin_username'];   ?><br>
-               <a href="logout.php" style="color: red; text-decoration: none;">Logout</a>
+           
+            <hr />
+          
+<!-- Simple form -->
+  <a href="managevc.php" class="btn btn-warning">Back</a>
+ <div class="form-container">
+   <H4>EDIT VICE CHANCELLOR IN HOME PAGE</H4> 
+   <hr>
+<form method="post" enctype="multipart/form-data">
+    Full Name: <input type="text" name="full_name" value="<?= htmlspecialchars($vc['full_name']) ?>"><br>
+    Title: <input type="text" name="title" value="<?= htmlspecialchars($vc['title']) ?>"><br>
+    Image: <input type="file" name="image"><br>
+    Bio: <textarea name="bio"><?= htmlspecialchars($vc['bio']) ?></textarea><br>
+    <label for="welcome_address">Welcome Address:</label><br>
+<textarea name="welcome_address" rows="6" cols="60"><?= htmlspecialchars($vc['welcome_address']) ?></textarea><br>
 
-               <?php if (isset($_GET['alert'])): ?>
-  <div class="alert alert-info alert-dismissible fade show" role="alert">
-    <?= htmlspecialchars($_GET['alert']) ?>
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-  </div>
-<?php endif; ?>
-
-            <h3>Manage Departments</h3>
-            <table class="table table-bordered table-striped">
-            <thead class="table-success">
-             <tr> 
-        <th>S/N</th>
-        <th>Name</th>
-        <th>School</th>
-        <th>HOD</th>
-        <th>Email</th>
-        <th>Phone</th>
-        <th>Image</th>
-        <th>Actions</th>
-    </tr>
-            </thead>
-            <tbody>
-    <?php 
-    $counter = 1; // Start ID from 1
-    while ($row = $departments->fetch_assoc()): ?>
-    <tr>
-    <td><?php  echo $counter++; ?></td>
-        <td><?= $row['dept_name'] ?></td>
-        <td><?= $row['dept_school'] ?></td>
-        <td><?= $row['dept_head'] ?></td>
-        <td><?= $row['dept_email'] ?></td>
-        <td><?= $row['dept_phone'] ?></td>
-        <td><img src="uploads/<?= $row['dept_image'] ?>" width="50"></td>
-        <td>
-    <a href="edit_dept.php?id=<?= $row['id'] ?>" class="btn btn-warning btn-sm" style="color:#ffffff;">Edit</a> |
-
-    <a href="dept.php?dept_name=<?= $row['dept_name'] ?>" class="btn btn-primary btn-sm" style="color:#ffffff;">View</a>
-
-    <a href="edit_dept_details.php?id=<?= $row['id'] ?>" class="btn btn-success btn-sm" style="color:#ffffff;">Edit Information</a> |
-
-    <?php if ($_SESSION['admin_role'] === 'superadmin'): ?>
-             <a href="delete_dept.php?id=<?= $row['id'] ?>" class="btn btn-danger btn-sm" style="color:#ffffff;" onclick="return confirm('Are you sure?')">Delete</a>
-    <?php endif; ?>
-</td>
-    </tr>
-    <?php endwhile; ?>
-            </tbody>
-</table>
+    <button type="submit">Update VC</button>
+</form>
+ </div>          
 
         </div>
     </div>
@@ -130,18 +125,26 @@ $departments = $conn->query("SELECT * FROM dept_table");
                 </div>
                 
                 <!-- Sidebar with Recent Posts -->
-                <div class="gdlr-core-pbf-sidebar-left gdlr-core-column-extend-left  kingster-sidebar-area gdlr-core-column-10 gdlr-core-pbf-sidebar-padding  gdlr-core-line-height">
+             <div class="gdlr-core-pbf-sidebar-left gdlr-core-column-extend-left  kingster-sidebar-area gdlr-core-column-15 gdlr-core-pbf-sidebar-padding  gdlr-core-line-height">
                                 
                                 <div class="gdlr-core-sidebar-item gdlr-core-item-pdlr">
                                     
                                     
                                     <div id="recent-posts-3" class="widget widget_recent_entries kingster-widget" style="background-color:rgb(206, 234, 221) ;">
                                         <?php include "pagesidebar.php"; ?>
-                                         <?php include "adminsidemenu.php"; ?>
                                     </div>
                                 </div>
                             </div>
-                           
+                            <div class="gdlr-core-pbf-sidebar-right gdlr-core-column-extend-right  kingster-sidebar-area gdlr-core-column-15 gdlr-core-pbf-sidebar-padding  gdlr-core-line-height">
+                                
+                                <div class="gdlr-core-sidebar-item gdlr-core-item-pdlr">
+                                    
+                                    
+                                    <div id="recent-posts-3" class="widget widget_recent_entries kingster-widget" style="background-color:rgb(206, 234, 221) ;">
+                                        <?php include "adminsidemenu.php"; ?>
+                                    </div>
+                                </div>
+                            </div>
 
             </div>
         </div>
@@ -175,7 +178,7 @@ $departments = $conn->query("SELECT * FROM dept_table");
     <script type='text/javascript' src='js/jquery/ui/effect.min.js'></script>
     <script type='text/javascript'>
         var kingster_script_core = {
-            "home_url": "index.html"
+            "home_url": "index.php"
         };
     </script>
     <script type='text/javascript' src='js/plugins.min.js'></script>

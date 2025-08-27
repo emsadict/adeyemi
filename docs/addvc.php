@@ -1,13 +1,33 @@
 <?php
-require 'db_connect.php';
 include "auth_session.php";
-// Fetch pages
-$pages = $conn->query("SELECT * FROM pages_table");
+if ($_SESSION['admin_role'] !== 'superadmin') {
+    die("Access denied. Only superadmins can add vc.");
+}
 
+include "db_connect.php";
+
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $full_name = $_POST['full_name'];
+    $title = $_POST['title'];
+    $bio = $_POST['bio'];
+    $welcome_address = $_POST['welcome_address'];
+    $image = '';
+
+    if (!empty($_FILES['image']['name'])) {
+        $targetDir = "images/";
+        $image = basename($_FILES["image"]["name"]);
+        move_uploaded_file($_FILES["image"]["tmp_name"], $targetDir . $image);
+    }
+
+    $stmt = $conn->prepare("INSERT INTO vice_chancellor (full_name, title, image, bio, welcome_address) VALUES (?, ?, ?, ?, ?)");
+$stmt->bind_param("sssss", $full_name, $title, $image, $bio, $welcome_address);
+    $stmt->execute();
+
+    header("Location: managevc.php?alert=VC profile added");
+    exit;
+}
 ?>
-
-
-
 <!DOCTYPE html>
 <html lang="en-US" class="no-js">
 <head>
@@ -26,59 +46,40 @@ $pages = $conn->query("SELECT * FROM pages_table");
                 <div class="kingster-page-title-overlay"></div>
                 <div class="kingster-page-title-container kingster-container">
                     <div class="kingster-page-title-content kingster-item-pdlr">
-                        <h1 class="kingster-page-title">MANAGE PAGE</h1></div>
+                        <h1 class="kingster-page-title">ADD VC DETAILS </h1></div>
                 </div>
             </div>
             <div class="kingster-page-wrapper" id="kingster-page-wrapper">
     <div class="gdlr-core-page-builder-body">
         <div class="gdlr-core-pbf-sidebar-wrapper">
-            <div class="gdlr-core-pbf-sidebar-container gdlr-core-line-height-0 clearfix gdlr-core-js gdlr-core-container" id="madewith">
-                <div class="gdlr-core-pbf-sidebar-content gdlr-core-column-45 gdlr-core-pbf-sidebar-padding gdlr-core-line-height" style="padding: 60px 10px 30px 30px;">
+            <div class="gdlr-core-pbf-sidebar-container gdlr-core-line-height-0 clearfix gdlr-core-js gdlr-core-container">
+                <div class="gdlr-core-pbf-sidebar-content gdlr-core-column-30 gdlr-core-pbf-sidebar-padding gdlr-core-line-height" style="padding: 60px 10px 30px 30px;">
                     <div class="gdlr-core-pbf-background-wrap" style="background-color: #f7f7f7;"></div>
                     <div class="gdlr-core-pbf-sidebar-content-inner">
 <div class="gdlr-core-pbf-element">
     <div class="gdlr-core-blog-item gdlr-core-item-pdb clearfix gdlr-core-style-blog-full-with-frame" style="padding-bottom: 40px;">
         <div class="gdlr-core-blog-item-holder gdlr-core-js-2 clearfix" data-layout="fitrows">
-         <?php echo "Welcome, admin " . $_SESSION['admin_username'];   ?><br>
-          <a href="logout.php" style="color: red; text-decoration: none;">Logout</a>
 
-         <?php if (isset($_GET['alert'])): ?>
-  <div class="alert alert-info alert-dismissible fade show" role="alert">
-    <?= htmlspecialchars($_GET['alert']) ?>
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-  </div>
-<?php endif; ?>
+            <!-- Upcoming Events -->
+           
+            <hr />
+          
+<!-- Simple form -->
+  <a href="adminpanel.php" class="btn btn-warning">Back</a>
+ <div class="form-container">
+   <H4>ADD VICE CHANCELLOR IN HOME PAGE</H4> 
+   <hr>
+        <form method="post" enctype="multipart/form-data">
+    Full Name: <input type="text" name="full_name" required><br>
+    Title: <input type="text" name="title" required><br>
+    Image: <input type="file" name="image"><br>
+    Bio: <textarea name="bio"></textarea><br>
+    <label for="welcome_address">Welcome Address:</label><br>
+<textarea name="welcome_address" rows="6" cols="60" placeholder="Enter welcome address here..."></textarea><br>
 
-        <Center> <h2>Manage Pages</h2></Center>
-<table class="table table-bordered table-striped">
-<thead class="table-success">
-    <tr>
-        <th>S/N</th>
-        <th>Title</th>
-        <th>Category</th>
-        <th>Actions</th>
-    </tr>
-</thead>
-    <?php 
-     $counter = 1;
-    while ($page = $pages->fetch_assoc()): ?>
-        <tr>
-            <td><?php echo $counter++; ?></td>
-            <td><?= $page['pg_title'] ?></td>
-            <td><?= $page['pg_category'] ?></td>
-            <td>
-                <a href="edit_page.php?id=<?= $page['pg_id'] ?>" class="btn btn-warning btn-sm" style="color:#ffffff;">Edit</a> |
-                <?php if ($_SESSION['admin_role'] === 'superadmin'): ?>
-                <a href="delete_page.php?id=<?= $page['pg_id'] ?>" onclick="return confirm('Are you sure?')" class="btn btn-danger btn-sm" style="color:#ffffff;">Delete</a> |
-                <?php endif; ?>
-                <a href="view_page.php?id=<?= $page['pg_id'] ?>" class="btn btn-primary btn-sm" style="color:#ffffff;">View</a>
-                <a href="edit_page_details.php?id=<?= $page['pg_id'] ?>" class="btn btn-success btn-sm" style="color:#ffffff;">Edit Page Details</a>
-
-            </td>
-        </tr>
-    <?php endwhile; ?>
-</table>
-
+    <button type="submit">Add VC</button>
+</form>
+ </div>          
 
         </div>
     </div>
@@ -117,14 +118,26 @@ $pages = $conn->query("SELECT * FROM pages_table");
                 </div>
                 
                 <!-- Sidebar with Recent Posts -->
-                <div class="gdlr-core-pbf-sidebar-left gdlr-core-column-extend-left kingster-sidebar-area gdlr-core-column-10 gdlr-core-pbf-sidebar-padding gdlr-core-line-height">
-                    <div class="gdlr-core-sidebar-item gdlr-core-item-pdlr">
-                        <div id="recent-posts-3" class="widget widget_recent_entries kingster-widget" style="background-color:rgb(206, 234, 221) ;">
-                        <?php include "pagesidebar.php"; ?>
-                        <?php include "adminsidemenu.php"; ?>
-                        </div>
-                    </div>
-                </div>
+             <div class="gdlr-core-pbf-sidebar-left gdlr-core-column-extend-left  kingster-sidebar-area gdlr-core-column-15 gdlr-core-pbf-sidebar-padding  gdlr-core-line-height">
+                                
+                                <div class="gdlr-core-sidebar-item gdlr-core-item-pdlr">
+                                    
+                                    
+                                    <div id="recent-posts-3" class="widget widget_recent_entries kingster-widget" style="background-color:rgb(206, 234, 221) ;">
+                                        <?php include "pagesidebar.php"; ?>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="gdlr-core-pbf-sidebar-right gdlr-core-column-extend-right  kingster-sidebar-area gdlr-core-column-15 gdlr-core-pbf-sidebar-padding  gdlr-core-line-height">
+                                
+                                <div class="gdlr-core-sidebar-item gdlr-core-item-pdlr">
+                                    
+                                    
+                                    <div id="recent-posts-3" class="widget widget_recent_entries kingster-widget" style="background-color:rgb(206, 234, 221) ;">
+                                        <?php include "adminsidemenu.php"; ?>
+                                    </div>
+                                </div>
+                            </div>
 
             </div>
         </div>
@@ -158,7 +171,7 @@ $pages = $conn->query("SELECT * FROM pages_table");
     <script type='text/javascript' src='js/jquery/ui/effect.min.js'></script>
     <script type='text/javascript'>
         var kingster_script_core = {
-            "home_url": "index.html"
+            "home_url": "index.php"
         };
     </script>
     <script type='text/javascript' src='js/plugins.min.js'></script>

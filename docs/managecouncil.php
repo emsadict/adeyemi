@@ -2,7 +2,7 @@
 require 'db_connect.php';
 include "auth_session.php";
 // Fetch pages
-$pages = $conn->query("SELECT * FROM pages_table");
+
 
 ?>
 
@@ -26,7 +26,7 @@ $pages = $conn->query("SELECT * FROM pages_table");
                 <div class="kingster-page-title-overlay"></div>
                 <div class="kingster-page-title-container kingster-container">
                     <div class="kingster-page-title-content kingster-item-pdlr">
-                        <h1 class="kingster-page-title">MANAGE PAGE</h1></div>
+                        <h1 class="kingster-page-title">MANAGE COUNCIL MEMBERS</h1></div>
                 </div>
             </div>
             <div class="kingster-page-wrapper" id="kingster-page-wrapper">
@@ -39,50 +39,73 @@ $pages = $conn->query("SELECT * FROM pages_table");
 <div class="gdlr-core-pbf-element">
     <div class="gdlr-core-blog-item gdlr-core-item-pdb clearfix gdlr-core-style-blog-full-with-frame" style="padding-bottom: 40px;">
         <div class="gdlr-core-blog-item-holder gdlr-core-js-2 clearfix" data-layout="fitrows">
-         <?php echo "Welcome, admin " . $_SESSION['admin_username'];   ?><br>
-          <a href="logout.php" style="color: red; text-decoration: none;">Logout</a>
+            <?php
+           
 
-         <?php if (isset($_GET['alert'])): ?>
-  <div class="alert alert-info alert-dismissible fade show" role="alert">
-    <?= htmlspecialchars($_GET['alert']) ?>
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-  </div>
-<?php endif; ?>
+            echo "Welcome, admin " . $_SESSION['admin_username'] . "<br>";
+            ?>
+            <a href="logout.php" style="color: red; text-decoration: none;">Logout</a>
 
-        <Center> <h2>Manage Pages</h2></Center>
-<table class="table table-bordered table-striped">
-<thead class="table-success">
-    <tr>
-        <th>S/N</th>
-        <th>Title</th>
-        <th>Category</th>
-        <th>Actions</th>
-    </tr>
-</thead>
-    <?php 
-     $counter = 1;
-    while ($page = $pages->fetch_assoc()): ?>
-        <tr>
-            <td><?php echo $counter++; ?></td>
-            <td><?= $page['pg_title'] ?></td>
-            <td><?= $page['pg_category'] ?></td>
-            <td>
-                <a href="edit_page.php?id=<?= $page['pg_id'] ?>" class="btn btn-warning btn-sm" style="color:#ffffff;">Edit</a> |
-                <?php if ($_SESSION['admin_role'] === 'superadmin'): ?>
-                <a href="delete_page.php?id=<?= $page['pg_id'] ?>" onclick="return confirm('Are you sure?')" class="btn btn-danger btn-sm" style="color:#ffffff;">Delete</a> |
-                <?php endif; ?>
-                <a href="view_page.php?id=<?= $page['pg_id'] ?>" class="btn btn-primary btn-sm" style="color:#ffffff;">View</a>
-                <a href="edit_page_details.php?id=<?= $page['pg_id'] ?>" class="btn btn-success btn-sm" style="color:#ffffff;">Edit Page Details</a>
+            <?php if (isset($_GET['alert'])): ?>
+                <div class="alert alert-info alert-dismissible fade show" role="alert">
+                    <?= htmlspecialchars($_GET['alert']) ?>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            <?php endif; ?>
 
-            </td>
-        </tr>
-    <?php endwhile; ?>
-</table>
+            <center><h2>MANAGE COUNCIL MEMBERS</h2></center>
 
+            <?php
+            $result = $conn->query("SELECT * FROM governing_council ORDER BY status DESC, position ASC, year_started DESC");
 
+            if ($result->num_rows > 0): ?>
+                <table class="table table-bordered table-striped">
+                    <thead class="table-success">
+                        <tr>
+                            <th>Photo</th>
+                            <th>Name</th>
+                            <th>Position</th>
+                            <th>Status</th>
+                            <th>Years</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Appointed By</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php while ($row = $result->fetch_assoc()):
+                            $fullName = htmlspecialchars($row['surname'] . ' ' . $row['othernames']);
+                            $passport = !empty($row['passport']) ? "upload/GOVERNING/{$row['passport']}" : "uploads/default.jpg";
+                            $years = $row['year_started'] . ' - ' . ($row['year_ended'] ?? 'Present');
+                        ?>
+                        <tr>
+                            <td><img src="<?= $passport ?>" alt="<?= $fullName ?>" style="height:60px; width:60px; border-radius:50%; object-fit:cover;"></td>
+                            <td><?= strtoupper($fullName) ?></td>
+                            <td><?= htmlspecialchars($row['position']) ?></td>
+                            <td><?= ucfirst($row['status']) ?></td>
+                            <td><?= $years ?></td>
+                            <td><?= htmlspecialchars($row['email']) ?></td>
+                            <td><?= htmlspecialchars($row['phone']) ?></td>
+                            <td><?= htmlspecialchars($row['appointed_by']) ?></td>
+                            <td>
+                                <a href="view_council.php?id=<?= $row['id'] ?>" class="btn btn-primary btn-sm">View</a>
+                                <a href="edit_council.php?id=<?= $row['id'] ?>" class="btn btn-warning btn-sm">Edit</a>
+                                <?php if ($_SESSION['admin_role'] === 'superadmin'): ?>
+                                    <a href="delete_council.php?id=<?= $row['id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this member?')">Delete</a>
+                                <?php endif; ?>
+                            </td>
+                        </tr>
+                        <?php endwhile; ?>
+                    </tbody>
+                </table>
+            <?php else: ?>
+                <p>No governing council members found.</p>
+            <?php endif; ?>
         </div>
     </div>
 </div>
+
 
 <style>
     .event-box {
@@ -158,7 +181,7 @@ $pages = $conn->query("SELECT * FROM pages_table");
     <script type='text/javascript' src='js/jquery/ui/effect.min.js'></script>
     <script type='text/javascript'>
         var kingster_script_core = {
-            "home_url": "index.html"
+            "home_url": "index.php"
         };
     </script>
     <script type='text/javascript' src='js/plugins.min.js'></script>
