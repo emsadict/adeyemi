@@ -2,6 +2,7 @@
 include "db_connect.php";
 include "auth_session.php";
 // Fetch news details by ID
+/*
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $title = $conn->real_escape_string($_POST['title']);
     $content = $conn->real_escape_string($_POST['content']);
@@ -24,8 +25,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $message = "Error uploading image.";
     }
 }
+*/
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $title = $conn->real_escape_string($_POST['title']);
+    $content = $conn->real_escape_string($_POST['content']);
+    $author = $conn->real_escape_string($_POST['author']);
 
+    
+$upload_file = $_FILES['upload_file']['name'];
+$target_dir = "uploads/";
+$target_file = $target_dir . basename($_FILES["upload_file"]["name"]);
+$file_type = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
+$allowed_types = ['jpg', 'jpeg', 'png', 'gif', 'pdf'];
+
+if (in_array($file_type, $allowed_types)) {
+    if (move_uploaded_file($_FILES["upload_file"]["tmp_name"], $target_file)) {
+        $sql = "INSERT INTO news (title, content, image, author) VALUES ('$title', '$content', '$upload_file', '$author')";
+        $message = ($conn->query($sql) === TRUE) ? "News post added successfully!" : "Error: " . $conn->error;
+    } else {
+        $message = "Error uploading file.";
+    }
+} else {
+    $message = "Invalid file type. Only images and PDFs are allowed.";
+}
+
+}
 
 
 ?>
@@ -85,9 +110,12 @@ tinymce.init({
                                                               <label>Content:</label><br>
                                                               <textarea name="content" id="message"  rows="5" required> </textarea><br><br>
 
-                                                              <label>New Image (Optional):</label>
-                                                              <input type="file" name="image"><br><br>
-                                                                    <label>Author:</label>
+                                                          <!--    <label>New Image (Optional):</label>
+                                                              <input type="file" name="image"><br><br> -->
+                                                              <label>Upload File (Image or PDF):</label>
+                                                             <input type="file" name="upload_file" accept=".jpg,.jpeg,.png,.gif,.pdf"><br><br>
+
+                                                             <label>Author:</label>
                                                               <input type="text" name="author"  required><br><br>
                                                               <button type="submit">Post News</button>
                                                           </form>

@@ -132,13 +132,29 @@ $news = $result->fetch_assoc();
                             </div>
                         </article>
 
-                        <br >
-                        <?php if (!empty($news['image'])) { ?>
-                             <div class="news-image text-center" style="align-items: center;">
-                             <img src="uploads/<?php echo htmlspecialchars($news['image']); ?>" alt="" class="img-fluid" width="705" height="70%">
-                           </div>
-                        <?php } ?>
- 
+                        <br > 
+        
+                        <?php
+$file = $news['image']; // or $news['file_name'] if you renamed the column
+$file_path = "uploads/" . htmlspecialchars($file);
+$file_ext = strtolower(pathinfo($file_path, PATHINFO_EXTENSION));
+?>
+
+<?php if (!empty($file)): ?>
+    <?php if ($file_ext === 'pdf'): ?>
+        <div class="pdf-viewer text-center" style="margin-top: 20px;">
+            <iframe src="<?= $file_path ?>" width="100%" height="600px" style="border: none;"></iframe>
+            <p><a href="<?= $file_path ?>" target="_blank" class="btn btn-outline-primary mt-2">Download PDF</a></p>
+        </div>
+    <?php elseif (in_array($file_ext, ['jpg', 'jpeg', 'png', 'gif'])): ?>
+        <div class="news-image text-center" style="align-items: center;">
+            <img src="<?= $file_path ?>" alt="" class="img-fluid" width="705" height="70%">
+        </div>
+    <?php else: ?>
+        <p class="text-center text-danger">Unsupported file type.</p>
+    <?php endif; ?>
+<?php endif; ?>
+
                             <br />
                             <!-- Back Button -->
                             <div class="text-center mt-3">

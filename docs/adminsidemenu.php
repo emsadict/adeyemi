@@ -11,4 +11,6 @@
                                             <li> <a href="managegallery.php">Manage Gallery</a></li>
                                             <li> <a href="admininstitutiondata.php">Upload Institutional Data</a></li>
                                             <li> <a href="manageinstitutiondata.php">Manageinstitutional Data</a></li>
+                                            <li> <a href="add_slider.php">Add Home Page 1st slider</a></li>
+                                            <li> <a href="manage_slider.php">Manage Home Page 1st slider</a></li>
                                         </ul> 
