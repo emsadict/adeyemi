@@ -2,14 +2,14 @@
 $servername = "localhost";
 $username = "root"; // Change if necessary
 $password = ""; // Change if necessary
-$dbname = "website_management";
+$dbname = "website_management"; //afuededuondo_website_management
 
 
 
 
 //$servername = "localhost";
-//$username = "afuededu2025"; // Change if necessary
-//$password = "afuedfetech2025@@"; // Change if necessary
+//$username = "afuededu2025"; // Change if necessary afuededuondo_afuededu2025
+//$password = "afuedfetech2025@@"; // Change if necessary   
 //$dbname = "afued_website_management";
 // Create connection
 $conn = mysqli_connect($servername, $username, $password, $dbname);

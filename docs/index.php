@@ -410,11 +410,11 @@ jQuery(document).ready(function() {
 </head>
 
 <body class="home page-template-default page page-id-2039 gdlr-core-body woocommerce-no-js tribe-no-js kingster-body kingster-body-front kingster-full  kingster-with-sticky-navigation  kingster-blockquote-style-1 gdlr-core-link-to-lightbox">
-<!-- Popup partimte-->
+<!-- Popup partimte
 <div class="popup-overlay" id="popup">
   <div class="popup-wrapper">
     
-    <!-- Popup 1 -->
+    Popup 1 
     <div class="popup-box">
       <span class="close-icon" onclick="closePopup()">×</span>
 
@@ -435,9 +435,9 @@ jQuery(document).ready(function() {
       </p>
 
       <button class="close-btn" onclick="closePopup()">Close</button>
-    </div>
+    </div> -->
 
-    <!-- Popup 2 -->
+    <!-- Popup 2 
     <div class="popup-box">
       <span class="close-icon" onclick="closePopup()">×</span>
 
@@ -469,7 +469,7 @@ jQuery(document).ready(function() {
   function closePopup() {
     document.getElementById("popup").style.display = "none";
   }
-</script>
+</script> -->
 <?php include "mobilemenu.php"; ?>
     <div class="kingster-body-outer-wrapper ">
         <div class="kingster-body-wrapper clearfix  kingster-with-frame">
